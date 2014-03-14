@@ -1,0 +1,175 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Cyclic 2-fold Double Categories}
+
+Recall the notion of a cyclic double category from \cite{cgr:mates}. A cyclic double category $\mathbb{D}$ is a double category with an extra involutive operation. On objects and horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, this operation is written
+\[
+\begin{tikzcd}
+	C^{\bullet} \rar[tick][]{X^{\bullet}} & C^{\bullet}
+\end{tikzcd}
+\]
+and respects horizontal identities and composition. The involution takes any vertical 1-cell $f\colon C\to D$ to some $\sigma f\colon D^{\bullet}\to C^{\bullet}$, and any 2-cell
+\[
+\begin{tikzcd}
+	C \rar[tick][domA]{X} \dar[swap]{f} 
+		& C \dar{f} \\
+	D \rar[tick][codA,swap]{Y}
+		& D
+	\twocellA{\theta}
+\end{tikzcd}
+\qquad\text{to}\qquad
+\begin{tikzcd}
+	D^{\bullet} \rar[tick][domA]{Y^{\bullet}} 
+			\dar[swap]{\sigma f} 
+		& D^{\bullet} \dar{\sigma f}\\
+	C^{\bullet} \rar[tick][codA,swap]{X^{\bullet}}
+		& C^{\bullet}
+	\twocellA{\sigma\theta}
+\end{tikzcd}
+\]
+respecting vertical identities and composition.
+
+We will generalize this to a cyclic action on a 2-fold double category. Suppose that $\mathbb{D}$ is a 2-fold double category. A cyclic action, written as above, must satisfy the following:
+\begin{itemize}
+	\item For every object $C$,
+	\[
+		I_{C^{\bullet}}=(\perp_C)^{\bullet} \qquad\text{and}\qquad \perp_{C^{\bullet}}=(I_C)^{\bullet}.
+	\]
+	\item For every composable pair of horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] X,Y\colon C \rar[tick]& C \end{tikzcd}$,
+	\[
+		(X\otimes Y)^{\bullet} = X^{\bullet}\odot Y^{\bullet} \qquad\text{and}\qquad
+		(X\odot Y)^{\bullet} = X^{\bullet}\otimes Y^{\bullet}
+	\]
+	\item For every vertical 1-cell $f\colon C\to D$, there are equalities
+	\[
+	\begin{tikzcd}
+		D^{\bullet} \rar[tick][codA]{I_{D^{\bullet}}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f} \\
+		C^{\bullet} \rar[tick][codA,swap]{I_{C^{\bullet}}}
+			& C^{\bullet}
+		\twocellA{I_{\sigma f}}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		D^{\bullet} \rar[tick][domA]{(\perp_D)^{\bullet}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f} \\
+		C^{\bullet} \rar[tick][codA,swap]{(\perp_C)^{\bullet}}
+			& C^{\bullet}
+		\twocellA{\sigma\perp_f}
+	\end{tikzcd}
+	\]
+	\[
+	\begin{tikzcd}
+		D^{\bullet} \rar[tick][domA]{\perp_{D^{\bullet}}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f} \\
+		C^{\bullet} \rar[tick][codA,swap]{\perp_{C^{\bullet}}}
+			& C^{\bullet}
+		\twocellA{\perp_{\sigma f}}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		D^{\bullet} \rar[tick][domA]{(I_D)^{\bullet}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f} \\
+		C^{\bullet} \rar[tick][codA,swap]{(I_C)^{\bullet}}
+			& C^{\bullet}
+		\twocellA{\sigma I_f}
+	\end{tikzcd}
+	\]
+	\item For every horizontally composable pair of 2-cells
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f} 
+			& C \rar[tick][domB]{Y} \dar{f} 
+			& C \dar{f} \\
+		D \rar[tick][codA,swap]{X'}
+			& D \rar[tick][codB,swap]{Y'}
+			& D
+		\twocellA{\theta}
+		\twocellB{\phi}
+	\end{tikzcd}
+	\]
+	there are equalities
+	\[
+	\begin{tikzcd}[column sep=large]
+		D^{\bullet} \rar[tick][domA]{(X'\otimes Y')^{\bullet}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f}\\
+		C^{\bullet} \rar[tick][codA,swap]{(X\otimes Y)^{\bullet}}
+			& C^{\bullet}
+		\twocellA{\sigma(\theta\otimes\phi)}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[column sep=large]
+		D^{\bullet} \rar[tick][domA]{X'^{\bullet}\odot Y'^{\bullet}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f}\\
+		C^{\bullet} \rar[tick][codA,swap]{X^{\bullet}\odot Y^{\bullet}}
+			& C^{\bullet}
+		\twocellA{\sigma(\theta)\odot\sigma(\phi)}
+	\end{tikzcd}
+	\]
+	\[
+	\begin{tikzcd}[column sep=large]
+		D^{\bullet} \rar[tick][domA]{(X'\odot Y')^{\bullet}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f}\\
+		C^{\bullet} \rar[tick][codA,swap]{(X\odot Y)^{\bullet}}
+			& C^{\bullet}
+		\twocellA{\sigma(\theta\odot\phi)}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[column sep=large]
+		D^{\bullet} \rar[tick][domA]{X'^{\bullet}\otimes Y'^{\bullet}} 
+				\dar[swap]{\sigma f} 
+			& D^{\bullet} \dar{\sigma f}\\
+		C^{\bullet} \rar[tick][codA,swap]{X^{\bullet}\otimes Y^{\bullet}}
+			& C^{\bullet}
+		\twocellA{\sigma(\theta)\otimes\sigma(\phi)}
+	\end{tikzcd}
+	\]
+\end{itemize}
+
+One nice consequence of this definition is that a cyclic action on a 2-fold double category $\mathbb{D}$ induces a cyclic action on the category of bimonoids $\mathrm{Bimon}(\mathbb{D})$.
+
+\begin{proposition}
+	Suppose $\mathbb{D}$ is a cyclic 2-fold double category. Then the category $\mathrm{Bimon}(\mathbb{D})$ of bimonoids in $\mathbb{D}$ carries a natural cyclic action (contravariant isomorphism).
+\end{proposition}
+\begin{proof}
+	The involution $(-)^{\bullet}$ gives an isomorphism of double categories $\mathbb{D}_{\otimes}\cong\mathbb{D}_{\odot}^{\mathrm{op}}$. Therefore it also induces an isomorphism
+\[
+	\mathbb{M}\mathrm{on}(\mathbb{D}) = \mathbb{M}\mathrm{on}(\mathbb{D}_{\otimes}) 
+		\cong \mathbb{M}\mathrm{on}(\mathbb{D}_{\odot}^{\mathrm{op}}) 
+		\cong \mathbb{C}\mathrm{omon}(\mathbb{D}_{\odot})^{\mathrm{op}} 
+		= \mathbb{C}\mathrm{omon}(\mathbb{D})^{\mathrm{op}}
+\]
+as well as an isomorphism
+\begin{multline*}
+	\mathrm{Bimon}(\mathbb{D}) = \mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))
+		\cong \mathrm{Comon}(\mathbb{C}\mathrm{omon}(\mathbb{D})^{\mathrm{op}})
+		\\ \cong \mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D}))^{\mathrm{op}}
+		= \mathrm{Bimon}(\mathbb{D})^{\mathrm{op}}.
+\end{multline*}
+\end{proof}
+
+In more concrete terms, the involution takes a bimonoid $(X,\eta,\mu,\epsilon,\delta)$ to $(X,\eta,\mu,\epsilon,\delta)^{\bullet}=(X^\bullet,\epsilon^\bullet,\delta^\bullet,\eta^\bullet,\delta^\bullet)$, swapping the monoid and comonoid structures. This is again a bimonoid, as the top two equations of \eqref{Eq:Bimonoid} are interchanged under the involution, while the bottom two equations are self-dual.
+
+The action of the involution on bimonoid morphisms can be broken down as in the following lemma.
+
+\begin{lemma}
+	Let $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ be bimonoids in a cyclic 2-fold double category, and let $\phi$ be a 2-cell
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f} & C \dar{f} \\
+		D \rar[tick][codA,swap]{Y} & D.
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	Then $\phi$ is a monoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a comonoid morphism $Y^\bullet\to X^\bullet$. Dually, $\phi$ is a comonoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a monoid morphism $Y^\bullet\to X^\bullet$.
+\end{lemma}
+\begin{proof}
+	Simply notice that the involution interchanges equations \eqref{Eq:MonoidMorphismUnit} and \eqref{Eq:MonoidMorphismMult} with \eqref{Eq:ComonoidMorphismCounit} and \eqref{Eq:ComonoidMorphismComult}.
+\end{proof}

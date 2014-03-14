@@ -1,0 +1,163 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Algebraic Weak Factorization Systems}
+
+For this section, let $\mathcal{D}$ be the 2-category of (small) categories $\mathcal{C}\mathrm{at}$, and let $\mathbb{D}$ be the canonical double category of squares in $\mathcal{D}$, whose horizontal and vertical morphisms are simply the 1-cells of $\mathcal{D}$, and whose 2-cells are the 2-cells of $\mathcal{D}$ of the appropriate shape.
+
+In this section we will show that bimonoids in $\FF{D}$ are precisely algebraic weak factorization systems, and more generally that the morphisms in $\mathrm{Bimon}(\mathbb{D})$ are given by (co)lax morphisms of algebraic weak factorization systems.
+
+Suppose that $E=(E,\eta,\epsilon)$ is a functorial factorization on a category $\cat{C}$, and consider a monoid structure on $E$. As $I_C$ is initial, the unit of the monoid is forced, and is simply $\eta$. The multiplication is given by a natural transformation $\mu\colon ER\Rightarrow E$ satisfying equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}, which now take the form $\epsilon\circ\mu = \epsilon R$ and $\mu\circ(\eta\cdot\vec{\eta})=\eta$.
+
+The unit axioms for the monoid give the equations $\mu\circ E\vec{\eta}=\id_E=\mu\circ\eta R$, which together imply the equation $\mu\circ(\eta\cdot\vec{\eta})=\eta$ above. And finally, writing $\vec{\mu}=\mu^R\colon R^2\to R$ for the natural transformation induced by the 2-cell $\mu$, the associativity axiom gives the equation $\mu\circ E\vec{\mu}=\mu\circ\mu R$.
+
+\begin{proposition}
+	A monoid structure on an object $(E,\eta,\epsilon)$ in $\FF{\mathbb{D}}$ is given by a natural transformation $\mu\colon ER\Rightarrow E$, satisfying equations
+	\begin{equation}
+		\epsilon\circ\mu=\epsilon R \qquad 
+			\mu\circ E\vec{\eta}=\id_E=\mu\circ\eta R \qquad 
+			\mu\circ E\vec{\mu}=\mu\circ\mu R.
+	\end{equation}
+	This determines a monad $\mathbb{R}=(R,\vec{\eta},\vec{\mu})$, such that $\dom\vec{\mu}=\mu$ and $\cod\vec{\mu}=\id_{\cod}$.
+
+	Similarly, a comonoid structure on $(E,\eta,\epsilon)$ is given by a natural transformation $\delta\colon L\Rightarrow EL$, satisfying equations
+	\begin{equation}
+		\delta\circ\eta=\eta L \qquad 
+			E\vec{\epsilon}\circ\delta=\id_E=\epsilon L\circ\delta \qquad
+			E\vec{\delta}\circ\delta=\delta L\circ\delta,
+	\end{equation}
+	which determines a comonad $\mathbb{L}=(L,\vec{\epsilon},\vec{\delta})$, such that $\dom\vec{\delta}=\id_{\dom}$ and $\cod\vec{\delta}=\delta$.
+\end{proposition}
+
+Hence a functorial factorization which simultaineously has a monoid structure and a comonoid structure in $\FF{\mathbb{D}}$ is precisely a weak factorization system, missing only the second bullet of Definition~\ref{Def:Awfs}, the distributive law condition. This is not surprising, as it is the only condition requiring a compatability between the monad and comonad structures. We will see that a bialgebra in $\FF{\mathbb{D}}$ adds precisely this compatibility.
+
+\begin{proposition}
+	A bimonoid structure on a horizontal morphism $(E,\eta,\epsilon)\colon C\to C$ in $\FF{\mathbb{D}}$ is precisely a weak factorization system on $C$ with underlying functorial factorization system $(E,\eta,\epsilon)$. 
+\end{proposition}
+\begin{proof}
+	We have already shown how the monoid an comonoid structures give rise to the monod and comonad of the awfs. All that remains is to show that the equations \eqref{Eq:Bimonoid} amount to just the distributive law, i.e. the equation
+	\begin{equation}\label{Eq:AwfsDistributiveLaw}
+	\begin{tikzcd}[row sep=tiny, baseline=(B.base)]
+		& C^2 \drar{L} \ar[bend left=30]{drr}{E} 
+			\twocell[bend left=10]{drr}{\delta} &&\\
+		|[alias=B]| C^2 \urar{R} \drar[swap]{L} \twocell{rr}{\Delta}
+			&& C^2 \rar{E} & C \\
+		& C^2 \urar[swap]{R} \ar[bend right=30]{urr}[swap]{E} 
+			\twocell[bend right=10]{urr}{\mu} &&
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[row sep=2ex, column sep=small, bend angle=25, baseline=(B.base)]
+		& C^2 \drar[bend left]{E} & \\
+		|[alias=B]| C^2 \urar[bend left]{R}
+			\twocell[bend left=30]{rr}{\mu}
+			\ar{rr}[description]{E}
+			\twocell[bend right=30]{rr}{\delta}
+			\drar[bend right][swap]{L}
+		&& C. \\
+		& C^2 \urar[bend right][swap]{E} &
+	\end{tikzcd}
+	\end{equation}
+
+	First of all, notice that the first three equations of \eqref{Eq:Bimonoid} follow trivially from the initiality of $I_C$ and the terminality of $\perp_C$ in $\FF{\mathbb{D}}$, hence they do not impose any further conditions.
+
+	The fourth equation here takes the form
+	\[
+	\begin{tikzcd}
+		C^2 \rar{R} \twocell{dr}{\delta^R} \dar[equal]
+			& C^2 \ar{rr}{E} \twocell{drr}{\delta} \dar[equal]
+			&& C \dar[equal] \\
+		C^2 \rar[swap]{R_{E\odot E}} \twocell{drr}{w} \dar[equal]
+			& C^2 \rar{L}
+			& C^2 \rar{E} \twocell{dr}{\id_E} \dar[equal]
+			& C \dar[equal] \\
+		C^2 \rar{L_{E\otimes E}} \twocell{dr}{\mu^L} \dar[equal]
+			& C^2 \rar[swap]{R} \twocell{drr}{\mu} \dar[equal]
+			& C^2 \rar[swap]{E}
+			& C \dar[equal] \\
+		C^2 \rar[swap]{L} & C^2 \ar{rr}[swap]{E} && C
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		C^2 \rar{R} \twocell{drr}{\mu} \dar[equal]
+			& C^2 \rar{E}
+			& C \dar[equal] \\
+		C^2 \ar{rr}{E} \twocell{drr}{\delta} \dar[equal]
+			&& C \dar[equal] \\
+		C^2 \rar[swap]{L} & C^2 \rar[swap]{E} & C,
+	\end{tikzcd}
+	\]
+	and so to prove \eqref{Eq:AwfsDistributiveLaw}, it suffices to show that
+	\[
+	\begin{tikzcd}[row sep=tiny, baseline=(B.base)]
+		{} & C^2 \drar[bend left=20]{L} & \\
+		|[alias=B]| C^2 \urar[bend left=60]{R}
+				\twocell[bend left=30]{ur}{\delta^R}
+				\urar[sloped,swap,pos=0.2]{R_{E\odot E}}
+				\twocell{rr}{w}
+				\drar[sloped,pos=0.2]{L_{E\otimes E}}
+				\twocell[bend right=30]{dr}{\mu^L}
+				\drar[bend right=60][swap]{L}
+			&& C^2 \\
+		{} & C^2 \urar[bend right=20][swap]{R} &
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[row sep=0ex, column sep=4ex, bend angle=15, baseline=(B.base)]
+		{} & C^2 \drar[bend left]{L} & \\
+		|[alias=B]| C^2 \urar[bend left]{R}
+				\twocell{rr}{\Delta}
+				\drar[bend right][swap]{L}
+			&& C^2. \\
+		{} & C^2 \urar[bend right][swap]{R} &
+	\end{tikzcd}
+	\]
+	We can check this using the universal property of $C^2$ by composing with $\dom$ and $\cod$. First, use \eqref{Eq:DomW} and \eqref{Eq:CodW} to check that
+	\begin{gather*}
+	\begin{tikzcd}[row sep=tiny, baseline=(B.base),ampersand replacement=\&]
+		{} \& C^2 \drar[bend left=20]{L} \&\& \\
+		|[alias=B]| C^2 \urar[bend left=60]{R}
+				\twocell[bend left=30]{ur}{\delta^R}
+				\urar[sloped,swap,pos=0.2]{R_{E\odot E}}
+				\twocell{rr}{w}
+				\drar[sloped,pos=0.2]{L_{E\otimes E}}
+				\twocell[bend right=30]{dr}{\mu^L}
+				\drar[bend right=60][swap]{L}
+			\&\& C^2 \rar{\dom} \& C \\
+		{} \& C^2 \urar[bend right=20][swap]{R} \&\&
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[baseline=(B.base),ampersand replacement=\&]
+		C^2 \ar[bend left=55]{rr}{E}
+				\twocell[bend left=30]{rr}{\delta}
+				\rar[bend left=30]{L}
+				\twocell{r}{i^L}
+				\rar[bend right=30][swap,inner sep=0.5pt]{L_{E\otimes E}}
+				\twocell[bend right=55,looseness=2]{r}{\mu^L}
+				\rar[bend right=85,looseness=2][swap]{L}
+			\& C^2 \rar[swap]{E} \& C
+	\end{tikzcd}
+	\\
+	\begin{tikzcd}[row sep=tiny, baseline=(B.base),ampersand replacement=\&]
+		{} \& C^2 \drar[bend left=20]{L} \&\& \\
+		|[alias=B]| C^2 \urar[bend left=60]{R}
+				\twocell[bend left=30]{ur}{\delta^R}
+				\urar[sloped,swap,pos=0.2]{R_{E\odot E}}
+				\twocell{rr}{w}
+				\drar[sloped,pos=0.2]{L_{E\otimes E}}
+				\twocell[bend right=30]{dr}{\mu^L}
+				\drar[bend right=60][swap]{L}
+			\&\& C^2 \rar{\cod} \& C \\
+		{} \& C^2 \urar[bend right=20][swap]{R} \&\&
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[baseline=(B.base),ampersand replacement=\&]
+		C^2 \rar[bend left=85,looseness=2]{R}
+				\twocell[bend left=55,looseness=2]{r}{\delta^R}
+				\rar[bend left=30][inner sep=0.5pt]{R_{E\odot E}}
+				\twocell{r}{p^R}
+				\rar[bend right=30][swap]{R}
+				\twocell[bend right=30]{rr}{\mu}
+				\ar[bend right=55]{rr}[swap]{E}
+			\& C^2 \rar{E} \& C.
+	\end{tikzcd}
+	\end{gather*}
+	Then use the definitions of $i$ and $p$ to check that $\mu\circ i=\mu\circ\eta R=\id_E$ and $p\circ\delta=\epsilon L\circ\delta=\id_E$, so that the first row above just equals $\delta$, and the second row equals $\mu$. Since $\Delta$ also (by definition) satisfies $\dom\Delta=\delta$ and $\cod\Delta=\mu$, we are done.
+\end{proof}

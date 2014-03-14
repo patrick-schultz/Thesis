@@ -1,0 +1,301 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Monoids}
+
+There are several possible ways to define (co)monoids/(co)monads in a double category, but there is one way in particular which interacts nicely with the 2-fold double category structure.
+
+\begin{definition}
+	A \emph{monoid} in a 2-fold double category $\mathbb{D}$ is a monoid in $\mathbb{D}_{\otimes}$. Specifically, it is a horizontal 1-cell $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, together with unit and multiplication 2-cells
+	\[\begin{tikzcd}
+		C \rar[tick][domA]{I_C} \dar[equal]
+			& C \dar[equal] \\
+		C \rar[tick][codA,swap]{X} 
+			& C
+		\twocellA{\eta}
+	\end{tikzcd} \qquad
+	\begin{tikzcd}
+		C \rar[tick][domA]{X\otimes X} \dar[equal]
+			& C \dar[equal] \\
+		C \rar[tick][codA,swap]{X} 
+			& C
+		\twocellA{\mu} 
+	\end{tikzcd}
+	\]
+	satisfying the usual unit and associativity conditions.
+\end{definition}
+
+\begin{definition}
+	Given two monoids $(C,X,\eta,\mu)$ and $(D,Y,\eta',\mu')$ in $\mathbb{D}$, a morphism of monoids consists of a vertical morphism $f\colon C\to D$ and a 2-cell
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f}  
+			& C \dar{f} \\
+		D \rar[tick][codA,swap]{Y} 
+			& D
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	which preserves the unit and multiplication, in that
+	\begin{equation}\label{Eq:MonoidMorphismUnit}
+	\begin{tikzcd}
+		C \rar[tick][domA]{I_C} \dar[equal] 
+			& C \dar[equal] \\
+		C \rar[tick][codA,domB,swap]{X} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codB,swap]{Y}
+			& D
+		\twocellA{\eta}
+		\twocellB{\phi}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		C \rar[tick][domA]{I_C} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codA,domB,swap]{I_D} \dar[equal] 
+			& D \dar[equal] \\
+		D \rar[tick][codB,swap]{Y}
+			& D
+		\twocellA{I_f}
+		\twocellB{\eta'}
+	\end{tikzcd}
+	\end{equation}
+	and
+	\begin{equation}\label{Eq:MonoidMorphismMult}
+	\begin{tikzcd}
+		C \rar[tick][domA]{X\otimes X} \dar[equal] 
+			& C \dar[equal] \\
+		C \rar[tick][codA,domB,swap]{X} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codB,swap]{Y}
+			& D
+		\twocellA{\mu}
+		\twocellB{\phi}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		C \rar[tick][domA]{X\otimes X} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codA,domB,swap]{Y\otimes Y} \dar[equal] 
+			& D \dar[equal] \\
+		D \rar[tick][codB,swap]{Y}
+			& D.
+		\twocellA{\phi\otimes\phi}
+		\twocellB{\mu'}
+	\end{tikzcd}
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	A comonoid in a 2-fold double category $\mathbb{D}$ is a comonoid in $\mathbb{D}_{\odot}$. Specifically, it is a horizontal 1-cell $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, together with counit and comultiplication 2-cells
+	\[\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[equal]  
+			& C \dar[equal] \\
+		C \rar[tick][codA,swap]{\perp_C} 
+			& C
+		\twocellA{\epsilon}
+	\end{tikzcd} \qquad
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[equal] 
+			& C \dar[equal] \\
+		C \rar[tick][codA,swap]{X\odot X} 
+			& C
+		\twocellA{\delta} 
+	\end{tikzcd}
+	\]
+	satisfying the usual unit and associativity conditions.
+\end{definition}
+
+\begin{definition}
+	Given two comonoids $(C,X,\epsilon,\delta)$ and $(D,Y,\epsilon',\delta')$ in $\mathbb{D}$, a morphism of comonoids consists of a vertical morphism $f\colon C\to D$ and a 2-cell
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f}  
+			& C \dar{f} \\
+		D \rar[tick][codA,swap]{Y} 
+			& D
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	which preserves the counit and comultiplication, in that
+	\begin{equation}\label{Eq:ComonoidMorphismCounit}
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[equal] 
+			& C \dar[equal] \\
+		C \rar[tick][codA,domB,swap]{\perp_C} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codB,swap]{\perp_D}
+			& D
+		\twocellA{\epsilon}
+		\twocellB{\perp_f}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codA,domB,swap]{Y} \dar[equal] 
+			& D \dar[equal] \\
+		D \rar[tick][codB,swap]{\perp_D}
+			& D
+		\twocellA{\phi}
+		\twocellB{\epsilon'}
+	\end{tikzcd}
+	\end{equation}
+	and
+	\begin{equation}\label{Eq:ComonoidMorphismComult}
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[equal] 
+			& C \dar[equal] \\
+		C \rar[tick][codA,domB,swap]{X\odot X} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codB,swap]{Y\odot Y}
+			& D
+		\twocellA{\delta}
+		\twocellB{\phi\odot\phi}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f} 
+			& C \dar{f} \\
+		D \rar[tick][codA,domB,swap]{Y} \dar[equal] 
+			& D \dar[equal] \\
+		D \rar[tick][codB,swap]{Y\odot Y}
+			& D.
+		\twocellA{\phi}
+		\twocellB{\delta'}
+	\end{tikzcd}
+	\end{equation}
+\end{definition}
+
+The 2-fold double category structure on $\mathbb{D}$ allows us to form double categories $\mathbb{M}\mathrm{on}(\mathbb{D})$ and $\mathbb{C}\mathrm{omon}(\mathbb{D})$ of (co)monoids in $\mathbb{D}$, in which the objects and vertical morphisms are the same as in $\mathbb{D}$, and the horizontal 1-cells and 2-cells are (co)monoids and (co)monoid morphisms in $\mathbb{D}$. The only thing we still have to provide is a horizontal composition.
+
+Given two monoids $(C,X,\eta,\mu)$ and $(C,Y,\eta',\mu')$ in $\mathbb{D}$, thought of as horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] C \rar[tick]& C \end{tikzcd}$ in $\mathbb{M}\mathrm{on}(\mathbb{D})$, the horizontal composition 
+\[
+\begin{tikzcd}[column sep=large]
+	C \rar[tick]{(X,\eta,\mu)} & C \rar[tick]{(Y,\eta',\mu')} & C
+\end{tikzcd}
+\]
+is the monoid with underlying horizontal 1-cell $X\odot Y$ and unit and multiplication 2-cells
+\[
+\begin{tikzcd}[column sep=7ex]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codA,domB]{I_C\odot I_C} 
+			\dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot Y}
+		& C
+	\twocellA{c}
+	\twocellB{\eta\odot\eta'}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=14ex]
+	C \rar[tick][domA]{(X\odot Y)\otimes(X\odot Y)} 
+			\dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codA,domB]{(X\otimes X)\odot(Y\otimes Y)} 
+			\dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot Y}
+		& C.
+	\twocellA{z}
+	\twocellB{\mu\odot\mu'}
+\end{tikzcd}
+\]
+Similarly, the horizontal composition of two 2-cells in $\mathbb{M}\mathrm{on}(\mathbb{D})$ is the $\odot$ product of the underlying 2-cells in $\mathbb{D}$. The fact that this commutes with the unit and multiplication defined above follows from the naturality of $c$ and $z$.
+
+In this same way, we can define the horizontal composition of two 1-cells $(X,\epsilon,\delta)$ and $(Y,\epsilon',\delta')$ in $\mathbb{C}\mathrm{omon}(\mathbb{D})$ to be a comonoid with underlying horizontal 1-cell $X\otimes Y$.
+
+This allows us to define (ordinary) categories $\mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D}))$ and $\mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))$. Furthermore, these two categories are equivalent, leading to the next definition.
+
+\begin{definition}
+	A \emph{bimonoid} in a 2-fold double category $\mathbb{D}$ is a monoid in $\mathbb{C}\mathrm{omon}(\mathbb{D})$, or equivalently a comonoid in $\mathbb{M}\mathrm{on}(\mathbb{D})$. We can define a category of bimonoids in $\mathbb{D}$ as
+	\[
+		\mathrm{Bimon}(\mathbb{D}) := \mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D})) \simeq \mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))
+	\]
+\end{definition}
+
+Concretely, a bimonoid in $\mathbb{D}$ is a tuple $(X,\eta,\mu,\epsilon,\delta)$ where $X$ is a horizontal 1-cell, $(X,\eta,\mu)$ is a monoid and $(X,\epsilon,\delta)$ is a comonoid as above, such that four equations hold:
+\begin{equation}\label{Eq:Bimonoid}
+\begin{gathered}
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot X} \& C
+	\twocellA{\eta}
+	\twocellB{\delta}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{I_C\odot I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot X} \& C
+	\twocellA{c}
+	\twocellB{\eta\odot\eta}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{X\otimes X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{\perp_C} \& C
+	\twocellA{\mu}
+	\twocellB{\epsilon}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{X\otimes X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{\perp_C\otimes\perp_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{\perp_C} \& C
+	\twocellA{\epsilon\otimes\epsilon}
+	\twocellB{m}
+\end{tikzcd}
+\\
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{\perp_C} \& C
+	\twocellA{\eta}
+	\twocellB{\epsilon}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,swap]{\perp_C} \& C
+	\twocellA{j}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&,column sep=14ex]
+	C \rar[tick][domA]{X\otimes X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{(X\odot X)\otimes(X\odot X)} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,domC]{(X\otimes X)\odot(X\otimes X)} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codC,swap]{X\odot X} \& C
+	\twocellA{\delta\otimes\delta}
+	\twocellB{z}
+	\twocellC{\mu\odot\mu}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{X\otimes X} \dar[equal]
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot X} \& C
+	\twocellA{\mu}
+	\twocellB{\delta}
+\end{tikzcd}
+\end{gathered}
+\end{equation}
+A bimonoid morphism is simply a 2-cell which is simultaineously a monoid morphism and a comonoid morphism.

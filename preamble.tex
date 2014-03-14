@@ -1,0 +1,59 @@
+% -*- root: thesis.tex -*-
+
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage{datetime}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\usepackage{MnSymbol}
+\usepackage{tikz, tikz-cd}
+\usetikzlibrary{decorations.markings}
+\linespread{1.05}
+
+%\chapterstyle{dash}
+\pagestyle{headings}
+
+\newcommand{\Tref}[1]{{Theorem~\ref{#1}}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\dvert}{Vert}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{theoremnn}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}{Exercise}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+
+\newcommand{\cat}[1]{\mathcal{#1}}
+\newcommand{\btwo}{\mathbf{2}}
+\newcommand{\FF}[1]{\mathbb{F}\mathrm{F}(\mathbb{#1})}
+
+\newcommand{\twocell}[3][]{\arrow[draw=none,#1]{#2}[auto=false]{\Downarrow #3}}
+\newcommand{\twocellb}[3][]{\arrow[draw=none,to path={(dom#2)--(cod#2)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
+\newcommand{\twocellA}[2][]{\arrow[draw=none,to path={(domA)--(codA)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
+\newcommand{\twocellB}[2][]{\arrow[draw=none,to path={(domB)--(codB)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
+\newcommand{\twocellC}[2][]{\arrow[draw=none,to path={(domC)--(codC)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
+\newcommand{\twocellD}[2][]{\arrow[draw=none,to path={(domD)--(codD)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
+
+\tikzset{tick/.style={postaction={decorate,decoration={markings,mark=at position 0.5 with {\draw[-] (0,.4ex) -- (0,-.4ex);}}}}}
+%\tikzset{dom/.style={shape=coordinate,alias=dom#1},
+%		dom1/.style={dom=1}, dom2/.style={dom=2}}
+%\tikzset{cod/.style={shape=coordinate,alias=cod#1},
+%		cod1/.style={cod=1}, cod2/.style={cod=2}}
+\tikzset{dom/.style={append after command={coordinate[alias=dom#1]}},
+		domA/.style={dom=A}, domB/.style={dom=B},
+		domC/.style={dom=C}, domD/.style={dom=D}}
+\tikzset{cod/.style={append after command={coordinate[alias=cod#1]}},
+		codA/.style={cod=A}, codB/.style={cod=B},
+		codC/.style={cod=C}, codD/.style={cod=D}}

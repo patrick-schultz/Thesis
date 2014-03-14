@@ -1,0 +1,951 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Functorial Factorizations}
+
+Now let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in the sense of Section~\ref{Ch:PushoutProduct}. Let us spell out what this means for the single variable case:
+\begin{itemize}
+	\item For every object $C$ there is a diagram
+	\[
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{\dom}
+			\rar[bend right][codA,swap]{\cod}
+		& C.
+		\twocellA{\kappa}
+	\end{tikzcd}
+	\]
+	\item Any 2-cell 
+	\[
+	\begin{tikzcd}[bend angle=30]
+		A \rar[bend left][domA]{d_1}
+			\rar[bend right][codA,swap]{d_0}
+		& C
+		\twocellA{\alpha}
+	\end{tikzcd}
+	\]
+	uniquely factors through $\kappa$, as
+	\[
+	\begin{tikzcd}[bend angle=30]
+		A \rar{\hat{\alpha}} 
+			& C^2 \rar[bend left][domA]{\dom}
+				\rar[bend right][codA,swap]{\cod}
+			& C.
+			\twocellA{\kappa}
+	\end{tikzcd}
+	\]
+	\item For every vertical 1-cell $F\colon C\to D$ there is a vertical 1-cell $\hat{F}\colon C^2\to D^2$ and 2-cells
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{\dom} \dar[swap]{\hat{F}} & C \dar{F} \\
+		D^2 \rar[][codA,swap]{\dom} & D
+		\twocellA{\gamma_1}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}
+		C^2 \rar[][domA]{\cod} \dar[swap]{\hat{F}} & C \dar{F} \\
+		D^2 \rar[][codA,swap]{\cod} & D
+		\twocellA{\gamma_0}
+	\end{tikzcd}
+	\]
+	such that
+	\[
+	\begin{tikzcd}[bend angle=50]
+		C^2 \rar[][domA]{\dom} 
+			\dar[swap]{\hat{F}} 
+		& C \dar{F} \\
+		D^2 \rar[][codA,domB]{\dom}	
+			\rar[bend right][codB,swap]{\cod}
+		& D
+		\twocellA{\gamma_1}
+		\twocellB{\kappa}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=50]
+		C^2 \rar[bend left][domA]{\dom} 
+			\rar[][codA,domB,swap]{\cod} 
+			\dar[swap]{\hat{F}} 
+		& C \dar{F} \\
+		D^2 \rar[][codB,swap]{\cod} & D
+		\twocellA{\kappa}
+		\twocellB{\gamma_0}
+	\end{tikzcd}
+	\]
+	\item Given any 2-cells
+	\[
+	\begin{tikzcd}[bend angle=30]
+		A \rar[bend left][domA]{d_1}
+			\rar[bend right][codA,swap]{d_0}
+		& C
+		\twocellA{\alpha}
+	\end{tikzcd}
+	\quad
+	\begin{tikzcd}[bend angle=30]
+		B \rar[bend left][domA]{d'_1}
+			\rar[bend right][codA,swap]{d'_0}
+		& D
+		\twocellA{\alpha'}
+	\end{tikzcd}
+	\]
+	and
+	\[
+	\begin{tikzcd}
+		A \rar[][domA]{d_1} \dar[swap]{G} & C \dar{F} \\
+		B \rar[][codA,swap]{d'_1} & D
+		\twocellA{\lambda_1}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}
+		A \rar[][domA]{d_0} \dar[swap]{G} & C \dar{F} \\
+		B \rar[][codA,swap]{d'_0} & D
+		\twocellA{\lambda_0}
+	\end{tikzcd}
+	\]
+	such that
+	\[
+	\begin{tikzcd}[bend angle=50]
+		A \rar[][domA]{d_1} 
+			\dar[swap]{G} 
+		& C \dar{F} \\
+		B \rar[][codA,domB]{d'_1}	
+			\rar[bend right][codB,swap]{d'_0}
+		& D
+		\twocellA{\lambda_1}
+		\twocellB{\alpha'}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=50]
+		A \rar[bend left][domA]{d_1} 
+			\rar[][codA,domB,swap]{d_0} 
+			\dar[swap]{G} 
+		& C \dar{F} \\
+		B \rar[][codB,swap]{d'_0} & D
+		\twocellA{\alpha}
+		\twocellB{\lambda_0}
+	\end{tikzcd}
+	\]
+	there is a unique 2-cell
+	\[
+	\begin{tikzcd}
+		A \rar[][domA]{\hat{\alpha}} \dar[swap]{G} & C^2 \dar{\hat{F}} \\
+		B \rar[][codA,swap]{\hat{\alpha}'} & D^2
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	such that the horizontal composition of $\theta$ with $\gamma_0$ and $\gamma_1$ is respectively equal to $\lambda_0$ and $\lambda_1$.
+\end{itemize}
+
+\begin{remark}
+	[TODO: Remark that this generalizes the 2-dimensional part of the usual universal property in 2-categories.]
+\end{remark}
+
+We will now define a 2-fold double category $\FF{D}$ of functorial factorizations in $\mathbb{D}$, as follows:
+\begin{itemize}
+	\item The objects and vertical 1-cells are the same as in $\mathbb{D}$.
+
+	\item Horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] C \rar[tick]& C \end{tikzcd}$ in $\FF{D}$ are tuples $(E,\eta,\epsilon)$, where $E\colon C^2\to C$ is a horizontal 1-cell in $\mathbb{D}$, and
+	\[
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{\dom}
+			\rar[bend right][codA,swap]{E}
+		& C
+		\twocellA{\eta}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{E}
+			\rar[bend right][codA,swap]{\cod}
+		& C
+		\twocellA{\epsilon}
+	\end{tikzcd}
+	\]
+	are 2-cells in $\mathbb{D}$ such that 
+	\[
+	\begin{tikzcd}[bend angle=50]
+		C^2 \rar[bend left][domA]{\dom}
+			\rar[][codA,domB,description]{E}
+			\rar[bend right][codB,swap]{\cod}
+		& C
+		\twocellA[pos=.45]{\eta}
+		\twocellB[pos=.55]{\epsilon}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{\dom}
+			\rar[bend right][codA,swap]{\cod}
+		& C.
+		\twocellA{\kappa}
+	\end{tikzcd}
+	\]
+
+	By the universal property of $C^2$, this also determines horizontal 1-cells $L,R\colon C^2\to C^2$ such that $\dom\circ L=\dom$, $\cod\circ R=\cod$, $\cod\circ L=\dom\circ R=E$, $\kappa\circ L=\eta$, and $\kappa\circ R=\epsilon$, and 2-cells
+	\[
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{L}
+			\rar[bend right][codA,swap]{\id}
+		& C^2.
+		\twocellA{\vec{\epsilon}}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{\id}
+			\rar[bend right][codA,swap]{R}
+		& C^2.
+		\twocellA{\vec{\eta}}
+	\end{tikzcd}
+	\]
+	such that $\dom\circ\vec{\epsilon}=\id_{\dom}$, $\cod\circ\vec{\epsilon}=\epsilon$, $\dom\circ\vec{\eta}=\eta$, and $\cod\circ\vec{\eta}=\id_{\cod}$.
+
+	\item The horizontal composition $(E_1,\eta_1,\epsilon_1)\otimes(E_2,\eta_2,\epsilon_2)$ of two horizontal 1-cells
+	\[
+	\begin{tikzcd}[column sep=large]
+		C \rar[tick][]{(E_1,\eta_1,\epsilon_1)} & C \rar[tick][]{(E_2,\eta_2,\epsilon_2)} & C
+	\end{tikzcd}
+	\]
+	in $\FF{D}$ is a horizontal 1-cell $(E_{1\otimes2},\eta_{1\otimes2},\epsilon_{1\otimes2})$, where
+	\[
+	E_{1\otimes2} =
+	\begin{tikzcd}
+		C^2 \rar{R_1} & C^2 \rar{E_2} & C
+	\end{tikzcd}
+	\]
+	\[
+	\eta_{1\otimes2} =
+	\begin{tikzcd}[bend angle=30,baseline=(B.base)]
+		|[alias=B]| C^2 \rar[bend left][domA]{\id}
+				\rar[bend right][codA,swap]{R_1} 
+			& C^2 \rar[bend left][domB]{\dom}
+				\rar[bend right][codB,swap]{E_2} 
+			& C
+		\twocellA{\vec{\eta_1}}
+		\twocellB{\eta_2}
+	\end{tikzcd}
+	\]
+	\[
+	\epsilon_{1\otimes2} =
+	\begin{tikzcd}[bend angle=30,baseline=(B.base)]
+		|[alias=B]| C^2 \rar{R_1}
+			& C^2 \rar[bend left][domA]{E_2}
+				\rar[bend right][codA,swap]{\cod} 
+			& C
+		\twocellA{\epsilon_2}
+	\end{tikzcd}
+	\]
+	which also determines that $R_{1\otimes2}=R_2\circ R_1$.
+
+	\item The horizontal unit $I_C$ for $\otimes$ is $(\dom,\id,\kappa)$.
+
+	\item The second horizontal composition $(E_1,\eta_1,\epsilon_1)\odot(E_2,\eta_2,\epsilon_2)$ is a horizontal 1-cell $(E_{1\odot2},\eta_{1\odot2},\epsilon_{1\odot2})$, where
+	\[
+	E_{1\odot2} =
+	\begin{tikzcd}
+		C^2 \rar{L_1} & C^2 \rar{E_2} & C
+	\end{tikzcd}
+	\]
+	\[
+	\eta_{1\odot2} =
+	\begin{tikzcd}[bend angle=30,baseline=(B.base)]
+		|[alias=B]| C^2 \rar{L_1}
+			& C^2 \rar[bend left][domA]{\dom}
+				\rar[bend right][codA,swap]{E_2} 
+			& C
+		\twocellA{\eta_2}
+	\end{tikzcd}
+	\]
+	\[
+	\epsilon_{1\odot2} =
+	\begin{tikzcd}[bend angle=30,baseline=(B.base)]
+		|[alias=B]| C^2 \rar[bend left][domA]{L_1}
+				\rar[bend right][codA,swap]{\id} 
+			& C^2 \rar[bend left][domB]{E_2}
+				\rar[bend right][codB,swap]{\dom} 
+			& C
+		\twocellA{\vec{\epsilon_1}}
+		\twocellB{\epsilon_2}
+	\end{tikzcd}
+	\]
+	which also determines that $L_{1\odot2}=L_2\circ L_1$.
+
+	\item The horizontal unit $\perp_C$ for $\odot$ is $(\cod,\kappa,\id)$.
+
+	\item 2-cells
+	\[
+	\begin{tikzcd}[column sep=large]
+		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
+		D \rar[tick][codA,swap]{(E_2,\eta_2,\epsilon_2)} & D
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	in $\FF{D}$ are given by 2-cells
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{E_1} \dar[swap]{\hat{F}}  
+			& C \dar{F} \\
+		D^2 \rar[][codA,swap]{E_2} 
+			& D
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	in $\mathbb{D}$ such that
+	\begin{gather}
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[][domA]{E_1} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codA,domB]{E_2}	
+				\rar[bend right][codB,swap]{\cod}
+			\& D
+			\twocellA{\theta}
+			\twocellB{\epsilon_2}
+		\end{tikzcd}
+		=
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[bend left][domA]{E_1} 
+				\rar[][codA,domB,swap]{\cod} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codB,swap]{\cod} \& D
+			\twocellA{\epsilon_1}
+			\twocellB{\gamma_0}
+		\end{tikzcd}\label{Eq:FF2CellA}
+		\\ \shortintertext{and}
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[][domA]{\dom} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codA,domB]{\dom}	
+				\rar[bend right][codB,swap]{E_2}
+			\& D
+			\twocellA{\gamma_1}
+			\twocellB{\eta_2}
+		\end{tikzcd}\label{Eq:FF2CellB}
+		=
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[bend left][domA]{\dom} 
+				\rar[][codA,domB,swap]{E_1} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codB,swap]{E_2} \& D
+			\twocellA{\eta_1}
+			\twocellB{\theta}
+		\end{tikzcd}
+	\end{gather}
+
+	This also determines unique 2-cells
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{R_1} \dar[swap]{\hat{F}} & C^2 \dar{\hat{F}} \\
+		D^2 \rar[][codA,swap]{R_2} & D^2
+		\twocellA{\theta^R}
+	\end{tikzcd}
+	\quad\text{and}\quad
+	\begin{tikzcd}
+		C^2 \rar[][domA]{L_1} \dar[swap]{\hat{F}} & C^2 \dar{\hat{F}} \\
+		D^2 \rar[][codA,swap]{L_2} & D^2
+		\twocellA{\theta^L}
+	\end{tikzcd}
+	\]
+	such that composing horizontally with $\gamma_0$ or $\gamma_1$ gives $\gamma_0$, $\gamma_1$, or $\theta$ as appropriate. For instance:
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{R_1} 
+				\dar[swap]{\hat{F}} 
+			& C^2 \rar[][domB]{\dom} 
+				\dar{\hat{F}}  
+			& C \dar{F} \\
+		D^2 \rar[][codA,swap]{R_2} 
+			& D^2 \rar[][codB,swap]{\dom} 
+			& D
+		\twocellA{\theta^R} 
+		\twocellB{\gamma_1}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		C^2 \rar[][domA]{E_1} \dar[swap]{\hat{F}}
+			& C \dar{F} \\
+		D^2 \rar[][codA,swap]{E_2} & D
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+
+	\item Given a pair of composable 2-cells in $\FF{D}$ as in
+	\[
+	\begin{tikzcd}[column sep=large]
+		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} 
+				\dar[swap]{F} 
+			& C \dar{F} \rar[tick][domB]{(E_2,\eta_2,\epsilon_2)} 
+			& C \dar{F} \\
+		D \rar[tick][codA,swap]{(E'_1,\eta'_1,\epsilon'_1)} 
+			& D \rar[tick][codB,swap]{(E'_2,\eta'_2,\epsilon'_2)}
+			& D
+		\twocellA{\theta_1} 
+		\twocellB{\theta_2}
+	\end{tikzcd}
+	\]
+	the composite $\theta_1\otimes\theta_2$ is given by
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{R_1} 
+				\dar[swap]{\hat{F}} 
+			& C^2 \rar[][domB]{E_2} 
+				\dar{\hat{F}} 
+			& C \dar{F} \\
+		D^2 \rar[][codA,swap]{R'_1}
+			& D^2 \rar[][codB,swap]{E'_2}
+			& D
+		\twocellA{\theta_1^R}
+		\twocellB{\theta_2}
+	\end{tikzcd}
+	\]
+	while the composite $\theta_1\odot\theta_2$ is given by
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{L_1} 
+				\dar[swap]{\hat{F}} 
+			& C^2 \rar[][domB]{E_2} 
+				\dar{\hat{F}} 
+			& C \dar{F} \\
+		D^2 \rar[][codA,swap]{L'_1}
+			& D^2 \rar[][codB,swap]{E'_2}
+			& D
+		\twocellA{\theta_1^L}
+		\twocellB{\theta_2}
+	\end{tikzcd}
+	\]
+
+	It is a straightforward exercise to check that these definitions satisfy equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. To illustrate, we will demonstrate that $\theta_1\otimes\theta_2$ satisfies \eqref{Eq:FF2CellA}:
+	\begin{align*}
+	\begin{tikzcd}[column sep=large,bend angle=50,ampersand replacement=\&]
+		C^2 \rar[][domA]{E_{1\otimes2}} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+		D^2 \rar[][codA,domB]{E_{1'\otimes2'}}	
+				\rar[bend right][codB,swap]{\cod}
+			\& D
+		\twocellA{\theta_1\otimes\theta_2}
+		\twocellB{\epsilon_{1'\otimes2'}}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C^2 \rar[][domA]{R_1}
+				\dar[swap]{\hat{F}}
+			\& C^2 \rar[][domB]{E_2}
+				\dar[swap]{\hat{F}}
+			\& C \dar{F} \\
+		D^2 \rar[][codA,swap]{R'_1}
+			\& D^2 \rar[][codB,domC]{E'_2}
+				\rar[bend right][codC,swap]{\cod}
+			\& D
+		\twocellA{\theta_1^R}
+		\twocellB{\theta_2}
+		\twocellC{\epsilon'_2}
+	\end{tikzcd}
+	\\
+	&=
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C^2 \rar[][domA]{R_1}
+				\dar[swap]{\hat{F}}
+			\& C^2 \rar[bend left][domB]{E_2}
+				\rar[][codB,domC,swap]{\cod}
+				\dar[swap]{\hat{F}}
+			\& C \dar{F} \\
+		D^2 \rar[][codA,swap]{R'_1}
+			\& D^2 \rar[][codC,swap]{\cod}
+			\& D
+		\twocellA{\theta_1^R}
+		\twocellB{\epsilon_2}
+		\twocellC{\gamma_0}
+	\end{tikzcd}
+	\\
+	&=
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C^2 	\rar[bend left][domA]{E_{1\otimes2}} 
+				\rar[][codA,domB,swap]{\cod} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+		D^2 \rar[][codB,swap]{\cod} 
+			\& D
+		\twocellA{\epsilon_{1\otimes2}}
+		\twocellB{\gamma_0}
+	\end{tikzcd}
+	\end{align*}
+\end{itemize}
+
+It is straightforward to check that $\otimes$ and $\odot$ are each associative and unital. It takes more work to provide the compatibility between $\otimes$ and $\odot$, which is the content of the proof of the next proposition.
+
+\begin{proposition}
+	$\FF{D}$ has the structure of a 2-fold double category.
+\end{proposition}
+\begin{proof}
+The primary structure of $\FF{D}$ was given in the first part of this section. What is left is to provide the coherence data \eqref{Eq:2FoldCoherenceCellsA} and \eqref{Eq:2FoldCoherenceCellsB}.
+
+First, note that $I_C$ is initial in the sense that, given any vertical morphism $F\colon C\to D$ and any functorial factorization $(E,\eta,\epsilon)$ on $D$, there is a unique 2-cell
+\[
+\begin{tikzcd}
+	C \rar[tick][domA]{I_C}
+			\dar[swap]{F}
+		& C \dar{F} \\
+	D 	\rar[tick][codA,swap]{(E,\eta,\epsilon)}
+		& D
+	\twocellA{}
+\end{tikzcd}
+\]
+given by
+\[
+\begin{tikzcd}[bend angle=50]
+	C^2 \rar[][domA]{\dom}
+			\dar[swap]{\hat{F}}
+		& C \dar{F} \\
+	D^2 	\rar[][codA,domB]{\dom}	
+			\rar[bend right][codB,swap]{E}
+		& D.
+	\twocellA{\gamma_1}
+	\twocellB{\eta}
+\end{tikzcd}
+\]
+Similarly, $\perp_C$ is terminal. Thus there is only one possible way to define the 2-cells $m$, $c$, and $j$, and naturality and all other coherence equations follows immediately from this uniqueness.
+
+We still need to construct the 2-cell $z$, which will take some work. We begin by defining 2-cells
+\[
+\begin{tikzcd}[column sep=large]
+	C 		\rar[tick][domA]{E_1\odot E_2}
+			\dar[equal]
+		& C \dar[equal] \\
+	C 		\rar[tick][codA,swap]{E_1}
+		& C
+	\twocellA{p_{E_1,E_2}}
+\end{tikzcd}
+\qquad\text{and}\qquad
+\begin{tikzcd}[column sep=large]
+	C 		\rar[tick][domA]{E_1}
+			\dar[equal]
+		& C \dar[equal] \\
+	C 		\rar[tick][codA,swap]{E_1\otimes E_2}
+		& C.
+	\twocellA{i_{E_1,E_2}}
+\end{tikzcd}
+\]
+for any pair of functorial factorizations.
+The 2-cell $p$ is given by the underlying 2-cell in $\mathbb{D}$
+\[
+\begin{tikzcd}[bend angle=30]
+	C^2 \rar{L_1}
+		& C^2 \rar[bend left][domA]{E_2}
+			\rar[bend right][codA,swap]{\cod} 
+		& C
+	\twocellA{\epsilon_2}
+\end{tikzcd}
+\]
+and $i$ is given by
+\[
+\begin{tikzcd}[bend angle=30]
+	C^2 \rar{R_1}
+		& C^2 \rar[bend left][domA]{\dom}
+			\rar[bend right][codA,swap]{E_2} 
+		& C.
+	\twocellA{\eta_2}
+\end{tikzcd}
+\]
+To illustrate the verification that these give well-defined 2-cells in $\FF{D}$, we will show that $i$ satisfies \eqref{Eq:FF2CellA} (keep in mind that when $F$ is an identity, $\gamma_0$ and $\gamma_1$ are also identities):
+\begin{align*}
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C^2 \rar{L_1}
+			\& C^2 \rar[bend left][domA]{\dom}
+				\rar[][codA,domB,description,inner ysep=0]{E_2}
+				\rar[bend right][codB,swap]{\cod}
+			\& C
+		\twocellA[pos=.45]{\eta_2}
+		\twocellB[pos=.55]{\epsilon_2}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&]
+		C^2 \rar{L_1}
+			\& C^2 \rar[bend left][domA]{\dom}
+				\rar[bend right][codA,swap]{\cod} 
+			\& C
+		\twocellA{\kappa}
+	\end{tikzcd} \\
+	&=
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&]
+		C^2 \rar[bend left][domA]{\dom}
+				\rar[bend right][codA,swap]{E_1} 
+			\& C.
+		\twocellA{\eta_1}
+	\end{tikzcd}
+\end{align*}
+
+Moreover, it is straightforward to check that $i$ and $p$ are natural families of 2-cells. Specifically, for any pair of 2-cells $\theta_1$ and $\theta_2$
+\begin{align*}
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{E_1\odot E_2}
+			\dar[equal]
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{E_1}
+			\dar[swap]{F}
+		\& C \dar{F} \\
+	D \rar[tick][codB,swap]{E'_1}
+		\& D
+	\twocellA{p_{E_1,E_2}}
+	\twocellB{\theta_1}
+\end{tikzcd}
+&=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{E_1\odot E_2}
+			\dar[swap]{F}
+		\& C \dar{F} \\
+	D \rar[tick][codA,domB]{E'_1\odot E'_2}
+			\dar[equal]
+		\& D \dar[equal] \\
+	D \rar[tick][codB,swap]{E'_1}
+		\& D
+	\twocellA{\theta_1\odot\theta_2}
+	\twocellB{p_{E'_1,E'_2}}
+\end{tikzcd}
+\\
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{E_1}
+			\dar[equal]
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{E_1\otimes E_2}
+			\dar[swap]{F}
+		\& C \dar{F} \\
+	D \rar[tick][codB,swap]{E'_1\otimes E'_2}
+		\& D
+	\twocellA{i_{E_1,E_2}}
+	\twocellB{\theta_1\otimes\theta_2}
+\end{tikzcd}
+&=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{E_1}
+			\dar[swap]{F}
+		\& C \dar{F} \\
+	D \rar[tick][codA,domB]{E'_1}
+			\dar[equal]
+		\& D \dar[equal] \\
+	D 		\rar[tick][codB,swap]{E'_1\otimes E'_2}
+		\& D
+	\twocellA{\theta_1}
+	\twocellB{i_{E'_1,E'_2}}
+\end{tikzcd}
+\end{align*}
+
+As with any 2-cell in $\FF{D}$, $p$ and $i$ induce 2-cells in $\mathbb{D}$
+\[
+\begin{tikzcd}[bend angle=30]
+	C^2 \rar[bend left][domA]{R_{1\odot 2}}
+			\rar[bend right][codA,swap]{R_1} 
+		& C^2
+	\twocellA{p^R}
+\end{tikzcd}
+\qquad\text{and}\qquad
+\begin{tikzcd}[bend angle=30]
+	C^2 \rar[bend left][domA]{L_1}
+			\rar[bend right][codA,swap]{L_{1\otimes 2}} 
+		& C^2.
+	\twocellA{i^L}
+\end{tikzcd}
+\]
+such that
+\begin{align}
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&]
+		C^2 \rar[bend left][domA]{R_{1\odot 2}}
+				\rar[bend right][codA,swap]{R_1} 
+			\& C^2 \rar{\dom}
+			\& C
+		\twocellA{p^R}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&]
+		C^2 \rar{L_1}
+			\& C^2 \rar[bend left][domA]{E_2}
+				\rar[bend right][codA,swap]{\cod} 
+			\& C
+		\twocellA{\epsilon_2}
+	\end{tikzcd} \label{Eq:DomPR}
+	\\
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&]
+		C^2 \rar[bend left][domA]{L_1}
+				\rar[bend right][codA,swap]{L_{1\otimes 2}} 
+			\& C^2 \rar{\cod}
+			\& C
+		\twocellA{i^L}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&]
+		C^2 \rar{R_1}
+			\& C^2 \rar[bend left][domA]{\dom}
+				\rar[bend right][codA,swap]{E_2} 
+			\& C
+		\twocellA{\eta_2}
+	\end{tikzcd} \label{Eq:CodIL}
+\end{align}
+
+Now suppose given three functorial factorizations $E_1,E_2,E_3$ on an object $C$. We define a 2-cell in $\mathbb{D}$
+\[
+\begin{tikzcd}[row sep=0ex, bend angle=15]
+	{} & C^2 \drar[bend left][]{L_3} & \\
+	|[alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} \drar[bend right][swap]{L_{1\otimes 3}}
+		&& |[alias=codA]| C^2 \\
+	{} & C^2 \urar[bend right][swap]{R_2} &
+	\twocellA{w}
+\end{tikzcd}
+\]
+such that
+\begin{align}
+	\begin{tikzcd}[row sep=0ex,bend angle=15,ampersand replacement=\&,baseline=(B.base)]
+		\& C^2 \drar[bend left][]{L_3} \&\& \\
+		|[alias=B,alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} 
+				\drar[bend right][swap]{L_{1\otimes 3}}
+			\&\& |[alias=codA]| C^2 \rar{\dom} 
+			\& C \\
+		\& C^2 \urar[bend right][swap]{R_2} \&\&
+		\twocellA{w}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&,baseline=(B.base)]
+		|[alias=B]| C^2 \rar[bend left][domA]{L_1}
+				\rar[bend right][codA,swap]{L_{1\otimes 3}}
+			\& C^2 \rar{E_2}
+			\& C
+		\twocellA{i^L}
+	\end{tikzcd} \label{Eq:DomW}
+	\\
+	\begin{tikzcd}[row sep=0ex, bend angle=15,ampersand replacement=\&,baseline=(B.base)]
+		\& C^2 \drar[bend left][]{L_3} \&\& \\
+		|[alias=B,alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} 
+				\drar[bend right][swap]{L_{1\otimes 3}}
+			\&\& |[alias=codA]| C^2 \rar{\cod} \& C \\
+		\& C^2 \urar[bend right][swap]{R_2} \&\&
+		\twocellA{w}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[bend angle=30,ampersand replacement=\&,baseline=(B.base)]
+		|[alias=B]| C^2 \rar[bend left][domA]{R_{1\odot 2}}
+				\rar[bend right][codA,swap]{R_1}
+			\& C^2 \rar{E_3}
+			\& C.
+			\twocellA{p^R}
+	\end{tikzcd} \label{Eq:CodW}
+\end{align}
+
+Using the universal property for $C^2$, it suffices to check that
+\[
+\begin{tikzcd}[bend angle=60]
+	C^2 \rar[bend left][domA]{L_1}
+			\rar[][codA,swap]{L_{1\otimes 3}}
+		& C^2 \rar[][domB]{E_2}
+			\rar[bend right][codB,swap]{\cod}
+		& C
+	\twocellA{i^L}
+	\twocellB{\epsilon_2}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=60]
+	C^2 \rar[][domA]{R_{1\odot 2}}
+			\rar[bend right][codA,swap]{R_1}
+		& C^2 \rar[bend left][domB]{\dom}
+			\rar[][codB,swap]{E_3}
+		& C
+	\twocellA{p^R}
+	\twocellB{\eta_3}
+\end{tikzcd}
+\]
+and a quick check using equations \eqref{Eq:DomPR} and \eqref{Eq:CodIL} shows that both are equal to
+\[
+\begin{tikzcd}[row sep=0ex,bend angle=60]
+	{} & C^2 \drar[bend left][domA]{E_2}
+			\drar[][codA,sloped,swap,pos=.6,inner sep=.1ex]{\cod}
+		& \\
+	C^2 \urar{L_1} \drar[swap]{R_1}
+		&& C \\
+	{} & C^2 \urar[][domB,sloped,pos=.7,inner sep=.2ex]{\dom}
+			\urar[bend right][codB,swap]{E_3} &
+	\twocellA{\epsilon_2}
+	\twocellB{\eta_3}
+\end{tikzcd}
+\]
+where the inner diamond is the equality $\cod L_1=\dom R_1=E_1$.
+
+We also check that $w$ is natural with respect to 2-cells in $\FF{D}$ in the following sense: given three 2-cells $\theta_1$, $\theta_2$, and $\theta_3$, there is an equality
+\[
+\begin{tikzcd}[row sep=0ex, bend angle=15]
+	{} & C^2 \drar[bend left][inner sep=.2ex]{L_3} 
+		& \\
+	|[alias=domA]| C^2 	\urar[bend left][inner sep=.2ex]{R_{1\odot 2}} 
+			\drar[bend right][domB,pos=.3,inner sep=.2ex]{L_{1\otimes 3}}
+			\ar{dd}[swap]{\hat{F}}
+		&& |[alias=codA]| C^2 \ar{dd}{\hat{F}} \\
+	{} & C^2 \urar[bend right][domC,pos=.6,inner sep=.2ex]{R_2} 
+			\ar{dd}{\hat{F}}
+		& \\[3ex]
+	D^2 \drar[bend right][codB,swap,inner sep=.2ex]{L'_{1\otimes 3}}
+		&& D^2 \\
+	{} & D^2 \urar[bend right][codC,swap]{R'_2}
+		&
+	\twocellA{w}
+	\twocellB[pos=.4,xshift=2pt]{(\theta_1\otimes\theta_3)^L}
+	\twocellC[pos=.4]{\theta_2^R}
+\end{tikzcd}
+=
+\begin{tikzcd}[row sep=0ex, bend angle=15]
+	{} & C^2 \drar[bend left][domB,inner sep=.2ex]{L_3}
+			\ar{dd}{\hat{F}}
+		& \\
+	C^2 \urar[bend left][domA,inner sep=.2ex]{R_{1\odot 2}}
+			\ar{dd}[swap]{\hat{F}}
+		&& C^2 \ar{dd}{\hat{F}} \\[3ex]
+	{} & D^2 \drar[bend left][codB,swap,inner sep=.2ex,pos=.6]{L'_3}
+		& \\
+	|[alias=domC]| D^2 \urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R'_{1\odot 2}}
+			\drar[bend right][swap,inner sep=.2ex]{L'_{1\otimes 3}}
+		&& |[alias=codC]| D^2. \\
+	{} & D^2 \urar[bend right][swap,inner sep=.2ex]{R'_2}
+		&
+	\twocellA[pos=.6]{(\theta_1\odot\theta_2)^R}
+	\twocellB[pos=.6]{\theta_3^L}
+	\twocellC{w}
+\end{tikzcd}
+\]
+To verify this equation, it suffices to check equality upon right composition with $\gamma_0$ and $\gamma_1$. We will illustrate the $\gamma_1$ case, making use of the naturality of $i$:
+\begin{multline*}
+\begin{tikzcd}[row sep=0ex, bend angle=15, ampersand replacement=\&]
+	{} \& C^2 \drar[bend left][inner sep=.2ex]{L_3} 
+		\&\& \\
+	|[alias=domA]| C^2 \urar[bend left,inner sep=.2ex][]{R_{1\odot 2}} 
+			\drar[bend right][domB,pos=.3,inner sep=.2ex]{L_{1\otimes 3}}
+			\ar{dd}[swap]{\hat{F}}
+		\&\& |[alias=codA]| C^2 \ar{dd}{\hat{F}}
+			\rar[][domD]{\dom}
+		\& C \ar{dd}{F} \\
+	{} \& C^2 \urar[bend right][domC,inner sep=.2ex,pos=.6]{R_2} 
+			\ar{dd}{\hat{F}}
+		\&\& \\[3ex]
+	D^2 \drar[bend right][codB,swap,inner sep=.2ex]{L'_{1\otimes 3}}
+		\&\& D^2 \rar[][codD,swap]{\dom}
+		\& D \\
+	{} \& D^2 \urar[bend right][codC,swap,inner sep=.2ex]{R'_2}
+		\&\&
+	\twocellA{w}
+	\twocellB[pos=.4,xshift=2pt]{(\theta_1\otimes\theta_3)^L}
+	\twocellC[pos=.4]{\theta_2^R}
+	\twocellD{\gamma_1}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=50, row sep=6ex, ampersand replacement=\&]
+	C^2 \rar[bend left][domA]{L_1}
+			\rar[][codA,domB,swap]{L_{1\otimes 3}}
+			\dar[swap]{\hat{F}}
+		\& C^2 \rar[][domC]{E_2}
+			\dar{\hat{F}}
+		\& C \dar{F} \\
+	D^2 \rar[][codB,swap]{L_{1'\otimes 3'}}
+		\& D^2 \rar[][codC,swap]{E'_2}
+		\& D
+	\twocellA{i^L}
+	\twocellB{(\theta_1\otimes\theta_3)^L}
+	\twocellC{\theta_2}
+\end{tikzcd}
+\\
+=
+\begin{tikzcd}[bend angle=50, row sep=6ex, ampersand replacement=\&]
+	C^2 \rar[][domA]{L_1}
+			\dar[swap]{\hat{F}}
+		\& C^2 \rar[][domB]{E_2}
+			\dar{\hat{F}}
+		\& C \dar{F} \\
+	D^2 \rar[][codA,domC]{L'_1}
+			\rar[bend right][codC,swap]{L'_{1\otimes 3}}
+		\& D^2 \rar[][codB,swap]{E'_2}
+		\& D
+	\twocellA{\theta_1^L}
+	\twocellB{\theta_2}
+	\twocellC{i^L}
+\end{tikzcd}
+=
+\begin{tikzcd}[row sep=0ex, bend angle=15, ampersand replacement=\&]
+	{} \& C^2 \drar[bend left][domB,inner sep=.2ex]{L_3}
+			\ar{dd}{\hat{F}}
+		\&\& \\
+	C^2 \urar[bend left][domA,inner sep=.2ex]{R_{1\odot 2}}
+			\ar{dd}[swap]{\hat{F}}
+		\&\& C^2 \ar{dd}{\hat{F}}
+			\rar[][domD]{\dom}
+		\& C \ar{dd}{F} \\[3ex]
+	{} \& D^2 \drar[bend left][codB,swap,inner sep=.2ex,pos=.6]{L'_3}
+		\&\& \\
+	D^2 	\urar[bend left][swap]{R'_{1\odot 2}}
+			\drar[bend right][swap]{L'_{1\otimes 3}}
+			\twocell{rr}{w}
+		\&
+		\& D^2 \rar[swap]{\dom}
+		\& D. \\
+	{}
+		\& D^2 \urar[bend right][swap]{R'_2}
+		\&\&
+	\twocellA{(\theta_1\odot\theta_2)^R}
+	\twocellB{\theta_3^L}
+	\twocellD{\gamma_1}
+\end{tikzcd}
+\end{multline*}
+
+Finally, given four functorial factorizations $E_1, E_2, E_3, E_4$ on an object $C$, we define the 2-cell 
+\[
+\begin{tikzcd}[column sep=14ex]
+	C \rar[tick]{(1\odot 2)\otimes(3\odot 4)} 
+			\dar[equal] 
+			\twocell{dr}{z_{1,2,3,4}}
+		& C \dar[equal] \\
+	C \rar[tick][swap]{(1\otimes 3)\odot(2\otimes 4)}
+		& C
+\end{tikzcd}
+\]
+in $\FF{D}$, where $(1\odot 2)$ is shorthand for $(E_1,\eta_1,\epsilon_1)\odot(E_2,\eta_2,\epsilon_2)$, to have the underlying 2-cell in $\mathbb{D}$
+\[
+\begin{tikzcd}[row sep=0ex, bend angle=15,ampersand replacement=\&]
+	\& C^2 \drar[bend left][]{L_3} \&\& \\
+	C^2 \urar[bend left][]{R_{1\otimes 2}} \drar[bend right][swap]{L_{1\otimes 3}}
+			\twocell{rr}{w}
+		\&\& C^2 \rar{E_4} \& C. \\
+	\& C^2 \urar[bend right][swap]{R_2} \&\&
+\end{tikzcd}
+\]
+The naturality of $z$ follows immediately from that of $w$, but we still need to check that this satisfies equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. We will leave the details to the reader, but note that \eqref{Eq:FF2CellB} comes down to the verification of the equality
+\[
+\begin{tikzcd}[row sep=0ex, bend angle=15, ampersand replacement=\&, baseline=(B.base)]
+	\& C^2 \drar[bend left]{L_3} \&\& \\
+	C^2 	\urar[bend left=70]{\id}
+			\twocell[bend left=40]{ur}{\vec{\eta}_{1\odot 2}}
+			\urar[bend left][swap]{R_{1\otimes 2}}
+			\twocell{rr}{w}
+			\drar[bend right][swap]{L_{1\otimes 3}}
+		\&\& C^2 \rar[bend left=50]{\dom}
+			\twocell[bend left=25]{r}{\eta_4}
+			\rar[swap]{E_4}
+		\& |[alias=B]| C \\
+	\& C^2 \urar[bend right][swap]{R_2} \&\&
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=30, baseline=(B.base)]
+	|[alias=B]| C^2 \rar{L_{1\otimes 3}}
+		& C^2 \rar[bend left]{\id}
+			\twocell{r}{\vec{\eta}_2}
+			\rar[bend right][swap]{R_2}
+		& C^2 \rar[bend left]{\dom}
+			\twocell{r}{\eta_4}
+			\rar[bend right][swap]{E_4}
+		& C,
+\end{tikzcd}
+\]
+which follows from equation \eqref{Eq:DomW} and the fact that $\dom\circ i^L = \id_{\dom}$.
+\end{proof}
+
+Up to this point, we have demonstrated that given any double category $\mathbb{D}$ having arrow objects, there is a 2-fold double category $\FF{D}$ of functorial factorizations in $\mathbb{D}$. The last thing we want to say about this construction is that a cyclic action on $\mathbb{D}$ lifts to one on $\FF{D}$, and hence also to one on $\mathrm{Bimon}(\mathbb{\FF{D}})$.
+
+The cyclic action on objects and vertical morphisms is given directly by that on $\mathbb{D}$. Given a horizontal 1-cell $(E,\eta,\epsilon)$ on an object $C$, we define the 1-cell $(E,\eta,\epsilon)^{\bullet}$ on $C^{\bullet}$ to be $(E^{\bullet},\epsilon^{\bullet},\eta^{\bullet})$. This also implies that the cyclic action swaps $L$ and $R$ for any given functorial factorization.
+
+A quick look at the definitions of the two horizontal compositions is now enough to see that for any two functorial factorizations $E_1$ and $E_2$, we have
+\[
+	(E_1\otimes E_2)^{\bullet} = E_1^{\bullet}\odot E_2^{\bullet}
+	\qquad\text{and}\qquad
+	(E_1\odot E_2)^{\bullet} = E_1^{\bullet}\otimes E_2^{\bullet}
+\]
+
+Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FF{D}$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. 
