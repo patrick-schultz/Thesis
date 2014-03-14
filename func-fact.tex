@@ -871,8 +871,8 @@ To verify this equation, it suffices to check equality upon right composition wi
 		\& C \ar{dd}{F} \\[3ex]
 	{} \& D^2 \drar[bend left][codB,swap,inner sep=.2ex,pos=.6]{L'_3}
 		\&\& \\
-	D^2 	\urar[bend left][swap]{R'_{1\odot 2}}
-			\drar[bend right][swap]{L'_{1\otimes 3}}
+	D^2 	\urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R'_{1\odot 2}}
+			\drar[bend right][swap,inner sep=.2ex]{L'_{1\otimes 3}}
 			\twocell{rr}{w}
 		\&
 		\& D^2 \rar[swap]{\dom}
@@ -889,49 +889,50 @@ To verify this equation, it suffices to check equality upon right composition wi
 Finally, given four functorial factorizations $E_1, E_2, E_3, E_4$ on an object $C$, we define the 2-cell 
 \[
 \begin{tikzcd}[column sep=14ex]
-	C \rar[tick]{(1\odot 2)\otimes(3\odot 4)} 
+	C \rar[tick][domA]{(1\odot 2)\otimes(3\odot 4)} 
 			\dar[equal] 
-			\twocell{dr}{z_{1,2,3,4}}
 		& C \dar[equal] \\
-	C \rar[tick][swap]{(1\otimes 3)\odot(2\otimes 4)}
+	C \rar[tick][codA,swap]{(1\otimes 3)\odot(2\otimes 4)}
 		& C
+	\twocellA{z_{1,2,3,4}}
 \end{tikzcd}
 \]
 in $\FF{D}$, where $(1\odot 2)$ is shorthand for $(E_1,\eta_1,\epsilon_1)\odot(E_2,\eta_2,\epsilon_2)$, to have the underlying 2-cell in $\mathbb{D}$
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15,ampersand replacement=\&]
 	\& C^2 \drar[bend left][]{L_3} \&\& \\
-	C^2 \urar[bend left][]{R_{1\otimes 2}} \drar[bend right][swap]{L_{1\otimes 3}}
-			\twocell{rr}{w}
-		\&\& C^2 \rar{E_4} \& C. \\
+	|[alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} 
+			\drar[bend right][swap]{L_{1\otimes 3}}
+		\&\& |[alias=codA]| C^2 \rar{E_4} \& C. \\
 	\& C^2 \urar[bend right][swap]{R_2} \&\&
+	\twocellA{w}
 \end{tikzcd}
 \]
 The naturality of $z$ follows immediately from that of $w$, but we still need to check that this satisfies equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. We will leave the details to the reader, but note that \eqref{Eq:FF2CellB} comes down to the verification of the equality
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15, ampersand replacement=\&, baseline=(B.base)]
-	\& C^2 \drar[bend left]{L_3} \&\& \\
-	C^2 	\urar[bend left=70]{\id}
-			\twocell[bend left=40]{ur}{\vec{\eta}_{1\odot 2}}
-			\urar[bend left][swap]{R_{1\otimes 2}}
-			\twocell{rr}{w}
-			\drar[bend right][swap]{L_{1\otimes 3}}
-		\&\& C^2 \rar[bend left=50]{\dom}
-			\twocell[bend left=25]{r}{\eta_4}
-			\rar[swap]{E_4}
+	\& C^2 \drar[bend left][inner sep=.2ex]{L_3} \&\& \\
+	|[alias=domB]| C^2 	\urar[bend left=65,looseness=1.2][domA]{\id}
+			\urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R_{1\otimes 2}}
+			\drar[bend right][swap,inner sep=.2ex]{L_{1\otimes 3}}
+		\&\& |[alias=codB]| C^2 \rar[bend left=50][domC]{\dom}
+			\rar[][codC,swap]{E_4}
 		\& |[alias=B]| C \\
 	\& C^2 \urar[bend right][swap]{R_2} \&\&
+	\twocellA[pos=.6]{\vec{\eta}_{1\odot 2}}
+	\twocellB{w}
+	\twocellC{\eta_4}
 \end{tikzcd}
 =
 \begin{tikzcd}[bend angle=30, baseline=(B.base)]
 	|[alias=B]| C^2 \rar{L_{1\otimes 3}}
-		& C^2 \rar[bend left]{\id}
-			\twocell{r}{\vec{\eta}_2}
-			\rar[bend right][swap]{R_2}
-		& C^2 \rar[bend left]{\dom}
-			\twocell{r}{\eta_4}
-			\rar[bend right][swap]{E_4}
+		& C^2 \rar[bend left][domA]{\id}
+			\rar[bend right][codA,swap]{R_2}
+		& C^2 \rar[bend left][domB]{\dom}
+			\rar[bend right][codB,swap]{E_4}
 		& C,
+	\twocellA{\vec{\eta}_2}
+	\twocellB{\eta_4}
 \end{tikzcd}
 \]
 which follows from equation \eqref{Eq:DomW} and the fact that $\dom\circ i^L = \id_{\dom}$.
