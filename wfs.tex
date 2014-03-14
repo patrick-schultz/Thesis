@@ -1,0 +1,222 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Weak factorization systems}
+
+In this section, we will briefly review the notions of functorial factorization, weak factorization system, and algebraic weak factorization system. 
+
+\subsection{Arrow Categories}
+
+Let $\cat{C}$ be a category. Its arrow category $\cat{C}^2$ is the category whose objects are arrows in $\cat{C}$ and whose morphisms are commutative squares. The arrow category comes with two functors $\dom,\cod\colon \cat{C}^2\to\cat{C}$, along with a natural transformation $\kappa\colon\dom\Rightarrow\cod$. The component of $\kappa$ at an object $f$ of $\cat{C}^2$ is simply $f\colon\dom f\to\cod f$. Moreover, $\cat{C}^2$ satisfies a universal property: there is an equivalence of categories
+\begin{equation}\label{Eq:ArrowObject}
+	\mathrm{Fun}(2,\mathrm{Fun}(\cat{X},\cat{C}))\simeq\mathrm{Fun}(\cat{X},\cat{C}^2)
+\end{equation}
+given by composition with $\kappa$. Here, 2 is the ordinal, i.e. the category with two objects and a single non-identity arrow. In other words, $\cat{C}^2$ is the cotensor of $\cat{C}$ with the category 2 in the 2-category $\mathcal{C}\mathrm{at}$.
+
+We will make this universal property more explicit in the next lemma:
+
+\begin{lemma}\label{Lem:ArrowObject}
+	Let $\cat{C}$ be a category.
+	\begin{itemize}
+		\item[i)] For any category $\cat{X}$, pair of functors $F,G\colon\cat{X}\to\cat{C}$, and natural transformation $\alpha\colon F\Rightarrow G$, there is a unique functor $\hat{\alpha}\colon\cat{X}\to\cat{C}^2$ such that $\dom\hat{\alpha}=F$, $\cod\hat{\alpha}=G$, and
+		\begin{equation}
+		\begin{tikzcd}[bend angle=30]
+			\cat{X} \rar{\hat{\alpha}} 
+			& \cat{C}^2 \rar[bend left][domA]{\dom}
+				\rar[bend right][codA,swap]{\cod}
+			& \cat{C}
+			\twocellA{\kappa}
+		\end{tikzcd}
+		=
+		\begin{tikzcd}[bend angle=30]
+			\cat{X} \rar[bend left][domA]{F}
+				\rar[bend right][codA,swap]{G}
+			& \cat{C}.
+			\twocellA{\alpha}
+		\end{tikzcd}
+		\end{equation}
+		\item[ii)] For any functors $F,F',G,G'\colon\cat{X}\to\cat{C}$ and a commutative square of natural transformations
+		\[
+		\begin{tikzcd}[arrows=Rightarrow]
+			F \rar{\gamma} \dar[swap]{\alpha}
+			& F' \dar{\beta} \\
+			G \rar[swap]{\phi}
+			& G',
+		\end{tikzcd}
+		\]
+		there is a unique natural transformation $\eta\colon\hat{\alpha}\to\hat{\beta}$ such that $\dom\eta=\gamma$ and $\cod\eta=\phi$, hence
+		\[
+		\begin{tikzcd}[bend angle=50]
+			\cat{X}   \rar[bend left][domA]{F}
+				\rar[][codA,domB,description,inner ysep=0]{G}
+				\rar[bend right][codB,swap]{G'}
+			& \cat{C}
+			\twocellA[pos=.45]{\alpha}
+			\twocellB[pos=.55]{\phi}
+		\end{tikzcd}
+		=
+		\begin{tikzcd}[bend angle=30]
+			\cat{X} \rar[bend left][domA]{\hat{\alpha}}
+					\rar[bend right][codA,swap]{\hat{\beta}}
+			& \cat{C}^2 \rar[bend left][domB]{\dom}
+				\rar[bend right][codB,swap]{\cod}
+			& \cat{C}
+			\twocellA{\eta}
+			\twocellB{\kappa}
+		\end{tikzcd}
+		=
+		\begin{tikzcd}[bend angle=50]
+			\cat{X}   \rar[bend left][domA]{F}
+				\rar[][codA,domB,description,inner ysep=0]{F'}
+				\rar[bend right][codB,swap]{G'}
+			& \cat{C}.
+			\twocellA[pos=.45]{\gamma}
+			\twocellB[pos=.55]{\beta}
+		\end{tikzcd}
+		\]
+	\end{itemize}
+\end{lemma}
+
+\begin{definition}
+	Let $\cat{D}$ be any 2-category. For any object $A$ in $\cat{D}$, the \emph{arrow object} of $A$, if it exists, is an object $A^2$ satisfying the universal property \eqref{Eq:ArrowObject}. If every object has an arrow object, i.e. if $\cat{D}$ has cotensors by 2, we will say $\cat{D}$ \emph{has arrow objects}.
+\end{definition}
+
+\subsection{Functorial Factorizations}
+
+\begin{definition}\label{Def:CatFF}
+	A functorial factorization on a category $\cat{C}$ consists of a functor $E$ and two natural transformations $\eta$ and $\epsilon$ which factor $\kappa$, as in
+	\[
+	\begin{tikzcd}[bend angle=30]
+		C^2 \rar[bend left][domA]{\dom}
+			\rar[bend right][codA,swap]{\cod}
+		& C
+		\twocellA{\kappa}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=50]
+		C^2 \rar[bend left][domA]{\dom}
+			\rar[][codA,domB,description]{E}
+			\rar[bend right][codB,swap]{\cod}
+		& C.
+		\twocellA[pos=.45]{\eta}
+		\twocellB[pos=.55]{\epsilon}
+	\end{tikzcd}
+	\]
+\end{definition}
+
+This determines for any arrow $f$ in $\cat{C}$ a factorization $f=\epsilon_f\circ\eta_f$. The factorization is natural, meaning that for any morphism $(u,v)\colon f\Rightarrow g$ in $\cat{C}^2$ (i.e. commutative square in $\cat{C}$), the two squares in
+\[
+\begin{tikzcd}
+	\cdot \rar{u} \dar[swap]{\eta_f} & \cdot \dar{\eta_g} \\
+	\cdot \rar{E(u,v)} \dar[swap]{\epsilon_f} & \cdot \dar{\epsilon_g} \\
+	\cdot \rar[swap]{v} & \cdot
+\end{tikzcd}
+\]
+commute.
+
+A functorial factorization also determines two functors $L,R\colon C^2\to C^2$ such that $\dom L=\dom$, $\cod R=\cod$, $\cod L = \dom R = E$, $\kappa L = \eta$, and $\kappa R=\epsilon$, by the universal property of $C^2$. The components of the factorization of $f$ can then also be referred to as $Lf$ and $Rf$, now thought of as objects in $\cat{C}^2$. There are also two canonical natural transformations, $\vec{\eta}\colon \id\Rightarrow R$ and $\vec{\epsilon}\colon L\Rightarrow\id$, determined by the commuting squares
+\[
+\begin{tikzcd}[arrows=Rightarrow]
+	\dom \rar{\eta} \dar[swap]{\kappa} & E \dar{\epsilon} \\
+	\cod \rar[swap]{\id} & \cod
+\end{tikzcd}
+\qquad\text{and}\qquad
+\begin{tikzcd}[arrows=Rightarrow]
+	\dom \rar{\id} \dar[swap]{\eta} & \dom \dar{\kappa} \\
+	E \rar[swap]{\epsilon} & \cod
+\end{tikzcd}
+\]
+respectively. These make $L$ and $R$ into (co)pointed endofunctors of $\cat{C}^2$.
+
+An algebra for the pointed endofunctor $R$ is an object $f$ in $\cat{C}^2$ equipped with a morphism $\vec{t}\colon Rf\Rightarrow f$, such that $\vec{t}\circ\vec{\eta}_f=\id_f$. Similarly, a coalgebra for the copointed endofunctor $L$ is an $f$ equipped with a morphism $\vec{s}\colon f\Rightarrow Lf$, such that $\vec{\epsilon}_f\circ\vec{s}=\id_f$.
+
+\begin{lemma}
+	Let $f\colon X\to Y$ be a morphism in $\cat{C}$. An $R$-algebra structure on $f\in\cat{C}^2$ is precisely a choice of lift $t$ in the square
+	\begin{equation}\label{Eq:RAlg}
+	\begin{tikzcd}
+		X \rar[equals] \dar[swap]{Lf} & X \dar{f} \\
+		Ef \rar[swap]{Rf} \urar[dashed]{t} & Y.
+	\end{tikzcd}
+	\end{equation}
+	Dually, an $L$-coalgebra structure on $f$ is precisely a choice of lift $s$ in the square
+	\begin{equation}\label{Eq:LAlg}
+	\begin{tikzcd}
+		X \rar{Lf} \dar[swap]{f} & Ef \dar{Rf} \\
+		Y \rar[equals] \urar[dashed]{s} & Y.
+	\end{tikzcd}
+	\end{equation}
+\end{lemma}
+
+\subsection{Algebraic Weak Factorization Systems}
+
+To simplify the discussion of weak factorization systems, we will start by introducing a notation. For any two morphisms $l$ and $r$ in $\cat{C}$, write $l\boxslash r$ to mean that for every commutative square
+\begin{equation}\label{Eq:LiftingSquare}
+\begin{tikzcd}
+	\cdot \rar{u} \dar[swap]{l} & \cdot \dar{r} \\
+	\cdot \rar[swap]{v} \urar[dashed]{w} & \cdot
+\end{tikzcd}
+\end{equation}
+there exists a lift $w$. In this case, we will say that $l$ has the \emph{left lifting property} with respect to $r$, and that $r$ has the \emph{right lifting property} with respect to $l$. Similarly, for two classes of morphisms $\mathcal{L}$ and $\mathcal{R}$, we will say $\mathcal{L}\boxslash\mathcal{R}$ if $l\boxslash r$ for every $l\in\mathcal{L}$ and $r\in\mathcal{R}$. Finally, we will write $\mathcal{L}^{\boxslash}$ for the class of morphisms having the right lifting property with respect to every morphism of $\mathcal{L}$, and ${}^{\boxslash}\!\mathcal{R}$ for the class of morphisms having the left lifting property with respect to every morphism of $\mathcal{R}$.
+
+\begin{definition}
+	A \emph{functorial weak factorization system} on a category $\cat{C}$ consists of a functorial factorization on $\cat{C}$ and two classes $\mathcal{L}$ and $\mathcal{R}$ of morphisms in $\cat{C}$, such that
+	\begin{itemize}
+		\item for every morphism $f$ in $\cat{C}$, $Lf\in\mathcal{L}$ and $Rf\in\mathcal{R}$,
+		\item $\mathcal{L}^{\boxslash}=\mathcal{R}$ and ${}^{\boxslash}\!\mathcal{R}=\mathcal{L}$.
+	\end{itemize}
+\end{definition}
+
+It a simple and standard proof that the lifting property condition can be replaced by two simpler conditions:
+
+\begin{lemma}
+	A functorial weak factorization system can equivalently be defined to be a functorial factorization on $\cat{C}$ and two classes $\mathcal{L}$ and $\mathcal{R}$ of morphisms in $\cat{C}$, such that
+	\begin{itemize}
+		\item for every morphism $f$ in $\cat{C}$, $Lf\in\mathcal{L}$ and $Rf\in\mathcal{R}$,
+		\item $\mathcal{L}\boxslash\mathcal{R}$,
+		\item $\mathcal{L}$ and $\mathcal{R}$ are both closed under retracts.
+	\end{itemize}
+\end{lemma}
+
+In fact, the functorial factorization by itself already determines the two classes of morphisms, with $\mathcal{L}$ the class of morphisms admitting an $L$-coalgebra structure, and $\mathcal{R}$ the class of morphisms admitting an $R$-algebra structure. The lifting properties also follow from directly from the functorial factorization, as the next lemma shows.
+
+\begin{lemma}
+	For any $L$-coalgebra $(l,s)$ and any $R$-algebra $(r,t)$, there is a canonical choice of lift in the square \eqref{Eq:LiftingSquare}.
+\end{lemma}
+\begin{proof}
+	The construction is shown in the diagram
+	\begin{equation}\label{Eq:CanonicalLift}
+	\begin{tikzcd}
+		\cdot 	\rar{u} 
+				\dar[swap]{Ll} 
+			& \cdot \dar[xshift=0.5ex]{Lr} \\
+		\cdot 	\rar[dashed]{E(u,v)} 
+				\dar[xshift=-0.5ex][swap]{Rl} 
+			& \cdot \uar[xshift=-0.5ex,dashed]{t} 
+				\dar{Rr} \\
+		\cdot 	\uar[xshift=0.5ex,dashed][swap]{s}
+				\rar[swap]{v}
+			& \cdot
+	\end{tikzcd}
+	\end{equation}
+	Commutativity of \eqref{Eq:LiftingSquare} follows immediately from \eqref{Eq:RAlg} and \eqref{Eq:LAlg}.
+\end{proof}
+
+This, together with the classical fact that the class of objects admitting a (co)algebra structure for a (co)pointed endofunctor is closed under retracts, gives a third equivalent definition of a functorial weak factorization system.
+
+\begin{lemma}
+	A functorial weak factorization system can equivalently be defined to be a functorial factorization on $\cat{C}$ such that
+	\begin{itemize}
+		\item for every morphism $f$ in $\cat{C}$, $Lf$ admits an $L$-coalgebra structure, and $Rf$ admits an $R$-algebra structure.
+	\end{itemize}
+\end{lemma}
+
+An $R$-algebra structure on $Rf$ consists of a morphism $\vec{\mu}_f\colon R^2f\to Rf$ in $\cat{C}^2$ such that $\vec{\mu}_f\circ\vec{\eta}_f=\id_f$, while an $L$-coalgebra structure on $Lf$ consists of a morphism $\vec{\delta}_f\colon Lf\to L^2f$ such that $\vec{\epsilon}_f\circ\vec{\delta}_f=\id_f$. We might hope that it is possible to choose these structures for all $f$ in a natural way, such that they form the components of natural transformations $\vec{\mu}\colon R^2\Rightarrow R$ and $\vec{\delta}\colon L\Rightarrow L^2$.
+
+If we want these choices of lifts to be fully coherent, we should also ask that for any $R$-algebra $(f,t)$, the lift constructed as in \eqref{Eq:CanonicalLift} for the square \eqref{Eq:RAlg} is equal to $t$, and similarly for $L$-coalgebras and \eqref{Eq:LAlg}. Lastly, we should ask that the components $\vec{\mu}_f$ and $\vec{\delta}_f$ are (co)algebra morphisms. With these conditions made, we have the definition of an \emph{algebraic weak factorization system}, first given in \cite{gt:nwfs} (there called \emph{natural} weak factorization systems), and further refined in \cite{garner:nwfs} and \cite{garner:soa}.
+
+\begin{definition}\label{Def:Awfs}
+	An \emph{algebraic weak factorization system} on a category $\cat{C}$ consists of a functorial factorization $(L,\vec{\epsilon},R,\vec{\eta})$ together with natural transformations $\vec{\mu}\colon R^2f\Rightarrow Rf$ and $\vec{\delta}\colon L\Rightarrow L^2$, such that
+	\begin{itemize}
+		\item $\mathbb{R}=(R,\vec{\eta},\vec{\mu})$ is a monad and $\mathbb{L}=(L,\vec{\epsilon},\vec{\delta})$ a comonad on $\cat{C}^2$, and
+		\item the natural transformation $\Delta=(\delta,\mu)\colon LR\Rightarrow RL$ determined by the equation $\epsilon L\circ\delta=\mu\circ\eta R \, (=\id_E)$ as in \ref{Lem:ArrowObject} is a distributive law, which in this case reduces to the single condition $\delta\circ\mu = \mu L\circ E\Delta\circ\delta R$.
+	\end{itemize}
+\end{definition}
