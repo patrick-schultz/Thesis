@@ -36,24 +36,25 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 \begin{proof}
 	We have already shown how the monoid an comonoid structures give rise to the monod and comonad of the awfs. All that remains is to show that the equations \eqref{Eq:Bimonoid} amount to just the distributive law, i.e. the equation
 	\begin{equation}\label{Eq:AwfsDistributiveLaw}
-	\begin{tikzcd}[row sep=tiny, baseline=(B.base)]
-		& C^2 \drar{L} \ar[bend left=30]{drr}{E} 
-			\twocell[bend left=10]{drr}{\delta} &&\\
-		|[alias=B]| C^2 \urar{R} \drar[swap]{L} \twocell{rr}{\Delta}
-			&& C^2 \rar{E} & C \\
-		& C^2 \urar[swap]{R} \ar[bend right=30]{urr}[swap]{E} 
-			\twocell[bend right=10]{urr}{\mu} &&
+	\begin{tikzcd}[row sep=tiny, bend angle=30, baseline=(B.base)]
+		& C^2 \drar{L} \ar[bend left]{drr}[domB]{E} &&\\
+		|[alias=B,alias=domA]| C^2 \urar{R} \drar[swap]{L} 
+			&& |[alias=codA,alias=codB,alias=domC]| C^2 \rar{E} & C \\
+		& C^2 \urar[swap]{R} \ar[bend right]{urr}[codC,swap]{E} &&
+		\twocellA{\Delta}
+		\twocellB[pos=.4]{\delta}
+		\twocellC[pos=.55]{\mu}
 	\end{tikzcd}
 	=
 	\begin{tikzcd}[row sep=2ex, column sep=small, bend angle=25, baseline=(B.base)]
-		& C^2 \drar[bend left]{E} & \\
+		& |[alias=domA]| C^2 \drar[bend left]{E} & \\
 		|[alias=B]| C^2 \urar[bend left]{R}
-			\twocell[bend left=30]{rr}{\mu}
-			\ar{rr}[description]{E}
-			\twocell[bend right=30]{rr}{\delta}
+			\ar{rr}[codA,domB,description]{E}
 			\drar[bend right][swap]{L}
 		&& C. \\
-		& C^2 \urar[bend right][swap]{E} &
+		& |[alias=codB]| C^2 \urar[bend right][swap]{E} &
+		\twocellA{\mu}
+		\twocellB[pos=.45]{\delta}
 	\end{tikzcd}
 	\end{equation}
 
@@ -62,101 +63,111 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 	The fourth equation here takes the form
 	\[
 	\begin{tikzcd}
-		C^2 \rar{R} \twocell{dr}{\delta^R} \dar[equal]
-			& C^2 \ar{rr}{E} \twocell{drr}{\delta} \dar[equal]
+		C^2 \rar[][domA]{R} \dar[equal]
+			& C^2 \ar{rr}[domB]{E} \dar[equal]
 			&& C \dar[equal] \\
-		C^2 \rar[swap]{R_{E\odot E}} \twocell{drr}{w} \dar[equal]
-			& C^2 \rar{L}
-			& C^2 \rar{E} \twocell{dr}{\id_E} \dar[equal]
+		C^2 \rar[][codA,swap]{R_{E\odot E}} \dar[equal]
+			& |[alias=domC]| C^2 \rar{L}
+			& |[alias=codB]| C^2 \rar[][domD]{E} \dar[equal]
 			& C \dar[equal] \\
-		C^2 \rar{L_{E\otimes E}} \twocell{dr}{\mu^L} \dar[equal]
-			& C^2 \rar[swap]{R} \twocell{drr}{\mu} \dar[equal]
-			& C^2 \rar[swap]{E}
+		C^2 \rar[][domE]{L_{E\otimes E}} \dar[equal]
+			& |[alias=codC]| C^2 \rar[swap]{R} \dar[equal]
+			& |[alias=domF]| C^2 \rar[][codD,swap]{E}
 			& C \dar[equal] \\
-		C^2 \rar[swap]{L} & C^2 \ar{rr}[swap]{E} && C
+		C^2 \rar[][codE,swap]{L} & C^2 \ar{rr}[codF,swap]{E} && C
+		\twocellA{\delta^R}
+		\twocellB{\delta}
+		\twocellC{w}
+		\twocellD{\id_E}
+		\twocellE{\mu^L}
+		\twocellF{\mu}
 	\end{tikzcd}
 	=
 	\begin{tikzcd}
-		C^2 \rar{R} \twocell{drr}{\mu} \dar[equal]
-			& C^2 \rar{E}
+		C^2 \rar{R} \dar[equal]
+			& |[alias=domA]| C^2 \rar{E}
 			& C \dar[equal] \\
-		C^2 \ar{rr}{E} \twocell{drr}{\delta} \dar[equal]
+		C^2 \ar{rr}[codA,domB]{E} \dar[equal]
 			&& C \dar[equal] \\
-		C^2 \rar[swap]{L} & C^2 \rar[swap]{E} & C,
+		C^2 \rar[swap]{L} 
+			& |[alias=codB]| C^2 \rar[swap]{E} 
+			& C,
+		\twocellA{\mu}
+		\twocellB{\delta}
 	\end{tikzcd}
 	\]
 	and so to prove \eqref{Eq:AwfsDistributiveLaw}, it suffices to show that
 	\[
 	\begin{tikzcd}[row sep=tiny, baseline=(B.base)]
 		{} & C^2 \drar[bend left=20]{L} & \\
-		|[alias=B]| C^2 \urar[bend left=60]{R}
-				\twocell[bend left=30]{ur}{\delta^R}
-				\urar[sloped,swap,pos=0.2]{R_{E\odot E}}
-				\twocell{rr}{w}
-				\drar[sloped,pos=0.2]{L_{E\otimes E}}
-				\twocell[bend right=30]{dr}{\mu^L}
-				\drar[bend right=60][swap]{L}
-			&& C^2 \\
+		|[alias=B,alias=domB]| C^2 \urar[bend left=60][domA]{R}
+				\urar[][codA,sloped,swap,pos=0.2,inner sep=.2ex]{R_{E\odot E}}
+				\drar[][domC,sloped,pos=0.2,inner sep=.2ex]{L_{E\otimes E}}
+				\drar[bend right=60][codC,swap]{L}
+			&& |[alias=codB]| C^2 \\
 		{} & C^2 \urar[bend right=20][swap]{R} &
+		\twocellA{\delta^R}
+		\twocellB{w}
+		\twocellC{\mu^L}
 	\end{tikzcd}
 	=
 	\begin{tikzcd}[row sep=0ex, column sep=4ex, bend angle=15, baseline=(B.base)]
 		{} & C^2 \drar[bend left]{L} & \\
-		|[alias=B]| C^2 \urar[bend left]{R}
-				\twocell{rr}{\Delta}
+		|[alias=B,alias=domA]| C^2 \urar[bend left]{R}
 				\drar[bend right][swap]{L}
-			&& C^2. \\
+			&& |[alias=codA]| C^2. \\
 		{} & C^2 \urar[bend right][swap]{R} &
+		\twocellA{\Delta}
 	\end{tikzcd}
 	\]
 	We can check this using the universal property of $C^2$ by composing with $\dom$ and $\cod$. First, use \eqref{Eq:DomW} and \eqref{Eq:CodW} to check that
 	\begin{gather*}
 	\begin{tikzcd}[row sep=tiny, baseline=(B.base),ampersand replacement=\&]
 		{} \& C^2 \drar[bend left=20]{L} \&\& \\
-		|[alias=B]| C^2 \urar[bend left=60]{R}
-				\twocell[bend left=30]{ur}{\delta^R}
-				\urar[sloped,swap,pos=0.2]{R_{E\odot E}}
-				\twocell{rr}{w}
-				\drar[sloped,pos=0.2]{L_{E\otimes E}}
-				\twocell[bend right=30]{dr}{\mu^L}
-				\drar[bend right=60][swap]{L}
-			\&\& C^2 \rar{\dom} \& C \\
+		|[alias=B,alias=domB]| C^2 \urar[bend left=60][domA]{R}
+				\urar[][codA,sloped,swap,pos=0.2,inner sep=.2ex]{R_{E\odot E}}
+				\drar[][domC,sloped,pos=0.2,inner sep=.2ex]{L_{E\otimes E}}
+				\drar[bend right=60][codC,swap]{L}
+			\&\& |[alias=codB]| C^2 \rar{\dom} \& C \\
 		{} \& C^2 \urar[bend right=20][swap]{R} \&\&
+		\twocellA{\delta^R}
+		\twocellB{w}
+		\twocellC{\mu^L}
 	\end{tikzcd}
 	=
 	\begin{tikzcd}[baseline=(B.base),ampersand replacement=\&]
-		C^2 \ar[bend left=55]{rr}{E}
-				\twocell[bend left=30]{rr}{\delta}
-				\rar[bend left=30]{L}
-				\twocell{r}{i^L}
-				\rar[bend right=30][swap,inner sep=0.5pt]{L_{E\otimes E}}
-				\twocell[bend right=55,looseness=2]{r}{\mu^L}
-				\rar[bend right=85,looseness=2][swap]{L}
-			\& C^2 \rar[swap]{E} \& C
+		C^2 \ar[bend left=55]{rr}[domA]{E}
+				\rar[bend left=30][domB]{L}
+				\rar[bend right=30][codB,domC,swap,inner sep=0.5pt]{L_{E\otimes E}}
+				\rar[bend right=85,looseness=2][codC,swap]{L}
+			\& |[alias=codA]| C^2 \rar[swap]{E} \& C
+		\twocellA[pos=.45]{\delta}
+		\twocellB{i^L}
+		\twocellC[pos=.65]{\mu^L}
 	\end{tikzcd}
 	\\
 	\begin{tikzcd}[row sep=tiny, baseline=(B.base),ampersand replacement=\&]
-		{} \& C^2 \drar[bend left=20]{L} \&\& \\
-		|[alias=B]| C^2 \urar[bend left=60]{R}
-				\twocell[bend left=30]{ur}{\delta^R}
-				\urar[sloped,swap,pos=0.2]{R_{E\odot E}}
-				\twocell{rr}{w}
-				\drar[sloped,pos=0.2]{L_{E\otimes E}}
-				\twocell[bend right=30]{dr}{\mu^L}
-				\drar[bend right=60][swap]{L}
+		{} \& |[alias=domB]| C^2 \drar[bend left=20]{L} \&\& \\
+		|[alias=B]| C^2 \urar[bend left=60][domA]{R}
+				\urar[][codA,sloped,swap,pos=0.2,inner sep=.2ex]{R_{E\odot E}}
+				\drar[][domC,sloped,pos=0.2,inner sep=.2ex]{L_{E\otimes E}}
+				\drar[bend right=60][codC,swap]{L}
 			\&\& C^2 \rar{\cod} \& C \\
-		{} \& C^2 \urar[bend right=20][swap]{R} \&\&
+		{} \& |[alias=codB]| C^2 \urar[bend right=20][swap]{R} \&\&
+		\twocellA{\delta^R}
+		\twocellB{w}
+		\twocellC{\mu^L}
 	\end{tikzcd}
 	=
 	\begin{tikzcd}[baseline=(B.base),ampersand replacement=\&]
-		C^2 \rar[bend left=85,looseness=2]{R}
-				\twocell[bend left=55,looseness=2]{r}{\delta^R}
-				\rar[bend left=30][inner sep=0.5pt]{R_{E\odot E}}
-				\twocell{r}{p^R}
-				\rar[bend right=30][swap]{R}
-				\twocell[bend right=30]{rr}{\mu}
-				\ar[bend right=55]{rr}[swap]{E}
-			\& C^2 \rar{E} \& C.
+		C^2 \rar[bend left=85,looseness=2][domA]{R}
+				\rar[bend left=30][codA,domB,inner sep=0.5pt]{R_{E\odot E}}
+				\rar[bend right=30][codB,swap]{R}
+				\ar[bend right=55]{rr}[codC,swap]{E}
+			\& |[alias=domC]| C^2 \rar{E} \& C.
+		\twocellA[pos=.4]{\delta^R}
+		\twocellB{p^R}
+		\twocellC[pos=.55]{\mu}
 	\end{tikzcd}
 	\end{gather*}
 	Then use the definitions of $i$ and $p$ to check that $\mu\circ i=\mu\circ\eta R=\id_E$ and $p\circ\delta=\epsilon L\circ\delta=\id_E$, so that the first row above just equals $\delta$, and the second row equals $\mu$. Since $\Delta$ also (by definition) satisfies $\dom\Delta=\delta$ and $\cod\Delta=\mu$, we are done.

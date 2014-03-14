@@ -871,17 +871,17 @@ To verify this equation, it suffices to check equality upon right composition wi
 		\& C \ar{dd}{F} \\[3ex]
 	{} \& D^2 \drar[bend left][codB,swap,inner sep=.2ex,pos=.6]{L'_3}
 		\&\& \\
-	D^2 	\urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R'_{1\odot 2}}
+	|[alias=domC]| D^2 
+			\urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R'_{1\odot 2}}
 			\drar[bend right][swap,inner sep=.2ex]{L'_{1\otimes 3}}
-			\twocell{rr}{w}
-		\&
-		\& D^2 \rar[swap]{\dom}
+		\&\& |[alias=codC]| D^2 \rar[swap]{\dom}
 		\& D. \\
 	{}
 		\& D^2 \urar[bend right][swap]{R'_2}
 		\&\&
 	\twocellA{(\theta_1\odot\theta_2)^R}
 	\twocellB{\theta_3^L}
+	\twocellC{w}
 	\twocellD{\gamma_1}
 \end{tikzcd}
 \end{multline*}

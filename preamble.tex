@@ -39,21 +39,20 @@
 \newcommand{\btwo}{\mathbf{2}}
 \newcommand{\FF}[1]{\mathbb{F}\mathrm{F}(\mathbb{#1})}
 
-\newcommand{\twocell}[3][]{\arrow[draw=none,#1]{#2}[auto=false]{\Downarrow #3}}
-\newcommand{\twocellb}[3][]{\arrow[draw=none,to path={(dom#2)--(cod#2)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
-\newcommand{\twocellA}[2][]{\arrow[draw=none,to path={(domA)--(codA)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
-\newcommand{\twocellB}[2][]{\arrow[draw=none,to path={(domB)--(codB)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
-\newcommand{\twocellC}[2][]{\arrow[draw=none,to path={(domC)--(codC)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
-\newcommand{\twocellD}[2][]{\arrow[draw=none,to path={(domD)--(codD)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #2}}
+\newcommand{\twocell}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
+\newcommand{\twocellA}[2][]{\twocell[#1]{A}{#2}}
+\newcommand{\twocellB}[2][]{\twocell[#1]{B}{#2}}
+\newcommand{\twocellC}[2][]{\twocell[#1]{C}{#2}}
+\newcommand{\twocellD}[2][]{\twocell[#1]{D}{#2}}
+\newcommand{\twocellE}[2][]{\twocell[#1]{E}{#2}}
+\newcommand{\twocellF}[2][]{\twocell[#1]{F}{#2}}
 
 \tikzset{tick/.style={postaction={decorate,decoration={markings,mark=at position 0.5 with {\draw[-] (0,.4ex) -- (0,-.4ex);}}}}}
-%\tikzset{dom/.style={shape=coordinate,alias=dom#1},
-%		dom1/.style={dom=1}, dom2/.style={dom=2}}
-%\tikzset{cod/.style={shape=coordinate,alias=cod#1},
-%		cod1/.style={cod=1}, cod2/.style={cod=2}}
 \tikzset{dom/.style={append after command={coordinate[alias=dom#1]}},
 		domA/.style={dom=A}, domB/.style={dom=B},
-		domC/.style={dom=C}, domD/.style={dom=D}}
+		domC/.style={dom=C}, domD/.style={dom=D},
+		domE/.style={dom=E}, domF/.style={dom=F}}
 \tikzset{cod/.style={append after command={coordinate[alias=cod#1]}},
 		codA/.style={cod=A}, codB/.style={cod=B},
-		codC/.style={cod=C}, codD/.style={cod=D}}
+		codC/.style={cod=C}, codD/.style={cod=D},
+		codE/.style={cod=E}, codF/.style={cod=F}}
