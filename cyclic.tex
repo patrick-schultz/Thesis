@@ -159,8 +159,8 @@ In more concrete terms, the involution takes a bimonoid $(X,\eta,\mu,\epsilon,\d
 
 The action of the involution on bimonoid morphisms can be broken down as in the following lemma.
 
-\begin{lemma}
-	Let $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ be bimonoids in a cyclic 2-fold double category, and let $\phi$ be a 2-cell
+\begin{lemma}\label{Lem:MonMorphismDuality}
+	Let $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ be bimonoids in a cyclic 2-fold double category $\mathbb{D}$, and let $\phi$ be a 2-cell in $\mathbb{D}$
 	\[
 	\begin{tikzcd}
 		C \rar[tick][domA]{X} \dar[swap]{f} & C \dar{f} \\
@@ -168,8 +168,18 @@ The action of the involution on bimonoid morphisms can be broken down as in the 
 		\twocellA{\phi}
 	\end{tikzcd}
 	\]
-	Then $\phi$ is a monoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a comonoid morphism $Y^\bullet\to X^\bullet$. Dually, $\phi$ is a comonoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a monoid morphism $Y^\bullet\to X^\bullet$.
+	Then $(f,\phi)$ is a monoid morphism $X\to Y$ if and only if $(\sigma f,\phi^\bullet)$ is a comonoid morphism $Y^\bullet\to X^\bullet$. Dually, $\phi$ is a comonoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a monoid morphism $Y^\bullet\to X^\bullet$.
 \end{lemma}
 \begin{proof}
 	Simply notice that the involution interchanges equations \eqref{Eq:MonoidMorphismUnit} and \eqref{Eq:MonoidMorphismMult} with \eqref{Eq:ComonoidMorphismCounit} and \eqref{Eq:ComonoidMorphismComult}.
 \end{proof}
+
+This immediately implies a useful characterization of bimonoid morphisms.
+
+\begin{corollary}\label{Lem:BimonMorphism}
+	Given bimonoids $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ in a cyclic 2-fold double category $\mathbb{D}$, a bimonoid morphism $X\to Y$ consists of:
+	\begin{itemize}
+		\item \emph{Either} a monoid morphism $X\to Y$ \emph{or} a comonoid morphism $Y^{\bullet}\to X^{\bullet}$, \emph{and}
+		\item \emph{Either} a comonoid morphism $X\to Y$ \emph{or} a monoid morphism $Y^{\bullet}\to X^{\bullet}$.
+	\end{itemize}
+\end{corollary}

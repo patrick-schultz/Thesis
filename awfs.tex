@@ -172,3 +172,50 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 	\end{gather*}
 	Then use the definitions of $i$ and $p$ to check that $\mu\circ i=\mu\circ\eta R=\id_E$ and $p\circ\delta=\epsilon L\circ\delta=\id_E$, so that the first row above just equals $\delta$, and the second row equals $\mu$. Since $\Delta$ also (by definition) satisfies $\dom\Delta=\delta$ and $\cod\Delta=\mu$, we are done.
 \end{proof}
+
+The appropriate notion of morphism between awfs, analagous to left/right Quillen functors and Quillen adjunctions, is (to our knowledge) first given in \cite{riehl:nwfs-model}.
+
+\begin{definition}
+	Suppose that $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ are awfs on $\cat{C}$ and $\cat{D}$ respectively. 
+	\begin{itemize}
+		\item A \emph{lax morphism of awfs} $(G,\rho)\colon E_1\to E_2$ consists of a functor $G\colon\cat{C}\to\cat{D}$ and a natural transformation $\rho\colon E_2\hat{G}\Rightarrow GE_1$, such that $(1,\rho)\colon L_2\hat{G}\Rightarrow GL_1$ is a lax morphism of comonads and $(\rho,1)\colon R_2\hat{G}\Rightarrow GR_1$ is a lax morphism of monads.
+		\item A \emph{colax morphism of awfs} $(F,\lambda)\colon E_1\to E_2$ consists of a functor $F\colon\cat{C}\to\cat{D}$ and a natural transformation $\lambda\colon FE_1\Rightarrow E_2\hat{F}$, such that $(1,\lambda)\colon FL_1\Rightarrow L_2\hat{F}$ is a colax morphism of comonads and $(\lambda,1)\colon FR_1\Rightarrow R_2\hat{F}$ is a colax morphism of monads.
+	\end{itemize}
+\end{definition}
+
+Notice that a lax morphism of awfs induces a lift of the functor $\hat{G}$ to a functor $\mathbb{R}_1\mathrm{Alg}\to \mathbb{R}_2\mathrm{Alg}$. In that sense, $G$ ``preserves the right class,'' so is analagous to a right Quillen functor. Similarly, a colax morphism of awfs induces a lift of $\hat{F}$ to $\mathbb{L}_1\mathrm{Coalg}\to\mathbb{L}_2\mathrm{Coalg}$, so is analagous to a left Quillen functor.
+
+\begin{proposition}
+	Morphisms in $\mathrm{Bimon}(\FF{\mathbb{D}})$ are precisely the colax morphisms of awfs.
+\end{proposition}
+\begin{proof}
+	As above, let $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ be awfs on $\cat{C}$ and $\cat{D}$ respectively. A morphism of bimonoids is given by a 2-cell
+	\[
+	\begin{tikzcd}[column sep=large]
+		\cat{C} \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}
+			& \cat{C} \dar{F} \\
+		\cat{D} \rar[tick][codA,swap]{(E_2,\eta_2,\epsilon_2)}
+			& \cat{D}
+		\twocellA{\lambda}
+	\end{tikzcd}
+	\]
+	which commutes with the monoid and comonoid structures. It is straightforward to check that this implies the natural transformations
+	\[
+	\begin{tikzcd}
+		\cat{C}^2 \rar[][domA]{L_1} \dar[swap]{\hat{F}}
+			& \cat{C}^2 \dar{\hat{F}} \\
+		\cat{D}^2 \rar[][codA,swap]{L_2}
+			& \cat{D}^2
+		\twocellA{\lambda^L}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}
+		\cat{C}^2 \rar[][domA]{R_1} \dar[swap]{\hat{F}}
+			& \cat{C}^2 \dar{\hat{F}} \\
+		\cat{D}^2 \rar[][codA,swap]{R_2}
+			& \cat{D}^2
+		\twocellA{\lambda^R}
+	\end{tikzcd}
+	\]
+	are colax morphisms of comonads and monads respectively.
+\end{proof}
