@@ -12,9 +12,9 @@ We will first give the most concise definition of a double category, which we wi
 	A \emph{double category} is an internal category object in the (large) category of categories.
 \end{definition}
 
-So a double category $\mathbb{D}$ consists of a category $D_O$ and a category $D_A$, along with functors $s,t\colon D_A\to D_O$, $1\colon D_O\to D_A$, and $\circ\colon D_A\times_{D_O}D_A\to D_A$ satisfying the usual axioms of a category. We will call the objects of $D_O$ the 0-cells of $\mathbb{D}$, and the morphisms of $D_O$ the vertical 1-cells. Thus $D_O$ forms the so-called \emph{vertical category} of $\mathbb{D}$. We will call the objects of $D_A$ the horizontal 1-cells of $\mathbb{D}$, and the morphisms of $D_A$ are the 2-cells. 
+So a double category $\mathbb{D}$ consists of a category $\cat{D}_0$ and a category $\cat{D}_1$, along with functors $s,t\colon \cat{D}_1\to \cat{D}_0$, $1\colon \cat{D}_0\to \cat{D}_1$, and $\circ\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to \cat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\cat{D}_0$ the 0-cells of $\mathbb{D}$, and the morphisms of $\cat{D}_0$ the vertical 1-cells. Thus $\cat{D}_0$ forms the so-called \emph{vertical category} of $\mathbb{D}$, which we will also write as $\mathrm{Vert}(\mathbb{D})$. We will call the objects of $\cat{D}_1$ the horizontal 1-cells of $\mathbb{D}$, and the morphisms of $\cat{D}_1$ are the 2-cells. 
 
-A morphism $\phi\colon X\to Y$ in $D_A$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t(Y)=D'$, $s(\phi)=f$, and $t(\phi)=g$ will be drawn as
+A morphism $\phi\colon X\to Y$ in $\cat{D}_1$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t(Y)=D'$, $s(\phi)=f$, and $t(\phi)=g$ will be drawn as
 \begin{equation}\label{Eq:Double2Cell}
 \begin{tikzcd}
 	C \rar[tick][domA]{X} \dar[swap]{f} 
@@ -24,7 +24,7 @@ A morphism $\phi\colon X\to Y$ in $D_A$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t
 	 \twocellA{\phi}
 \end{tikzcd}
 \end{equation}
-where the tick-mark on the horizontal 1-cells serves as a further reminder that the horizontal 1-cells are of a different nature than the vertical 1-cells. The composition in $D_O$ provides a vertical composition of vertical 1-cells and 2-cells, while the composition functor $\circ\colon D_A\times_{D_O}D_A\to D_A$ provides a horizontal composition of horizontal 1-cells and 2-cells.
+where the tick-mark on the horizontal 1-cells serves as a further reminder that the horizontal 1-cells are of a different nature than the vertical 1-cells. The composition in $\cat{D}_0$ provides a vertical composition of vertical 1-cells and 2-cells, while the composition functor $\circ\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to \cat{D}_1$ provides a horizontal composition of horizontal 1-cells and 2-cells.
 
 \begin{example}
 	For any 2-category $\mathcal{D}$, there is an associated double category $\mathbb{S}\mathrm{q}(\mathcal{D})$ of \emph{squares} in $\mathcal{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\mathcal{D}$, and 2-cells
@@ -40,7 +40,7 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 	are simply 2-cells $\phi\colon gj\Rightarrow kf$ in $\mathcal{D}$.
 \end{example}
 
-\begin{example}
+\begin{definition}
 	For any double category $\mathbb{D}$, there is an associated 2-category $\mathcal{V}\mathrm{ert}(\mathbb{D})$, called the \emph{vertical 2-category} of $\mathbb{D}$. The objects and 1-cells of $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are the objects and vertical 1-cells of $\mathbb{D}$, while 2-cells $\phi\colon g\Rightarrow f$ in $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are 2-cells in $\mathbb{D}$ of the form
 	\[
 	\begin{tikzcd}
@@ -52,7 +52,21 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 	\end{tikzcd}
 	\]
 	Notice that $\mathcal{V}\mathrm{ert}(\mathbb{S}\mathrm{q}(\mathcal{D}))$ is isomorphic to $\mathcal{D}$.
-\end{example}
+\end{definition}
+
+\begin{definition}
+	Given a double category $\mathbb{D}$, define double categories $\mathbb{D}^{\text{op}}$ and $\mathbb{D}^{\text{co}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell \eqref{Eq:Double2Cell} in $\mathbb{D}^{\text{op}}$ is a 2-cell
+	\[
+	\begin{tikzcd}
+		D \rar[tick][domA]{Y} \dar[swap]{f} 
+		& D' \dar{g} \\
+	C \rar[tick][codA,swap]{X} 
+		& C'
+	 \twocellA{\phi}
+	\end{tikzcd}
+	\]
+	in $\mathbb{D}$.
+\end{definition}
 
 We will define a \emph{monad} in a double category $\mathbb{D}$ to be a tuple $(C,T,\eta,\mu)$, in which $C$ is an object, $T\colon C\to C$ is a horizontal 1-cell, and $\eta$ and $\mu$ are 2-cells
 \[
@@ -139,7 +153,7 @@ and
 \end{equation}
 
 \begin{definition}
-	Given any double category $\mathbb{D}$, we will write $\mathrm{Mon}(\mathbb{D})$ for the category of monads in $\mathbb{D}$, consisting of monads and monad morphisms as defined above.
+	Given any double category $\mathbb{D}$, we will write $\mathrm{Mon}(\mathbb{D})$ for the category of monads in $\mathbb{D}$, consisting of monads and monad morphisms as defined above. The category $\mathrm{Comon}(\mathbb{D})$ of comonads in $\mathbb{D}$ is defined to be the category $\mathrm{Mon}(\mathbb{D}^{\text{op}})$ of monads in $\mathbb{D}^{\text{op}}$.
 \end{definition}
 
 \begin{proposition}

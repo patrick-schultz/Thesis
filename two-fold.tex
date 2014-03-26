@@ -10,27 +10,13 @@ A 2-fold double category $\mathbb{D}$ is a structure which has two different und
 	A \emph{2-fold double category} $\mathbb{D}$ with vertical category $\dvert(\mathbb{D})=\cat{D}_0$ is a 2-fold monoid object in the 2-category $\mathcal{C}at/\cat{D}_0$ of categories over $\cat{D}_0$.
 \end{definition}
 
-Breaking this down, we have a category $\cat{D}$, a functor $p\colon\cat{D}\to\cat{D}_0$, two functors $\otimes, \odot\colon \cat{D}\times_{\cat{D}_0}\cat{D}\to\cat{D}$ commuting with $p$, and two functors $I,\perp\colon\cat{D}_0\to\cat{D}$ which are sections of $p$, such that $\otimes$, $\odot$, $I$, and $\perp$ satisfy all the axioms of a 2-fold monoidal category. In particular, each fiber of $p$ has a 2-fold monoidal structure.
+Breaking this down, we have a category $\cat{D}_1$, a functor $p\colon\cat{D}_1\to\cat{D}_0$, two functors $\otimes, \odot\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to\cat{D}_1$ commuting with $p$, and two functors $I,\perp\colon\cat{D}_0\to\cat{D}_1$ which are sections of $p$, such that $\otimes$, $\odot$, $I$, and $\perp$ satisfy all the axioms of a 2-fold monoidal category. In particular, each fiber of $p$ has a 2-fold monoidal structure.
 
-We will find it convenient to present this structure in the form of a double category $\mathbb{D}$, as follows: 
-\begin{itemize}
-	\item The objects and vertical morphisms of $\mathbb{D}$ are those of $\cat{D}_0$, so that $\dvert(\mathbb{D})=\cat{D}_0$.
-	\item The horizontal morphisms of $\mathbb{D}$ are the objects $X$ of $\cat{D}$, with $p(X)$ as both domain and codomain. We will draw these as marked arrows 
-	\[
-	\begin{tikzcd}
-		p(X) \rar[tick]{X} & p(X).
-	\end{tikzcd}
-	\]
-	\item The 2-cells are the morphisms of $\cat{D}$. So a morphism $\phi\colon X\to Y$ in $\cat{D}$ with $p(\phi)=f\colon C\to D$ would be drawn as
-	\[\begin{tikzcd}
-		C \rar[tick][domA]{X} \dar[swap]{f} 
-			& C \dar{f} \\
-		D \rar[tick][codA,swap]{Y} 
-			& D
-		 \twocellA{\phi}
-	\end{tikzcd}\]
-\end{itemize}
-The two tensor products of $\cat{D}$ provide two different horizontal compositions for $\mathbb{D}$. For any object $C$ there are 2-cells
+This definition also implies that $\mathbb{D}$ has two underlying double categories, both with vertical category $\cat{D}_0$ and with source and target functors both equal to $p\colon\cat{D}_1\to\cat{D}_0$. The double category $\mathbb{D}_{\otimes}$ has the rest of the double category structure given by the functors $I$ and $\otimes$, while the double category $\mathbb{D}_{\odot}$ uses the functors $\perp$ and $\odot$.
+
+Using this double category interpretation, we will find it convenient to think of a 2-fold double category as a double category with two different but interacting horizontal compositions. Notice that from this perspective, all horizontal 1-cells are endomorphisms.
+
+For any object $C$ there are 2-cells
 \begin{equation}\label{Eq:2FoldCoherenceCellsA}
 \begin{tikzcd}[column sep=large]
 	C \rar[tick][domA]{\perp_C \otimes \perp_C} \dar[equal] 
@@ -122,4 +108,6 @@ and similarly for $c$ and $j$, and for any four 2-cells $\theta_1,\dots,\theta_4
 \end{tikzcd}
 \]
 
-A 2-fold double category $\mathbb{D}$ has two underlying ordinary double categories: $\mathbb{D}_{\otimes}$ using $\otimes$ for the horizontal composition, and $\mathbb{D}_{\odot}$ using $\odot$.
+\begin{definition}
+	A monad in a 2-fold double category $\mathbb{D}$ is a monad in $\mathbb{D}_{\otimes}$; a comonad in $\mathbb{D}$ is a comonad in $\mathbb{D}_{\odot}$. Furthermore, we define the categories $\mathrm{Mon}(\mathbb{D})=\mathrm{Mon}(\mathbb{D}_{\otimes})$ and $\mathrm{Comon}(\mathbb{D})=\mathrm{Comon}(\mathbb{D}_{\odot})$.
+\end{definition}
