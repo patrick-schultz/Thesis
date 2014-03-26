@@ -1,0 +1,151 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Double Categories}
+
+In this section, we will give an overview of double categories, as well as (one possible version of) the definition of monads in a double category
+
+A (strict) double category is a two-dimensional categorical structure, similar to a 2-category. Unlike a 2-category, a double category has two types of 1-cells, called \emph{vertical} and \emph{horizontal}, and 2-cells all have a square shape, with domain and codomain horizontal 1-cells as well as domain and codomain vertical 1-cells.
+
+We will first give the most concise definition of a double category, which we will then break down into more concrete terms.
+
+\begin{definition}
+	A \emph{double category} is an internal category object in the (large) category of categories.
+\end{definition}
+
+So a double category $\mathbb{D}$ consists of a category $D_O$ and a category $D_A$, along with functors $s,t\colon D_A\to D_O$, $1\colon D_O\to D_A$, and $\circ\colon D_A\times_{D_O}D_A\to D_A$ satisfying the usual axioms of a category. We will call the objects of $D_O$ the 0-cells of $\mathbb{D}$, and the morphisms of $D_O$ the vertical 1-cells. Thus $D_O$ forms the so-called \emph{vertical category} of $\mathbb{D}$. We will call the objects of $D_A$ the horizontal 1-cells of $\mathbb{D}$, and the morphisms of $D_A$ are the 2-cells. 
+
+A morphism $\phi\colon X\to Y$ in $D_A$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t(Y)=D'$, $s(\phi)=f$, and $t(\phi)=g$ will be drawn as
+\begin{equation}\label{Eq:Double2Cell}
+\begin{tikzcd}
+	C \rar[tick][domA]{X} \dar[swap]{f} 
+		& C' \dar{g} \\
+	D \rar[tick][codA,swap]{Y} 
+		& D'
+	 \twocellA{\phi}
+\end{tikzcd}
+\end{equation}
+where the tick-mark on the horizontal 1-cells serves as a further reminder that the horizontal 1-cells are of a different nature than the vertical 1-cells. The composition in $D_O$ provides a vertical composition of vertical 1-cells and 2-cells, while the composition functor $\circ\colon D_A\times_{D_O}D_A\to D_A$ provides a horizontal composition of horizontal 1-cells and 2-cells.
+
+\begin{example}
+	For any 2-category $\mathcal{D}$, there is an associated double category $\mathbb{S}\mathrm{q}(\mathcal{D})$ of \emph{squares} in $\mathcal{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\mathcal{D}$, and 2-cells
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{j} \dar[swap]{f} 
+			& C' \dar{g} \\
+		D \rar[tick][codA,swap]{k} 
+			& D'
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	are simply 2-cells $\phi\colon gj\Rightarrow kf$ in $\mathcal{D}$.
+\end{example}
+
+\begin{example}
+	For any double category $\mathbb{D}$, there is an associated 2-category $\mathcal{V}\mathrm{ert}(\mathbb{D})$, called the \emph{vertical 2-category} of $\mathbb{D}$. The objects and 1-cells of $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are the objects and vertical 1-cells of $\mathbb{D}$, while 2-cells $\phi\colon g\Rightarrow f$ in $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are 2-cells in $\mathbb{D}$ of the form
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{\id_C} \dar[swap]{f} 
+			& C \dar{g} \\
+		D \rar[tick][codA,swap]{\id_D} 
+			& D
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	Notice that $\mathcal{V}\mathrm{ert}(\mathbb{S}\mathrm{q}(\mathcal{D}))$ is isomorphic to $\mathcal{D}$.
+\end{example}
+
+We will define a \emph{monad} in a double category $\mathbb{D}$ to be a tuple $(C,T,\eta,\mu)$, in which $C$ is an object, $T\colon C\to C$ is a horizontal 1-cell, and $\eta$ and $\mu$ are 2-cells
+\[
+\begin{tikzcd}
+	C \rar[tick][domA]{\id_C} \dar[equal]
+		& C \dar[equal] \\
+	C \rar[tick][codA,swap]{T}
+		& C
+	\twocellA{\eta}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+	C \rar[tick][]{T} \dar[equal]
+		& |[alias=domA]| C \rar[tick][]{T}
+		& C \dar[equal] \\
+	C \ar[tick]{rr}[codA,swap]{T}
+		&& C
+	\twocellA{\mu}
+\end{tikzcd}
+\]
+satisfying the usual unit and associativity conditions.
+
+Given two monads $(C,T,\eta,\mu)$ and $(D,S,\eta',\mu')$, a monad morphism from $(C,T)$ to $(D,S)$ consists of a pair $(f,\phi)$, where $f$ is a vertical 1-cell $C\to D$ and $\phi$ is a 2-cell
+\[
+\begin{tikzcd}
+	C \rar[tick][domA]{T} \dar[][swap]{f}
+		& C \dar{f} \\
+	D \rar[tick][codA,swap]{S}
+		& D
+	\twocellA{\phi}
+\end{tikzcd}
+\]
+which commutes with the unit and multiplication 2-cells in the sense of the two equations
+\begin{equation}\label{Eq:MonoidMorphismUnit}
+\begin{tikzcd}
+	C \rar[tick][domA]{\id_C} \dar[equal]
+		& C \dar[equal] \\
+	C \rar[tick][codA,domB]{T} \dar[][swap]{f}
+		& C \dar{f} \\
+	D \rar[tick][codB,swap]{S}
+		& D
+	\twocellA{\eta}
+	\twocellB{\phi}
+\end{tikzcd}
+=
+\begin{tikzcd}
+	C \rar[tick][domA]{\id_C} \dar[][swap]{f}
+		& C \dar{f} \\
+	D \rar[tick][codA,domB]{\id_D} \dar[equal]
+		& D \dar[equal] \\
+	D \rar[tick][swap,codB]{S}
+		& D
+	\twocellA{\id_f}
+	\twocellB{\eta'}
+\end{tikzcd}
+\end{equation}
+and
+\begin{equation}\label{Eq:MonoidMorphismMult}
+\begin{tikzcd}
+	C \rar[tick][]{T} \dar[equal]
+		& |[alias=domA]| C \rar[tick][]{T}
+		& C \dar[equal] \\
+	C \ar[tick]{rr}[codA,domB]{T} \dar[swap]{f}
+		&& C \dar{f} \\
+	D \ar[tick]{rr}[codB,swap]{S}
+		&& D
+	\twocellA{\mu}
+	\twocellB{\phi} 
+\end{tikzcd}
+=
+\begin{tikzcd}
+	C \rar[tick][domA]{T} \dar[swap]{f}
+		& C \rar[tick][domB]{T} \dar{f}
+		& C \dar{f} \\
+	D \rar[tick][codA]{S} \dar[equal]
+		& |[alias=domC]| D \rar[tick][codB]{S}
+		& D \dar[equal] \\
+	D \ar[tick]{rr}[codC,swap]{S}
+		&& D
+	\twocellA{\phi}
+	\twocellB{\phi}
+	\twocellC{\mu'}
+\end{tikzcd}
+\end{equation}
+
+\begin{definition}
+	Given any double category $\mathbb{D}$, we will write $\mathrm{Mon}(\mathbb{D})$ for the category of monads in $\mathbb{D}$, consisting of monads and monad morphisms as defined above.
+\end{definition}
+
+\begin{proposition}
+	A monad in $\mathbb{S}\mathrm{q}(\mathcal{D})$ is a monad in the 2-category $\mathcal{D}$ in the usual sense. A monad morphism in $\mathbb{S}\mathrm{q}(\mathcal{D})$ is what is known as a colax morphism of monads in $\mathbb{D}$. A monad morphism in $\mathbb{S}\mathrm{q}(\mathcal{D}^{\text{co}})$, where we have reversed the direction of all 2-cells, is a lax morphism of monads.
+\end{proposition}
+\begin{proof}
+	Immediate from the definitions. Readers unfamiliar with (co)lax morphisms of monads can take this as the definition.
+\end{proof}
+
