@@ -72,6 +72,145 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 	in $\mathbb{D}$.
 \end{definition}
 
+\section{Arrow Objects}\label{Sec:ArrowObjects}
+
+In the following we will need an extension of the universal property \ref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
+
+Let $\mathbb{D}$ be a double category. Given an object $C$ of $\mathbb{D}$, the \emph{arrow object} $C^2$, if it exists, is an object together with a diagram
+\[
+\begin{tikzcd}[bend angle=30]
+	C^2 \rar[bend left,tick][domA]{\dom}
+		\rar[bend right,tick][codA,swap]{\cod}
+	& C,
+	\twocellA{\kappa}
+\end{tikzcd}
+\]
+such that any 2-cell
+\[
+\begin{tikzcd}[bend angle=30]
+	A \rar[bend left,tick][domA]{d_1}
+		\rar[bend right,tick][codA,swap]{d_0}
+	& C
+	\twocellA{\alpha}
+\end{tikzcd}
+\]
+uniquely factors through $\kappa$, as
+\[
+\begin{tikzcd}[bend angle=30]
+	A \rar{\hat{\alpha}} 
+		& C^2 \rar[bend left,tick][domA]{\dom}
+			\rar[bend right,tick][codA,swap]{\cod}
+		& C.
+		\twocellA{\kappa}
+\end{tikzcd}
+\]
+
+Given a vertical 1-cell $F\colon C\to D$ in $\mathbb{D}$, the \emph{lift to arrow objects} $\hat{F}\colon C^2\to D^2$, if it exists, is a vertical 1-cell $\hat{F}\colon C^2\to D^2$ together with 2-cells
+\[
+\begin{tikzcd}
+	C^2 \rar[tick][domA]{\dom} \dar[swap]{\hat{F}} & C \dar{F} \\
+	D^2 \rar[tick][codA,swap]{\dom} & D
+	\twocellA{\gamma_1}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+	C^2 \rar[tick][domA]{\cod} \dar[swap]{\hat{F}} & C \dar{F} \\
+	D^2 \rar[tick][codA,swap]{\cod} & D
+	\twocellA{\gamma_0}
+\end{tikzcd}
+\]
+satisfying
+\[
+\begin{tikzcd}[bend angle=50]
+	C^2 \rar[tick][domA]{\dom} 
+		\dar[swap]{\hat{F}} 
+	& C \dar{F} \\
+	D^2 \rar[tick][codA,domB]{\dom}	
+		\rar[bend right][codB,swap]{\cod}
+	& D
+	\twocellA{\gamma_1}
+	\twocellB{\kappa}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=50]
+	C^2 \rar[bend left,tick][domA]{\dom} 
+		\rar[tick][codA,domB,swap]{\cod} 
+		\dar[swap]{\hat{F}} 
+	& C \dar{F} \\
+	D^2 \rar[tick][codB,swap]{\cod} & D,
+	\twocellA{\kappa}
+	\twocellB{\gamma_0}
+\end{tikzcd}
+\]
+such that for any 2-cells
+\[
+\begin{tikzcd}[bend angle=30]
+	A \rar[bend left,tick][domA]{d_1}
+		\rar[bend right,tick][codA,swap]{d_0}
+	& C
+	\twocellA{\alpha}
+\end{tikzcd}
+\quad
+\begin{tikzcd}[bend angle=30]
+	B \rar[bend left,tick][domA]{d'_1}
+		\rar[bend right,tick][codA,swap]{d'_0}
+	& D
+	\twocellA{\alpha'}
+\end{tikzcd}
+\]
+and
+\[
+\begin{tikzcd}
+	A \rar[tick][domA]{d_1} \dar[swap]{G} & C \dar{F} \\
+	B \rar[tick][codA,swap]{d'_1} & D
+	\twocellA{\lambda_1}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+	A \rar[tick][domA]{d_0} \dar[swap]{G} & C \dar{F} \\
+	B \rar[tick][codA,swap]{d'_0} & D
+	\twocellA{\lambda_0}
+\end{tikzcd}
+\]
+satisfying
+\[
+\begin{tikzcd}[bend angle=50]
+	A \rar[tick][domA]{d_1} 
+		\dar[swap]{G} 
+	& C \dar{F} \\
+	B \rar[tick][codA,domB]{d'_1}	
+		\rar[bend right,tick][codB,swap]{d'_0}
+	& D
+	\twocellA{\lambda_1}
+	\twocellB{\alpha'}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=50]
+	A \rar[bend left,tick][domA]{d_1} 
+		\rar[tick][codA,domB,swap]{d_0} 
+		\dar[swap]{G} 
+	& C \dar{F} \\
+	B \rar[tick][codB,swap]{d'_0} & D
+	\twocellA{\alpha}
+	\twocellB{\lambda_0}
+\end{tikzcd}
+\]
+there is a unique 2-cell
+\[
+\begin{tikzcd}
+	A \rar[tick][domA]{\hat{\alpha}} \dar[swap]{G} & C^2 \dar{\hat{F}} \\
+	B \rar[tick][codA,swap]{\hat{\alpha}'} & D^2
+	\twocellA{\theta}
+\end{tikzcd}
+\]
+such that the horizontal composition of $\theta$ with $\gamma_0$ and $\gamma_1$ is respectively equal to $\lambda_0$ and $\lambda_1$.
+
+\begin{remark}
+	Notice that if we take $F$ and $\hat{F}$ to both be the identity, then the second part of this universal property is exactly the second part of Lemma \ref{Lem:ArrowObject}, applied to the horizontal 2-category of $\mathbb{D}$. It is in this sense that this universal property generalizes that for arrow objects in a 2-category.
+\end{remark}
+
+\section{Monads}
+
 We will define a \emph{monad} in a double category $\mathbb{D}$ to be a tuple $(C,T,\eta,\mu)$, in which $C$ is an object, $T\colon C\to C$ is a horizontal 1-cell, and $\eta$ and $\mu$ are 2-cells
 \[
 \begin{tikzcd}
