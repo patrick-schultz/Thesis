@@ -12,7 +12,7 @@ A 2-fold double category $\mathbb{D}$ is a structure which has two different und
 
 Breaking this down, we have a category $\cat{D}_1$, a functor $p\colon\cat{D}_1\to\cat{D}_0$, two functors $\otimes, \odot\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to\cat{D}_1$ commuting with $p$, and two functors $I,\perp\colon\cat{D}_0\to\cat{D}_1$ which are sections of $p$, such that $\otimes$, $\odot$, $I$, and $\perp$ satisfy all the axioms of a 2-fold monoidal category. In particular, each fiber of $p$ has a 2-fold monoidal structure.
 
-This definition also implies that $\mathbb{D}$ has two underlying double categories, both with vertical category $\cat{D}_0$ and with source and target functors both equal to $p\colon\cat{D}_1\to\cat{D}_0$. The double category $\mathbb{D}_{\otimes}$ has the rest of the double category structure given by the functors $I$ and $\otimes$, while the double category $\mathbb{D}_{\odot}$ uses the functors $\perp$ and $\odot$.
+This definition also implies that $\mathbb{D}$ has two underlying double categories, both with vertical category $\cat{D}_0$ and with source and target functors both equal to $p\colon\cat{D}_1\to\cat{D}_0$, as in Remark \ref{Rk:DoubleCatAsMonoid}. The double category $\mathbb{D}_{\otimes}$ has the rest of the double category structure given by the functors $I$ and $\otimes$, while the double category $\mathbb{D}_{\odot}$ uses the functors $\perp$ and $\odot$.
 
 Using this double category interpretation, we will find it convenient to think of a 2-fold double category as a double category with two different but interacting horizontal compositions. Notice that from this perspective, all horizontal 1-cells are endomorphisms.
 
@@ -111,3 +111,169 @@ and similarly for $c$ and $j$, and for any four 2-cells $\theta_1,\dots,\theta_4
 \begin{definition}
 	A monad in a 2-fold double category $\mathbb{D}$ is a monad in $\mathbb{D}_{\otimes}$; a comonad in $\mathbb{D}$ is a comonad in $\mathbb{D}_{\odot}$. Furthermore, we define the categories $\mathrm{Mon}(\mathbb{D})=\mathrm{Mon}(\mathbb{D}_{\otimes})$ and $\mathrm{Comon}(\mathbb{D})=\mathrm{Comon}(\mathbb{D}_{\odot})$.
 \end{definition}
+
+So a monad $X$ and a comonad $Y$ in $\mathbb{D}$ are given by 2-cells
+\[
+\begin{tikzcd}
+	C \rar[tick][domA]{I_C} \dar[equal]
+		& C \dar[equal] \\
+	C \rar[tick][codA,swap]{X} 
+		& C
+	\twocellA{\eta}
+\end{tikzcd} \qquad
+\begin{tikzcd}
+	C \rar[tick][domA]{X\otimes X} \dar[equal]
+		& C \dar[equal] \\
+	C \rar[tick][codA,swap]{X} 
+		& C
+	\twocellA{\mu} 
+\end{tikzcd} \qquad
+\begin{tikzcd}
+	C \rar[tick][domA]{X} \dar[equal]  
+		& C \dar[equal] \\
+	C \rar[tick][codA,swap]{\perp_C} 
+		& C
+	\twocellA{\epsilon}
+\end{tikzcd} \qquad
+\begin{tikzcd}
+	C \rar[tick][domA]{X} \dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codA,swap]{X\odot X} 
+		& C.
+	\twocellA{\delta} 
+\end{tikzcd}
+\]
+
+The categories $\mathrm{Mon}(\mathbb{D})$ and $\mathrm{Comon}(\mathbb{D})$ come naturally equipped with functors to $\mathcal{D}_0$, defined on objects and morphisms simply by applying $p$ to the underlying 1-cells and 2-cells respectively. It turns out that the interaction between the $\otimes$ and $\odot$ compositions in the 2-fold double category structure is precisely what is needed to lift $\odot$ to $\mathrm{Mon}(\mathbb{D})$ and to lift $\otimes$ to $\mathrm{Comon}(\mathbb{D})$. In this way, we can define double categories $\mathbb{M}\mathrm{on}(\mathbb{D})$ and $\mathbb{C}\mathrm{omon}(\mathbb{D})$, both having $\mathcal{D}_0$ as vertical category.
+
+These lifted compositions are defined as follows: Given two monads $(C,X,\eta,\mu)$ and $(C,Y,\eta',\mu')$ in $\mathbb{D}$, the horizontal composition 
+\[
+\begin{tikzcd}[column sep=large]
+	C \rar[tick]{(X,\eta,\mu)} & C \rar[tick]{(Y,\eta',\mu')} & C
+\end{tikzcd}
+\]
+is the monoid with underlying horizontal 1-cell $X\odot Y$ and unit and multiplication 2-cells
+\[
+\begin{tikzcd}[column sep=7ex]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codA,domB]{I_C\odot I_C} 
+			\dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot Y}
+		& C
+	\twocellA{c}
+	\twocellB{\eta\odot\eta'}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=14ex]
+	C \rar[tick][domA]{(X\odot Y)\otimes(X\odot Y)} 
+			\dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codA,domB]{(X\otimes X)\odot(Y\otimes Y)} 
+			\dar[equal] 
+		& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot Y}
+		& C.
+	\twocellA{z}
+	\twocellB{\mu\odot\mu'}
+\end{tikzcd}
+\]
+Similarly, the horizontal composition of two 2-cells in $\mathbb{M}\mathrm{on}(\mathbb{D})$ is the $\odot$ product of the underlying 2-cells in $\mathbb{D}$. The fact that this commutes with the unit and multiplication defined above follows from the naturality of $c$ and $z$.
+
+In this same way, we can define the horizontal composition of two 1-cells $(X,\epsilon,\delta)$ and $(Y,\epsilon',\delta')$ in $\mathbb{C}\mathrm{omon}(\mathbb{D})$ to be a comonad with underlying horizontal 1-cell $X\otimes Y$.
+
+This allows us to define (ordinary) categories $\mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D}))$ and $\mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))$. Furthermore, these two categories are equivalent, leading to the next definition.
+
+\begin{definition}\label{Def:Bimonad}
+	A \emph{bimonad} in a 2-fold double category $\mathbb{D}$ is a monad in $\mathbb{C}\mathrm{omon}(\mathbb{D})$, or equivalently a comonad in $\mathbb{M}\mathrm{on}(\mathbb{D})$. We can define a category of bimonads in $\mathbb{D}$ as
+	\[
+		\mathrm{Bimon}(\mathbb{D}) := \mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D})) \simeq \mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))
+	\]
+\end{definition}
+
+Concretely, a bimonad in $\mathbb{D}$ is a tuple $(X,\eta,\mu,\epsilon,\delta)$ where $X$ is a horizontal 1-cell, $(X,\eta,\mu)$ is a monad and $(X,\epsilon,\delta)$ is a comonad as above, such that four equations hold:
+\begin{equation}\label{Eq:Bimonoid}
+\begin{gathered}
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot X} \& C
+	\twocellA{\eta}
+	\twocellB{\delta}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{I_C\odot I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot X} \& C
+	\twocellA{c}
+	\twocellB{\eta\odot\eta}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{X\otimes X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{\perp_C} \& C
+	\twocellA{\mu}
+	\twocellB{\epsilon}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{X\otimes X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{\perp_C\otimes\perp_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{\perp_C} \& C
+	\twocellA{\epsilon\otimes\epsilon}
+	\twocellB{m}
+\end{tikzcd}
+\\
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{\perp_C} \& C
+	\twocellA{\eta}
+	\twocellB{\epsilon}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{I_C} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,swap]{\perp_C} \& C
+	\twocellA{j}
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&,column sep=14ex]
+	C \rar[tick][domA]{X\otimes X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{(X\odot X)\otimes(X\odot X)} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,domC]{(X\otimes X)\odot(X\otimes X)} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codC,swap]{X\odot X} \& C
+	\twocellA{\delta\otimes\delta}
+	\twocellB{z}
+	\twocellC{\mu\odot\mu}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&]
+	C \rar[tick][domA]{X\otimes X} \dar[equal]
+		\& C \dar[equal] \\
+	C \rar[tick][codA,domB]{X} \dar[equal] 
+		\& C \dar[equal] \\
+	C \rar[tick][codB,swap]{X\odot X} \& C
+	\twocellA{\mu}
+	\twocellB{\delta}
+\end{tikzcd}
+\end{gathered}
+\end{equation}
+A bimonoid morphism is simply a 2-cell which is simultaineously a monoid morphism and a comonoid morphism.

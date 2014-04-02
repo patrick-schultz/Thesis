@@ -26,6 +26,10 @@ A morphism $\phi\colon X\to Y$ in $\cat{D}_1$, where $s(X)=C$, $t(X)=C'$, $s(Y)=
 \end{equation}
 where the tick-mark on the horizontal 1-cells serves as a further reminder that the horizontal 1-cells are of a different nature than the vertical 1-cells. The composition in $\cat{D}_0$ provides a vertical composition of vertical 1-cells and 2-cells, while the composition functor $\circ\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to \cat{D}_1$ provides a horizontal composition of horizontal 1-cells and 2-cells.
 
+\begin{remark}\label{Rk:DoubleCatAsMonoid}
+	A monoid object in the category $\mathrm{Cat}_{\mathcal{D}_0}$ of categories over $\mathcal{D}_0$ is equivalently a double category where the source and target functors $s,t\colon \cat{D}_1\to \cat{D}_0$ are equal. Conversely, any double category $\mathbb{D}$ in which all horizontal 1-cells have equal domain and codomain, and all 2-cells have equal vertical 1-cells as domain and codomain, is equivalently a monoid object in $\mathrm{Cat}_{\mathrm{Vert}(\mathbb{D})}$. We will alternate between these two descriptions as convenient.
+\end{remark}
+
 \begin{example}
 	For any 2-category $\mathcal{D}$, there is an associated double category $\mathbb{S}\mathrm{q}(\mathcal{D})$ of \emph{squares} in $\mathcal{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\mathcal{D}$, and 2-cells
 	\[
