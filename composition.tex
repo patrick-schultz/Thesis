@@ -1,0 +1,38 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Composition of $\mathbb{L}$-coalgebras}
+
+For this section, we will continue to let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$.
+
+In an algebraic weak factorization system, the categories $\mathbb{L}-\Coalg$ and $\mathbb{R}-\Alg$ respectively play the roles of the left and right classes of morphisms of the weak factorization system. In this section, we will prove a lemma characterizing morphisms into the object $\mathbb{L}-\Coalg$ which applies to AWFS in $\mathbb{D}$, which will be used in the next section.
+
+First, recall from \cite{street:ftm} the following proposition.
+
+\begin{proposition}\label{Prop:EMObject}
+	Let $C$ be a category, and $\mathbb{L}=(L,\epsilon,\delta)$ be a comonad on $C$. The category of coalgebras $\mathbb{L}-\Coalg$ has a universal property as follows:
+	\begin{itemize}
+	 	\item There is a forgetful functor $U\colon \mathbb{L}-\Coalg \to C$ and a natural transformtion $\alpha\colon U \Rightarrow LU$, satisfying $\epsilon U\circ\alpha = \id_U$ and $\delta U \circ \alpha = L\alpha\circ\alpha$.
+	 	\item $(U,\alpha)$ is universal among such pairs satisfying such equations. Given another such pair $(F,\beta)$, where $F\colon X\to C$, there exists a unique functor $\hat{F}\colon X\to \mathbb{L}-\Coalg$ such that $U\hat{F}=F$ and $\alpha\hat{F}=\beta$.
+	 \end{itemize} 
+\end{proposition}
+
+For the rest of this section, assume that $\mathcal{D}$ \emph{has EM-objects for comonads}, i.e. for every comonad $\mathbb{L}$ in $\mathcal{D}$ there is an object $\mathbb{L}-\Coalg$ satisfying the universal property above.
+
+\begin{lemma}
+	Let $(E,\eta,\epsilon,\delta)$ be a comonad in $\FF{D}$ on an object $C$. A morphism $\hat{F}\colon X\to \mathbb{L}-\Coalg$ in $\mathcal{D}$ is uniquely determined by
+	\begin{compactitem}
+		\item Morphisms $F_d,F_c\colon X\to C$;
+		\item A 2-cell $F\colon F_d\Rightarrow F_c$ --- let $\vec{F}\colon X\to C^2$ be the unique morphism determined by $F$;
+		\item A 2-cell $\beta\colon F_c\Rightarrow E\vec{F}$;
+	\end{compactitem}
+	satisfying
+	\begin{compactenum}
+		\item $\beta\circ F=\id_{F_d}$ --- let $\vec{\beta}\colon\vec{F}\Rightarrow L\vec{F}$ be the unique 2-cell such that $\dom\vec{\beta}=\id_{F_d}$ and $\cod\vec{\beta}=\beta$;
+		\item $\epsilon\vec{F}\circ\beta = \id_{F_c}$;
+		\item $\delta\vec{F}\circ\beta = E\vec{\beta}\circ\beta$;
+	\end{compactenum}
+	such that $\dom U\hat{F}=F_d$, $\cod U\hat{F}=F_c$, and $\alpha\hat{F}=\vec{\beta}$.
+\end{lemma}
+\begin{proof}
+	Proposition~\ref{Prop:EMObject} says that $\hat{F}$ is uniquely determined by $\vec{F}$ and $\vec{\beta}$. The equation $\vec{\epsilon}\circ\vec{\beta}=\id_{\vec{F}}$ implies that $\dom\vec{F}=\id_{F_d}$. With that observation, the rest of the equations follow immediately from the universal property of $C^2$ and the equations $\vec{\epsilon}\circ\vec{\beta}=\id_{\vec{F}}$ and $\vec{\delta}\vec{F}\circ\vec{\beta} = L\vec{\beta}\circ\vec{\beta}$ from Proposition~\ref{Prop:EMObject}.
+\end{proof}

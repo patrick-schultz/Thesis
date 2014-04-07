@@ -334,6 +334,10 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 	\end{align*}
 \end{itemize}
 
+\begin{example}
+	Functorial factorizations in the double category $\mathbb{D}=\mathbb{S}\mathrm{q}(\mathcal{C}\mathrm{at})$ of squares in the 2-category of categories are precisely functorial factorizations as defined in Section \ref{Sec:FuncFact}.
+\end{example}
+
 It is straightforward to check that $\otimes$ and $\odot$ are each associative and unital. It takes more work to provide the compatibility between $\otimes$ and $\odot$, which is the content of the proof of the next proposition.
 
 \begin{proposition}
@@ -814,4 +818,39 @@ A quick look at the definitions of the two horizontal compositions is now enough
 	(E_1\odot E_2)^{\bullet} = E_1^{\bullet}\otimes E_2^{\bullet}
 \]
 
-Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FF{D}$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. 
+Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FF{D}$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
+
+\begin{lemma}
+	There is a double functor $\FF{D}_{\otimes}\to\mathbb{D}$ whose behavior on 2-cells is
+	\[
+	\begin{tikzcd}[column sep=large]
+		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
+		D \rar[tick][codA,swap]{(E_2,\eta_2,\epsilon_2)} & D
+		\twocellA{\theta}
+	\end{tikzcd}
+	\quad \mapsto \quad
+	\begin{tikzcd}
+		C^2 \rar[tick][domA]{R_1} \dar[swap]{\hat{F}}
+			& C^2 \dar{\hat{F}} \\
+		D^2 \rar[tick][codA,swap]{R_2}
+			& D^2
+		\twocellA{\theta^R}
+	\end{tikzcd}
+	\]
+	and a double functor $\FF{D}_{\odot}\to\mathbb{D}$ whose behavior on 2-cells is
+	\[
+	\begin{tikzcd}[column sep=large]
+		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
+		D \rar[tick][codA,swap]{(E_2,\eta_2,\epsilon_2)} & D
+		\twocellA{\theta}
+	\end{tikzcd}
+	\quad \mapsto \quad
+	\begin{tikzcd}
+		C^2 \rar[tick][domA]{L_1} \dar[swap]{\hat{F}}
+			& C^2 \dar{\hat{F}} \\
+		D^2 \rar[tick][codA,swap]{L_2}
+			& D^2
+		\twocellA{\theta^L}
+	\end{tikzcd}
+	\]
+\end{lemma}

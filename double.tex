@@ -31,7 +31,7 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 \end{remark}
 
 \begin{example}
-	For any 2-category $\mathcal{D}$, there is an associated double category $\mathbb{S}\mathrm{q}(\mathcal{D})$ of \emph{squares} in $\mathcal{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\mathcal{D}$, and 2-cells
+	For any 2-category $\mathcal{D}$, there is an associated double category $\Sq(\mathcal{D})$ of \emph{squares} in $\mathcal{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\mathcal{D}$, and 2-cells
 	\[
 	\begin{tikzcd}
 		C \rar[tick][domA]{j} \dar[swap]{f} 
@@ -296,13 +296,19 @@ and
 \end{equation}
 
 \begin{definition}
-	Given any double category $\mathbb{D}$, we will write $\mathrm{Mon}(\mathbb{D})$ for the category of monads in $\mathbb{D}$, consisting of monads and monad morphisms as defined above. The category $\mathrm{Comon}(\mathbb{D})$ of comonads in $\mathbb{D}$ is defined to be the category $\mathrm{Mon}(\mathbb{D}^{\text{op}})$ of monads in $\mathbb{D}^{\text{op}}$.
+	Given any double category $\mathbb{D}$, we will write $\Mon(\mathbb{D})$ for the category of monads in $\mathbb{D}$, consisting of monads and monad morphisms as defined above. The category $\Comon(\mathbb{D})$ of comonads in $\mathbb{D}$ is defined to be the category $\Mon(\mathbb{D}^{\text{op}})$ of monads in $\mathbb{D}^{\text{op}}$.
 \end{definition}
 
 \begin{proposition}
-	A monad in $\mathbb{S}\mathrm{q}(\mathcal{D})$ is a monad in the 2-category $\mathcal{D}$ in the usual sense. A monad morphism in $\mathbb{S}\mathrm{q}(\mathcal{D})$ is what is known as a colax morphism of monads in $\mathbb{D}$. A monad morphism in $\mathbb{S}\mathrm{q}(\mathcal{D}^{\text{co}})$, where we have reversed the direction of all 2-cells, is a lax morphism of monads.
+	The categories of (co)monads and (co)lax morphisms in a 2-category $\mathcal{D}$ can be given in terms of (co)monads in the double category of squares as follows:
+	\begin{align*}
+		\Mon_{\text{colax}}(\mathcal{D}) &= \Mon(\Sq(\mathcal{D})) \\
+		\Comon_{\text{colax}}(\mathcal{D}) &= \Comon(\Sq(\mathcal{D})) \\
+		\Mon_{\text{lax}}(\mathcal{D}) &= \Mon(\Sq(\mathcal{D}^{\text{op}}))^{\text{op}} \\
+		\Comon_{\text{lax}}(\mathcal{D}) &= \Comon(\Sq(\mathcal{D}^{\text{op}}))^{\text{op}}
+	\end{align*}
+	where by $\mathcal{D}^{\text{op}}$ we mean the 2-category obtained by reversing the direction of all 1-cells (but not 2-cells).
 \end{proposition}
 \begin{proof}
 	Immediate from the definitions. Readers unfamiliar with (co)lax morphisms of monads can take this as the definition.
 \end{proof}
-

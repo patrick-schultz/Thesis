@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[sc]{mathpazo}
 \usepackage{MnSymbol}
+\usepackage{paralist}
 \usepackage{tikz, tikz-cd}
 \usetikzlibrary{decorations.markings}
 \linespread{1.05}
@@ -38,6 +39,11 @@
 \newcommand{\cat}[1]{\mathcal{#1}}
 \newcommand{\btwo}{\mathbf{2}}
 \newcommand{\FF}[1]{\mathbb{F}\mathrm{F}(\mathbb{#1})}
+\newcommand{\Mon}{\mathrm{Mon}}
+\newcommand{\Comon}{\mathrm{Comon}}
+\newcommand{\Sq}{\mathbb{S}\mathrm{q}}
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Coalg}{\mathrm{Coalg}}
 
 \newcommand{\twocell}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
 \newcommand{\twocellalt}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{#3}}
