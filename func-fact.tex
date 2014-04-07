@@ -821,7 +821,7 @@ A quick look at the definitions of the two horizontal compositions is now enough
 Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FF{D}$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
 
 \begin{lemma}
-	There is a double functor $\FF{D}_{\otimes}\to\mathbb{D}$ whose behavior on 2-cells is
+	There is a double functor $R\colon\FF{D}_{\otimes}\to\mathbb{D}$ whose behavior on 2-cells is
 	\[
 	\begin{tikzcd}[column sep=large]
 		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
@@ -837,7 +837,7 @@ Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic actio
 		\twocellA{\theta^R}
 	\end{tikzcd}
 	\]
-	and a double functor $\FF{D}_{\odot}\to\mathbb{D}$ whose behavior on 2-cells is
+	and a double functor $L\colon\FF{D}_{\odot}\to\mathbb{D}$ whose behavior on 2-cells is
 	\[
 	\begin{tikzcd}[column sep=large]
 		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
@@ -854,3 +854,6 @@ Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic actio
 	\end{tikzcd}
 	\]
 \end{lemma}
+\begin{corollary}
+	$R$ and $L$ respectively induce functors $\Mon(\FF{D})\to\Mon(\mathbb{D})$ and $\Comon(\FF{D})\to\Comon(\mathbb{D})$.
+\end{corollary}
