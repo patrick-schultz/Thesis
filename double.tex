@@ -44,6 +44,36 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 	are simply 2-cells $\phi\colon gj\Rightarrow kf$ in $\mathcal{D}$.
 \end{example}
 
+\begin{example}\label{Ex:Span}
+	Given any category $M$, there is a double category $\Span(M)$ of \emph{spans} in $M$. The vertical category of $\Span(M)$ is just $M$, while horizontal 1-cells
+	\[
+	\begin{tikzcd}
+		C \rar[tick][]{X} & D
+	\end{tikzcd}
+	\]
+	are given by spans
+	\[
+	\begin{tikzcd}
+		C & X \lar[swap]{j} \rar{k} & D
+	\end{tikzcd}
+	\]
+	in $M$, and 2-cells
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{X} \dar[swap]{f} & D \dar{g} \\
+		C' \rar[tick][swap,codA]{Y} & D'
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	are given by commutative diagrams
+	\[
+	\begin{tikzcd}
+		C \dar[swap]{f} & X \lar[swap]{j} \rar{k} \dar{\theta} & D \dar{g} \\
+		C' & Y \lar{j'} \rar[swap]{k'} & D'
+	\end{tikzcd}
+	\]
+\end{example}
+
 \begin{definition}
 	For any double category $\mathbb{D}$, there is an associated 2-category $\mathcal{V}\mathrm{ert}(\mathbb{D})$, called the \emph{vertical 2-category} of $\mathbb{D}$. The objects and 1-cells of $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are the objects and vertical 1-cells of $\mathbb{D}$, while 2-cells $\phi\colon g\Rightarrow f$ in $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are 2-cells in $\mathbb{D}$ of the form
 	\[
