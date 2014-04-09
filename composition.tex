@@ -24,6 +24,54 @@ First, recall from \cite{street:ftm} the following proposition.
 
 For the rest of this section, assume that $\mathcal{D}$ \emph{has EM-objects for comonads}, i.e. for every comonad $\mathbb{L}$ in $\mathcal{D}$ there is an object $\LCoalg$ satisfying the universal property above.
 
+The goal of this section will be to prove the following theorem:
+
+\begin{theorem}
+	There is a lax double-functor
+	\[
+		\Coalg\colon \DComon(\mathbb{F}\mathrm{F}(\Sq(\mathcal{D}))) \to \Span(\mathcal{D}_0)
+	\] 
+	where $\mathcal{D}_0$ is the ordinary category underlying the (strict) 2-category $\mathcal{D}$, which is the identity on the vertical categories, and which takes a comonad $(E,\eta,\epsilon,\delta)$ in $\mathbb{F}\mathrm{F}(\Sq(\mathcal{D}))$ to the span
+	\[
+	\begin{tikzcd}[column sep=large]
+		C & \LCoalg \lar[swap]{\dom U} \rar{\cod U} & C.
+	\end{tikzcd}
+	\]
+\end{theorem}
+
+The corollary of most importance to us is
+
+\begin{corollary}
+	For any awfs $(E,\eta,\mu,\epsilon,\delta)$ on an object $C$ in $\mathcal{D}$, the multiplication $\mu$ induces a composition functor on $\LCoalg$, and the functor between EM-objects induced by any colax morphism of awfs preserves this composition.
+\end{corollary}
+\begin{proof}
+	Any awfs $(E,\eta,\mu,\epsilon,\delta)$ has an underlying object in $\DComon(\mathbb{F}\mathrm{F}(\Sq(\mathcal{D})))$, by simply forgetting $\mu$. The lax double-functor $\mathrm{Coalg}$ takes this to a span
+	\[
+	\begin{tikzcd}[column sep=large]
+		C & \LCoalg \lar[swap]{\dom U} \rar{\cod U} & C.
+	\end{tikzcd}
+	\]
+	The multiplication $\mu$ provides this object in $\DComon(\mathbb{F}\mathrm{F}(\Sq(\mathcal{D})))$ with a monad structure, and lax double-functors preserve monads, so $\mu$ induces a monad structure on this span. A multiplication on this span is a morphism $m$:
+	\[
+	\begin{tikzcd}[row sep=small,sloped,pos=.1]
+		{} & X \dlar[swap]{\dom UP_1} \drar{\cod UP_2} \ar{dd}[sloped=false,pos=.5]{m} & \\
+		C && C \\
+		& \LCoalg \ular{\dom U} \urar[swap]{\cod U}
+	\end{tikzcd}
+	\]
+	where $X$ is the pullback in the composite span
+	\[
+	\begin{tikzcd}[row sep=small]
+		{} && X \dlar[swap]{P_1} \drar{P_2} && \\
+		& \LCoalg \dlar[swap,sloped,pos=.1]{\dom U} \drar[sloped,pos=.1]{\cod U}
+			&& \LCoalg \dlar[swap,sloped,pos=.1]{\dom U} \drar[sloped,pos=.1]{\cod U} & \\
+		C && C && C.
+	\end{tikzcd}
+	\]
+
+	The morphism $m$ is the composition structure that we want. If $\mathcal{D}=\mathrm{Cat}$ is the 2-category of small categories, then an object $(f,g)$ in $X$ is a pair of morphisms in $C$ equipped with coalgebra structures, such that $\cod f = \dom g$, and $m(f,g)$ is 
+\end{proof}
+
 Now consider a comonad in $\FF{D}$ on an object $C$, i.e. a functorial factorization with half of the awfs structure. We can combine the universal properties of EM-objects and arrow objects into a universal property for $\LCoalg$, where now $\mathbb{L}$ is the comonad in $\mathcal{D}$ arising from the comonad in $\FF{D}$.
 
 \begin{lemma}
@@ -100,3 +148,5 @@ Now consider a comonad in $\FF{D}$ on an object $C$, i.e. a functorial factoriza
 \begin{proof}
 	$U$ is simply the $U$ from proposition~\ref{Prop:EMObject}, while the 2-cell $\alpha$ there is the 2-cell $\vec{\alpha}$ here. The equation $\vec{\epsilon}U\circ\vec{\alpha}=\id_{F}$ implies that $\dom \vec{\alpha}=\id_{\dom U}$. With that observation, the rest of the equations follow immediately from the universal property of $C^2$ and the equations $\epsilon U\circ\alpha = \id_U$ and $\delta U \circ \alpha = L\alpha\circ\alpha$ from Proposition~\ref{Prop:EMObject}.
 \end{proof}
+
+

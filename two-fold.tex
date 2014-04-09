@@ -144,7 +144,7 @@ So a monad $X$ and a comonad $Y$ in $\mathbb{D}$ are given by 2-cells
 \end{tikzcd}
 \]
 
-The categories $\mathrm{Mon}(\mathbb{D})$ and $\mathrm{Comon}(\mathbb{D})$ come naturally equipped with functors to $\mathcal{D}_0$, defined on objects and morphisms simply by applying $p$ to the underlying 1-cells and 2-cells respectively. It turns out that the interaction between the $\otimes$ and $\odot$ compositions in the 2-fold double category structure is precisely what is needed to lift $\odot$ to $\mathrm{Mon}(\mathbb{D})$ and to lift $\otimes$ to $\mathrm{Comon}(\mathbb{D})$. In this way, we can define double categories $\mathbb{M}\mathrm{on}(\mathbb{D})$ and $\mathbb{C}\mathrm{omon}(\mathbb{D})$, both having $\mathcal{D}_0$ as vertical category.
+The categories $\Mon(\mathbb{D})$ and $\Comon(\mathbb{D})$ come naturally equipped with functors to $\mathcal{D}_0$, defined on objects and morphisms simply by applying $p$ to the underlying 1-cells and 2-cells respectively. It turns out that the interaction between the $\otimes$ and $\odot$ compositions in the 2-fold double category structure is precisely what is needed to lift $\odot$ to $\Mon(\mathbb{D})$ and to lift $\otimes$ to $\Comon(\mathbb{D})$. In this way, we can define double categories $\DMon(\mathbb{D})$ and $\DComon(\mathbb{D})$, both having $\mathcal{D}_0$ as vertical category.
 
 These lifted compositions are defined as follows: Given two monads $(C,X,\eta,\mu)$ and $(C,Y,\eta',\mu')$ in $\mathbb{D}$, the horizontal composition 
 \[
@@ -179,16 +179,18 @@ is the monoid with underlying horizontal 1-cell $X\odot Y$ and unit and multipli
 	\twocellB{\mu\odot\mu'}
 \end{tikzcd}
 \]
-Similarly, the horizontal composition of two 2-cells in $\mathbb{M}\mathrm{on}(\mathbb{D})$ is the $\odot$ product of the underlying 2-cells in $\mathbb{D}$. The fact that this commutes with the unit and multiplication defined above follows from the naturality of $c$ and $z$.
+The unit for this composition is $I_C$, given the trivial monad structure with $\eta=\mu=\id_{I_C}$.
 
-In this same way, we can define the horizontal composition of two 1-cells $(X,\epsilon,\delta)$ and $(Y,\epsilon',\delta')$ in $\mathbb{C}\mathrm{omon}(\mathbb{D})$ to be a comonad with underlying horizontal 1-cell $X\otimes Y$.
+Similarly, the horizontal composition of two 2-cells in $\DMon(\mathbb{D})$ is the $\odot$ product of the underlying 2-cells in $\mathbb{D}$. The fact that this commutes with the unit and multiplication defined above follows from the naturality of $c$ and $z$.
 
-This allows us to define (ordinary) categories $\mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D}))$ and $\mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))$. Furthermore, these two categories are equivalent, leading to the next definition.
+In this same way, we can define the horizontal composition of two 1-cells $(X,\epsilon,\delta)$ and $(Y,\epsilon',\delta')$ in $\DComon(\mathbb{D})$ to be a comonad with underlying horizontal 1-cell $X\otimes Y$, with horizontal unit $\perp$ with the trivial comonad structure.
+
+This allows us to define (ordinary) categories $\Mon(\DComon(\mathbb{D}))$ and $\Comon(\DMon(\mathbb{D}))$. Furthermore, these two categories are equivalent, leading to the next definition.
 
 \begin{definition}\label{Def:Bimonad}
-	A \emph{bimonad} in a 2-fold double category $\mathbb{D}$ is a monad in $\mathbb{C}\mathrm{omon}(\mathbb{D})$, or equivalently a comonad in $\mathbb{M}\mathrm{on}(\mathbb{D})$. We can define a category of bimonads in $\mathbb{D}$ as
+	A \emph{bimonad} in a 2-fold double category $\mathbb{D}$ is a monad in $\DComon(\mathbb{D})$, or equivalently a comonad in $\DMon(\mathbb{D})$. We can define a category of bimonads in $\mathbb{D}$ as
 	\[
-		\mathrm{Bimon}(\mathbb{D}) := \mathrm{Mon}(\mathbb{C}\mathrm{omon}(\mathbb{D})) \simeq \mathrm{Comon}(\mathbb{M}\mathrm{on}(\mathbb{D}))
+		\Bimon(\mathbb{D}) := \Mon(\DComon(\mathbb{D})) \simeq \Comon(\DMon(\mathbb{D}))
 	\]
 \end{definition}
 
