@@ -4,6 +4,8 @@
 \usepackage{datetime}
 \usepackage[T1]{fontenc}
 \usepackage[sc]{mathpazo}
+\usepackage{mathrsfs}
+\usepackage{euscript}
 \usepackage{MnSymbol}
 \usepackage{paralist}
 \usepackage{tikz, tikz-cd}
@@ -37,7 +39,10 @@
 
 \newcommand{\prodb}{\mathbin{\Pi}}
 
-\newcommand{\cat}[1]{\mathcal{#1}}
+\newcommand{\cat}[1]{\mathscr{#1}}
+\newcommand{\Cat}[1]{\mathbf{#1}}
+\newcommand{\twocat}[1]{\mathcal{#1}}
+\newcommand{\dblcat}[1]{\mathbb{#1}}
 \newcommand{\btwo}{\mathbf{2}}
 \newcommand{\FF}[1]{\mathbb{F}\mathrm{F}(\mathbb{#1})}
 \newcommand{\Mon}{\mathrm{Mon}}

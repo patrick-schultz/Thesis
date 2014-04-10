@@ -9,12 +9,12 @@ A (strict) double category is a two-dimensional categorical structure, similar t
 We will first give the most concise definition of a double category, which we will then break down into more concrete terms.
 
 \begin{definition}
-	A \emph{double category} is an internal category object in the (large) category of categories.
+	A (strict) \emph{double category} is an internal category object in the (large) category of categories.
 \end{definition}
 
-So a double category $\mathbb{D}$ consists of a category $\cat{D}_0$ and a category $\cat{D}_1$, along with functors $s,t\colon \cat{D}_1\to \cat{D}_0$, $1\colon \cat{D}_0\to \cat{D}_1$, and $\circ\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to \cat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\cat{D}_0$ the 0-cells of $\mathbb{D}$, and the morphisms of $\cat{D}_0$ the vertical 1-cells. Thus $\cat{D}_0$ forms the so-called \emph{vertical category} of $\mathbb{D}$, which we will also write as $\mathrm{Vert}(\mathbb{D})$. We will call the objects of $\cat{D}_1$ the horizontal 1-cells of $\mathbb{D}$, and the morphisms of $\cat{D}_1$ are the 2-cells. 
+So a double category $\dblcat{D}$ consists of a category $\dblcat{D}_0$ and a category $\dblcat{D}_1$, along with functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$, $i\colon \dblcat{D}_0\to \dblcat{D}_1$, and $\otimes\colon \dblcat{D}_1\times_{\dblcat{D}_0}\dblcat{D}_1\to \dblcat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\dblcat{D}_0$ the 0-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_0$ the vertical 1-cells. Thus $\dblcat{D}_0$ forms the so-called \emph{vertical category} of $\dblcat{D}$. We will call the objects of $\dblcat{D}_1$ the horizontal 1-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_1$ are the 2-cells. 
 
-A morphism $\phi\colon X\to Y$ in $\cat{D}_1$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t(Y)=D'$, $s(\phi)=f$, and $t(\phi)=g$ will be drawn as
+A morphism $\phi\colon X\to Y$ in $\dblcat{D}_1$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t(Y)=D'$, $s(\phi)=f$, and $t(\phi)=g$ will be drawn as
 \begin{equation}\label{Eq:Double2Cell}
 \begin{tikzcd}
 	C \rar[tick][domA]{X} \dar[swap]{f} 
@@ -24,14 +24,33 @@ A morphism $\phi\colon X\to Y$ in $\cat{D}_1$, where $s(X)=C$, $t(X)=C'$, $s(Y)=
 	 \twocellA{\phi}
 \end{tikzcd}
 \end{equation}
-where the tick-mark on the horizontal 1-cells serves as a further reminder that the horizontal 1-cells are of a different nature than the vertical 1-cells. The composition in $\cat{D}_0$ provides a vertical composition of vertical 1-cells and 2-cells, while the composition functor $\circ\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to \cat{D}_1$ provides a horizontal composition of horizontal 1-cells and 2-cells.
+where the tick-mark on the horizontal 1-cells serves as a further reminder that the horizontal 1-cells are of a different nature than the vertical 1-cells. The composition in $\dblcat{D}_0$ provides a vertical composition of vertical 1-cells and 2-cells, while the composition functor $\otimes\colon \dblcat{D}_1\times_{\dblcat{D}_0}\dblcat{D}_1\to \dblcat{D}_1$ provides a horizontal composition of horizontal 1-cells and 2-cells.
+
+For any object $C$ in $\dblcat{D}_0$, $i(C)$ is the \emph{unit} horizontal 1-cell
+\[
+\begin{tikzcd}
+	C \rar[tick]{I_C} & C
+\end{tikzcd}
+\]
+and acts as an identity with respect to the horizontal composition.
+
+A 2-cell $\theta$ for which $s\theta=t\theta=\id$ will be called \emph{globular}. We will sometimes draw globular 2-cells as
+\[
+\begin{tikzcd}[bend angle=30]
+	C \rar[bend left,tick][domA]{X}
+		\rar[bend right,tick][codA,swap]{Y}
+	& C',
+	\twocellA{\theta}
+\end{tikzcd}
+\]
+to save space and help readability of diagrams.
 
 \begin{remark}\label{Rk:DoubleCatAsMonoid}
-	A monoid object in the category $\mathrm{Cat}_{\mathcal{D}_0}$ of categories over $\mathcal{D}_0$ is equivalently a double category where the source and target functors $s,t\colon \cat{D}_1\to \cat{D}_0$ are equal. Conversely, any double category $\mathbb{D}$ in which all horizontal 1-cells have equal domain and codomain, and all 2-cells have equal vertical 1-cells as domain and codomain, is equivalently a monoid object in $\mathrm{Cat}_{\mathrm{Vert}(\mathbb{D})}$. We will alternate between these two descriptions as convenient.
+	A monoid object in the category $\Cat{Cat}_{\dblcat{D}_0}$ of categories over $\dblcat{D}_0$ is equivalently a double category where the source and target functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$ are equal and with the vertical category $\dblcat{D}_0$. Conversely, any double category $\dblcat{D}$ in which all horizontal 1-cells have equal domain and codomain, and all 2-cells have equal vertical 1-cells as domain and codomain, is equivalently a monoid object in $\Cat{Cat}_{\dblcat{D}_0}$. We will alternate between these two descriptions as convenient.
 \end{remark}
 
 \begin{example}
-	For any 2-category $\mathcal{D}$, there is an associated double category $\Sq(\mathcal{D})$ of \emph{squares} in $\mathcal{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\mathcal{D}$, and 2-cells
+	For any 2-category $\twocat{D}$, there is an associated double category $\Sq(\twocat{D})$ of \emph{squares} in $\twocat{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\twocat{D}$, and 2-cells
 	\[
 	\begin{tikzcd}
 		C \rar[tick][domA]{j} \dar[swap]{f} 
@@ -41,7 +60,7 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 		\twocellA{\phi}
 	\end{tikzcd}
 	\]
-	are simply 2-cells $\phi\colon gj\Rightarrow kf$ in $\mathcal{D}$.
+	are simply 2-cells $\phi\colon gj\Rightarrow kf$ in $\twocat{D}$.
 \end{example}
 
 \begin{example}\label{Ex:Span}
@@ -75,21 +94,21 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 \end{example}
 
 \begin{definition}
-	For any double category $\mathbb{D}$, there is an associated 2-category $\mathcal{V}\mathrm{ert}(\mathbb{D})$, called the \emph{vertical 2-category} of $\mathbb{D}$. The objects and 1-cells of $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are the objects and vertical 1-cells of $\mathbb{D}$, while 2-cells $\phi\colon g\Rightarrow f$ in $\mathcal{V}\mathrm{ert}(\mathbb{D})$ are 2-cells in $\mathbb{D}$ of the form
+	For any double category $\dblcat{D}$, there is an associated 2-category $\mathcal{V}\mathrm{ert}(\dblcat{D})$, called the \emph{vertical 2-category} of $\dblcat{D}$. The objects and 1-cells of $\mathcal{V}\mathrm{ert}(\dblcat{D})$ are the objects and vertical 1-cells of $\dblcat{D}$, while 2-cells $\phi\colon g\Rightarrow f$ in $\mathcal{V}\mathrm{ert}(\dblcat{D})$ are 2-cells in $\dblcat{D}$ of the form
 	\[
 	\begin{tikzcd}
-		C \rar[tick][domA]{\id_C} \dar[swap]{f} 
+		C \rar[tick][domA]{I_C} \dar[swap]{f} 
 			& C \dar{g} \\
-		D \rar[tick][codA,swap]{\id_D} 
+		D \rar[tick][codA,swap]{I_D} 
 			& D
 		\twocellA{\phi}
 	\end{tikzcd}
 	\]
-	Notice that $\mathcal{V}\mathrm{ert}(\mathbb{S}\mathrm{q}(\mathcal{D}))$ is isomorphic to $\mathcal{D}$.
+	Notice that $\mathcal{V}\mathrm{ert}(\Sq(\mathcal{D}))$ is isomorphic to $\mathcal{D}$.
 \end{definition}
 
 \begin{definition}
-	Given a double category $\mathbb{D}$, define double categories $\mathbb{D}^{\text{op}}$ and $\mathbb{D}^{\text{co}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell \eqref{Eq:Double2Cell} in $\mathbb{D}^{\text{op}}$ is a 2-cell
+	Given a double category $\dblcat{D}$, define double categories $\dblcat{D}^{\text{op}}$ and $\dblcat{D}^{\text{co}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell \eqref{Eq:Double2Cell} in $\dblcat{D}^{\text{op}}$ is a 2-cell
 	\[
 	\begin{tikzcd}
 		D \rar[tick][domA]{Y} \dar[swap]{f} 
@@ -99,14 +118,14 @@ where the tick-mark on the horizontal 1-cells serves as a further reminder that 
 	 \twocellA{\phi}
 	\end{tikzcd}
 	\]
-	in $\mathbb{D}$.
+	in $\dblcat{D}$.
 \end{definition}
 
 \section{Arrow Objects}\label{Sec:ArrowObjects}
 
 In the following we will need an extension of the universal property \ref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
 
-Let $\mathbb{D}$ be a double category. Given an object $C$ of $\mathbb{D}$, the \emph{arrow object} $C^2$, if it exists, is an object together with a diagram
+Let $\dblcat{D}$ be a double category. Given an object $C$ of $\dblcat{D}$, the \emph{arrow object} $C^2$, if it exists, is an object together with a diagram
 \[
 \begin{tikzcd}[bend angle=30]
 	C^2 \rar[bend left,tick][domA]{\dom}
@@ -135,7 +154,7 @@ uniquely factors through $\kappa$, as
 \end{tikzcd}
 \]
 
-Given a vertical 1-cell $F\colon C\to D$ in $\mathbb{D}$, the \emph{lift to arrow objects} $\hat{F}\colon C^2\to D^2$, if it exists, is a vertical 1-cell $\hat{F}\colon C^2\to D^2$ together with 2-cells
+Given a vertical 1-cell $F\colon C\to D$ in $\dblcat{D}$, the \emph{lift to arrow objects} $\hat{F}\colon C^2\to D^2$, if it exists, is a vertical 1-cell $\hat{F}\colon C^2\to D^2$ together with 2-cells
 \[
 \begin{tikzcd}
 	C^2 \rar[tick][domA]{\dom} \dar[swap]{\hat{F}} & C \dar{F} \\
@@ -236,12 +255,12 @@ there is a unique 2-cell
 such that the horizontal composition of $\theta$ with $\gamma_0$ and $\gamma_1$ is respectively equal to $\lambda_0$ and $\lambda_1$.
 
 \begin{remark}
-	Notice that if we take $F$ and $\hat{F}$ to both be the identity, then the second part of this universal property is exactly the second part of Lemma \ref{Lem:ArrowObject}, applied to the horizontal 2-category of $\mathbb{D}$. It is in this sense that this universal property generalizes that for arrow objects in a 2-category.
+	Notice that if we take $F$ and $\hat{F}$ to both be the identity, then the second part of this universal property is exactly the second part of Lemma \ref{Lem:ArrowObject}, applied to the horizontal 2-category of $\dblcat{D}$. It is in this sense that this universal property generalizes that for arrow objects in a 2-category.
 \end{remark}
 
 \section{Monads}
 
-We will define a \emph{monad} in a double category $\mathbb{D}$ to be a tuple $(C,T,\eta,\mu)$, in which $C$ is an object, $T\colon C\to C$ is a horizontal 1-cell, and $\eta$ and $\mu$ are 2-cells
+We will define a \emph{monad} in a double category $\dblcat{D}$ to be a tuple $(C,T,\eta,\mu)$, in which $C$ is an object, $T\colon C\to C$ is a horizontal 1-cell, and $\eta$ and $\mu$ are 2-cells
 \[
 \begin{tikzcd}
 	C \rar[tick][domA]{\id_C} \dar[equal]
@@ -326,22 +345,22 @@ and
 \end{equation}
 
 \begin{definition}
-	Given any double category $\mathbb{D}$, we will write $\Mon(\mathbb{D})$ for the category of monads in $\mathbb{D}$, consisting of monads and monad morphisms as defined above. The category $\Comon(\mathbb{D})$ of comonads in $\mathbb{D}$ is defined to be the category $\Mon(\mathbb{D}^{\text{op}})$ of monads in $\mathbb{D}^{\text{op}}$.
+	Given any double category $\dblcat{D}$, we will write $\Mon(\dblcat{D})$ for the category of monads in $\dblcat{D}$, consisting of monads and monad morphisms as defined above. The category $\Comon(\dblcat{D})$ of comonads in $\dblcat{D}$ is defined to be the category $\Mon(\dblcat{D}^{\text{op}})$ of monads in $\dblcat{D}^{\text{op}}$.
 \end{definition}
 
 \begin{example}
-	The category $\Mon(\Span(\mathrm{Set}))$ is precisely the category of small categories. It is an easy and enlightening exercise to work this out for oneself.
+	The category $\Mon(\Span(\Cat{Set}))$ is precisely the category of small categories. It is an easy and enlightening exercise to work this out for oneself.
 \end{example}
 
 \begin{proposition}
-	The categories of (co)monads and (co)lax morphisms in a 2-category $\mathcal{D}$ can be given in terms of (co)monads in the double category of squares as follows:
+	The categories of (co)monads and (co)lax morphisms in a 2-category $\twocat{D}$ can be given in terms of (co)monads in the double category of squares as follows:
 	\begin{align*}
 		\Mon_{\text{colax}}(\mathcal{D}) &= \Mon(\Sq(\mathcal{D})) \\
 		\Comon_{\text{colax}}(\mathcal{D}) &= \Comon(\Sq(\mathcal{D})) \\
 		\Mon_{\text{lax}}(\mathcal{D}) &= \Mon(\Sq(\mathcal{D}^{\text{op}}))^{\text{op}} \\
 		\Comon_{\text{lax}}(\mathcal{D}) &= \Comon(\Sq(\mathcal{D}^{\text{op}}))^{\text{op}}
 	\end{align*}
-	where by $\mathcal{D}^{\text{op}}$ we mean the 2-category obtained by reversing the direction of all 1-cells (but not 2-cells).
+	where by $\twocat{D}^{\text{op}}$ we mean the 2-category obtained by reversing the direction of all 1-cells (but not 2-cells).
 \end{proposition}
 \begin{proof}
 	Immediate from the definitions. Readers unfamiliar with (co)lax morphisms of monads can take this as the definition.
@@ -349,3 +368,32 @@ and
 
 \section{Double Functors}
 
+\begin{definition}\label{Def:LaxDblFunc}
+	Let $\dblcat{D}$ and $\dblcat{E}$ be double categories. A \emph{lax double functor} $F\colon\dblcat{D}\to\dblcat{E}$ consists of:
+	\begin{compactitem}
+		\item Functors $F_0\colon\dblcat{D}_0 \to\dblcat{E}_0$ and $F_1\colon\dblcat{D}_1 \to\dblcat{E}_1$ such that $sF_1=F_0s$ and $tF_1=F_0t$
+		\item Natural transformations with globular components $F_{\otimes}\colon F_1X\otimes F_1Y\to F_1(X\otimes Y)$ and $F_I\colon I_{F_0C}\to F_1(I_C)$, which satisfy the usual coherence axioms for a lax monoidal functor.
+	\end{compactitem}
+\end{definition}
+
+A lax double functor $F$ for which the components of $F_1$ and $F_0$ are identities will be called \emph{strict}. For the intermediate notion where the components of $F_1$ and $F_0$ are (vertical) isomorphsims, we will simply refer to $F$ as a double functor.
+
+\begin{proposition}
+	A lax double functor $F\colon\dblcat{D}\to\dblcat{E}$ induces a functor $F\colon\Mon(\dblcat{D})\to\Mon(\dblcat{E})$.
+\end{proposition}
+\begin{proof}
+	This works just like the case for monoidal categories. For instance, if $X$ is a monad in $\dblcat{D}$, $FX$ has the multiplication
+	\[
+	\begin{tikzcd}
+		C \rar[tick][]{FX} \dar[equal] 
+			& |[alias=domA]| C \rar[tick][]{FX} 
+			& C \dar[equal] \\
+		C \ar[tick]{rr}[codA,domB]{F(X\otimes X)} \dar[equal] 
+			&& C \dar[equal] \\
+		C \ar[tick]{rr}[codB,swap]{FX} && C
+		\twocellA{F_{\otimes}}
+		\twocellB{F\mu}
+	\end{tikzcd}
+	\]
+	The fact that $F$ takes monad morphisms to monad morphisms can easily be checked using the naturality of $F_I$ and $F_{\otimes}$.
+\end{proof}
