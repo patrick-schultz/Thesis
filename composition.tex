@@ -140,7 +140,7 @@ let $m$ be the 2-cell
 \]
 and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}=m$.
 
-\begin{lemma}
+\begin{lemma}\label{Lem:Zeta}
 	There is a 2-cell
 	\[
 	\begin{tikzcd}[row sep=-.5em]
@@ -187,6 +187,79 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 	which is simply the definition of $\vec{m}$.
 \end{proof}
 
+\begin{lemma}\label{Lem:Nu}
+	There is a 2-cell
+	\[
+	\begin{tikzcd}[row sep=0ex, column sep=4ex, bend angle=15]
+		{} & |[alias=domA]| \LCoalg[2] \drar[bend left][]{U} & \\
+		X \urar[bend left][]{P_2} \drar[bend right][swap]{\vec{m}} && C^2 \\
+		& |[alias=codA]| C^2 \urar[bend right][swap]{R_1}
+		\twocellA{\nu}
+	\end{tikzcd}
+	\]
+	such that $\cod\nu=\id$ and
+	\[
+	\begin{tikzcd}[row sep=0ex, column sep=4ex, bend angle=15, baseline=(B.base)]
+		{} & |[alias=domA]| \LCoalg[2] \drar[bend left][]{U} && \\
+		|[alias=B]| X \urar[bend left][]{P_2} \drar[bend right][swap]{\vec{m}} && C^2 \rar{\dom} & C \\
+		& |[alias=codA]| C^2 \urar[bend right][swap]{R_1} &&
+		\twocellA{\nu}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[row sep=tiny, column sep=4ex, bend angle=25, baseline=(B.base)]
+		{} & \LCoalg[2] \rar{U}
+			& C^2 \drar[bend left]{\dom} & \\
+		|[alias=B]| X \urar[bend left]{P_2} \rar{P_1} \ar[bend right]{drr}[swap,codA]{\vec{m}}
+			& |[alias=domA]| \LCoalg[1] \rar{U} \drar[swap]{U}
+			& |[alias=domB]| C^2 \rar{\cod}
+			& C \\
+		&& |[alias=codB]| C^2 \urar[bend right][swap]{E_1} &
+		\twocellA{\zeta}
+		\twocellB{\alpha_1}
+	\end{tikzcd}
+	\]
+\end{lemma}
+\begin{proof}
+	We just need to verify Equation~\ref{Eq:ArrowObject2}:
+	\begin{multline*}
+	\begin{tikzcd}[row sep=tiny, column sep=4ex, bend angle=25, baseline=(B.base), ampersand replacement=\&]
+		{} \& \LCoalg[2] \rar{U}
+			\& C^2 \drar[bend left]{\dom} \& \\
+		|[alias=B]| X \urar[bend left]{P_2} \rar{P_1} \ar[bend right]{drr}[swap,codA]{\vec{m}}
+			\& |[alias=domA]| \LCoalg[1] \rar{U} \drar[swap]{U}
+			\& |[alias=domB]| C^2 \rar{\cod}
+			\& C \\
+		\&\& |[alias=codB]| C^2 \urar[][domC,inner sep=0pt]{E_1} \urar[bend right=50][swap,codC]{\cod} \&
+		\twocellA{\zeta}
+		\twocellB{\alpha_1}
+		\twocellC{\epsilon_1}
+	\end{tikzcd}
+	\\
+	=
+	\begin{tikzcd}[row sep=tiny, column sep=4ex, bend angle=25, baseline=(B.base), ampersand replacement=\&]
+		{} \& \LCoalg[2] \rar{U}
+			\& C^2 \drar[bend left]{\dom} \& \\
+		|[alias=B]| X \urar[bend left]{P_2} \rar{P_1} \ar[bend right=60]{rr}[swap,codA]{\vec{m}}
+			\& |[alias=domA]| \LCoalg[1] \rar{U}
+			\& |[alias=domB]| C^2 \rar{\cod}
+			\& C \\
+		\twocellA{\zeta}
+	\end{tikzcd}
+	\\
+	=
+	\begin{tikzcd}[column sep=4ex, bend angle=25, baseline=(B.base), ampersand replacement=\&]
+		X \rar{P_2} 
+			\& \LCoalg[1] \rar{U} 
+			\& C^2 \rar[bend left][domA]{\dom} \rar[bend right][swap,codA]{\cod}
+			\& C
+		\twocellA{\kappa}
+	\end{tikzcd}
+	\end{multline*}
+	where the first equation follows from \eqref{Eq:LCoalg2}, and the second by reducing $\cod\zeta$ using Lemma~\ref{Lem:Zeta}.
+\end{proof}
+
+% \begin{proof}[Proof of Theorem \ref{Thm:CoalgLaxFunctor}]
+% \end{proof}
 
 \begin{corollary}
 	For any awfs $(E,\eta,\mu,\epsilon,\delta)$ on an object $C$ in $\mathcal{D}$, the multiplication $\mu$ induces a composition functor on $\LCoalg$, and the functor between EM-objects induced by any colax morphism of awfs preserves this composition.
