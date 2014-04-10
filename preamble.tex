@@ -51,7 +51,9 @@
 \newcommand{\Alg}{\mathrm{Alg}}
 \newcommand{\Coalg}{\mathrm{Coalg}}
 \newcommand{\RAlg}{\mathbb{R}\text{-}\Alg}
-\newcommand{\LCoalg}{\mathbb{L}\text{-}\Coalg}
+\newcommand{\LCoalg}[1][]{\mathbb{L}_{#1}\text{-}\Coalg}
+\newcommand{\LCoalgA}{\mathbb{L}_1\text{-}\Coalg}
+\newcommand{\LCoalgB}{\mathbb{L}_2\text{-}\Coalg}
 
 \newcommand{\twocell}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
 \newcommand{\twocellalt}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{#3}}
