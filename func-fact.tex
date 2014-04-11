@@ -2,11 +2,11 @@
 
 \chapter{Functorial Factorizations}
 
-Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in the sense of Section~\ref{Sec:ArrowObjects}. In this section, we will define a 2-fold double category $\FF{D}$ of functorial factorizations in $\mathbb{D}$, as follows:
+Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in the sense of Section~\ref{Sec:ArrowObjects}. In this section, we will define a 2-fold double category $\FFD$ of functorial factorizations in $\mathbb{D}$, as follows:
 \begin{itemize}
 	\item The objects and vertical 1-cells are the same as in $\mathbb{D}$.
 
-	\item Horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] C \rar[tick]& C \end{tikzcd}$ in $\FF{D}$ are tuples $(E,\eta,\epsilon)$, where $E\colon C^2\to C$ is a horizontal 1-cell in $\mathbb{D}$, and
+	\item Horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] C \rar[tick]& C \end{tikzcd}$ in $\FFD$ are tuples $(E,\eta,\epsilon)$, where $E\colon C^2\to C$ is a horizontal 1-cell in $\mathbb{D}$, and
 	\[
 	\begin{tikzcd}[bend angle=30]
 		C^2 \rar[bend left][domA]{\dom}
@@ -65,7 +65,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 		C \rar[tick][]{(E_1,\eta_1,\epsilon_1)} & C \rar[tick][]{(E_2,\eta_2,\epsilon_2)} & C
 	\end{tikzcd}
 	\]
-	in $\FF{D}$ is a horizontal 1-cell $(E_{1\otimes2},\eta_{1\otimes2},\epsilon_{1\otimes2})$, where
+	in $\FFD$ is a horizontal 1-cell $(E_{1\otimes2},\eta_{1\otimes2},\epsilon_{1\otimes2})$, where
 	\[
 	E_{1\otimes2} =
 	\begin{tikzcd}
@@ -139,7 +139,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 		\twocellA{\theta}
 	\end{tikzcd}
 	\]
-	in $\FF{D}$ are given by 2-cells
+	in $\FFD$ are given by 2-cells
 	\[
 	\begin{tikzcd}
 		C^2 \rar[][domA]{E_1} \dar[swap]{\hat{F}}  
@@ -231,7 +231,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 	\end{tikzcd}
 	\]
 
-	\item Given a pair of composable 2-cells in $\FF{D}$ as in
+	\item Given a pair of composable 2-cells in $\FFD$ as in
 	\[
 	\begin{tikzcd}[column sep=large]
 		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} 
@@ -341,10 +341,10 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 It is straightforward to check that $\otimes$ and $\odot$ are each associative and unital. It takes more work to provide the compatibility between $\otimes$ and $\odot$, which is the content of the proof of the next proposition.
 
 \begin{proposition}\label{Prop:FF2Fold}
-	$\FF{D}$ has the structure of a 2-fold double category.
+	$\FFD$ has the structure of a 2-fold double category.
 \end{proposition}
 \begin{proof}
-The primary structure of $\FF{D}$ was given in the first part of this section. What is left is to provide the coherence data \eqref{Eq:2FoldCoherenceCellsA} and \eqref{Eq:2FoldCoherenceCellsB}.
+The primary structure of $\FFD$ was given in the first part of this section. What is left is to provide the coherence data \eqref{Eq:2FoldCoherenceCellsA} and \eqref{Eq:2FoldCoherenceCellsB}.
 
 First, note that $I_C$ is initial in the sense that, given any vertical morphism $F\colon C\to D$ and any functorial factorization $(E,\eta,\epsilon)$ on $D$, there is a unique 2-cell
 \[
@@ -413,7 +413,7 @@ and $i$ is given by
 	\twocellA{\eta_2}
 \end{tikzcd}
 \]
-To illustrate the verification that these give well-defined 2-cells in $\FF{D}$, we will show that $i$ satisfies \eqref{Eq:FF2CellA} (keep in mind that when $F$ is an identity, $\gamma_0$ and $\gamma_1$ are also identities):
+To illustrate the verification that these give well-defined 2-cells in $\FFD$, we will show that $i$ satisfies \eqref{Eq:FF2CellA} (keep in mind that when $F$ is an identity, $\gamma_0$ and $\gamma_1$ are also identities):
 \begin{align*}
 	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 		C^2 \rar{L_1}
@@ -496,7 +496,7 @@ Moreover, it is straightforward to check that $i$ and $p$ are natural families o
 \end{tikzcd}
 \end{align*}
 
-As with any 2-cell in $\FF{D}$, $p$ and $i$ induce 2-cells in $\mathbb{D}$
+As with any 2-cell in $\FFD$, $p$ and $i$ induce 2-cells in $\mathbb{D}$
 \[
 \begin{tikzcd}[bend angle=30]
 	C^2 \rar[bend left][domA]{R_{1\odot 2}}
@@ -633,7 +633,7 @@ and a quick check using equations \eqref{Eq:DomPR} and \eqref{Eq:CodIL} shows th
 \]
 where the inner diamond is the equality $\cod L_1=\dom R_1=E_1$.
 
-We also check that $w$ is natural with respect to 2-cells in $\FF{D}$ in the following sense: given three 2-cells $\theta_1$, $\theta_2$, and $\theta_3$, there is an equality
+We also check that $w$ is natural with respect to 2-cells in $\FFD$ in the following sense: given three 2-cells $\theta_1$, $\theta_2$, and $\theta_3$, there is an equality
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15]
 	{} & C^2 \drar[bend left][inner sep=.2ex]{L_3} 
@@ -766,7 +766,7 @@ Finally, given four functorial factorizations $E_1, E_2, E_3, E_4$ on an object 
 	\twocellA{z_{1,2,3,4}}
 \end{tikzcd}
 \]
-in $\FF{D}$, where $(1\odot 2)$ is shorthand for $(E_1,\eta_1,\epsilon_1)\odot(E_2,\eta_2,\epsilon_2)$, to have the underlying 2-cell in $\mathbb{D}$
+in $\FFD$, where $(1\odot 2)$ is shorthand for $(E_1,\eta_1,\epsilon_1)\odot(E_2,\eta_2,\epsilon_2)$, to have the underlying 2-cell in $\mathbb{D}$
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15,ampersand replacement=\&]
 	\& C^2 \drar[bend left][]{L_3} \&\& \\
@@ -807,7 +807,7 @@ The naturality of $z$ follows immediately from that of $w$, but we still need to
 which follows from equation \eqref{Eq:DomW} and the fact that $\dom\circ i^L = \id_{\dom}$.
 \end{proof}
 
-Up to this point, we have demonstrated that given any double category $\mathbb{D}$ having arrow objects, there is a 2-fold double category $\FF{D}$ of functorial factorizations in $\mathbb{D}$. The last thing we want to say about this construction is that a cyclic action on $\mathbb{D}$ lifts to one on $\FF{D}$, and hence also to one on $\mathrm{Bimon}(\mathbb{\FF{D}})$.
+Up to this point, we have demonstrated that given any double category $\mathbb{D}$ having arrow objects, there is a 2-fold double category $\FFD$ of functorial factorizations in $\mathbb{D}$. The last thing we want to say about this construction is that a cyclic action on $\mathbb{D}$ lifts to one on $\FFD$, and hence also to one on $\mathrm{Bimon}(\mathbb{\FFD})$.
 
 The cyclic action on objects and vertical morphisms is given directly by that on $\mathbb{D}$. Given a horizontal 1-cell $(E,\eta,\epsilon)$ on an object $C$, we define the 1-cell $(E,\eta,\epsilon)^{\bullet}$ on $C^{\bullet}$ to be $(E^{\bullet},\epsilon^{\bullet},\eta^{\bullet})$. This also implies that the cyclic action swaps $L$ and $R$ for any given functorial factorization.
 
@@ -818,10 +818,10 @@ A quick look at the definitions of the two horizontal compositions is now enough
 	(E_1\odot E_2)^{\bullet} = E_1^{\bullet}\otimes E_2^{\bullet}
 \]
 
-Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FF{D}$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
+Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FFD$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
 
 \begin{lemma}
-	There is a double functor $R\colon\FF{D}_{\otimes}\to\mathbb{D}$ whose behavior on 2-cells is
+	There is a strict double functor $R\colon\FFD_{\otimes}\to\mathbb{D}$ whose behavior on 2-cells is
 	\[
 	\begin{tikzcd}[column sep=large]
 		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
@@ -837,7 +837,7 @@ Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic actio
 		\twocellA{\theta^R}
 	\end{tikzcd}
 	\]
-	and a double functor $L\colon\FF{D}_{\odot}\to\mathbb{D}$ whose behavior on 2-cells is
+	and a double functor $L\colon\FFD_{\odot}\to\mathbb{D}$ whose behavior on 2-cells is
 	\[
 	\begin{tikzcd}[column sep=large]
 		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}  & C \dar{F} \\
@@ -854,6 +854,6 @@ Similarly, the cyclic action on 2-cells in $\FF{D}$ is given by the cyclic actio
 	\end{tikzcd}
 	\]
 \end{lemma}
-\begin{corollary}
-	$R$ and $L$ respectively induce functors $\Mon(\FF{D})\to\Mon(\mathbb{D})$ and $\Comon(\FF{D})\to\Comon(\mathbb{D})$.
+\begin{corollary}\label{Cor:RLMon}
+	$R$ and $L$ respectively induce functors $\Mon(\FFD)\to\Mon(\mathbb{D})$ and $\Comon(\FFD)\to\Comon(\mathbb{D})$.
 \end{corollary}

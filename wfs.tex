@@ -4,7 +4,7 @@
 
 In this section, we will briefly review the notions of functorial factorization, weak factorization system, and algebraic weak factorization system. 
 
-\subsection{Arrow Categories}
+\section{Arrow Categories}
 
 Let $\cat{C}$ be a category. Its arrow category $\cat{C}^2$ is the category whose objects are arrows in $\cat{C}$ and whose morphisms are commutative squares. The arrow category comes with two functors $\dom,\cod\colon \cat{C}^2\to\cat{C}$, along with a natural transformation $\kappa\colon\dom\Rightarrow\cod$. The component of $\kappa$ at an object $f$ of $\cat{C}^2$ is simply $f\colon\dom f\to\cod f$. Moreover, $\cat{C}^2$ satisfies a universal property: there is an equivalence of categories
 \begin{equation}\label{Eq:ArrowObject}
@@ -79,6 +79,24 @@ We will make this universal property more explicit in the next lemma:
 \begin{definition}\label{Def:ArrowObject}
 	Let $\cat{D}$ be any 2-category. For any object $A$ in $\cat{D}$, the \emph{arrow object} of $A$, if it exists, is an object $A^2$ satisfying the universal property \eqref{Eq:ArrowObject}. If every object has an arrow object, i.e. if $\cat{D}$ has cotensors by 2, we will say $\cat{D}$ \emph{has arrow objects}.
 \end{definition}
+
+\begin{proposition}\label{Prop:ArrowSimplex}
+	Any arrow object $A^2$ has an internal category structure
+	\[
+	\begin{tikzcd}
+		A^3 \rar{c} & A^2 \rar[shift left=1.5ex][]{\dom} \rar[shift right=1.5ex][swap]{\cod} & A \lar[][description]{i}
+	\end{tikzcd}
+	\]
+	where $A^3$ is the pullback of the span
+	\[
+	\begin{tikzcd}
+		A^2 \rar{\cod} & A & A^2 \lar[swap]{\dom}
+	\end{tikzcd}
+	\]
+\end{proposition}
+\begin{proof}
+	Using the universal property, we define $i$ and $c$ by the equations $\dom i=\id$, $\cod i=\id$, $\kappa i=\id_{\id}$, $\dom c=\dom p_1$, $\cod c=\cod p_2$, and $\kappa c=\kappa p_2 \circ \kappa p_1$, where $p_1$ and $p_2$ are the projections of the pullback.
+\end{proof}
 
 \section{Functorial Factorizations}\label{Sec:FuncFact}
 
