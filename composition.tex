@@ -450,7 +450,7 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 	The verification that the definitions of $G_I$ and $G_{\otimes}$ form natural families, and of the coherence axioms for a lax double functor, is tedious, but follows from what we have presented here without requiring any new ideas or ingenuity.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{Cor:CoalgComp}
 	For any awfs $(E,\eta,\mu,\epsilon,\delta)$ on an object $C$ in $\mathcal{D}$, the multiplication $\mu$ induces a composition functor on $\LCoalg$, and the functor between EM-objects induced by any colax morphism of awfs preserves this composition.
 \end{corollary}
 \begin{proof}
@@ -460,10 +460,10 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 		C & \LCoalg \lar[swap]{\dom U} \rar{\cod U} & C.
 	\end{tikzcd}
 	\]
-	The multiplication $\mu$ provides this object in $\DComon(\FF(\Sq(\mathcal{D})))$ with a monad structure, and lax double-functors preserve monads, so $\mu$ induces a monad structure on this span. A multiplication on this span is a morphism $m$:
+	The multiplication $\mu$ provides this object in $\DComon(\FF(\Sq(\mathcal{D})))$ with a monad structure, and lax double-functors preserve monads, so $\mu$ induces a monad structure on this span. A multiplication on this span is a morphism $\pi$:
 	\[
 	\begin{tikzcd}[row sep=small,sloped,pos=.1]
-		{} & X \dlar[swap]{\dom UP_1} \drar{\cod UP_2} \ar{dd}[sloped=false,pos=.5]{m} & \\
+		{} & X \dlar[swap]{\dom UP_1} \drar{\cod UP_2} \ar{dd}[sloped=false,pos=.5]{\pi} & \\
 		C && C \\
 		& \LCoalg \ular{\dom U} \urar[swap]{\cod U}
 	\end{tikzcd}
@@ -478,35 +478,9 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 	\end{tikzcd}
 	\]
 
-	The morphism $m$ is the composition structure that we want. If $\mathcal{D}=\mathrm{Cat}$ is the 2-category of small categories, then an object $(f,g)$ in $X$ is a pair of morphisms in $C$ equipped with coalgebra structures, such that $\cod f = \dom g$, and $m(f,g)$ is a morphism equipped with a coalgebra structure, with $\dom m(f,g)=\dom f$ and $\cod m(f,g)=\cod g$.
+	The morphism $\pi$ is the composition structure that we want. If $\mathcal{D}=\mathrm{Cat}$ is the 2-category of small categories, then an object $(f,g)$ in $X$ is a pair of morphisms in $C$ equipped with coalgebra structures, such that $\cod f = \dom g$, and $\pi(f,g)$ is a morphism equipped with a coalgebra structure, with $\dom \pi(f,g)=\dom f$ and $\cod \pi(f,g)=\cod g$.
 
-	Of course, what we really want is that the morphism underlying the coalgebra $m(f,g)$ is the composition $g\circ f$. To see that this is the case, we will use the fact that the functorial factorization $\perp_C$, equipped with the trivial comonad structure, is terminal in the double category $\DComon(\FF(\Sq(\mathcal{D})))$, in the sense of the proof of Proposition~\ref{Prop:FF2Fold}.
-
-	The comonad $\perp_C$ in $\FF(\Sq(\mathcal{D}))$ induces the trival comonad on $C^2$, hence gets taken to the span
-	\[
-	\begin{tikzcd}
-		C & C^2 \lar[swap]{\dom} \rar{\cod} & C.
-	\end{tikzcd}
-	\]
-	[TODO: Need to prove that the induced monad structure on this span is simply the composition in C. Maybe this should be a separate lemma?]
-
-	The unique 2-cell
-	\[
-	\begin{tikzcd}
-		C \rar[tick][domA]{(E,\eta,\epsilon,\delta)} \dar[equal] & C \dar[equal] \\
-		C \rar[tick][codA,swap]{\perp_C} & C
-		\twocellA{}
-	\end{tikzcd}
-	\]
-	gets taken to the morphism of spans
-	\[
-	\begin{tikzcd}[row sep=small,sloped]
-		{} & \LCoalg \dlar[swap,pos=.1]{\dom U} \drar[pos=.1]{\cod UP} \ar{dd}[sloped=false]{U} & \\
-		C && C. \\
-		& C^2 \ular[pos=.2]{\dom} \urar[swap,pos=.2]{\cod}
-	\end{tikzcd}
-	\]
-	Moreover, the image of any 2-cell in $\DComon(\FF(\Sq(\mathcal{D})))$ commutes with these forgetful-functor span morphisms.
-
-	[TODO: Finish proof.]
+	Of course, what we really want is that the morphism underlying the coalgebra $\pi(f,g)$ is the composition $g\circ f$. To see that this is the case, notice that the composition $\pi$ is given by $G(\vec{\mu})\circ G_{\otimes}$, where $G(\vec{\mu})$ is the 1-cell between EM-objects induced by the colax morphism of comonads $\vec{\mu}$. Using the fact that $\vec{\mu}$ is a globular 2-cell in $\FF(\Sq(\mathcal{D}))$, we have $U\pi=UG(\vec{\mu})G_{\otimes}=UG_{\otimes}=\vec{m}$. Looking at the definition of $\vec{m}\colon X\to C^2$, it is clear that it is precisely the functor that sends the pair $(f,g)$ to the composition $gf$, ignoring the coalgebra structures.
 \end{proof}
+
+Corollary~\ref{Cor:CoalgComp} actually has a converse, which was used extensively in \cite{}
