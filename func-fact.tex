@@ -551,7 +551,7 @@ Now suppose given three functorial factorizations $E_1,E_2,E_3$ on an object $C$
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15]
 	{} & C^2 \drar[bend left][]{L_3} & \\
-	|[alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} \drar[bend right][swap]{L_{1\otimes 3}}
+	|[alias=domA]| C^2 \urar[bend left][]{R_{1\odot 2}} \drar[bend right][swap]{L_{1\otimes 3}}
 		&& |[alias=codA]| C^2 \\
 	{} & C^2 \urar[bend right][swap]{R_2} &
 	\twocellA{w}
@@ -561,7 +561,7 @@ such that
 \begin{align}
 	\begin{tikzcd}[row sep=0ex,bend angle=15,ampersand replacement=\&,baseline=(B.base)]
 		\& C^2 \drar[bend left][]{L_3} \&\& \\
-		|[alias=B,alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} 
+		|[alias=B,alias=domA]| C^2 \urar[bend left][]{R_{1\odot 2}} 
 				\drar[bend right][swap]{L_{1\otimes 3}}
 			\&\& |[alias=codA]| C^2 \rar{\dom} 
 			\& C \\
@@ -579,7 +579,7 @@ such that
 	\\
 	\begin{tikzcd}[row sep=0ex, bend angle=15,ampersand replacement=\&,baseline=(B.base)]
 		\& C^2 \drar[bend left][]{L_3} \&\& \\
-		|[alias=B,alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} 
+		|[alias=B,alias=domA]| C^2 \urar[bend left][]{R_{1\odot 2}} 
 				\drar[bend right][swap]{L_{1\otimes 3}}
 			\&\& |[alias=codA]| C^2 \rar{\cod} \& C \\
 		\& C^2 \urar[bend right][swap]{R_2} \&\&
@@ -770,7 +770,7 @@ in $\FFD$, where $(1\odot 2)$ is shorthand for $(E_1,\eta_1,\epsilon_1)\odot(E_2
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15,ampersand replacement=\&]
 	\& C^2 \drar[bend left][]{L_3} \&\& \\
-	|[alias=domA]| C^2 \urar[bend left][]{R_{1\otimes 2}} 
+	|[alias=domA]| C^2 \urar[bend left][]{R_{1\odot 2}} 
 			\drar[bend right][swap]{L_{1\otimes 3}}
 		\&\& |[alias=codA]| C^2 \rar{E_4} \& C. \\
 	\& C^2 \urar[bend right][swap]{R_2} \&\&
@@ -782,7 +782,7 @@ The naturality of $z$ follows immediately from that of $w$, but we still need to
 \begin{tikzcd}[row sep=0ex, bend angle=15, ampersand replacement=\&, baseline=(B.base)]
 	\& C^2 \drar[bend left][inner sep=.2ex]{L_3} \&\& \\
 	|[alias=domB]| C^2 	\urar[bend left=65,looseness=1.2][domA]{\id}
-			\urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R_{1\otimes 2}}
+			\urar[bend left][codA,swap,inner sep=.2ex,pos=.3]{R_{1\odot 2}}
 			\drar[bend right][swap,inner sep=.2ex]{L_{1\otimes 3}}
 		\&\& |[alias=codB]| C^2 \rar[bend left=50][domC]{\dom}
 			\rar[][codC,swap]{E_4}

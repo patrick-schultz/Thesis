@@ -2,7 +2,7 @@
 
 \chapter{Composition of $\mathbb{L}$-coalgebras}
 
-For this section, we will continue to let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$.
+For this section, we will continue to let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$ with arrow objects.
 
 In an algebraic weak factorization system, the categories $\LCoalg$ and $\RAlg$ respectively play the roles of the left and right classes of morphisms of the weak factorization system. In an ordinary weak factorization system, these two classes of morphisms are closed under composition. In \cite{garner:soa}, this is strengthened to a composition functor
 \[
@@ -10,7 +10,7 @@ In an algebraic weak factorization system, the categories $\LCoalg$ and $\RAlg$ 
 \]
 and in \cite{riehl:nwfs-model}, it is shown that colax morphisms of awfs preserve this composition. Similarly, there is a composition functor on $\RAlg$ which is preserved by lax morphisms of awfs.
 
-In this section, we will generalize these results to the setting of bimonads in $\FF{\mathbb{D}}$.
+In this section, we will generalize these results to the setting of bimonads in $\FFD$.
 
 First, recall from \cite{street:ftm} the following proposition.
 
@@ -170,7 +170,7 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 	\]
 \end{lemma}
 \begin{proof}
-	Equation~\ref{Eq:ArrowObject2} becomes
+	Equation~\eqref{Eq:ArrowObject2} becomes
 	\[
 	\begin{tikzcd}[bend angle=30]
 		X \rar{\vec{m}} & C^2 \rar[bend left][domA]{\dom} \rar[bend right][codA,swap]{\cod} & C
@@ -221,7 +221,7 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 	\]
 \end{lemma}
 \begin{proof}
-	We just need to verify Equation~\ref{Eq:ArrowObject2}:
+	We just need to verify Equation~\eqref{Eq:ArrowObject2}:
 	\begin{multline*}
 	\begin{tikzcd}[row sep=tiny, column sep=4ex, bend angle=25, baseline=(B.base), ampersand replacement=\&]
 		{} \& \LCoalg[2] \rar{U}
@@ -330,6 +330,124 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 		\twocellB{\alpha_2}
 	\end{tikzcd}
 	\]
+	In other words, in the notation of Lemma~\ref{Lem:FFLCoalgUniversalProperty} let $F=\vec{m}$ and $\beta=E_2\nu\circ\alpha_2P_2$, and define $G_{\otimes}=\hat{F}$.
+
+	We now need to check equations 1-3 of Lemma~\ref{Lem:FFLCoalgUniversalProperty} to verify that $G_{\otimes}$ is well defined. We will check these equationally to save space, but the reader may want to draw out the diagrams for themselves to follow along. For the first equation:
+	\begin{alignat*}{2}
+		\hspace{1em}&\hspace{-1em} E_2\nu \circ \alpha_2P_2 \circ \kappa\vec{m} && \\
+		&= E_2\nu \circ \alpha_2P_2 \circ \kappa UP_2 \circ \kappa UP_1 
+			&& \text{Def of $\vec{m}$} \\
+		&= E_2\nu \circ (\alpha_2\circ\kappa U)P_2 \circ \kappa UP_1 && \\
+		&= E_2\nu \circ \eta_2UP_2 \circ \kappa UP_1 
+			&& \text{Eq \eqref{Eq:LCoalg1}} \\
+		&= \eta_2R_1\vec{m} \circ \dom\nu \circ \kappa UP_1 
+			&& \text{Interchange} \\
+		&= \eta_2R_1\vec{m} \circ E_1\zeta \circ \alpha_1P_1 \circ \kappa UP_1 
+			&\qquad& \text{Def of $\nu$} \\
+		&= \eta_2R_1\vec{m} \circ E_1\zeta \circ (\alpha_1\circ\kappa U)P_1 && \\
+		&= \eta_2R_1\vec{m} \circ E_1\zeta \circ \eta_1UP_1 
+			&&\text{Eq \eqref{Eq:LCoalg1}} \\
+		&= \eta_{1\otimes 2}\vec{m} \circ \dom\zeta 
+			&&\text{Interchange; Def of $\eta_{1\otimes 2}$} \\
+		&= \eta_{1\otimes 2}\vec{m} 
+			&&\dom\zeta=\id
+	\end{alignat*}
+	and the second:
+	\begin{alignat*}{2}
+		\hspace{1em}&\hspace{-1em} \epsilon_{1\otimes 2}\vec{m} \circ E_2\nu \circ \alpha_2P_2 && \\
+		&= \epsilon_2R_1\vec{m} \circ E_2\nu \circ \alpha_2P_2  
+			&& \text{Def of $\epsilon_{1\otimes2}$} \\
+		&= \cod\nu \circ (\epsilon_2U\circ\alpha_2)P_2 
+			&\qquad& \text{Interchange} \\
+		&= \id_{\cod\vec{m}}. 
+			&&\text{Eq \eqref{Eq:LCoalg2}; $\cod\nu=\id$}
+	\end{alignat*}
+
+	The third equation is a bit trickier to prove. We will need to prove two intermediate equations first, using the arrow object universal property.
+	\begin{lemma*}
+		\begin{equation}\label{Eq:CompLem1}
+			i^L\vec{m} \circ L_1\zeta \circ \vec{\alpha}_1P_1 = \vec{\beta}\circ\zeta
+		\end{equation}
+	\end{lemma*}
+	\begin{proof}
+		We must show the 2-cells become equal upon composition with $\dom$ and $\cod$:
+		\[
+			\dom(i^L\vec{m} \circ L_1\zeta \circ \vec{\alpha}_1P_1) = \id_{\dom\vec{m}} = \dom(\vec{\beta}\circ\zeta)
+		\]
+		and
+		\begin{alignat*}{2}
+			\hspace{1em}&\hspace{-1em} \cod(i^L\vec{m} \circ L_1\zeta \circ \vec{\alpha}_1P_1) && \\
+			&= \cod i^L\vec{m} \circ E_1\zeta \circ \cod\vec{\alpha}_1P_1 &\qquad& \\
+			&= \eta_2R_1\vec{m} \circ E_1\zeta \circ \alpha_1P_1 
+				&& \text{Def of $i^L$, $\vec{\alpha}$} \\
+			&= \eta_2R_1\vec{m} \circ \dom\nu
+				&& \text{Def of $\nu$} \\
+			&= E_2\nu \circ \eta_2UP_2
+				&& \text{Interchange} \\
+			&= E_2\nu \circ (\alpha_2 \circ \kappa U)P_2
+				&& \text{Eq \eqref{Eq:LCoalg1}} \\
+			&= (E_2\nu \circ \alpha_2P_2) \circ \kappa UP_2 && \\
+			&= \cod\vec{\beta} \circ \cod\zeta
+				&& \text{Def of $\vec{\beta}$, $\zeta$} \\
+			&= \cod(\vec{\beta}\circ\zeta). &&
+		\end{alignat*}
+	\end{proof}
+	\begin{lemma*}
+		\begin{equation}\label{Eq:CompLem2}
+			R_1\vec{\beta} \circ \nu = w\vec{m} \circ L_2\delta_1^R\vec{m} \circ L_2\nu \circ \vec{\alpha}_2P_2
+		\end{equation}
+	\end{lemma*}
+	\begin{proof}
+		Again we must prove equality after composing with $\dom$ and $\cod$:
+		\begin{alignat*}{2}
+			\hspace{1em}&\hspace{-1em} \dom(R_1\vec{\beta} \circ \nu) && \\
+			&= E_1\vec{\beta} \circ \dom\nu && \\
+			&= E_1\vec{\beta} \circ E_1\zeta \circ \alpha_1P_1
+				&& \text{Def of $\nu$} \\
+			&= E_1(\vec{\beta}\circ\zeta) \circ \alpha_1P_1 && \\
+			&= E_1(i^L\vec{m} \circ L_1\zeta \circ \vec{\alpha}_1P_1) \circ \alpha_1P_1
+				&& \text{Eq \eqref{Eq:CompLem1}} \\
+			&= E_1i^L\vec{m} \circ E_1L_1\zeta \circ (E_1\vec{\alpha}_1\circ\alpha_1)P_1 && \\
+			&= E_1i^L\vec{m} \circ E_1L_1\zeta \circ (\delta_1U\circ\alpha_1)P_1
+				&& \text{Eq \eqref{Eq:LCoalg3}} \\
+			&= E_1i^L\vec{m} \circ \delta_1\vec{m} \circ E_1\zeta \circ \alpha_1P_1
+				&& \text{Interchange} \\
+			&= \dom w\vec{m} \circ \dom\delta_1^R\vec{m} \circ \dom\nu \circ \dom\vec{\alpha}_2P_2
+				&\qquad& \text{Defs of $w$, $\delta^R$, $\nu$, $\vec{\alpha}$} \\
+			&= \dom (w\vec{m} \circ L_2\delta_1^R\vec{m} \circ L_2\nu \circ \vec{\alpha}_2P_2)
+		\end{alignat*}
+		and
+		\begin{alignat*}{2}
+			\hspace{1em}&\hspace{-1em} \cod(R_1\vec{\beta} \circ \nu) && \\
+			&= \cod\vec{\beta} \circ \cod\nu && \\
+			&= E_2\nu \circ \alpha_2P_2
+				&& \text{Defs of $\vec{\beta}$, $\nu$} \\
+			&= E_2(p^R\circ\delta_1^R)\vec{m} \circ E_2\nu \circ \alpha_2P_2
+				&& p^R\circ\delta^R = \id \\
+			&= E_2p^R\vec{m} \circ E_2\delta_1^R\vec{m} \circ E_2\nu \circ \alpha_2P_2 && \\
+			&= \cod w\vec{m} \circ \cod L_2\delta_1^R\vec{m} \circ \cod L_2\nu \circ \cod\vec{\alpha}_2P_2
+				&\qquad& \text{Defs of $w$, $L$, $\vec{\alpha}$} \\
+			&= \cod(w\vec{m} \circ L_2\delta_1^R\vec{m} \circ L_2\nu \circ \vec{\alpha}_2P_2)
+		\end{alignat*}
+	\end{proof}
+
+	Now we are prepared to prove the third equation of Lemma~\ref{Lem:FFLCoalgUniversalProperty} validating our definition of $G_{\otimes}$:
+	\begin{alignat*}{2}
+		\hspace{1em}&\hspace{-1em} \delta_{1\otimes2}\vec{m} \circ E_2\nu \circ \alpha_2P_2 && \\
+		&= (E_2w \circ \delta_2R_{1\odot1} \circ E_2\delta_1^R)\vec{m} \circ E_2\nu \circ \alpha_2P_2
+			&& \text{Def of $\delta_{1\otimes2}$} \\
+		&= E_2(w\vec{m} \circ L_2\delta_1^R\vec{m} \circ L_2\nu) \circ (\delta_2U \circ \alpha_2)P_2
+			&& \text{Interchange} \\
+		&= E_2(w\vec{m} \circ L_2\delta_1^R\vec{m} \circ L_2\nu) \circ (E_2\vec{\alpha}_2 \circ \alpha_2)P_2
+			&\qquad& \text{Eq \eqref{Eq:LCoalg3}} \\
+		&= E_2(w\vec{m} \circ L_2\delta_1^R\vec{m} \circ L_2\nu \circ \vec{\alpha}_2P_2) \circ \alpha_2P_2 && \\
+		&= E_2(R_1\vec{\beta}\circ\nu) \circ \alpha_2P_2
+			&& \text{Eq \eqref{Eq:CompLem2}} \\
+		&= E_{1\otimes 2}\vec{\beta} \circ E_2\nu \circ \alpha_2P_2
+			&& \text{Def of $E_{1\otimes2}$}
+	\end{alignat*}
+
+	The verification that the definitions of $G_I$ and $G_{\otimes}$ form natural families, and of the coherence axioms for a lax double functor, is tedious, but follows from what we have presented here without requiring any new ideas or ingenuity.
 \end{proof}
 
 \begin{corollary}
