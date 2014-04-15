@@ -33,7 +33,34 @@ respecting vertical identities and composition.
 	Let $\twocat{D}$ be any 2-category with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ and $(-)^{\text{op}}$. The double category $\Sq(\twocat{D})$ has a sub-double category $\LAdj(\twocat{D})$, where the vertical 1-cells are restricted to the left adjoints but with no other restrictions. This double category has a natural cyclic action:  if $F\dashv G$ is an adjunction, then $\sigma F = G^{\bullet}$, and if $\theta$ is a 2-cell with mate $\phi$ then $\sigma\theta=\phi^{\bullet}$. For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see \cite{cgr:mates} Section 1. 
 \end{example}
 
-%Todo: Prove $(C^{\bullet})^2=(C^2)^{\bullet}$
+\begin{proposition}
+	Let $\dblcat{D}$ be a cyclic double category with arrow objects. For any object $C$, $(C^{\bullet})^2=(C^2)^{\bullet}$, as witnessed by
+	\[
+	\begin{tikzcd}[bend angle=30]
+	(C^2)^{\bullet} \rar[bend left,tick][domA]{\cod^{\bullet}}
+		\rar[bend right,tick][codA,swap]{\dom^{\bullet}}
+	& C^{\bullet}
+	\twocellA{\sigma\kappa}
+	\end{tikzcd}
+	\]
+	For any vertical 1-cell $F$, the lift to arrow objects of $F^{\bullet}$ is $(\hat{F})^{\bullet}$, as witnessed by the 2-cells
+	\[
+	\begin{tikzcd}
+		(D^2)^{\bullet} \rar[tick][domA]{\cod^{\bullet}} \dar[swap]{(\hat{F})^{\bullet}} & D^{\bullet} \dar{F^{\bullet}} \\
+		(C^2)^{\bullet} \rar[tick][codA,swap]{\cod^{\bullet}} & C^{\bullet}
+		\twocellA{\sigma\gamma_0}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}
+		(D^2)^{\bullet} \rar[tick][domA]{\dom^{\bullet}} \dar[swap]{(\hat{F})^{\bullet}} & D^{\bullet} \dar{F^{\bullet}} \\
+		(C^2)^{\bullet} \rar[tick][codA,swap]{\dom^{\bullet}} & C^{\bullet}
+		\twocellA{\sigma\gamma_1}
+	\end{tikzcd}
+	\]
+\end{proposition}
+\begin{proof}
+	It is a very simple matter to verify the universal properties of Section~\ref{Sec:ArrowObjects}
+\end{proof}
 
 We will generalize this to a cyclic action on a 2-fold double category. Suppose that $\mathbb{D}$ is a 2-fold double category. A cyclic action, written as above, must satisfy the following:
 \begin{itemize}
