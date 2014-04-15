@@ -94,17 +94,17 @@ to save space and help readability of diagrams.
 \end{example}
 
 \begin{definition}
-	For any double category $\dblcat{D}$, there is an associated 2-category $\mathcal{V}\mathrm{ert}(\dblcat{D})$, called the \emph{vertical 2-category} of $\dblcat{D}$. The objects and 1-cells of $\mathcal{V}\mathrm{ert}(\dblcat{D})$ are the objects and vertical 1-cells of $\dblcat{D}$, while 2-cells $\phi\colon g\Rightarrow f$ in $\mathcal{V}\mathrm{ert}(\dblcat{D})$ are 2-cells in $\dblcat{D}$ of the form
+	For any double category $\dblcat{D}$, there is an associated 2-category $\Hor(\dblcat{D})$, called the \emph{horizontal 2-category} of $\dblcat{D}$. The objects and 1-cells of $\Hor(\dblcat{D})$ are the objects and horizontal 1-cells of $\dblcat{D}$, while 2-cells $\phi\colon X\Rightarrow Y$ in $\Hor(\dblcat{D})$ are the globular 2-cells in $\dblcat{D}$, i.e. those of the form
 	\[
 	\begin{tikzcd}
-		C \rar[tick][domA]{I_C} \dar[swap]{f} 
-			& C \dar{g} \\
-		D \rar[tick][codA,swap]{I_D} 
+		C \rar[tick][domA]{X} \dar[equal] 
+			& D \dar[equal] \\
+		C \rar[tick][codA,swap]{Y} 
 			& D
 		\twocellA{\phi}
 	\end{tikzcd}
 	\]
-	Notice that $\mathcal{V}\mathrm{ert}(\Sq(\mathcal{D}))$ is isomorphic to $\mathcal{D}$.
+	Notice that $\Hor(\Sq(\mathcal{D}))$ is isomorphic to $\mathcal{D}$.
 \end{definition}
 
 \begin{definition}
@@ -121,9 +121,9 @@ to save space and help readability of diagrams.
 	in $\dblcat{D}$.
 \end{definition}
 
-\section{Arrow Objects}\label{Sec:ArrowObjects}
+\section{Arrow Objects in a Double Category}\label{Sec:ArrowObjects}
 
-In the following we will need an extension of the universal property \ref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
+In the following we will need an extension of the universal property \eqref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
 
 Let $\dblcat{D}$ be a double category. Given an object $C$ of $\dblcat{D}$, the \emph{arrow object} $C^2$, if it exists, is an object together with a diagram
 \[
@@ -254,9 +254,26 @@ there is a unique 2-cell
 \]
 such that the horizontal composition of $\theta$ with $\gamma_0$ and $\gamma_1$ is respectively equal to $\lambda_0$ and $\lambda_1$.
 
-\begin{remark}
-	Notice that if we take $F$ and $\hat{F}$ to both be the identity, then the second part of this universal property is exactly the second part of Lemma \ref{Lem:ArrowObject}, applied to the horizontal 2-category of $\dblcat{D}$. It is in this sense that this universal property generalizes that for arrow objects in a 2-category.
-\end{remark}
+\begin{definition}
+	A double category $\dblcat{D}$ \emph{has arrow objects} if for every object $C$ of $\dblcat{D}$ there is an object $C^2$ and 2-cell $\kappa$, and for every vertical 1-cell $F$ there is a vertical 1-cell $\hat{F}$ and 2-cells $\gamma_0$ and $\gamma_1$, satisfying the universal properties given above.
+\end{definition}
+
+The intuition that this is a generalization of Lemma~\ref{Lem:ArrowObject} is supported by the following two propositions, the (easy) proofs of which are left to the reader.
+
+\begin{proposition}
+	If the double category $\dblcat{D}$ has arrow objects, then so does $\Hor(\dblcat{D})$.
+\end{proposition}
+
+\begin{proposition}
+	If the 2-category $\twocat{D}$ has arrow objects, then so does $\Sq(\twocat{D})$.
+\end{proposition}
+\begin{proof}
+	A simple check. The 2-cells $\gamma_0$ and $\gamma_1$ will always be identities.
+\end{proof}
+
+% \begin{remark}
+% 	Notice that if we take $F$ and $\hat{F}$ to both be the identity, then the second part of this universal property is exactly the second part of Lemma \ref{Lem:ArrowObject}, applied to the horizontal 2-category of $\dblcat{D}$. It is in this sense that this universal property generalizes that for arrow objects in a 2-category.
+% \end{remark}
 
 \section{Monads}
 

@@ -483,4 +483,49 @@ and let $\vec{m}\colon X\to C^2$ be the corresponding 1-cell with $\kappa\vec{m}
 	Of course, what we really want is that the morphism underlying the coalgebra $\pi(f,g)$ is the composition $g\circ f$. To see that this is the case, notice that the composition $\pi$ is given by $G(\vec{\mu})\circ G_{\otimes}$, where $G(\vec{\mu})$ is the 1-cell between EM-objects induced by the colax morphism of comonads $\vec{\mu}$. Using the fact that $\vec{\mu}$ is a globular 2-cell in $\FF(\Sq(\mathcal{D}))$, we have $U\pi=UG(\vec{\mu})G_{\otimes}=UG_{\otimes}=\vec{m}$. Looking at the definition of $\vec{m}\colon X\to C^2$, it is clear that it is precisely the functor that sends the pair $(f,g)$ to the composition $gf$, ignoring the coalgebra structures.
 \end{proof}
 
-Corollary~\ref{Cor:CoalgComp} actually has a converse, which was used extensively in \cite{}
+Corollary~\ref{Cor:CoalgComp} actually has a converse, which was used extensively in \cite{riehl:nwfs-model}. We can prove this converse in our generalized framework as well.
+
+\begin{proposition}
+	Let $(E,\eta,\epsilon,\delta)$ be a comonad in $\FFD$. A multiplication map on the span $\Coalg E$ determines a monad structure on $E$. 
+
+	Furthermore, given two bimonads $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$, and a morphism $\theta\colon E_1\to E_2$ in $\Comon(\FFD)$, if the induced map $\tilde{\theta}\colon\LCoalg[1]\to\LCoalg[2]$ commutes with the multiplication, then $\theta$ is in fact a bimonad morphism.
+\end{proposition}
+\begin{proof}
+	We will again need to start with some preliminary constructions.
+
+	Let $\hat{L}\colon C^2\to\LCoalg$ be the morphism determined by $U\hat{L}=L$ and $\alpha\hat{L}=\delta$.
+
+	Let $(\hat{L},\hat{L}R)$ be the map into the pushout $X$ as in the diagram
+	\[
+	\begin{tikzcd}[row sep=small,column sep=small,bend angle=25]
+		{} &[2em]& \LCoalg \drar{\cod U} & \\
+		C^2 \ar[bend left]{urr}{\hat{L}}
+			\rar{(\hat{L},\hat{L}R)}
+			\ar[bend right]{drr}{\hat{L}R}
+		& X \urar{P_1} \drar[swap]{P_2}
+		&& C. \\
+		&& \LCoalg \urar[swap]{\dom U} &
+	\end{tikzcd}
+	\]
+	This is well defined since $\cod U\hat{L}=E=\dom U\hat{L}R$.
+
+	Consider the morphism $\vec{m}(\hat{L},\hat{L}R)\colon C^2\to C^2$. We compute
+	\[
+		\dom\vec{m}(\hat{L},\hat{L}R) = \dom UP_1(\hat{L},\hat{L}R) = \dom U\hat{L} = \dom L = \dom
+	\]
+	and
+	\[
+		\cod\vec{m}(\hat{L},\hat{L}R) = \cod UP_2(\hat{L},\hat{L}R) = \cod U\hat{L}R = \cod LR = ER.
+	\]
+	There is a 2-cell $\psi\colon\vec{m}(\hat{L},\hat{L}R)\Rightarrow\id_{C^2}$ with $\dom\psi=\id_{\dom}$ and $\cod\psi=\epsilon R$. That $\psi$ is well defined comes down to the computation
+	\[
+		\cod\psi \circ \kappa\vec{m}(\hat{L},\hat{L}R) = \epsilon R \circ \eta R \circ \dom\vec{\eta} = \kappa R \circ \eta = \epsilon\circ\eta = \kappa.
+	\]
+
+	We will define the monad multiplication $\mu\colon ER\Rightarrow E$ to be the composition
+	\[
+		\mu = E\psi \circ \alpha\pi(\hat{L},\hat{L}R)
+	\]
+	which makes sense since $\cod\alpha\pi(\hat{L},\hat{L}R) = EU\pi(\hat{L},\hat{L}R)=E\vec{m}(\hat{L},\hat{L}R)$.
+	\Todo{Verify monad axioms. Surprisingly hard!}
+\end{proof}

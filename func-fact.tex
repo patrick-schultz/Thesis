@@ -807,19 +807,6 @@ The naturality of $z$ follows immediately from that of $w$, but we still need to
 which follows from equation \eqref{Eq:DomW} and the fact that $\dom\circ i^L = \id_{\dom}$.
 \end{proof}
 
-Up to this point, we have demonstrated that given any double category $\mathbb{D}$ having arrow objects, there is a 2-fold double category $\FFD$ of functorial factorizations in $\mathbb{D}$. The last thing we want to say about this construction is that a cyclic action on $\mathbb{D}$ lifts to one on $\FFD$, and hence also to one on $\mathrm{Bimon}(\mathbb{\FFD})$.
-
-The cyclic action on objects and vertical morphisms is given directly by that on $\mathbb{D}$. Given a horizontal 1-cell $(E,\eta,\epsilon)$ on an object $C$, we define the 1-cell $(E,\eta,\epsilon)^{\bullet}$ on $C^{\bullet}$ to be $(E^{\bullet},\epsilon^{\bullet},\eta^{\bullet})$. This also implies that the cyclic action swaps $L$ and $R$ for any given functorial factorization.
-
-A quick look at the definitions of the two horizontal compositions is now enough to see that for any two functorial factorizations $E_1$ and $E_2$, we have
-\[
-	(E_1\otimes E_2)^{\bullet} = E_1^{\bullet}\odot E_2^{\bullet}
-	\qquad\text{and}\qquad
-	(E_1\odot E_2)^{\bullet} = E_1^{\bullet}\otimes E_2^{\bullet}
-\]
-
-Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FFD$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
-
 \begin{lemma}
 	There is a strict double functor $R\colon\FFD_{\otimes}\to\mathbb{D}$ whose behavior on 2-cells is
 	\[
@@ -857,3 +844,18 @@ Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action 
 \begin{corollary}\label{Cor:RLMon}
 	$R$ and $L$ respectively induce functors $\Mon(\FFD)\to\Mon(\mathbb{D})$ and $\Comon(\FFD)\to\Comon(\mathbb{D})$.
 \end{corollary}
+
+Up to this point, we have demonstrated that given any double category $\mathbb{D}$ having arrow objects, there is a 2-fold double category $\FFD$ of functorial factorizations in $\mathbb{D}$. The last thing we want to say about this construction is that a cyclic action on $\mathbb{D}$ lifts to one on $\FFD$, and hence also to one on $\mathrm{Bimon}(\mathbb{\FFD})$.
+
+The cyclic action on objects and vertical morphisms is given directly by that on $\mathbb{D}$. Given a horizontal 1-cell $(E,\eta,\epsilon)$ on an object $C$, we define the 1-cell $(E,\eta,\epsilon)^{\bullet}$ on $C^{\bullet}$ to be $(E^{\bullet},\epsilon^{\bullet},\eta^{\bullet})$. This also implies that the cyclic action swaps $L$ and $R$ for any given functorial factorization.
+
+A quick look at the definitions of the two horizontal compositions is now enough to see that for any two functorial factorizations $E_1$ and $E_2$, we have
+\[
+	(E_1\otimes E_2)^{\bullet} = E_1^{\bullet}\odot E_2^{\bullet}
+	\qquad\text{and}\qquad
+	(E_1\odot E_2)^{\bullet} = E_1^{\bullet}\otimes E_2^{\bullet}
+\]
+
+Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FFD$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
+
+%TODO: define category \Awfs{\dblcat{D}}=\Bimon(\FFD), mention it inherits cyclic action.

@@ -2,7 +2,7 @@
 
 \chapter{Weak factorization systems}
 
-In this section, we will briefly review the notions of functorial factorization, weak factorization system, and algebraic weak factorization system. 
+We will begin by briefly reviewing the notions of functorial factorization, weak factorization system, and algebraic weak factorization system. 
 
 \section{Arrow Categories}
 
@@ -235,6 +235,6 @@ If we want these choices of lifts to be fully coherent, we should also ask that 
 	An \emph{algebraic weak factorization system} on a category $\cat{C}$ consists of a functorial factorization $(L,\vec{\epsilon},R,\vec{\eta})$ together with natural transformations $\vec{\mu}\colon R^2f\Rightarrow Rf$ and $\vec{\delta}\colon L\Rightarrow L^2$, such that
 	\begin{itemize}
 		\item $\mathbb{R}=(R,\vec{\eta},\vec{\mu})$ is a monad and $\mathbb{L}=(L,\vec{\epsilon},\vec{\delta})$ a comonad on $\cat{C}^2$, and
-		\item the natural transformation $\Delta=(\delta,\mu)\colon LR\Rightarrow RL$ determined by the equation $\epsilon L\circ\delta=\mu\circ\eta R \, (=\id_E)$ as in \ref{Lem:ArrowObject} is a distributive law, which in this case reduces to the single condition $\delta\circ\mu = \mu L\circ E\Delta\circ\delta R$.
+		\item the natural transformation $\Delta=(\delta,\mu)\colon LR\Rightarrow RL$ determined by the equation $\epsilon L\circ\delta=\mu\circ\eta R \, (=\id_E)$ as in Lemma~\ref{Lem:ArrowObject} is a distributive law, which in this case reduces to the single condition $\delta\circ\mu = \mu L\circ E\Delta\circ\delta R$.
 	\end{itemize}
 \end{definition}
