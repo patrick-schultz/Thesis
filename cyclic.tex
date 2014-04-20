@@ -5,32 +5,32 @@
 Recall the notion of a cyclic double category from \cite{cgr:mates}. A cyclic double category $\mathbb{D}$ is a double category with an extra involutive operation. On objects and horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, this operation is written
 \[
 \begin{tikzcd}
-	C^{\bullet} \rar[tick][]{X^{\bullet}} & C^{\bullet}
+	C_1^{\bullet} \rar[tick][]{X^{\bullet}} & C_2^{\bullet}
 \end{tikzcd}
 \]
 and respects horizontal identities and composition. The involution takes any vertical 1-cell $f\colon C\to D$ to some $\sigma f\colon D^{\bullet}\to C^{\bullet}$, and any 2-cell
 \[
 \begin{tikzcd}
-	C \rar[tick][domA]{X} \dar[swap]{f} 
-		& C \dar{f} \\
-	D \rar[tick][codA,swap]{Y}
-		& D
+	C_1 \rar[tick][domA]{X} \dar[swap]{f} 
+		& C_2 \dar{g} \\
+	D_1 \rar[tick][codA,swap]{Y}
+		& D_2
 	\twocellA{\theta}
 \end{tikzcd}
 \qquad\text{to}\qquad
 \begin{tikzcd}
-	D^{\bullet} \rar[tick][domA]{Y^{\bullet}} 
+	D_1^{\bullet} \rar[tick][domA]{Y^{\bullet}} 
 			\dar[swap]{\sigma f} 
-		& D^{\bullet} \dar{\sigma f}\\
-	C^{\bullet} \rar[tick][codA,swap]{X^{\bullet}}
-		& C^{\bullet}
+		& D_2^{\bullet} \dar{\sigma g}\\
+	C_1^{\bullet} \rar[tick][codA,swap]{X^{\bullet}}
+		& C_2^{\bullet}
 	\twocellA{\sigma\theta}
 \end{tikzcd}
 \]
 respecting vertical identities and composition.
 
 \begin{example}
-	Let $\twocat{D}$ be any 2-category with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ and $(-)^{\text{op}}$. The double category $\Sq(\twocat{D})$ has a sub-double category $\LAdj(\twocat{D})$, where the vertical 1-cells are restricted to the left adjoints but with no other restrictions. This double category has a natural cyclic action:  if $F\dashv G$ is an adjunction, then $\sigma F = G^{\bullet}$, and if $\theta$ is a 2-cell with mate $\phi$ then $\sigma\theta=\phi^{\bullet}$. For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see \cite{cgr:mates} Section 1. 
+	Let $\twocat{D}$ be any 2-category with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ with $(-)^{\text{op}}$. The double category $\Sq(\twocat{D})$ has a sub-double category $\LAdj(\twocat{D})$, where the vertical 1-cells are restricted to the adjunctions---pointing in the direction of the left adjoint, say---but with no other restrictions. This double category has a natural cyclic action:  if $F\dashv G$ is an adjunction, then $\sigma F = G^{\bullet}$, the left adjoint of the adjunction $G^{\bullet}\dashv F^{\bullet}$, and if $\theta$ is a 2-cell with mate $\phi$ then $\sigma\theta=\phi^{\bullet}$. For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see \cite{cgr:mates} Section 1. 
 \end{example}
 
 \begin{proposition}
@@ -168,7 +168,7 @@ We will generalize this to a cyclic action on a 2-fold double category. Suppose 
 
 One nice consequence of this definition is that a cyclic action on a 2-fold double category $\mathbb{D}$ induces a cyclic action on the category of bimonoids $\mathrm{Bimon}(\mathbb{D})$.
 
-\begin{proposition}
+\begin{proposition}\label{Prop:BimonCyclic}
 	Suppose $\mathbb{D}$ is a cyclic 2-fold double category. Then the category $\mathrm{Bimon}(\mathbb{D})$ of bimonoids in $\mathbb{D}$ carries a natural cyclic action (contravariant isomorphism).
 \end{proposition}
 \begin{proof}
@@ -209,7 +209,7 @@ The action of the involution on bimonoid morphisms can be broken down as in the 
 
 This immediately implies a useful characterization of bimonoid morphisms.
 
-\begin{corollary}\label{Lem:BimonMorphism}
+\begin{corollary}\label{Cor:BimonMorphism}
 	Given bimonoids $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ in a cyclic 2-fold double category $\mathbb{D}$, a bimonoid morphism $X\to Y$ consists of:
 	\begin{itemize}
 		\item \emph{Either} a monoid morphism $X\to Y$ \emph{or} a comonoid morphism $Y^{\bullet}\to X^{\bullet}$, \emph{and}

@@ -8,8 +8,9 @@ A (strict) double category is a two-dimensional categorical structure, similar t
 
 We will first give the most concise definition of a double category, which we will then break down into more concrete terms.
 
-\begin{definition}
+\begin{definition}\label{Def:DoubleCat}
 	A (strict) \emph{double category} is an internal category object in the (large) category of categories.
+
 \end{definition}
 
 So a double category $\dblcat{D}$ consists of a category $\dblcat{D}_0$ and a category $\dblcat{D}_1$, along with functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$, $i\colon \dblcat{D}_0\to \dblcat{D}_1$, and $\otimes\colon \dblcat{D}_1\times_{\dblcat{D}_0}\dblcat{D}_1\to \dblcat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\dblcat{D}_0$ the 0-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_0$ the vertical 1-cells. Thus $\dblcat{D}_0$ forms the so-called \emph{vertical category} of $\dblcat{D}$. We will call the objects of $\dblcat{D}_1$ the horizontal 1-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_1$ are the 2-cells. 
@@ -45,10 +46,6 @@ A 2-cell $\theta$ for which $s\theta=t\theta=\id$ will be called \emph{globular}
 \]
 to save space and help readability of diagrams.
 
-\begin{remark}\label{Rk:DoubleCatAsMonoid}
-	A monoid object in the category $\Cat{Cat}_{\dblcat{D}_0}$ of categories over $\dblcat{D}_0$ is equivalently a double category where the source and target functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$ are equal and with the vertical category $\dblcat{D}_0$. Conversely, any double category $\dblcat{D}$ in which all horizontal 1-cells have equal domain and codomain, and all 2-cells have equal vertical 1-cells as domain and codomain, is equivalently a monoid object in $\Cat{Cat}_{\dblcat{D}_0}$. We will alternate between these two descriptions as convenient.
-\end{remark}
-
 \begin{example}
 	For any 2-category $\twocat{D}$, there is an associated double category $\Sq(\twocat{D})$ of \emph{squares} in $\twocat{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\twocat{D}$, and 2-cells
 	\[
@@ -64,7 +61,7 @@ to save space and help readability of diagrams.
 \end{example}
 
 \begin{example}\label{Ex:Span}
-	Given any category $M$, there is a double category $\Span(M)$ of \emph{spans} in $M$. The vertical category of $\Span(M)$ is just $M$, while horizontal 1-cells
+	Given any category $M$, there is a pseudo double category $\Span(M)$ of \emph{spans} in $M$. The vertical category of $\Span(M)$ is just $M$, while horizontal 1-cells
 	\[
 	\begin{tikzcd}
 		C \rar[tick][]{X} & D
@@ -88,9 +85,10 @@ to save space and help readability of diagrams.
 	\[
 	\begin{tikzcd}
 		C \dar[swap]{f} & X \lar[swap]{j} \rar{k} \dar{\theta} & D \dar{g} \\
-		C' & Y \lar{j'} \rar[swap]{k'} & D'
+		C' & Y \lar{j'} \rar[swap]{k'} & D.'
 	\end{tikzcd}
 	\]
+	The horizontal composition of spans is given by pullback. It is because this horizontal composition is only determined up to isomorphsim that this example is not a strict double category.
 \end{example}
 
 \begin{definition}
@@ -108,7 +106,7 @@ to save space and help readability of diagrams.
 \end{definition}
 
 \begin{definition}
-	Given a double category $\dblcat{D}$, define double categories $\dblcat{D}^{\text{op}}$ and $\dblcat{D}^{\text{co}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell \eqref{Eq:Double2Cell} in $\dblcat{D}^{\text{op}}$ is a 2-cell
+	Given a double category $\dblcat{D}$, define double categories $\vop{\dblcat{D}}$ and $\hop{\dblcat{D}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell \eqref{Eq:Double2Cell} in $\vop{\dblcat{D}}$ is a 2-cell
 	\[
 	\begin{tikzcd}
 		D \rar[tick][domA]{Y} \dar[swap]{f} 
@@ -119,6 +117,8 @@ to save space and help readability of diagrams.
 	\end{tikzcd}
 	\]
 	in $\dblcat{D}$.
+
+	In terms of Definition~\ref{Def:DoubleCat}, $\vop{\dblcat{D}}$ is the double category obtained by replacing the categories $\dblcat{D}_0$ and $\dblcat{D}_1$ with their opposites, while $\vop{\dblcat{D}}$ is the obtained by swapping the horizontal source and target functors $s$ and $t$.
 \end{definition}
 
 \section{Arrow Objects in a Double Category}\label{Sec:ArrowObjects}
@@ -385,6 +385,8 @@ and
 
 \section{Double Functors}
 
+The natural notion of functor between double categories is a straightforward generalization of lax functors between monoidal categories. Recall that we are using the symbol $\otimes$ to denote horizontal composition.
+
 \begin{definition}\label{Def:LaxDblFunc}
 	Let $\dblcat{D}$ and $\dblcat{E}$ be double categories. A \emph{lax double functor} $F\colon\dblcat{D}\to\dblcat{E}$ consists of:
 	\begin{compactitem}
@@ -393,7 +395,7 @@ and
 	\end{compactitem}
 \end{definition}
 
-A lax double functor $F$ for which the components of $F_1$ and $F_0$ are identities will be called \emph{strict}. For the intermediate notion where the components of $F_1$ and $F_0$ are (vertical) isomorphsims, we will simply refer to $F$ as a double functor.
+A lax double functor $F$ for which the components of $F_I$ and $F_{\otimes}$ are identities will be called \emph{strict}. For the intermediate notion where the components of $F_I$ and $F_{\otimes}$ are (vertical) isomorphsims, we will simply refer to $F$ as a double functor.
 
 \begin{proposition}
 	A lax double functor $F\colon\dblcat{D}\to\dblcat{E}$ induces a functor $F\colon\Mon(\dblcat{D})\to\Mon(\dblcat{E})$.

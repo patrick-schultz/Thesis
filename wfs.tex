@@ -12,7 +12,7 @@ Let $\cat{C}$ be a category. Its arrow category $\cat{C}^2$ is the category whos
 \end{equation}
 given by composition with $\kappa$. Here, 2 is the ordinal, i.e. the category with two objects and a single non-identity arrow. In other words, $\cat{C}^2$ is the cotensor of $\cat{C}$ with the category 2 in the 2-category $\mathcal{C}\mathrm{at}$.
 
-We will make this universal property more explicit in the next lemma:
+We will make this universal property more explicit in the next lemma, separating out the 1-dimensional and the 2-dimensional parts of \eqref{Eq:ArrowObject}:
 
 \begin{lemma}\label{Lem:ArrowObject}
 	Let $\cat{C}$ be a category.
@@ -79,6 +79,10 @@ We will make this universal property more explicit in the next lemma:
 \begin{definition}\label{Def:ArrowObject}
 	Let $\cat{D}$ be any 2-category. For any object $A$ in $\cat{D}$, the \emph{arrow object} of $A$, if it exists, is an object $A^2$ satisfying the universal property \eqref{Eq:ArrowObject}. If every object has an arrow object, i.e. if $\cat{D}$ has cotensors by 2, we will say $\cat{D}$ \emph{has arrow objects}.
 \end{definition}
+
+In practice, we will work with arrow objects in a 2-category using the two parts of Lemma~\ref{Lem:ArrowObject}.
+
+Finally, we will record here a simple proposition which will be needed later.
 
 \begin{proposition}\label{Prop:ArrowSimplex}
 	Any arrow object $A^2$ has an internal category structure
@@ -162,9 +166,26 @@ An algebra for the pointed endofunctor $R$ is an object $f$ in $\cat{C}^2$ equip
 		Y \rar[equals] \urar[dashed]{s} & Y.
 	\end{tikzcd}
 	\end{equation}
+
+	Moreover, a morphsim $(u,v)\colon f\Rightarrow g$ in $\cat{C}^2$ is a morphism of $R$-algebras if it commutes with the lifts $t$ and $t'$, that is, if in the diagram
+	\[
+	\begin{tikzcd}
+		\cdot 	\rar{u} 
+				\dar[swap]{Lf} 
+			& \cdot \dar{Lg} \\
+		\cdot 	\rar{E(u,v)} 
+				\dar[xshift=-0.5ex][swap]{Rf} 
+			& \cdot 
+				\dar[xshift=0.5ex]{Rg} \\
+		\cdot 	\uar[xshift=0.5ex][swap]{t}
+				\rar[swap]{v}
+			& \cdot \uar[xshift=-0.5ex]{t'}
+	\end{tikzcd}
+	\]
+	we have $t'v=E(u,v)t$.
 \end{lemma}
 
-\subsection{Algebraic Weak Factorization Systems}
+\section{Algebraic Weak Factorization Systems}
 
 To simplify the discussion of weak factorization systems, we will start by introducing a notation. For any two morphisms $l$ and $r$ in $\cat{C}$, write $l\boxslash r$ to mean that for every commutative square
 \begin{equation}\label{Eq:LiftingSquare}
@@ -197,7 +218,7 @@ It a simple and standard proof that the lifting property condition can be replac
 In fact, the functorial factorization by itself already determines the two classes of morphisms, with $\mathcal{L}$ the class of morphisms admitting an $L$-coalgebra structure, and $\mathcal{R}$ the class of morphisms admitting an $R$-algebra structure. The lifting properties also follow directly from the functorial factorization, as the next lemma shows.
 
 \begin{lemma}
-	For any $L$-coalgebra $(l,s)$ and any $R$-algebra $(r,t)$, there is a canonical choice of lift in the square \eqref{Eq:LiftingSquare}.
+	For any $L$-coalgebra $(l,s)$ and any $R$-algebra $(r,t)$, there is a canonical choice of lift in the square \eqref{Eq:LiftingSquare}. Any morphism of $R$-algebras $(u_1,v_1)\colon (r,t)\Rightarrow (r',t')$ and any morphism of $L$-coalgebras $(u_2,v_2)\colon (l',s')\Rightarrow (l,s)$ preserves these canonical choices of lifts.
 \end{lemma}
 \begin{proof}
 	The construction is shown in the diagram
@@ -216,6 +237,29 @@ In fact, the functorial factorization by itself already determines the two class
 	\end{tikzcd}
 	\end{equation}
 	Commutativity of \eqref{Eq:LiftingSquare} follows immediately from \eqref{Eq:RAlg} and \eqref{Eq:LAlg}.
+
+	That a morphism of $R$-algebras preserves these canonical lifts can be seen in the diagram
+	\[
+	\begin{tikzcd}[column sep=4em]
+		\cdot 	\rar{u} 
+				\dar[swap]{Ll} 
+			& \cdot \rar{u'}
+				\dar[xshift=0.5ex]{Lr} 
+			& \cdot \dar[xshift=0.5ex]{Lr'} \\
+		\cdot 	\rar{E(u,v)} 
+				\dar[xshift=-0.5ex][swap]{Rl} 
+			& \cdot \rar{E(u',v')} 
+				\uar[xshift=-0.5ex]{t} 
+				\dar{Rr} 
+			& \cdot \uar[xshift=-0.5ex]{t'} 
+				\dar{Rr'} \\
+		\cdot 	\uar[xshift=0.5ex][swap]{s}
+				\rar[swap]{v}
+			& \cdot \rar[swap]{v'}
+			& \cdot
+	\end{tikzcd}
+	\]
+	noting that $u'tE(u,v)s = t'E(u',v')E(u,v)s = t'E(u'u,v'v)s$.
 \end{proof}
 
 This, together with the classical fact that the class of objects admitting a (co)algebra structure for a (co)pointed endofunctor is closed under retracts, gives a third equivalent definition of a functorial weak factorization system.
@@ -227,9 +271,9 @@ This, together with the classical fact that the class of objects admitting a (co
 	\end{itemize}
 \end{lemma}
 
-An $R$-algebra structure on $Rf$ consists of a morphism $\vec{\mu}_f\colon R^2f\to Rf$ in $\cat{C}^2$ such that $\vec{\mu}_f\circ\vec{\eta}_f=\id_f$, while an $L$-coalgebra structure on $Lf$ consists of a morphism $\vec{\delta}_f\colon Lf\to L^2f$ such that $\vec{\epsilon}_f\circ\vec{\delta}_f=\id_f$. We might hope that it is possible to choose these structures for all $f$ in a natural way, such that they form the components of natural transformations $\vec{\mu}\colon R^2\Rightarrow R$ and $\vec{\delta}\colon L\Rightarrow L^2$.
+An $R$-algebra structure on $Rf$ consists of a morphism $\vec{\mu}_f\colon R^2f\to Rf$ in $\cat{C}^2$ such that $\vec{\mu}_f\circ\vec{\eta}_{Rf}=\id_{Rf}$, while an $L$-coalgebra structure on $Lf$ consists of a morphism $\vec{\delta}_f\colon Lf\to L^2f$ such that $\vec{\epsilon}_{Lf}\circ\vec{\delta}_f=\id_{Lf}$. We might hope that it is possible to choose these structures for all $f$ in a natural way, such that they form the components of natural transformations $\vec{\mu}\colon R^2\Rightarrow R$ and $\vec{\delta}\colon L\Rightarrow L^2$.
 
-If we want these choices of lifts to be fully coherent, we should also ask that for any $R$-algebra $(f,t)$, the lift constructed as in \eqref{Eq:CanonicalLift} for the square \eqref{Eq:RAlg} is equal to $t$, and similarly for $L$-coalgebras and \eqref{Eq:LAlg}. Lastly, we should ask that the components $\vec{\mu}_f$ and $\vec{\delta}_f$ are (co)algebra morphisms. With these conditions made, we have the definition of an \emph{algebraic weak factorization system}, first given in \cite{gt:nwfs} (there called \emph{natural} weak factorization systems), and further refined in \cite{garner:nwfs} and \cite{garner:soa}.
+If we want these choices of lifts to be fully coherent, we should also ask that for any $R$-algebra $(f,t)$, the lift constructed as in \eqref{Eq:CanonicalLift} for the square \eqref{Eq:RAlg} is equal to $t$, and similarly for $L$-coalgebras and \eqref{Eq:LAlg}. Lastly, we should ask that the components $\vec{\mu}_f$ and $\vec{\delta}_f$ are (co)algebra morphisms. These conditions, plus one more ensuring that there is an unambiguous notion of a morphism with both $L$-algebra and $R$-coalgebra structures, lead to the definition of an \emph{algebraic weak factorization system}, first given in \cite{gt:nwfs} (there called \emph{natural} weak factorization systems), and further refined in \cite{garner:nwfs} and \cite{garner:soa}.
 
 \begin{definition}\label{Def:Awfs}
 	An \emph{algebraic weak factorization system} on a category $\cat{C}$ consists of a functorial factorization $(L,\vec{\epsilon},R,\vec{\eta})$ together with natural transformations $\vec{\mu}\colon R^2f\Rightarrow Rf$ and $\vec{\delta}\colon L\Rightarrow L^2$, such that

@@ -12,11 +12,19 @@ A 2-fold double category $\mathbb{D}$ is a structure which has two different und
 
 Breaking this down, we have a category $\cat{D}_1$, a functor $p\colon\cat{D}_1\to\cat{D}_0$, two functors $\otimes, \odot\colon \cat{D}_1\times_{\cat{D}_0}\cat{D}_1\to\cat{D}_1$ commuting with $p$, and two functors $I,\perp\colon\cat{D}_0\to\cat{D}_1$ which are sections of $p$, such that $\otimes$, $\odot$, $I$, and $\perp$ satisfy all the axioms of a 2-fold monoidal category. In particular, each fiber of $p$ has a 2-fold monoidal structure.
 
-This definition also implies that $\mathbb{D}$ has two underlying double categories, both with vertical category $\cat{D}_0$ and with source and target functors both equal to $p\colon\cat{D}_1\to\cat{D}_0$, as in Remark \ref{Rk:DoubleCatAsMonoid}. The double category $\mathbb{D}_{\otimes}$ has the rest of the double category structure given by the functors $I$ and $\otimes$, while the double category $\mathbb{D}_{\odot}$ uses the functors $\perp$ and $\odot$.
+A monoid object in $\mathcal{C}at/\dblcat{D}_0$ is equivalently a double category where the source and target functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$ are equal, and with the vertical category $\dblcat{D}_0$. Conversely, any double category $\dblcat{D}$ in which all horizontal 1-cells have equal domain and codomain, and all 2-cells have equal vertical 1-cells as domain and codomain, is equivalently a monoid object in $\mathcal{C}at/\dblcat{D}_0$. We will alternate between these two descriptions as convenient.
+
+Using this shift of perspective, $\mathbb{D}$ has two underlying double categories, both with vertical category $\cat{D}_0$ and with source and target functors both equal to $p\colon\cat{D}_1\to\cat{D}_0$. The double category $\mathbb{D}_{\otimes}$ has the rest of the double category structure given by the functors $I$ and $\otimes$, while the double category $\mathbb{D}_{\odot}$ uses the functors $\perp$ and $\odot$.
 
 Using this double category interpretation, we will find it convenient to think of a 2-fold double category as a double category with two different but interacting horizontal compositions. Notice that from this perspective, all horizontal 1-cells are endomorphisms.
 
-For any object $C$ there are 2-cells
+\begin{remark}
+	It may seem somewhat ad hoc to force a 2-fold monoid object in a slice of $\twocat{Cat}$ into a double category mold, with the odd looking restriction to having only endomorphims in the horizontal direction. We will make essential use of double functors from $\dblcat{D}_{\odot}$ and $\dblcat{D}_{\otimes}$ to genuine double categories (without the endomorphism restriction), and it is mostly for this reason that we have found the double categorical perspective useful, if perhaps only psychologically.
+
+	We did give some thought to how one might define a 2-fold double category with non-endomorphism horizontal 1-cells and 2-cells, and while it seems like there might be a workable definition, it would require a very large increase in complexity. As we are mostly interested in the monads and comonads in a 2-fold double category, which are structures on endomorphism horizontal 1-cells, this restriction was of no concern to this work.
+\end{remark}
+
+Now let us explicitly look at the 2-fold monoidal structure from the double categorical perspective. For any object $C$ there are 2-cells
 \begin{equation}\label{Eq:2FoldCoherenceCellsA}
 \begin{tikzcd}[column sep=large]
 	C \rar[tick][domA]{\perp_C \otimes \perp_C} \dar[equal] 

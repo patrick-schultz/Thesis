@@ -2,7 +2,7 @@
 
 \chapter{Algebraic Weak Factorization Systems}
 
-For this section, let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$. We will show that bimonoids in $\FFD$ are precisely algebraic weak factorization systems, and more generally that the morphisms in $\mathrm{Bimon}(\mathbb{D})$ are given by (co)lax morphisms of algebraic weak factorization systems.
+For this section, let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$. We will show that bimonoids in $\FFD$ are precisely algebraic weak factorization systems, and more generally that the morphisms in $\mathrm{Bimon}(\FFD)$ are given by (co)lax morphisms of algebraic weak factorization systems.
 
 Suppose that $E=(E,\eta,\epsilon)$ is a functorial factorization on a category $\cat{C}$, and consider a monoid structure on $E$. As $I_C$ is initial, the unit of the monoid is forced, and is simply $\eta$. The multiplication is given by a natural transformation $\mu\colon ER\Rightarrow E$ satisfying equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}, which now take the form $\epsilon\circ\mu = \epsilon R$ and $\mu\circ(\eta\cdot\vec{\eta})=\eta$.
 
@@ -29,7 +29,7 @@ The unit axioms for the monoid give the equations $\mu\circ E\vec{\eta}=\id_E=\m
 Hence a functorial factorization which simultaineously has a monoid structure and a comonoid structure in $\FFD$ is precisely a weak factorization system, missing only the second bullet of Definition~\ref{Def:Awfs}, the distributive law condition. This is not surprising, as it is the only condition requiring a compatability between the monad and comonad structures. We will see that a bialgebra in $\FFD$ adds precisely this compatibility.
 
 \begin{proposition}
-	A bimonoid structure on a horizontal morphism $(E,\eta,\epsilon)\colon C\to C$ in $\FFD$ is precisely a weak factorization system on $C$ with underlying functorial factorization system $(E,\eta,\epsilon)$. 
+	A bimonoid structure on a horizontal morphism $(E,\eta,\epsilon)\colon C\to C$ in $\FFD$ is precisely an algebraic weak factorization system on $C$ with underlying functorial factorization system $(E,\eta,\epsilon)$. 
 \end{proposition}
 \begin{proof}
 	We have already shown how the monoid an comonoid structures give rise to the monod and comonad of the awfs. All that remains is to show that the equations \eqref{Eq:Bimonoid} amount to just the distributive law, i.e. the equation
@@ -183,8 +183,21 @@ The appropriate notion of morphism between awfs, analagous to left/right Quillen
 
 Notice that a lax morphism of awfs induces a lift of the functor $\hat{G}$ to a functor $\mathbb{R}_1\mathrm{Alg}\to \mathbb{R}_2\mathrm{Alg}$. In that sense, $G$ ``preserves the right class,'' so is analagous to a right Quillen functor. Similarly, a colax morphism of awfs induces a lift of $\hat{F}$ to $\mathbb{L}_1\mathrm{Coalg}\to\mathbb{L}_2\mathrm{Coalg}$, so is analagous to a left Quillen functor.
 
+By Proposition~\ref{Prop:BimonCyclic}, the cyclic action on $\FFD$ induces a cyclic action on $\Bimon(\FFD)$. This action is given on awfs by
+\[
+	(E,\eta,\mu,\epsilon,\delta)^{\bullet} = (E^{\bullet},\epsilon^{\bullet},\delta^{\bullet},\eta^{\bullet},\mu^{\bullet})
+\]
+swapping the monad and comonad structures. This cyclic action allows us to capture both types of morphism of awfs in the same structure.
+
 \begin{proposition}
-	Morphisms in $\mathrm{Bimon}(\FFD)$ are precisely the colax morphisms of awfs.
+	Morphisms in $\mathrm{Bimon}(\FFD)$ are precisely the colax morphisms of awfs. A colax morphism
+	\[
+		(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)^{\bullet} \to (E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)^{\bullet}
+	\]
+	is equivalent to a lax morphism of awfs
+	\[
+		(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1) \to (E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)
+	\]
 \end{proposition}
 \begin{proof}
 	As above, let $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ be awfs on $\cat{C}$ and $\cat{D}$ respectively. A morphism of bimonoids is given by a 2-cell
