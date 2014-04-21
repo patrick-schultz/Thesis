@@ -2,9 +2,57 @@
 
 \chapter{2-Fold Double Categories}
 
-In this section we will propose a generalization of the 2-fold monoidal categories as used in \cite{garner:soa}.
+%In this section we will propose a generalization of the 2-fold monoidal categories as used in \cite{garner:soa}.
 
-A 2-fold double category $\mathbb{D}$ is a structure which has two different underlying double categories, both of which have the same vertical category $\dvert(\mathbb{D})$. We will start with a concise formal definition, and then expand on the definition more concretely.
+It is well known that the notion of bialgebra or bimonoid---an object with both monoid and comonoid structures which are compatible in a certain sense---makes sense not only in a symmetric monoidal category, but also in more general \emph{braided} monoidal categories. A bimonoid in a braided monoidal category $\cat{C}$ can be defined to be a monoid in the category of comonoids in $\cat{C}$, or equivalently as a comonoid in the category of monoids in $\cat{C}$. The braiding is necessary to ensure that the monoidal structure in $\cat{C}$ lifts to a product in $\Mon(\cat{C})$ and $\Comon(\cat{C})$.
+
+Less well known is the fact that the definition of bimonoid works just as well in a more general context still: so-called 2-fold monoidal categories. A 2-fold monoidal category has two different monoidal structures, call them $(\otimes,I)$ and $(\odot,\perp)$, which are themselves compatible in certain sense. This compatibility can be stated in a way analagous to the definition of bimonoid given in the previous paragraph: a (strict) 2-fold monoidal category is a monoid object in the category $\Cat{StrMonCat}_l$ of strict monoidal categories and lax functors, or equivalently a monoid object in the category $\Cat{StrMonCat}_c$ of strict monoidal categories and colax functors. Notice that monoid objects in the category of strict monoidal categories and \emph{strong} monoidal functors (in which the components of the lax structure are isomorphisms) are precisely (strict) braided monoidal categories.
+
+More concretely, the compatibility between the monoidal structures amounts to the existence of maps
+\[
+	m\colon \perp\otimes\perp\to\perp, \qquad c\colon I\to I\odot I, \qquad j\colon I\to \perp,
+\]
+making $(\perp,j,m)$ a $\otimes$-monoid and $(I,j,c)$ a $\odot$-comonoid, and a natural family of maps
+\[
+	z_{A,B,C,D}\colon (A\odot B)\otimes(C\odot D) \to (A\otimes C)\odot(B\otimes D)
+\]
+satisfying some coherence axioms.
+
+\begin{example}\leavevmode
+\begin{compactitem}
+	\item Any braided monoidal category can be made into a 2-fold monoidal category in which the two monoidal structures coincide.
+	\item Any monoidal category $(\cat{C},\otimes,I)$ with finite products has a 2-fold monoidal structure with $(\odot,\perp)$ given by the product and terminal object. Dually, a monoidal category $(\cat{C},\odot,\perp)$ with finite coproducts has a 2-fold monoidal structure with $(\otimes,I)$ given by the coproduct and initial object.
+\end{compactitem}
+\end{example}
+
+Because the $\odot$-monoidal structure is lax monoidal with respect to the $\otimes$-monoidal structure, it lifts to the category $\Mon_{\otimes}(\cat{C})$ of $\otimes$-monoids in $\cat{C}$. Dually, the $\otimes$-monoidal structure lifts to the category $\Comon_{\odot}(\cat{C})$ of $\odot$-comonoids in $\cat{C}$. Thus, we could define the category of bimonoids in $\cat{C}$ to be either $\Comon_{\odot}(\Mon_{\otimes}(\cat{C}))$ or $\Mon_{\otimes}(\Comon_{\odot}(\cat{C}))$, and it turns out that these are canonically isomorphic. In either case, a bimonoid is an object $A$ with a $\otimes$-monoid structure $(\eta,\mu)$ and a $\odot$-comonoid structure $(\epsilon,\delta)$, such that the following four diagrams commute:
+\begin{equation}
+\begin{gathered}
+\begin{tikzcd}[ampersand replacement=\&]
+	I \rar{\eta} \dar[swap]{c} \& A \dar{\delta} \\
+	I \odot I \rar[swap]{\eta\odot\eta} \& A\odot A,
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&]
+	A\otimes A \rar{\mu} \dar[swap]{\epsilon\otimes\epsilon} \& A \dar{\epsilon} \\
+	\perp\otimes\perp \rar[swap]{m} \& \perp,
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=small,ampersand replacement=\&]
+	{} \& A \drar{\epsilon} \& \\
+	I \urar{\eta} \ar{rr}[swap]{j} \&\& \perp,
+\end{tikzcd}
+\\
+\begin{tikzcd}[ampersand replacement=\&]
+	A\otimes A \ar{rr}{\mu} \dar[swap]{\delta\otimes\delta} \&\& A \dar{\delta} \\
+	(A\odot A)\otimes(A\odot A) \rar[swap]{z_{A,A,A,A}}
+		\& (A\otimes A)\odot(A\otimes A) \rar[swap]{\mu\odot\mu}
+		\& A\odot A.
+\end{tikzcd}
+\end{gathered}
+\end{equation}
+
+We would now like to generalize this 2-fold monoidal category definition to double categories, where there are two different horizontal compositions which are compatible in a way analagous to the two monoidal structures in a 2-fold monoidal category. We will start with a concise formal definition, and then expand on the definition more concretely.
 
 \begin{definition}
 	A \emph{2-fold double category} $\mathbb{D}$ with vertical category $\dvert(\mathbb{D})=\cat{D}_0$ is a 2-fold monoid object in the 2-category $\mathcal{C}at/\cat{D}_0$ of categories over $\cat{D}_0$.
@@ -19,7 +67,7 @@ Using this shift of perspective, $\mathbb{D}$ has two underlying double categori
 Using this double category interpretation, we will find it convenient to think of a 2-fold double category as a double category with two different but interacting horizontal compositions. Notice that from this perspective, all horizontal 1-cells are endomorphisms.
 
 \begin{remark}
-	It may seem somewhat ad hoc to force a 2-fold monoid object in a slice of $\twocat{Cat}$ into a double category mold, with the odd looking restriction to having only endomorphims in the horizontal direction. We will make essential use of double functors from $\dblcat{D}_{\odot}$ and $\dblcat{D}_{\otimes}$ to genuine double categories (without the endomorphism restriction), and it is mostly for this reason that we have found the double categorical perspective useful, if perhaps only psychologically.
+	It may seem somewhat ad hoc to force a 2-fold monoid object in a slice of $\twocat{Cat}$ into a double category mold, with the odd looking restriction to having only endomorphisms in the horizontal direction. We will make essential use of double functors from $\dblcat{D}_{\odot}$ and $\dblcat{D}_{\otimes}$ to genuine double categories (without the endomorphism restriction), and it is mostly for this reason that we have found the double categorical perspective useful, if perhaps only psychologically.
 
 	We did give some thought to how one might define a 2-fold double category with non-endomorphism horizontal 1-cells and 2-cells, and while it seems like there might be a workable definition, it would require a very large increase in complexity. As we are mostly interested in the monads and comonads in a 2-fold double category, which are structures on endomorphism horizontal 1-cells, this restriction was of no concern to this work.
 \end{remark}
