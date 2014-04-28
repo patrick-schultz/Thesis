@@ -1,0 +1,128 @@
+% -*- root: thesis.tex -*-
+
+\chapter{$\RAlg$ and $\LCoalg$}
+
+For this section, we will continue to let $\mathbb{D}=\Sq(\twocat{D})$ be the double category of squares in a 2-category $\twocat{D}$ with arrow objects.
+
+A weak factorization system on a category $C$ is defined by two classes of morphisms, $\mathcal{L}$ and $\mathcal{R}$.
+In an algebraic weak factorization system, these classes of morphisms are replaced by categories $\LCoalg$ and $\RAlg$ equipped with functors to $C^2$. In this section, we will discuss the universal property satisfied by these categories, allowing us to define analagous objects in other 2-categories, and record several technical lemmas which we will need in the next section. We will focus on comonads, but there are dual results for monads which we leave to the reader.
+
+Recall from \cite{street:ftm} the following proposition.
+
+\begin{proposition}\label{Prop:EMObject}
+	Let $C$ be a category, and $\mathbb{L}=(L,\epsilon,\delta)$ be a comonad on $C$. The category of coalgebras $\LCoalg$ has a universal property as follows:
+	\begin{itemize}
+	 	\item There is a forgetful functor $U\colon \LCoalg \to C$ and a natural transformtion $\alpha\colon U \Rightarrow LU$, satisfying $\epsilon U\circ\alpha = \id_U$ and $\delta U \circ \alpha = L\alpha\circ\alpha$.
+	 	\item $(U,\alpha)$ is universal among such pairs satisfying such equations. Given another such pair $(F,\beta)$, where $F\colon X\to C$, there exists a unique functor $\hat{F}\colon X\to \LCoalg$ such that $U\hat{F}=F$ and $\alpha\hat{F}=\beta$.
+	 \end{itemize}
+	 Any colax morphism of comonads $(F,\phi)\colon(C,L_1,\epsilon_1,\delta_1)\to(D,L_2,\epsilon_2,\delta_2)$ induces a functor $\tilde{F}\colon\LCoalg[1]\to\LCoalg[2]$ such that $U_2\tilde{F}=FU_1$ and $\alpha_2\tilde{F}=\phi U_1\circ F\alpha_1$.
+
+	 A natural transformation
+	 \[
+	 \begin{tikzcd}[bend angle=30]
+	 	X \rar[bend left][domA]{\hat{F}_1} \rar[bend right][codA,swap]{\hat{F}_2} & \LCoalg
+	 	\twocellA{\hat{\theta}}
+	 \end{tikzcd}
+	 \]
+	 is uniquely determined by the functors $F_1=U\hat{F}_1$ and $F_2=U\hat{F}_2$ and natural transformations $\beta_1=\alpha\hat{F}_1$ and $\beta_2=\alpha\hat{F}_2$, and the natural transformation $\theta=U\hat{\theta}\colon F_1\Rightarrow F_2$, satisfying $L\theta\circ\beta_1=\beta_2\circ\theta$.
+\end{proposition}
+
+For the rest of this section, assume that $\twocat{D}$ \emph{has EM-objects for comonads}, i.e. for every comonad $\mathbb{L}$ in $\twocat{D}$ there is an object $\LCoalg$ satisfying the universal property above.
+
+It is not too hard to use this universal property to construct the free/forgetful adjunction:
+
+\begin{proposition}
+	For any comonad $\mathbb{L}$ on an object $C$ in $\twocat{D}$, the 1-cell $U\colon\LCoalg\to C$ has a right adjoint $\hat{L}$ with $U\hat{L}=L$ and $\alpha\hat{L}=\delta$. The counit of this adjunction is simply the counit of $\mathbb{L}$, $\epsilon\colon U\hat{L}\Rightarrow\id_C$, while the unit is a 2-cell $\hat{\alpha}\colon\id_{\LCoalg}\Rightarrow\hat{L}U$ satisfying $U\hat{\alpha}=\alpha$.
+\end{proposition}
+\begin{proof}
+	By Proposition~\ref{Prop:EMObject}, to prove the existence of the 1-cell $\hat{L}$, it suffices to verify the equations $\epsilon L\circ\delta=\id_L$ and $\delta L\circ\delta=L\delta\circ\delta$, which are simply two of the comonad axioms.
+
+	Using the 2-dimensional part of Proposition~\ref{Prop:EMObject}, the existence of the 2-cell $\hat{\alpha}$ follows from the equation $L\alpha\circ\alpha=\delta U\circ\alpha$, which is the remaining comonad axiom.
+
+	We leave the verification of the triangle identities for the adjunction to the reader.
+\end{proof}
+
+As our interest is in (co)monads in $\FFD$, which induce (co)monads on arrow objects, it will be useful to record the universal property that results from the interaction of the EM-object and arrow object universal properties.
+
+Consider a comonad in $\FFD$ on an object $C$, i.e. a functorial factorization with half of the awfs structure. We can combine the universal properties of EM-objects and arrow objects into a universal property for $\LCoalg$, where now $\mathbb{L}$ is the comonad in $\twocat{D}$ arising from the comonad in $\FFD$.
+
+\begin{lemma}\label{Lem:FFLCoalgUniversalProperty}
+	Let $(E,\eta,\epsilon,\delta)$ be a comonad in $\FFD$ on an object $C$. There is a 2-cell
+	\[
+	\begin{tikzcd}[row sep=0ex, column sep=4ex, bend angle=15]
+		{} & |[alias=domA]| C^2 \drar[bend left][]{\cod} & \\
+		\LCoalg \urar[bend left][]{U} \drar[bend right][swap]{U} && C \\
+		& |[alias=codA]| C^2 \urar[bend right][swap]{E}
+		\twocellA{\alpha}
+	\end{tikzcd}
+	\]
+	satisfying equations
+	\begin{gather}
+	\begin{tikzcd}[ampersand replacement=\&, row sep=tiny, baseline=(B.base)]
+		|[alias=B]| \LCoalg \rar{U} \drar[bend right=20][swap]{U}
+			\& |[alias=domA]| C^2 \rar[bend left=60][domB]{\dom} \rar[][codB,swap]{\cod}
+			\& C \\
+		\& |[alias=codA]| C^2 \urar[bend right=20][swap]{E} \&
+		\twocellA{\alpha}
+		\twocellB{\kappa}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[ampersand replacement=\&, bend angle=30, baseline=(B.base)]
+		|[alias=B]| \LCoalg \rar{U}
+			\& C^2 \rar[bend left][domA]{\dom} \rar[bend right][codA,swap]{E}
+			\& C
+		\twocellA{\eta}
+	\end{tikzcd} \label{Eq:LCoalg1}
+	\\
+	\begin{tikzcd}[ampersand replacement=\&, row sep=tiny, baseline=(B.base)]
+		{} \& |[alias=domA]| C^2 \drar[bend left=20][]{\cod} \& \\
+		|[alias=B]| \LCoalg \urar[bend left=20][]{U} \rar[swap]{U}
+			\& |[alias=codA]| C^2 \rar[][domB]{E} \rar[bend right=60][codB,swap]{\cod}
+			\& C
+		\twocellA{\alpha}
+		\twocellB{\epsilon}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[ampersand replacement=\&]
+		X \rar{U} \& C^2 \rar{\cod} \& C
+	\end{tikzcd} \label{Eq:LCoalg2}
+	\\
+	\begin{tikzcd}[ampersand replacement=\&, row sep=tiny, baseline=(B.base)]
+		{} \& |[alias=domA]| C^2 \ar[bend left=20]{drr}{\cod} \&[-2em]\&[-2em] \\
+		|[alias=B]| \LCoalg \urar[bend left=20][]{U} \rar[swap]{U}
+			\& |[alias=codA]| C^2 \ar{rr}[domB]{E} \drar[bend right=30][swap]{L}
+			\&\& C \\
+		\&\& |[alias=codB]| C^2 \urar[bend right=30][swap]{E} \&
+		\twocellA{\alpha}
+		\twocellB{\delta}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[ampersand replacement=\&, row sep=tiny, baseline=(B.base)]
+		{} \&[-2em]\&[-2em] |[alias=domA]| C^2 \drar[bend left=20]{\cod} \& \\
+		|[alias=B]| \LCoalg \ar[bend left=20]{urr}{U} \ar{rr}[domB]{U}  \drar[bend right=30][swap]{U}
+			\&\& |[alias=codA]| C^2 \rar[swap]{E}
+			\& C. \\
+		\& |[alias=codB]| C^2 \urar[bend right=30][swap]{L} \&\&
+		\twocellA{\alpha}
+		\twocellB{\vec{\alpha}}
+	\end{tikzcd} \label{Eq:LCoalg3}
+	\end{gather}
+	where $\vec{\alpha}$ is the unique 2-cell such that $\dom\vec{\alpha}=\id_{\dom U}$ and $\cod\vec{\alpha}=\alpha$, the existence of which is implied by Equation~\ref{Eq:LCoalg1}.
+
+	Given any object $X$, together with a morphism $F\colon X\to C^2$ and a 2-cell $\beta\colon \cod F\Rightarrow EF$ satisfying equations
+	\begin{compactenum}
+		\item $\beta\circ\kappa F=\eta F$
+		\item $\epsilon F\circ\beta = \id_{\cod F}$
+		\item $\delta F\circ\beta = E\vec{\beta}\circ\beta$
+	\end{compactenum}
+	where $\vec{\beta}\colon F\Rightarrow LF$ is the unique 2-cell such that $\dom\vec{\beta}=\id_{\dom F}$ and $\cod\vec{\beta}=\beta$; there is a unique morphism $\hat{F}\colon X\to \LCoalg$ such that $U\hat{F}=F$ and $\alpha\hat{F}=\beta$.
+
+	Given any pair of morphisms $\hat{F}_1,\hat{F}_2\colon X\to\LCoalg$ and a 2-cell $\vec{\theta}\colon F_2\Rightarrow F_2$ such that
+	\[
+		E\vec{\theta}\circ\beta_1 = \beta_2\circ\cod\vec{\theta}
+	\]
+	(where $F_i=U\hat{F}_i$ and $\beta_i=\cod\alpha\hat{F}_i$ as in the previous paragraph), there is a unique 2-cell $\hat{\theta}\colon\hat{F}_1\Rightarrow\hat{F}_2$ such that $U\hat{\theta}=\vec{\theta}$.
+\end{lemma}
+\begin{proof}
+	$U$ is simply the $U$ from proposition~\ref{Prop:EMObject}, while the 2-cell $\alpha$ there is the 2-cell $\vec{\alpha}$ here. The equation $\vec{\epsilon}U\circ\vec{\alpha}=\id_{F}$ implies that $\dom \vec{\alpha}=\id_{\dom U}$. With that observation, the rest of the equations follow immediately from the universal property of $C^2$ and the equations $\epsilon U\circ\alpha = \id_U$ and $\delta U \circ \alpha = L\alpha\circ\alpha$ from Proposition~\ref{Prop:EMObject}.
+\end{proof}

@@ -397,7 +397,7 @@ The natural notion of functor between double categories is a straightforward gen
 
 A lax double functor $F$ for which the components of $F_I$ and $F_{\otimes}$ are identities will be called \emph{strict}. For the intermediate notion where the components of $F_I$ and $F_{\otimes}$ are (vertical) isomorphsims, we will simply refer to $F$ as a double functor.
 
-\begin{proposition}
+\begin{proposition}\label{Prop:LaxFuncMonad}
 	A lax double functor $F\colon\dblcat{D}\to\dblcat{E}$ induces a functor $F\colon\Mon(\dblcat{D})\to\Mon(\dblcat{E})$.
 \end{proposition}
 \begin{proof}
@@ -415,4 +415,55 @@ A lax double functor $F$ for which the components of $F_I$ and $F_{\otimes}$ are
 	\end{tikzcd}
 	\]
 	The fact that $F$ takes monad morphisms to monad morphisms can easily be checked using the naturality of $F_I$ and $F_{\otimes}$.
+\end{proof}
+
+We will have need for a condition on a lax double functor which implies a sort of converse to Proposition~\ref{Prop:LaxFuncMonad}. This condition is a slight strengthening of the notion of fully-faithful functor which makes sense for lax functors.
+
+\begin{definition}\label{Def:FullFaithfulLaxFunc}
+	A lax double functor $F\colon\dblcat{D}\to\dblcat{E}$ is fully-faithful on 2-cells if, for any fixed $X_1,X_2,Y,f,g$, the induced function from 2-cells in $\dblcat{D}$ of the shape
+	\[
+	\begin{tikzcd}
+		C_0 \dar[swap]{f} \rar[tick]{X_1} & C_1 \rar[tick]{X_2} & C_2 \dar{g} \\
+		D_0 \ar[tick]{rr}[swap]{Y} && D_1
+	\end{tikzcd}
+	\]
+	to 2-cells in $\dblcat{E}$ of the shape
+	\[
+	\begin{tikzcd}
+		FC_0 \dar[swap]{Ff} \rar[tick]{FX_1} & FC_1 \rar[tick]{FX_2} & FC_2 \dar{Fg} \\
+		FD_0 \ar[tick]{rr}[swap]{FY} && FD_1,
+	\end{tikzcd}
+	\]
+	which takes a 2-cell $\theta$ to $F(\theta)\circ F_{\otimes}$, is a bijection, and if similarly the induced function from 2-cells of the shape
+	\[
+	\begin{tikzcd}
+		C \rar[tick]{I_{C}} \dar[swap]{f} & C \dar{g} \\
+		D_0 \rar[tick][swap]{Y} & D_1
+	\end{tikzcd}
+	\qquad\text{to}\qquad
+	\begin{tikzcd}
+		FC \rar[tick]{I_{FC}} \dar[swap]{Ff} & FC \dar{Fg} \\
+		FD_0 \rar[tick][swap]{FY} & FD_1
+	\end{tikzcd}
+	\]
+	taking a 2-cell $\phi$ to $F(\phi)\circ F_I$ is a bijection.
+\end{definition}
+\begin{remark}
+	Definition \ref{Def:FullFaithfulLaxFunc} implies the function on 2-cells $\theta$ with a single horizontal 1-cell in the domain is also bijective. We leave the details of the (simple) proof to the reader.
+\end{remark}
+\begin{proposition}\label{Prop:FullFaithfulMonads}
+	Let $F\colon\dblcat{D}\to\dblcat{E}$ be a fully-faithful lax double functor. Given any horizontal 1-cell $X$ in $\dblcat{D}$, a monoid structure on $FX$ in $\dblcat{E}$ lifts uniquely to a monoid structure on $X$ such that the induced functor $F\colon\Mon(\dblcat{D})\to\Mon(\dblcat{E})$ takes $X$ to $FX$.
+
+	Similarly, a vertical 1-cell $f\colon X\to Y$ for which $Ff$ is a monoid morphism must also be a monoid morphism.
+
+	In other words, the diagram of categories is a pullback:
+	\[
+	\begin{tikzcd}
+		\Mon(\dblcat{D}) \rar{F} \dar[swap]{U} & \Mon{\dblcat{E}} \dar{U} \\
+		\dblcat{D} \rar[swap]{F} & \dblcat{E}.
+	\end{tikzcd}
+	\]
+\end{proposition}
+\begin{proof}
+	Simply use the surjectivity of the fully-faithful functor to lift the unit and multiplication 2-cells from $FX$ to $X$, then use the injectivity to show that the unitary and associativity equations on $FX$ imply those on $X$.
 \end{proof}
