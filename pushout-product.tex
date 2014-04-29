@@ -2,6 +2,12 @@
 
 \chapter{A universal property for the pushout product}\label{Ch:PushoutProduct} 
 
+We would now like to generalize the framework of cyclic 2-fold double categories to cyclic 2-fold double multicategories, in order to incorporate the multivariable adjunctions of awfs defined in \cite{riehl:nwfs-monoidal}.
+
+[TODO: Review cyclic multicategories/double multicategories]
+
+First, we will need to find a generalization of the universal property for arrow objects to (cyclic) double multicategories. In the theory of multivariable Quillen adjunctions, the lift of a multivariable adjunction to arrow categories is provided by the pushout/pullback product, so we will identify a universal property satisfied by this construction.
+
 Define a cyclic double multicategory $\mathbb{J}$ as follows. The objects are $A_i$, $B_i$, for $i\in\{0,1,2\}$, and their duals. The horizontal 1-cells are $d^i_0,d^i_1\colon B_i\to A_i$. The vertical 1-cells are $F_i\colon (A_{i-1},A_{i+1})\to A^{\bullet}_i$ and $G_i\colon (B_{i-1},B_{i+1})\to B^{\bullet}_i$, which form two orbits under the cyclic action.
 
 There are two types of 2-cells. There are
@@ -30,77 +36,73 @@ Notice that there is at most one element of every hom-set, so all compositions a
 \begin{remark}
 The cyclic double multicategory $\mathbb{J}$ is generated under composition by the $\alpha_i$ and the $\lambda^i_{k_{i+1},k_{i-1},k_{i}}$ with exactly one of $k_0,k_1,k_2$ equal to 1. These nine $\lambda$ generators are further generated under the cyclic action by only three, though there are many choices of which three. These generators satisfy the relations
 
-\begin{equation}
-\begin{tikzcd}[bend angle=50]
+\begin{gather*}
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[][domA]{d_1,d_0} 
 			\dar[swap]{G_0}
-		& A_1,A_2 \dar{F_0} \\
+		\& A_1,A_2 \dar{F_0} \\
 	B^{\bullet}_0 \rar[][codA,domB]{d^{\bullet}_0}
 			\rar[bend right][codB,swap]{d^{\bullet}_1}
-		& A^{\bullet}_0
+		\& A^{\bullet}_0
 	\twocellA{\lambda}
 	\twocellB{\alpha^{\bullet}}
 \end{tikzcd}
 =
-\begin{tikzcd}[bend angle=50]
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \ar[bend left]{r}[domA]{}{d_1,d_0}
 			\rar[][codA,domB,swap]{d_0,d_0} 
 			\dar[swap]{G_0} 
-		& A_1,A_2 \dar{F_0} \\
+		\& A_1,A_2 \dar{F_0} \\
 	B^{\bullet}_0 \rar[][codB,swap]{d^{\bullet}_1} 
-		& A^{\bullet}_0
+		\& A^{\bullet}_0
 	\twocellA{\alpha,\id}
 	\twocellB{\lambda}
 \end{tikzcd}
-\end{equation}
-
-\begin{equation}
-\begin{tikzcd}[bend angle=50]
+\\
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[][domA]{d_0,d_1} 
 			\dar[swap]{G_0} 
-		& A_1,A_2 \dar{F_0} \\
+		\& A_1,A_2 \dar{F_0} \\
 	B^{\bullet}_0 \rar[][codA,domB]{d^{\bullet}_0}	
 			\rar[bend right][codB,swap]{d^{\bullet}_1}
-		& A^{\bullet}_0
+		\& A^{\bullet}_0
 	\twocellA{\lambda}
 	\twocellB{\alpha^{\bullet}}
 \end{tikzcd}
 =
-\begin{tikzcd}[bend angle=50]
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[bend left][domA]{d_0,d_1} 
 			\rar[][codA,domB,swap]{d_0,d_0} 
 			\dar[swap]{G_0} 
-		& A_1,A_2 \dar{F_0} \\
+		\& A_1,A_2 \dar{F_0} \\
 	B^{\bullet}_0 \rar[][codB,swap]{d^{\bullet}_1} 
-		& A^{\bullet}_0
+		\& A^{\bullet}_0
 	\twocellA{\id,\alpha}
 	\twocellB{\lambda}
 \end{tikzcd}
-\end{equation}
-
-\begin{equation}
-\begin{tikzcd}[bend angle=50]
+\\
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[bend left][domA]{d_1,d_1} 
 			\rar[][codA,domB,swap]{d_1,d_0} 
 			\dar[swap]{G_0} 
-		& A_1,A_2 \dar{F_0} \\
+		\& A_1,A_2 \dar{F_0} \\
 	B^{\bullet}_0 \rar[][codB,swap]{d^{\bullet}_0} 
-		& A^{\bullet}_0
+		\& A^{\bullet}_0
 	\twocellA{\id,\alpha}
 	\twocellB{\lambda}
 \end{tikzcd}
 =
-\begin{tikzcd}[bend angle=50]
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[bend left][domA]{d_1,d_1} 
 			\rar[][codA,domB,swap]{d_0,d_1} 
 			\dar[swap]{G_0} 
-		& A_1,A_2 \dar{F_0} \\
+		\& A_1,A_2 \dar{F_0} \\
 	B^{\bullet}_0 \rar[][codB,swap]{d^{\bullet}_0} 
-		& A^{\bullet}_0
+		\& A^{\bullet}_0
 	\twocellA{\alpha,\id}
 	\twocellB{\lambda}
 \end{tikzcd}
-\end{equation}
+\end{gather*}
 and their reflections under the cyclic action.
 \end{remark}
 
@@ -247,3 +249,166 @@ d_0G_0(B_1,B_2) \rar
 \]
 The top arrow is uniquely determined by equation \eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations \eqref{Eq:UProp2} and \eqref{Eq:UProp3}.
 \end{proof}
+
+Now let $\dblcat{M}$ be any double multicategory. Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in Section~\ref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
+
+Given a vertical 1-cell $F\colon(C_1,C_2)\to C_0^{\bullet}$, the lift to arrow objects $\hat{F}$ is a vertical 1-cell $\hat{F}$ together with 2-cells
+\[
+\begin{tikzcd}
+	C_1^2,C_2^2 \rar[][domA]{\cod,\cod} \dar[swap]{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[][swap,codA]{\dom^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\gamma_0}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	C_1^2,C_2^2 \rar[][domA]{\dom,\cod} \dar[swap]{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[][swap,codA]{\cod^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\gamma_1}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	C_1^2,C_2^2 \rar[][domA]{\cod,\dom} \dar[swap]{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[][swap,codA]{\cod^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\gamma_2}
+\end{tikzcd}
+\]
+satisfying the equations
+\begin{gather}
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+	C_1^2,C_2^2 \rar[][domA]{\dom,\cod} 
+			\dar[swap]{G_0}
+		\& C_1,C_2 \dar{F_0} \\
+	C_0^{\bullet 2} \rar[][codA,domB]{\cod^{\bullet}}
+			\rar[bend right][codB,swap]{\dom^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\gamma_1}
+	\twocellB{\kappa^{\bullet}}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+	C_1^2,C_2^2 \ar[bend left]{r}[domA]{}{\dom,\cod}
+			\rar[][codA,domB,swap]{\cod,\cod} 
+			\dar[swap]{G_0} 
+		\& C_1,C_2 \dar{F_0} \\
+	C_0^{\bullet 2} \rar[][codB,swap]{\dom^{\bullet}} 
+		\& C_0^{\bullet}
+	\twocellA{\kappa,\id}
+	\twocellB{\gamma_0}
+\end{tikzcd} \label{Eq:ArrowObjectMultiA}
+\\
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+	C_1^2,C_2^2 \rar[][domA]{\cod,\dom} 
+			\dar[swap]{G_0} 
+		\& C_1,C_2 \dar{F_0} \\
+	C_0^{\bullet 2} \rar[][codA,domB]{\cod^{\bullet}}	
+			\rar[bend right][codB,swap]{\dom^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\gamma_2}
+	\twocellB{\kappa^{\bullet}}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+	C_1^2,C_2^2 \rar[bend left][domA]{\cod,\dom} 
+			\rar[][codA,domB,swap]{\cod,\cod} 
+			\dar[swap]{G_0} 
+		\& C_1,C_2 \dar{F_0} \\
+	C_0^{\bullet 2} \rar[][codB,swap]{\dom^{\bullet}} 
+		\& C_0^{\bullet}
+	\twocellA{\id,\kappa}
+	\twocellB{\gamma_0}
+\end{tikzcd} \label{Eq:ArrowObjectMultiB}
+\\
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+	C_1^2,C_2^2 \rar[bend left][domA]{\dom,\dom} 
+			\rar[][codA,domB,swap]{\dom,\cod} 
+			\dar[swap]{G_0} 
+		\& C_1,C_2 \dar{F_0} \\
+	C_0^{\bullet 2} \rar[][codB,swap]{\cod^{\bullet}} 
+		\& C_0^{\bullet}
+	\twocellA{\id,\kappa}
+	\twocellB{\gamma_1}
+\end{tikzcd}
+=
+\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+	C_1^2,C_2^2 \rar[bend left][domA]{\dom,\dom} 
+			\rar[][codA,domB,swap]{\cod,\dom} 
+			\dar[swap]{G_0} 
+		\& C_1,C_2 \dar{F_0} \\
+	C_0^{\bullet 2} \rar[][codB,swap]{\cod^{\bullet}} 
+		\& C_0^{\bullet}
+	\twocellA{\kappa,\id}
+	\twocellB{\gamma_2}
+\end{tikzcd} \label{Eq:ArrowObjectMultiC}
+\end{gather}
+and which is universal, meaning that given any objects $X_0,X_1,X_2$, horizontal 1-cells $d_{i,0},d_{i,1}\colon X_i\to C_i$, a vertical 1-cell $G\colon X_1,X_2\to X_0^{\bullet}$, globular 2-cells $\alpha_i\colon d_{i,1}\Rightarrow d_{i,0}$, and 2-cells
+\[
+\begin{tikzcd}
+	X_1,X_2 \rar[][domA]{d_{1,0},d_{2,0}} \dar[swap]{G}
+		& C_1,C_2 \dar{F} \\
+	X_0^{\bullet} \rar[][swap,codA]{d_{0,1}^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\lambda_0}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	X_1,X_2 \rar[][domA]{d_{1,1},d_{2,0}} \dar[swap]{G}
+		& C_1,C_2 \dar{F} \\
+	X_0^{\bullet} \rar[][swap,codA]{d_{0,0}^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\lambda_0}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	X_1,X_2 \rar[][domA]{d_{1,0},d_{2,1}} \dar[swap]{G}
+		& C_1,C_2 \dar{F} \\
+	X_0^{\bullet} \rar[][swap,codA]{d_{0,0}^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\lambda_2}
+\end{tikzcd}
+\]
+satisfying the three equations analagous to \eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC}, there exists a unique 2-cell
+\[
+\begin{tikzcd}
+	X_1,X_2 \rar[][domA]{\hat{\alpha}_1,\hat{\alpha}_2} \dar[swap]{G}
+		& C_1^2,C_2^2 \dar{\hat{F}} \\
+	X_0^{\bullet} \rar[][codA,swap]{\hat{\alpha}_0^{\bullet}}
+		& C_0^{\bullet 2}
+	\twocellA{\theta}
+\end{tikzcd}
+\]
+(where $\hat{\alpha}_i$ is the 1-cell determined by $\alpha_i$ by the universal property of the arrow object $C_i$) such that
+\[
+\begin{tikzcd}
+	X_1,X_2 \rar[][domA]{\hat{\alpha}_1,\hat{\alpha}_2} \dar[swap]{G}
+		& C_1^2,C_2^2 \rar[][domB]{} \dar{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	X_0^{\bullet} \rar[][codA,swap]{\hat{\alpha}_0^{\bullet}}
+		& C_0^{\bullet 2} \rar[][codB]{}
+		& C_0^{\bullet}
+	\twocellA{\theta}
+	\twocellB{\gamma_i}
+\end{tikzcd}
+=
+\begin{tikzcd}
+	X_1,X_2 \rar[][domA]{} \dar[swap]{G}
+		& C_1,C_2 \dar{F} \\
+	X_0^{\bullet} \rar[][swap,codA]{}
+		& C_0^{\bullet}
+	\twocellA{\lambda_i}
+\end{tikzcd}
+\]
+for each $i\in\{0,1,2\}$.
+
+Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ to arrow objects to be a vertical 1-cell $\hat{F}$ together with $(n+1)$ 2-cells $\gamma_i$ satisfying $(n+1)$ equations analagous to \eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} and which is universal in the analagous way.
+
+\begin{definition}
+	Let $\dblcat{M}$ be a double multicategory. We say $\dblcat{M}$ \emph{has arrow objects} if for every object $C$ there is an arrow object $C^2$, and if for every vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ there is a lift to arrow objects $\hat{F}$.
+\end{definition}
+
+We have given the universal property of arrow objects and lifts of vertical 1-cells in ordinary double multicategories, but it is clear from the cyclical symmetry of the construction that a cyclic action respects arrow objects. Specifically, $(C^2)^{\bullet}=(C^{\bullet})^2$ for any object $C$, and $\sigma(\hat{F})=\widehat{\sigma F}$ for any vertical 1-cell $F$.
