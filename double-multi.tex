@@ -1,0 +1,522 @@
+% -*- root: thesis.tex -*-
+
+\chapter{Cyclic two-fold double multicategories} 
+
+In this section we will introduce a common generalization of the cyclic double multicategories of \cite{cgr:mates} and the cyclic 2-fold double categories introduced in Section~\ref{Sec:Cyclic}.
+
+A cyclic two-fold double multicategory $\dblcat{M}$ consists of the same underlying data as a cyclic double multicategory, i.e. a vertical multicategory, horizontal 1-cells, and 2-cells of the form
+\begin{equation*}\label{Eq:DblMulti2Cell}
+\begin{tikzcd}[column sep=4em]
+	C_1,\dots,C_n \rar[][domA]{X_1,\dots,X_n} \dar[swap]{F}
+		& C_1,\dots,C_n \dar{F} \\
+	C_0^{\bullet} \rar[][swap,codA]{X_0^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\theta}
+\end{tikzcd}
+\end{equation*}
+which compose vertically in the same way as in a cyclic double multicategory, and where as in a two-fold double multicategory the horizontal 1-cells are endomorphisms. There are two composition structures on the horizontal 1-cells, $(I,\otimes)$ and $(\perp,\odot)$, such that for any object $C$, $(I_C)^{\bullet}=\perp_{C^{\bullet}}$ and $(\perp_C)^{\bullet}=I_{C^{\bullet}}$, and such that for any composable pair of horizontal 1-cells $X$, and $Y$, $(X\otimes Y)^{\bullet}=X^{\bullet}\odot Y^{\bullet}$ and $(X\odot Y)^{\bullet}=X^{\bullet}\otimes Y^{\bullet}$.
+
+Perhaps surprisingly, given two composable 2-cells 
+\[
+\begin{tikzcd}[column sep=4em]
+	C_1,\dots,C_n \rar[][domA]{X_1,\dots,X_n} \dar[swap]{F}
+		& C_1,\dots,C_n \dar{F} \rar[][domB]{Y_1,\dots,Y_n} 
+		& C_1,\dots,C_n \dar{F} \\
+	C_0^{\bullet} \rar[][swap,codA]{X_0^{\bullet}}
+		& C_0^{\bullet} \rar[][swap,codB]{Y_0^{\bullet}}
+		& C_0^{\bullet}
+	\twocellA{\theta}
+	\twocellB{\phi}
+\end{tikzcd}
+\]
+there are $(n+1)$ different horizontal compositions:
+\[
+\begin{tikzcd}[column sep=9em]
+	C_1,\dots,C_n \rar[][domA]{X_1\odot Y_1,\dots,X_i\otimes Y_i,\dots,X_n\odot Y_n} \dar[swap]{F}
+		& C_1,\dots,C_n \dar{F} \\
+	C_0^{\bullet} \rar[][swap,codA]{(X_0\odot Y_0)^{\bullet}}
+		& C_{0}^{\bullet}
+	\twocellA{\theta\otimes_i\phi}
+\end{tikzcd}
+\]
+for $i\in\{1,\dots,n\}$, and
+\[
+\begin{tikzcd}[column sep=6.5em]
+	C_1,\dots,C_n \rar[][domA]{X_1\odot Y_1,\dots,X_n\odot Y_n} \dar[swap]{F}
+		& C_1,\dots,C_n \dar{F} \\
+	C_0^{\bullet} \rar[][swap,codA]{(X_0\otimes Y_0)^{\bullet}}
+		& C_0^{\bullet}.
+	\twocellA{\theta\otimes_0\phi}
+\end{tikzcd}
+\]
+In all cases, there is exactly one $\otimes$ in the $i$th position, and the rest of the horizontal compositions are $\odot$. Notice that this pattern only holds when using the convention of dualizing everything in the codomain. Similarly, given any vertical $n$-ary 1-cell $F$, there are $(n+1)$ unit 2-cells:
+\[
+\begin{tikzcd}[column sep=6em]
+	C_1,\dots,C_n \rar[][domA]{\perp_{C_1},\dots,I_{C_i},\dots,\perp_{C_n}} \dar[swap]{F}
+		& C_1,\dots,C_n \dar{F} \\
+	C_0^{\bullet} \rar[][swap,codA]{\perp_{C_0}^{\bullet}}
+		&C_0^{\bullet}
+	\twocellA{I_{iF}}
+\end{tikzcd}
+\]
+for $i\in\{1,\dots,n\}$, and
+\[
+\begin{tikzcd}[column sep=4em]
+	C_1,\dots,C_n \rar[][domA]{\perp_{C_1},\dots,\perp_{C_n}} \dar[swap]{F}
+		& C_1,\dots,C_n \dar{F} \\
+	C_0^{\bullet} \rar[][swap,codA]{I_{C_0}^{\bullet}}
+		&C_0^{\bullet}
+	\twocellA{I_{0F}}
+\end{tikzcd}
+\]
+The horizontal compositions and units must respect the cyclic action, such that the equations hold:
+\[
+	\sigma(\theta\otimes_i\phi)=(\sigma\theta)\otimes_{i+1}(\sigma\phi)
+	\qquad
+	\sigma(I_{iF})=I_{(i+1)\sigma F}
+\]
+
+We require the existence of the families of globular coherence 2-cells $m,c,j,z$, satisfying the same conditions as in a cyclic 2-fold double category. Notably, we only require naturality of $z$ with respect to unary 2-cells. It is unclear whether there is any sensible compatibility between $z$ and multivariable 2-cells that could be asked for, but such a compatibility is not needed for our purposes.
+
+\section{Multimorphisms of bimonads}
+
+The definition \ref{Def:Bimonad} of bimonads in a 2-fold double category uses only globular 2-cells, so works unchanged in a cyclic 2-fold double multicategory $\dblcat{M}$. However, using the multicategory structure of $\dblcat{M}$ we will now be able to expand the category of bimonads in $\dblcat{M}$ to a multicategory $\Bimon(\dblcat{M})$, and the cyclic structure of $\dblcat{M}$ will lift to $\Bimon(\dblcat{M})$, making it a cyclic multicategory.
+
+\begin{definition}
+	Let $\dblcat{M}$ be a cyclic 2-fold double multicategory, let $(X_i,\eta_i,\mu_i,\epsilon_i,\delta_i)$, $i\in\{0,1,2\}$, be bimonads in $\dblcat{M}$, and let $F$ and $\phi$ be as in the diagram
+	\[
+	\begin{tikzcd}
+		C_1,C_2 \rar[][domA]{X_1,X_2} \dar[swap]{F} 
+			& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codA,swap]{X_0^{\bullet}}
+			& C_0.
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	Say that $(F,\phi)$ is a 0-colax morphism of bimonads if the following two equations are satisfied:
+	\begin{align*}
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1,C_2 \rar[][domA]{X_1,X_2} \dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codA,domB]{X_0^{\bullet}}
+				\rar[bend right][codB,swap]{I^{\bullet}}
+			\& C_0
+		\twocellA{\phi}
+		\twocellB{\eta_0^{\bullet}}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1,C_2 \rar[bend left][domA]{X_1,X_2} 
+				\rar[][codA,domB,swap]{\perp,\perp}
+				\dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codB,swap]{I^{\bullet}}
+			\& C_0
+		\twocellA{\epsilon_1,\epsilon_2}
+		\twocellB{I_{0F}}
+	\end{tikzcd}
+	\\
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1,C_2 \rar[][domA]{X_1,X_2} \dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codA,domB]{X_0^{\bullet}}
+				\rar[bend right][codB,swap]{(X_0\otimes X_0)^{\bullet}}
+			\& C_0
+		\twocellA{\phi}
+		\twocellB{\mu_0^{\bullet}}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50,column sep=5em]
+		C_1,C_2 \rar[bend left][domA]{X_1,X_2} 
+				\rar[][codA,domB,swap]{X_1\odot X_1,X_2\odot X_2}
+				\dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codB,swap]{(X_0\otimes X_0)^{\bullet}}
+			\& C_0.
+		\twocellA{\delta_1,\delta_2}
+		\twocellB{\phi\otimes_0\phi}
+	\end{tikzcd}
+	\end{align*}
+	$(F,\phi)$ is a 1-colax morphism of bimonads if the two equations
+	\begin{align*}
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1,C_2 \rar[bend left][domA]{I,X_2} 
+				\rar[][codA,domB,swap]{X_1,X_2}
+				\dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codB,swap]{X_0^{\bullet}}
+			\& C_0
+		\twocellA{\eta_1,\id}
+		\twocellB{\phi}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1,C_2 \rar[bend left][domA]{I,X_2} 
+				\rar[][codA,domB,swap]{I,\perp}
+				\dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codB,domC]{\perp^{\bullet}}
+				\rar[bend right][codC,swap]{X_0^{\bullet}}
+			\& C_0
+		\twocellA{\id,\epsilon_2}
+		\twocellB{I_{1F}}
+		\twocellC{\epsilon_0^{\bullet}}
+	\end{tikzcd}
+	\\
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1,C_2 \rar[bend left][domA]{X_1\otimes X_1,X_2} 
+				\rar[][codA,domB,swap]{X_1,X_2}
+				\dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codB,swap]{X_0^{\bullet}}
+			\& C_0
+		\twocellA{\mu_1,\id}
+		\twocellB{\phi}
+	\end{tikzcd}
+	&=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50,column sep=5em]
+		C_1,C_2 \rar[bend left][domA]{X_1\otimes X_1,X_2} 
+				\rar[][codA,domB,swap]{X_1\otimes X_1,X_2\odot X_2}
+				\dar[swap]{F}
+			\& C_1,C_2 \dar{F} \\
+		C_0 \rar[][codB,domC]{(X_0\odot X_0)^{\bullet}}
+				\rar[bend right][codC,swap]{X_0^{\bullet}}
+			\& C_0
+		\twocellA{\id,\delta_2}
+		\twocellB{\phi\otimes_1\phi}
+		\twocellC{\delta_0^{\bullet}}
+	\end{tikzcd}
+	\end{align*}
+	and $(F,\phi)$ is 2-colax if the analogous two equations hold. We will call $(F,\phi)$ a colax (multi)morphism of bimonads if it is $i$-colax for all $i\in\{0,1,2\}$.
+
+	The definition of colax multimorphisms with arity $n$ should be clear from the $n=2$ case.
+\end{definition}
+
+It is straightforward to see that multimorphisms of bimonads compose multicategorically, so we have the multicategory $\Bimon(\dblcat{M})$ of bimonads in $\dblcat{M}$. Furthermore, the definition of colax multimorphism is clearly symmetric with respect to the cyclic action, so that $\Bimon(\dblcat{M})$ inherits a cyclic action.
+
+\begin{definition}
+	Let $\dblcat{M}$ be a cyclic 2-fold double multicategory. The cyclic multicategory $\Bimon(\dblcat{M})$ has as objects bimonads in $\dblcat{M}$, and has colax morphisms as (multi)morphisms.
+\end{definition}
+
+\section{The cyclic 2-fold double multicategory of functorial factorizations}
+
+In this section, given a cyclic double multicategory $\dblcat{M}$, we will construct a cyclic 2-fold double multicategory $\FF(\dblcat{M})$ of functorial factorizations in $\dblcat{M}$.
+
+The objects and vertical multicategory of $\FF(\dblcat{M})$ are those of $\dblcat{M}$. The horizontal 1-cells of $\FF(\dblcat{M})$ are functorial factorizations in $\dblcat{M}$. As with bimonads, the definition of functorial factorization given in section~\ref{Ch:FuncFact} involves only globular 2-cells, so no modification is necessary to define functorial factorizations in $\dblcat{M}$.
+
+Also as with bimonads, we will give an explicit definition of 2-ary 2-cell and let the reader extend the (easy) pattern to $n$-ary 2-cells for arbitrary $n$.
+
+\begin{definition}
+	Let $(E_i,\eta_i,\epsilon_i)$, $i\in\{0,1,2\}$, be functorial factorizations in $\dblcat{M}$ on objects $C_i$. A 2-ary 2-cell in $\FF(\dblcat{M})$
+	\[
+	\begin{tikzcd}
+		C_1,C_2 \rar[tick][domA]{E_1,E_2} \dar[swap]{F} 
+			& C_1,C_2 \dar{F} \\
+		C_0^{\bullet} \rar[tick][codA,swap]{E_0^{\bullet}}
+			& C_0^{\bullet}
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	is given by a 2-cell
+	\[
+	\begin{tikzcd}
+		C_1^2,C_2^2 \rar[tick][domA]{E_1,E_2} \dar[swap]{\hat{F}}
+			& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{E_0} 
+			& C_0^{\bullet}
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	in $\dblcat{M}$ satisfying three equations:
+	\begin{gather}
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick][domA]{E_1,E_2}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,domB]{E_0^{\bullet}}
+				\rar[tick,bend right][codB,swap]{\dom^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\theta}
+		\twocellB{\eta_0^{\bullet}}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick,bend left][domA]{E_1,E_2} 
+				\rar[tick][codA,domB,swap]{\cod,\cod}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codB,domC,swap]{\dom^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\epsilon_1,\epsilon_2}
+		\twocellB{\gamma_0}
+	\end{tikzcd} \label{Eq:FFMulti2CellA}
+	\\
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick,bend left][domA]{\dom,E_2} 
+				\rar[tick][codA,domB,swap]{E_1,E_2}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codB,swap]{E_0^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\eta_1,\id}
+		\twocellB{\theta}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick,bend left][domA]{\dom,E_2} 
+				\rar[tick][codA,domB,swap]{\dom,\cod}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codB,domC]{\cod^{\bullet}}
+				\rar[tick,bend right][codC,swap]{E_0^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\id,\epsilon_2}
+		\twocellB{\gamma_1}
+		\twocellC{\epsilon_0^{\bullet}}
+	\end{tikzcd} \label{Eq:FFMulti2CellB}
+	\\
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick,bend left][domA]{E_1,\dom} 
+				\rar[tick][codA,domB,swap]{E_1,E_2}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codB,swap]{E_0^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\id,\eta_2}
+		\twocellB{\theta}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick,bend left][domA]{E_1,\dom} 
+				\rar[tick][codA,domB,swap]{\cod,\dom}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codB,domC]{\cod^{\bullet}}
+				\rar[tick,bend right][codC,swap]{E_0^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\epsilon_1,\id}
+		\twocellB{\gamma_2}
+		\twocellC{\epsilon_0^{\bullet}}
+	\end{tikzcd} \label{Eq:FFMulti2CellC}
+	\end{gather}
+\end{definition}
+
+The cyclic action on a 2-cell in $\FF(\dblcat{M})$ is simply given by the cyclic action on the underlying 2-cell in $\dblcat{M}$. This is well defined since the definition of 2-cell in $\FF(\dblcat{M})$ is clearly stable under the cyclic action in $\dblcat{M}$.
+
+\begin{proposition}
+	Continuing the notation of the previous definition, the 2-cell $\theta$ induces 2-cells in $\dblcat{M}$
+	\[
+	\begin{tikzcd}
+		C_1^2,C_2^2 \rar[tick][domA]{L_1,L_2} \dar[swap]{\hat{F}}
+			& C_1^2,C_2^2 \dar{\hat{F}} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{R_0^{\bullet}} 
+			& C_0^{\bullet 2}
+		\twocellA{\hat{\theta}^0}
+	\end{tikzcd}
+	\quad
+	\begin{tikzcd}
+		C_1^2,C_2^2 \rar[tick][domA]{R_1,L_2} \dar[swap]{\hat{F}}
+			& C_1^2,C_2^2 \dar{\hat{F}} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+			& C_0^{\bullet 2}
+		\twocellA{\hat{\theta}^1}
+	\end{tikzcd}
+	\quad
+	\begin{tikzcd}
+		C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+			& C_1^2,C_2^2 \dar{\hat{F}} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+			& C_0^{\bullet 2}
+		\twocellA{\hat{\theta}^2}
+	\end{tikzcd}
+	\]
+	satisfying
+	\begin{gather*}
+	\begin{tikzcd}[ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+			\& C_1^2,C_2^2 \rar[tick][domB]{\cod,\cod} \dar{\hat{F}} 
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+			\& C_0^{\bullet 2} \rar[tick][codB,swap]{\dom^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\hat{\theta}^2}
+		\twocellB{\gamma_0}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1^2,C_2^2 \rar[tick,bend left][domA]{E_1,\cod}
+				\rar[tick][codA,domB,swap]{\cod,\cod}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codB,swap]{\dom^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\epsilon_1,\id}
+		\twocellB{\gamma_0}
+	\end{tikzcd}
+	\\
+	\begin{tikzcd}[ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+			\& C_1^2,C_2^2 \rar[tick][domB]{\dom,\cod} \dar{\hat{F}} 
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+			\& C_0^{\bullet 2} \rar[tick][codB,swap]{\cod^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\hat{\theta}^2}
+		\twocellB{\gamma_1}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1^2,C_2^2 \rar[tick][domA]{\dom,\cod}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,domB]{\cod^{\bullet}}
+				\rar[tick,bend right][codB,swap]{E_2^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\gamma_1}
+		\twocellB{\epsilon_0^{\bullet}}
+	\end{tikzcd}
+	\\
+	\begin{tikzcd}[ampersand replacement=\&]
+		C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+			\& C_1^2,C_2^2 \rar[tick][domB]{\cod,\dom} \dar{\hat{F}} 
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+			\& C_0^{\bullet 2} \rar[tick][codB,swap]{\cod^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\hat{\theta}^2}
+		\twocellB{\gamma_2}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+		C_1^2,C_2^2 \rar[tick][domA]{E_1,E_2}
+				\dar[swap]{\hat{F}}
+			\& C_1,C_2 \dar{F} \\
+		C_0^{\bullet 2} \rar[tick][codA,domB,swap]{E_0^{\bullet}}
+			\& C_0^{\bullet}
+		\twocellA{\theta}
+	\end{tikzcd}
+	\end{gather*}
+	and a similar three equations for each of $\hat{\theta}^0$ and $\hat{\theta}^1$.
+
+	In general, an $n$-ary 2-cell $\theta$ in $\FF(\dblcat{M})$ induces 2-cells $\hat{\theta}^i$ in $\dblcat{M}$, $i\in\{0,\dots,n\}$.
+\end{proposition}
+\begin{proof}
+	We will verify the existence of $\hat{\theta}^2$. The pattern extending to all other cases should be evident.
+
+	Using the universal property for arrow objects in a cyclic double multicategory, we only need to check the three equations obtained by composing each side of the equations \eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} with $\hat{\theta}^2$. Equation \eqref{Eq:ArrowObjectMultiA} remains unchanged after composition with $\hat{\theta}^2$, equation \eqref{Eq:ArrowObjectMultiB} becomes \eqref{Eq:FFMulti2CellA}, and equation \eqref{Eq:ArrowObjectMultiC} turns into \eqref{Eq:FFMulti2CellB}.
+
+	Note that Equation~\eqref{Eq:FFMulti2CellC} proves that $\hat{\theta}^2$ respects the units/counits of $L_0$, $L_1$, $R_2$, i.e. that the unit condition for a 2-colax morphism of bimonads holds, so that all three equations \eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC} go into establishing $\hat{\theta}^i$ for each $i$.
+\end{proof}
+
+To finish the construction of the cyclic 2-fold double multicategory $\FF(\dblcat{M})$, we still need to define the horizontal composites and units for $n$-ary 2-cells. Given 2-cells
+\[
+\begin{tikzcd}
+	C_1^2,C_2^2 \rar[tick][domA]{E_1,E_2} \dar[swap]{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codA,swap]{E_0^{\bullet}} 
+		& C_0^{\bullet}
+	\twocellA{\theta}
+\end{tikzcd}
+\qquad\text{and}\qquad
+\begin{tikzcd}
+	C_1^2,C_2^2 \rar[tick][domA]{E'_1,E'_2} \dar[swap]{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codA,swap]{{E'_0}^{\bullet}} 
+		& C_0^{\bullet}
+	\twocellA{\phi}
+\end{tikzcd}
+\]
+in $\dblcat{M}$ underlying 2-cells in $\FF(\dblcat{M})$ (i.e. satisfying equations \eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC}), define
+\[
+\begin{tikzcd}[column sep=4em]
+	C_1^2,C_2^2 \rar[tick][domA]{E_{1\odot1'},E_{2\otimes2'}} \dar[swap]{\hat{F}}
+		& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codA,swap]{E_{0\odot0'}^{\bullet}} 
+		& C_0^{\bullet}
+	\twocellA{\theta\otimes_2\phi}
+\end{tikzcd}
+\qquad\text{by}\qquad
+\begin{tikzcd}[ampersand replacement=\&]
+	C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+		\& C_1^2,C_2^2 \rar[tick][domB]{E'_1,E'_2} \dar{\hat{F}} 
+		\& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+		\& C_0^{\bullet 2} \rar[tick][codB,swap]{{E'_0}^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\hat{\theta}^2}
+	\twocellB{\phi}
+\end{tikzcd}
+\]
+and likewise for the other horizontal composites. Checking that this composite 2-cell satisfies equations \eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC} is easy but notationally cumbersome, so we will verify that $\theta\otimes_2\phi$ satisfies \eqref{Eq:FFMulti2CellB} to convey the idea:
+\begin{multline}
+\begin{tikzcd}[ampersand replacement=\&,column sep=4em,bend angle=50]
+	C_1^2,C_2^2 \rar[tick,bend left][domA]{\dom,E_{2\otimes2'}}
+			\rar[tick][codA,domB,swap]{E_{1\odot1'},E_{2\otimes2'}}
+			\dar[swap]{\hat{F}}
+		\& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codB,swap]{E_{0\odot0'}^{\bullet}} 
+		\& C_0^{\bullet}
+	\twocellA{\eta_{1\odot1'},\id}
+	\twocellB{\theta\otimes_2\phi}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+	C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+		\& C_1^2,C_2^2 \rar[tick,bend left][domB]{\dom,E'_2}
+			\rar[tick][codB,domC,swap]{E'_1,E'_2} \dar{\hat{F}} 
+		\& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+		\& C_0^{\bullet 2} \rar[tick][codC,swap]{{E'_0}^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\hat{\theta}^2}
+	\twocellB{\eta'_1,\id}
+	\twocellC{\phi}
+\end{tikzcd}
+\\
+=
+\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+	C_1^2,C_2^2 \rar[tick][domA]{L_1,R_2} \dar[swap]{\hat{F}}
+		\& C_1^2,C_2^2 \rar[tick,bend left][domB]{\dom,E'_2}
+			\rar[tick][codB,domC,swap]{\dom,\cod} \dar{\hat{F}} 
+		\& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codA,swap]{L_0^{\bullet}} 
+		\& C_0^{\bullet 2} \rar[tick][codC,domD]{\cod^{\bullet}}
+			\rar[tick,bend right][codD,swap]{{E'_0}^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\hat{\theta}^2}
+	\twocellB{\id,\epsilon'_2}
+	\twocellC{\gamma_1}
+	\twocellD{{\epsilon'_0}^{\bullet}}
+\end{tikzcd}
+\\
+=
+\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+	C_1^2,C_2^2 \rar[tick][]{L_1,R_2} \dar[swap]{\hat{F}}
+		\& |[alias=domA]| C_1^2,C_2^2 \rar[tick,bend left][domB]{\dom,E'_2}
+			\rar[tick][codB,swap]{\dom,\cod} 
+		\& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][domC]{\id}
+			\rar[tick,bend right][codC,swap]{L_0^{\bullet}} 
+		\& |[alias=codA]| C_0^{\bullet 2} \rar[tick][domD]{\cod^{\bullet}}
+			\rar[tick,bend right][codD,swap]{{E'_0}^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\gamma_1}
+	\twocellB{\id,\epsilon'_2}
+	\twocellC{\vec{\epsilon}_0^{\bullet}}
+	\twocellD{{\epsilon'_0}^{\bullet}}
+\end{tikzcd}
+=
+\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
+	C_1^2,C_2^2 \rar[tick,bend left][domA]{\dom,E_{2\otimes2'}}
+			\rar[tick][codA,domB,swap]{\dom,\cod} \dar{\hat{F}} 
+		\& C_1,C_2 \dar{F} \\
+	C_0^{\bullet 2} \rar[tick][codB,domC]{\cod^{\bullet}}
+			\rar[tick,bend right][codC,swap]{E_{0\odot0'}^{\bullet}}
+		\& C_0^{\bullet}
+	\twocellA{\id,\epsilon'_{2\otimes2'}}
+	\twocellB{\gamma_1}
+	\twocellC{\epsilon_{0\odot0'}^{\bullet}}
+\end{tikzcd}
+\end{multline}
+
+Finally, given a $n$-ary vertical 1-cell $F$, the unit 2-cells $I_{iF}$ are simply given by $\gamma_i$, which are easily verified to define 2-cells in $\FF(\dblcat{M})$.

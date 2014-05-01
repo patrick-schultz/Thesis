@@ -143,114 +143,116 @@ Check that the mates of the morphism $p_1$ in diagram \ref{E:PullbackProduct} ar
 
 Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-cells $F_i$. Let $\mathbf{CDMCat}$ denote the 2-category of cyclic double multicategories, functors, and horizontal transformations.
 
-\begin{theorem}
-Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}$. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ constructed in example \ref{Ex:PullbackProduct} is terminal in the category $\mathbf{CDMCat}_{\mathbb{F}}(\mathbb{J},\mathbb{M}\mathbf{Adj})$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
+\begin{theorem}\label{Thm:MAdjArrowObjects}
+	Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}$. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ constructed in example \ref{Ex:PullbackProduct} is terminal in the category $\mathbf{CDMCat}_{\mathbb{F}}(\mathbb{J},\mathbb{M}\mathbf{Adj})$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
 \end{theorem}
 \begin{proof}
-Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\mathbb{M}\mathbf{Adj}$, there is a unique 2-cell
-\[
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
-			\dar[swap]{G_0} 
-		& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2 \dar{\hat{F}_0} \\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
-		& \cat{A}^{\bullet\mathbf{2}}_0
-	\twocellA{\theta}
-\end{tikzcd}
-\]
-such that
+	Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\mathbb{M}\mathbf{Adj}$, there is a unique 2-cell
+	\[
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
+				\dar[swap]{G_0} 
+			& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2 \dar{\hat{F}_0} \\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
+			& \cat{A}^{\bullet\mathbf{2}}_0
+		\twocellA{\theta}
+	\end{tikzcd}
+	\]
+	such that
 
-\begin{equation}\label{Eq:UProp1}
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
-			\dar[swap]{G_0} 
-		& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2
-			\rar[][domB]{\cod,\cod}
-			\dar{\hat{F}_0}
-		& \cat{A}_1,\cat{A}_2 \dar{F_0}\\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
-		& \cat{A}^{\bullet\mathbf{2}}_0 \rar[][codB,swap]{\dom^{\bullet}}
-		& \cat{A}^{\bullet}_0
-	\twocellA{\theta}
-	\twocellB{\id}
-\end{tikzcd}
-=
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2
-			\rar[][domA]{d_0,d_0} 
-			\dar[swap]{G_0} 
-		& \cat{A}_1,\cat{A}_2 \dar{F_0} \\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{d^{\bullet}_1} 
-		& \cat{A}^{\bullet}_0
-	\twocellA{\lambda}
-\end{tikzcd}
-\end{equation}
-%
-\begin{equation}\label{Eq:UProp2}
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
-			\dar[swap]{G_0} 
-		& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2
-			\rar[][domB]{\dom,\cod}
-			\dar{\hat{F}_0}
-		& \cat{A}_1,\cat{A}_2 \dar{F_0}\\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
-		& \cat{A}^{\bullet\mathbf{2}}_0 \rar[][codB,swap]{\cod^{\bullet}}
-		& \cat{A}^{\bullet}_0
-	\twocellA{\theta}
-	\twocellB{p_1}
-\end{tikzcd}
-=
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2
-			\rar[][domA]{d_1,d_0} 
-			\dar[swap]{G_0} 
-		& \cat{A}_1,\cat{A}_2 \dar{F_0} \\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{d^{\bullet}_0} 
-		& \cat{A}^{\bullet}_0
-	\twocellA{\lambda}
-\end{tikzcd}
-\end{equation}
-%
-\begin{equation}\label{Eq:UProp3}
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
-			\dar[swap]{G_0} 
-		& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2
-			\rar[][domB]{\cod,\dom}
-			\dar{\hat{F}_0}
-		& \cat{A}_1,\cat{A}_2 \dar{F_0}\\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
-		& \cat{A}^{\bullet\mathbf{2}}_0 \rar[][codB,swap]{\cod^{\bullet}}
-		& \cat{A}^{\bullet}_0
-	\twocellA{\theta}
-	\twocellB{p_2}
-\end{tikzcd}
-=
-\begin{tikzcd}
-	\cat{B}_1,\cat{B}_2
-			\rar[][domA]{d_0,d_1} 
-			\dar[swap]{G_0} 
-		& \cat{A}_1,\cat{A}_2 \dar{F_0} \\
-	\cat{B}^{\bullet}_0 \rar[][codA,swap]{d^{\bullet}_0} 
-		& \cat{A}^{\bullet}_0
-	\twocellA{\lambda}
-\end{tikzcd}
-\end{equation}
+	\begin{equation}\label{Eq:UProp1}
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
+				\dar[swap]{G_0} 
+			& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2
+				\rar[][domB]{\cod,\cod}
+				\dar{\hat{F}_0}
+			& \cat{A}_1,\cat{A}_2 \dar{F_0}\\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
+			& \cat{A}^{\bullet\mathbf{2}}_0 \rar[][codB,swap]{\dom^{\bullet}}
+			& \cat{A}^{\bullet}_0
+		\twocellA{\theta}
+		\twocellB{\id}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2
+				\rar[][domA]{d_0,d_0} 
+				\dar[swap]{G_0} 
+			& \cat{A}_1,\cat{A}_2 \dar{F_0} \\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{d^{\bullet}_1} 
+			& \cat{A}^{\bullet}_0
+		\twocellA{\lambda}
+	\end{tikzcd}
+	\end{equation}
+	%
+	\begin{equation}\label{Eq:UProp2}
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
+				\dar[swap]{G_0} 
+			& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2
+				\rar[][domB]{\dom,\cod}
+				\dar{\hat{F}_0}
+			& \cat{A}_1,\cat{A}_2 \dar{F_0}\\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
+			& \cat{A}^{\bullet\mathbf{2}}_0 \rar[][codB,swap]{\cod^{\bullet}}
+			& \cat{A}^{\bullet}_0
+		\twocellA{\theta}
+		\twocellB{p_1}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2
+				\rar[][domA]{d_1,d_0} 
+				\dar[swap]{G_0} 
+			& \cat{A}_1,\cat{A}_2 \dar{F_0} \\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{d^{\bullet}_0} 
+			& \cat{A}^{\bullet}_0
+		\twocellA{\lambda}
+	\end{tikzcd}
+	\end{equation}
+	%
+	\begin{equation}\label{Eq:UProp3}
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
+				\dar[swap]{G_0} 
+			& \cat{A}^{\mathbf{2}}_1,\cat{A}^{\mathbf{2}}_2
+				\rar[][domB]{\cod,\dom}
+				\dar{\hat{F}_0}
+			& \cat{A}_1,\cat{A}_2 \dar{F_0}\\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{H^{\bullet}_3}	
+			& \cat{A}^{\bullet\mathbf{2}}_0 \rar[][codB,swap]{\cod^{\bullet}}
+			& \cat{A}^{\bullet}_0
+		\twocellA{\theta}
+		\twocellB{p_2}
+	\end{tikzcd}
+	=
+	\begin{tikzcd}
+		\cat{B}_1,\cat{B}_2
+				\rar[][domA]{d_0,d_1} 
+				\dar[swap]{G_0} 
+			& \cat{A}_1,\cat{A}_2 \dar{F_0} \\
+		\cat{B}^{\bullet}_0 \rar[][codA,swap]{d^{\bullet}_0} 
+			& \cat{A}^{\bullet}_0
+		\twocellA{\lambda}
+	\end{tikzcd}
+	\end{equation}
 
-Fix objects $B_1\in\cat{B}_1$, $B_2\in\cat{B}_2$. The $H_i$ are the functors sending $B_i$ to $H_i(B_i)=\alpha_{B_i}\colon d_1B_i\to d_0B_i$. The component of $\theta$ at $(B_1,B_2)$ is a square
-\[
-\begin{tikzcd}
-d_1G_0(B_1,B_2) \rar \dar
-& F_0(d_0B_1,d_0B_2) \dar \\
-d_0G_0(B_1,B_2) \rar
-& F_0(d_1B_1,d_0B_2) \!\!\! \underset{F_0(d_1B_1,d_1B_2)}{\prod} \!\!\! F_0(d_0B_1,d_1B_2)
-\end{tikzcd}
-\]
-The top arrow is uniquely determined by equation \eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations \eqref{Eq:UProp2} and \eqref{Eq:UProp3}.
+	Fix objects $B_1\in\cat{B}_1$, $B_2\in\cat{B}_2$. The $H_i$ are the functors sending $B_i$ to $H_i(B_i)=\alpha_{B_i}\colon d_1B_i\to d_0B_i$. The component of $\theta$ at $(B_1,B_2)$ is a square
+	\[
+	\begin{tikzcd}
+	d_1G_0(B_1,B_2) \rar \dar
+	& F_0(d_0B_1,d_0B_2) \dar \\
+	d_0G_0(B_1,B_2) \rar
+	& F_0(d_1B_1,d_0B_2) \!\!\! \underset{F_0(d_1B_1,d_1B_2)}{\prod} \!\!\! F_0(d_0B_1,d_1B_2)
+	\end{tikzcd}
+	\]
+	The top arrow is uniquely determined by equation \eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations \eqref{Eq:UProp2} and \eqref{Eq:UProp3}.
 \end{proof}
 
-Now let $\dblcat{M}$ be any double multicategory. Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in Section~\ref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
+Now let $\dblcat{M}$ be any cyclic double multicategory. We will take Theorem~\ref{Thm:MAdjArrowObjects} as our definition of what it means for a cyclic double multicategory to have arrow objects. For future reference, we will spell this out more concretely.
+
+Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in Section~\ref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
 
 Given a vertical 1-cell $F\colon(C_1,C_2)\to C_0^{\bullet}$, the lift to arrow objects $\hat{F}$ is a vertical 1-cell $\hat{F}$ together with 2-cells
 \[
