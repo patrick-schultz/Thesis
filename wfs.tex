@@ -282,3 +282,104 @@ If we want these choices of lifts to be fully coherent, we should also ask that 
 		\item the natural transformation $\Delta=(\delta,\mu)\colon LR\Rightarrow RL$ determined by the equation $\epsilon L\circ\delta=\mu\circ\eta R \, (=\id_E)$ as in Lemma~\ref{Lem:ArrowObject} is a distributive law, which in this case reduces to the single condition $\delta\circ\mu = \mu L\circ E\Delta\circ\delta R$.
 	\end{itemize}
 \end{definition}
+
+Seeing that an algebraic weak factorization system consists of some underlying data (a functorial factorization) equipped with multiplication and comultiplication structures of sorts, satisfying a compatibility condition between them, sugests that an awfs might be seen as a bialgebra in some way. Indeed, in \cite{garner:nwfs} and \cite{garner:soa} this is made precise, but with a catch: the mutiplication and comultiplication are with respect to \emph{different} monoidal structures.
+
+There is a generalization of braided monoidal categories called 2-fold monoidal categories, which have two different monoidal structures satisfying a certain higher level compatibility between them, and this is the most general setting (that we know of) in which the notion of bialgebra makes sense.
+
+One of our primary motivations for this work was to extend this picture of awfs as bialgebras to include the morphisms of awfs introduced in \cite{riehl:nwfs-model}. Recall that a left Quillen functor between model categories is a left-adjoint functor which preserves cofibrations and trivial cofibrations, or equivalently that the right adjoint preserves fibrations and trivial fibrations. Restricting this to just one of the two weak factorization systems making up the model categories, we can define a left Quillen functor between categories equipped with weak factorization systems to be simply a functor which preserves the left class of morphisms.
+
+Just as we saw that a functorial factorization already determines the left and right classes of morphisms, there is a condition we can place on a functor $F$ between categories equipped with functorial factorizations which implies that $F$ preserves the left class.
+
+\begin{definition}
+	Let $\cat{C}$ and $\cat{D}$ be categories equipped with functorial factorizations $(E_1,\eta_1,\epsilon_1)$ and $(E_2,\eta_2,\epsilon_2)$ respectively. A \emph{colax morphism of functorial factorizations} is a pair $(F,\phi)$ where $F\colon C\to D$ is a functor and $\phi$ is a natural transformation
+	\[
+	\begin{tikzcd}
+		C^2 \rar[][domA]{E_1} \dar[swap]{\hat{F}} & C \dar{F} \\
+		D^2 \rar[][codA,swap]{E_2} & D
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	such that
+	\begin{gather*}
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[][domA]{E_1} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codA,domB]{E_2}	
+				\rar[bend right][codB,swap]{\cod}
+			\& D
+			\twocellA{\phi}
+			\twocellB{\epsilon_2}
+		\end{tikzcd}
+		=
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[bend left][domA]{E_1} 
+				\rar[][codA,domB,swap]{\cod} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codB,swap]{\cod} \& D
+			\twocellA{\epsilon_1}
+			\twocellB{\id}
+		\end{tikzcd}\label{Eq:FFColaxA}
+		\\ \shortintertext{and}
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[bend left][domA]{\dom} 
+				\rar[][codA,domB,swap]{E_1} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codB,swap]{E_2} \& D
+			\twocellA{\eta_1}
+			\twocellB{\phi}
+		\end{tikzcd}
+		=
+		\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
+			C^2 \rar[][domA]{\dom} 
+				\dar[swap]{\hat{F}} 
+			\& C \dar{F} \\
+			D^2 \rar[][codA,domB]{\dom}	
+				\rar[bend right][codB,swap]{E_2}
+			\& D.
+			\twocellA{\id}
+			\twocellB{\eta_2}
+		\end{tikzcd}\label{Eq:FFColaxB}
+	\end{gather*}
+	In components, given a morphism $f\colon X\to Y$ in $C$, these two equations simply say that the following diagram commutes:
+	\[
+	\begin{tikzcd}
+		FX \rar{L_2(Ff)} \dar[swap]{F(L_1f)}
+			& E_2(Ff) \dar{R_2(Ff)} \\
+		F(E_1f) \urar[][inner sep=0pt]{\phi_f} \rar[swap]{F(R_1f)}
+			& FY.
+	\end{tikzcd}
+	\]
+\end{definition}
+
+Here, $\hat{F}\colon C^2\to D^2$ is the obvious lift of $F$ to the arrow categories, sending an object $(f\colon X\to Y)$ in $C^2$ to the object $(Ff\colon FX\to FY)$ in $D^2$.
+
+\begin{proposition}\label{Prop:FFColax}
+	Let $(F,\phi)$ be a colax morphism of functorial factorizations as above. Then $F$ preserves the left class of morphisms, i.e.~if $f\colon X\to Y$ in $C$ has an $L_1$-coalgebra structure, then $Ff$ has an $L_2$-coalgebra structure.
+\end{proposition}
+\begin{proof}
+	Let $f\colon X\to Y$ be a morphism in the left class in $C$, with $L_1$-coalgebra structure given by the lift $s$ in 
+	\[
+	\begin{tikzcd}
+		X \rar{Lf} \dar[swap]{f} & Ef \dar{Rf} \\
+		Y \urar[][inner sep=1pt]{s} \rar[equal] & Y.
+	\end{tikzcd}
+	\]
+	Then $Ff$ has an $L_2$-coalgebra structure given by $\phi_f F(s)$, as shown by the commutativity of the diagram
+	\[
+	\begin{tikzcd}[column sep=4ex,row sep=4ex]
+		FX \ar{rr}{L_2(Ff)} \ar{dd}[swap]{Ff} \ar{dr}[inner sep=0pt]{F(L_1f)}
+			&& E_2(Ff) \ar{dd}{R_2(Ff)} \\
+		& F(E_1f) \ar{ur}[inner sep=0pt]{\phi_f} \ar{dr}[inner sep=0pt,swap,pos=.4]{F(R_1f)} & \\
+		FY \ar{ur}[inner sep=1pt]{Fs} \ar[equal]{rr}
+			&& FY
+	\end{tikzcd}
+	\]
+\end{proof}
+
+If $F$ has a right adjoint $G$, then the natural transformation $\phi$ determines a natural transformation $\phi'\colon E_1\hat{G}\to\hat{G}E_2$ which ensures that $G$ preserves the right class of morphisms analagously to Proposition~\ref{Prop:FFColax}, and making $G$ what is called a \emph{lax morphism of functorial factorizations}. The relationship between $\phi$ and $\phi'$ is what is known as the mates correspondence (see e.g.~\cite{cgr:mates}), and we say that $\phi'$ is the mate of $\phi$, and vice versa.
+
+It turns out that the mates correspondence is best understood in the context of double categories, which we review in the next section. The theory of mates underlies the definition of adjunctions of awfs, and is the reason why double categories are an essential part of our general framework.

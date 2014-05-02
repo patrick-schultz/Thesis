@@ -137,9 +137,9 @@ Let $\mathbb{M}\mathbf{Adj}$ be the double cyclic multicategory of categories, f
 \end{itemize}
 \end{example}
 
-\begin{exercise}
-Check that the mates of the morphism $p_1$ in diagram \ref{E:PullbackProduct} are $p_2$ and $\id$ in the two similar diagrams defining $\hat{F}_1$ and $\hat{F}_2$.
-\end{exercise}
+% \begin{exercise}
+% Check that the mates of the morphism $p_1$ in diagram \ref{E:PullbackProduct} are $p_2$ and $\id$ in the two similar diagrams defining $\hat{F}_1$ and $\hat{F}_2$.
+% \end{exercise}
 
 Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-cells $F_i$. Let $\mathbf{CDMCat}$ denote the 2-category of cyclic double multicategories, functors, and horizontal transformations.
 
@@ -250,7 +250,7 @@ Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-ce
 	The top arrow is uniquely determined by equation \eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations \eqref{Eq:UProp2} and \eqref{Eq:UProp3}.
 \end{proof}
 
-Now let $\dblcat{M}$ be any cyclic double multicategory. We will take Theorem~\ref{Thm:MAdjArrowObjects} as our definition of what it means for a cyclic double multicategory to have arrow objects. For future reference, we will spell this out more concretely.
+Now let $\dblcat{M}$ be any cyclic double multicategory. We will take Theorem~\ref{Thm:MAdjArrowObjects} as our definition of what it means for a general cyclic double multicategory to have arrow objects. For future reference, we will spell this out more concretely.
 
 Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in Section~\ref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
 
@@ -413,4 +413,4 @@ Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_
 	Let $\dblcat{M}$ be a double multicategory. We say $\dblcat{M}$ \emph{has arrow objects} if for every object $C$ there is an arrow object $C^2$, and if for every vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ there is a lift to arrow objects $\hat{F}$.
 \end{definition}
 
-We have given the universal property of arrow objects and lifts of vertical 1-cells in ordinary double multicategories, but it is clear from the cyclical symmetry of the construction that a cyclic action respects arrow objects. Specifically, $(C^2)^{\bullet}=(C^{\bullet})^2$ for any object $C$, and $\sigma(\hat{F})=\widehat{\sigma F}$ for any vertical 1-cell $F$.
+We have given the universal property of arrow objects and lifts of vertical 1-cells in ordinary double multicategories, but it is clear from the cyclical symmetry of the construction that a cyclic action respects arrow objects. Specifically, $(C^2)^{\bullet}=(C^{\bullet})^2$ for any object $C$, and $\sigma(\hat{F})=\widehat{\sigma F}$ for any vertical 1-cell $F$, with $\sigma(\gamma_i)=\gamma_{i+1}$.
