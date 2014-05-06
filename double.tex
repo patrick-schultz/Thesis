@@ -1,6 +1,6 @@
 % -*- root: thesis.tex -*-
 
-\chapter{Double Categories}
+\chapter{Double Categories}\label{Ch:Double}
 
 In this section, we will give an overview of double categories, as well as (one possible version of) the definition of monads in a double category
 
@@ -106,7 +106,7 @@ to save space and help readability of diagrams.
 \end{definition}
 
 \begin{definition}
-	Given a double category $\dblcat{D}$, define double categories $\vop{\dblcat{D}}$ and $\hop{\dblcat{D}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell \eqref{Eq:Double2Cell} in $\vop{\dblcat{D}}$ is a 2-cell
+	Given a double category $\dblcat{D}$, define double categories $\vop{\dblcat{D}}$ and $\hop{\dblcat{D}}$, obtained by reversing the direction of the vertical and horizontal 1-cells respectively, and changing the orientation of the 2-cells as appropriate. For example, a 2-cell~\eqref{Eq:Double2Cell} in $\vop{\dblcat{D}}$ is a 2-cell
 	\[
 	\begin{tikzcd}
 		D \rar[tick][domA]{Y} \dar[swap]{f} 
@@ -118,12 +118,12 @@ to save space and help readability of diagrams.
 	\]
 	in $\dblcat{D}$.
 
-	In terms of Definition~\ref{Def:DoubleCat}, $\vop{\dblcat{D}}$ is the double category obtained by replacing the categories $\dblcat{D}_0$ and $\dblcat{D}_1$ with their opposites, while $\vop{\dblcat{D}}$ is the obtained by swapping the horizontal source and target functors $s$ and $t$.
+	In terms of \cref{Def:DoubleCat}, $\vop{\dblcat{D}}$ is the double category obtained by replacing the categories $\dblcat{D}_0$ and $\dblcat{D}_1$ with their opposites, while $\vop{\dblcat{D}}$ is the obtained by swapping the horizontal source and target functors $s$ and $t$.
 \end{definition}
 
 \section{Arrow objects in a double category}\label{Sec:ArrowObjects}
 
-In the following we will need an extension of the universal property \eqref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
+In the following we will need an extension of the universal property~\eqref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
 
 Let $\dblcat{D}$ be a double category. Given an object $C$ of $\dblcat{D}$, the \emph{arrow object} $C^2$, if it exists, is an object together with a diagram
 \[
@@ -258,7 +258,7 @@ such that the horizontal composition of $\theta$ with $\gamma_0$ and $\gamma_1$ 
 	A double category $\dblcat{D}$ \emph{has arrow objects} if for every object $C$ of $\dblcat{D}$ there is an object $C^2$ and 2-cell $\kappa$, and for every vertical 1-cell $F$ there is a vertical 1-cell $\hat{F}$ and 2-cells $\gamma_0$ and $\gamma_1$, satisfying the universal properties given above.
 \end{definition}
 
-The intuition that this is a generalization of Lemma~\ref{Lem:ArrowObject} is supported by the following two propositions, the (easy) proofs of which are left to the reader.
+The intuition that this is a generalization of \cref{Lem:ArrowObject} is supported by the following two propositions, the (easy) proofs of which are left to the reader.
 
 \begin{proposition}
 	If the double category $\dblcat{D}$ has arrow objects, then so does $\Hor(\dblcat{D})$.
@@ -417,7 +417,7 @@ A lax double functor $F$ for which the components of $F_I$ and $F_{\otimes}$ are
 	The fact that $F$ takes monad morphisms to monad morphisms can easily be checked using the naturality of $F_I$ and $F_{\otimes}$.
 \end{proof}
 
-We will have need for a condition on a lax double functor which implies a sort of converse to Proposition~\ref{Prop:LaxFuncMonad}. This condition is a slight strengthening of the notion of fully-faithful functor which makes sense for lax functors.
+We will have need for a condition on a lax double functor which implies a sort of converse to~\cref{Prop:LaxFuncMonad}. This condition is a slight strengthening of the notion of fully-faithful functor which makes sense for lax functors.
 
 \begin{definition}\label{Def:FullFaithfulLaxFunc}
 	A lax double functor $F\colon\dblcat{D}\to\dblcat{E}$ is fully-faithful on 2-cells if, for any fixed $X_1,X_2,Y,f,g$, the induced function from 2-cells in $\dblcat{D}$ of the shape
@@ -449,7 +449,7 @@ We will have need for a condition on a lax double functor which implies a sort o
 	taking a 2-cell $\phi$ to $F(\phi)\circ F_I$ is a bijection.
 \end{definition}
 \begin{remark}
-	Definition \ref{Def:FullFaithfulLaxFunc} implies the function on 2-cells $\theta$ with a single horizontal 1-cell in the domain is also bijective. We leave the details of the (simple) proof to the reader.
+	\Cref{Def:FullFaithfulLaxFunc} implies the function on 2-cells $\theta$ with a single horizontal 1-cell in the domain is also bijective. We leave the details of the (simple) proof to the reader.
 \end{remark}
 \begin{proposition}\label{Prop:FullFaithfulMonads}
 	Let $F\colon\dblcat{D}\to\dblcat{E}$ be a fully-faithful lax double functor. Given any horizontal 1-cell $X$ in $\dblcat{D}$, a monoid structure on $FX$ in $\dblcat{E}$ lifts uniquely to a monoid structure on $X$ such that the induced functor $F\colon\Mon(\dblcat{D})\to\Mon(\dblcat{E})$ takes $X$ to $FX$.

@@ -1,10 +1,10 @@
 % -*- root: thesis.tex -*-
 
-\chapter{Algebraic weak factorization systems}
+\chapter{Algebraic weak factorization systems}\label{Ch:Awfs}
 
 For this section, let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$. We will show that bimonoids in $\FFD$ are precisely algebraic weak factorization systems, and more generally that the morphisms in $\mathrm{Bimon}(\FFD)$ are given by (co)lax morphisms of algebraic weak factorization systems.
 
-Suppose that $E=(E,\eta,\epsilon)$ is a functorial factorization on a category $\cat{C}$, and consider a monoid structure on $E$. As $I_C$ is initial, the unit of the monoid is forced, and is simply $\eta$. The multiplication is given by a natural transformation $\mu\colon ER\Rightarrow E$ satisfying equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}, which now take the form $\epsilon\circ\mu = \epsilon R$ and $\mu\circ(\eta\cdot\vec{\eta})=\eta$.
+Suppose that $E=(E,\eta,\epsilon)$ is a functorial factorization on a category $\cat{C}$, and consider a monoid structure on $E$. As $I_C$ is initial, the unit of the monoid is forced, and is simply $\eta$. The multiplication is given by a natural transformation $\mu\colon ER\Rightarrow E$ satisfying equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}, which now take the form $\epsilon\circ\mu = \epsilon R$ and $\mu\circ(\eta\cdot\vec{\eta})=\eta$.
 
 The unit axioms for the monoid give the equations $\mu\circ E\vec{\eta}=\id_E=\mu\circ\eta R$, which together imply the equation $\mu\circ(\eta\cdot\vec{\eta})=\eta$ above. And finally, writing $\vec{\mu}=\mu^R\colon R^2\to R$ for the natural transformation induced by the 2-cell $\mu$, the associativity axiom gives the equation $\mu\circ E\vec{\mu}=\mu\circ\mu R$.
 
@@ -26,13 +26,13 @@ The unit axioms for the monoid give the equations $\mu\circ E\vec{\eta}=\id_E=\m
 	which determines a comonad $\mathbb{L}=(L,\vec{\epsilon},\vec{\delta})$, such that $\dom\vec{\delta}=\id_{\dom}$ and $\cod\vec{\delta}=\delta$.
 \end{proposition}
 
-Hence a functorial factorization which simultaineously has a monoid structure and a comonoid structure in $\FFD$ is precisely a weak factorization system, missing only the second bullet of Definition~\ref{Def:Awfs}, the distributive law condition. This is not surprising, as it is the only condition requiring a compatability between the monad and comonad structures. We will see that a bialgebra in $\FFD$ adds precisely this compatibility.
+Hence a functorial factorization which simultaineously has a monoid structure and a comonoid structure in $\FFD$ is precisely a weak factorization system, missing only the second bullet of \cref{Def:Awfs}, the distributive law condition. This is not surprising, as it is the only condition requiring a compatability between the monad and comonad structures. We will see that a bialgebra in $\FFD$ adds precisely this compatibility.
 
 \begin{proposition}
 	A bimonoid structure on a horizontal morphism $(E,\eta,\epsilon)\colon C\to C$ in $\FFD$ is precisely an algebraic weak factorization system on $C$ with underlying functorial factorization system $(E,\eta,\epsilon)$. 
 \end{proposition}
 \begin{proof}
-	We have already shown how the monoid an comonoid structures give rise to the monod and comonad of the awfs. All that remains is to show that the equations \eqref{Eq:Bimonoid} amount to just the distributive law, i.e. the equation
+	We have already shown how the monoid an comonoid structures give rise to the monod and comonad of the awfs. All that remains is to show that the equations~\eqref{Eq:Bimonoid} amount to just the distributive law, i.e. the equation
 	\begin{equation}\label{Eq:AwfsDistributiveLaw}
 	\begin{tikzcd}[row sep=tiny, bend angle=30, baseline=(B.base)]
 		& C^2 \drar{L} \ar[bend left]{drr}[domB]{E} &&\\
@@ -56,7 +56,7 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 	\end{tikzcd}
 	\end{equation}
 
-	First of all, notice that the first three equations of \eqref{Eq:Bimonoid} follow trivially from the initiality of $I_C$ and the terminality of $\perp_C$ in $\FFD$, hence they do not impose any further conditions.
+	First of all, notice that the first three equations of~\eqref{Eq:Bimonoid} follow trivially from the initiality of $I_C$ and the terminality of $\perp_C$ in $\FFD$, hence they do not impose any further conditions.
 
 	The fourth equation here takes the form
 	\[
@@ -94,7 +94,7 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 		\twocellB{\delta}
 	\end{tikzcd}
 	\]
-	and so to prove \eqref{Eq:AwfsDistributiveLaw}, it suffices to show that
+	and so to prove~\eqref{Eq:AwfsDistributiveLaw}, it suffices to show that
 	\[
 	\begin{tikzcd}[row sep=tiny, baseline=(B.base)]
 		{} & C^2 \drar[bend left=20]{L} & \\
@@ -118,7 +118,7 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 		\twocellA{\Delta}
 	\end{tikzcd}
 	\]
-	We can check this using the universal property of $C^2$ by composing with $\dom$ and $\cod$. First, use \eqref{Eq:DomW} and \eqref{Eq:CodW} to check that
+	We can check this using the universal property of $C^2$ by composing with $\dom$ and $\cod$. First, use~\eqref{Eq:DomW} and~\eqref{Eq:CodW} to check that
 	\begin{gather*}
 	\begin{tikzcd}[row sep=tiny, baseline=(B.base),ampersand replacement=\&]
 		{} \& C^2 \drar[bend left=20]{L} \&\& \\
@@ -171,7 +171,7 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 	Then use the definitions of $i$ and $p$ to check that $\mu\circ i=\mu\circ\eta R=\id_E$ and $p\circ\delta=\epsilon L\circ\delta=\id_E$, so that the first row above just equals $\delta$, and the second row equals $\mu$. Since $\Delta$ also (by definition) satisfies $\dom\Delta=\delta$ and $\cod\Delta=\mu$, we are done.
 \end{proof}
 
-The appropriate notion of morphism between awfs, analagous to left/right Quillen functors and Quillen adjunctions, is (to our knowledge) first given in \cite{riehl:nwfs-model}.
+The appropriate notion of morphism between awfs, analagous to left/right Quillen functors and Quillen adjunctions, is (to our knowledge) first given in~\cite{riehl:nwfs-model}.
 
 \begin{definition}
 	Suppose that $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ are awfs on $\cat{C}$ and $\cat{D}$ respectively. 
@@ -183,7 +183,7 @@ The appropriate notion of morphism between awfs, analagous to left/right Quillen
 
 Notice that a lax morphism of awfs induces a lift of the functor $\hat{G}$ to a functor $\mathbb{R}_1\mathrm{Alg}\to \mathbb{R}_2\mathrm{Alg}$. In that sense, $G$ ``preserves the right class,'' so is analagous to a right Quillen functor. Similarly, a colax morphism of awfs induces a lift of $\hat{F}$ to $\mathbb{L}_1\mathrm{Coalg}\to\mathbb{L}_2\mathrm{Coalg}$, so is analagous to a left Quillen functor.
 
-By Proposition~\ref{Prop:BimonCyclic}, the cyclic action on $\FFD$ induces a cyclic action on $\Bimon(\FFD)$. This action is given on awfs by
+By \cref{Prop:BimonCyclic}, the cyclic action on $\FFD$ induces a cyclic action on $\Bimon(\FFD)$. This action is given on awfs by
 \[
 	(E,\eta,\mu,\epsilon,\delta)^{\bullet} = (E^{\bullet},\epsilon^{\bullet},\delta^{\bullet},\eta^{\bullet},\mu^{\bullet})
 \]

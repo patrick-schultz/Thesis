@@ -2,7 +2,7 @@
 
 \chapter{Cyclic 2-fold double categories}\label{Ch:Cyclic}
 
-Recall the notion of a cyclic double category from \cite{cgr:mates}. A cyclic double category $\mathbb{D}$ is a double category with an extra involutive operation. On objects and horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, this operation is written
+Recall the notion of a cyclic double category from~\cite{cgr:mates}. A cyclic double category $\mathbb{D}$ is a double category with an extra involutive operation. On objects and horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, this operation is written
 \[
 \begin{tikzcd}
 	C_1^{\bullet} \rar[tick][]{X^{\bullet}} & C_2^{\bullet}
@@ -30,7 +30,7 @@ and respects horizontal identities and composition. The involution takes any ver
 respecting vertical identities and composition.
 
 \begin{example}
-	Let $\twocat{D}$ be any 2-category with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ with $(-)^{\text{op}}$. The double category $\Sq(\twocat{D})$ has a sub-double category $\LAdj(\twocat{D})$, where the vertical 1-cells are restricted to the adjunctions---pointing in the direction of the left adjoint, say---but with no other restrictions. This double category has a natural cyclic action:  if $F\dashv G$ is an adjunction, then $\sigma F = G^{\bullet}$, the left adjoint of the adjunction $G^{\bullet}\dashv F^{\bullet}$, and if $\theta$ is a 2-cell with mate $\phi$ then $\sigma\theta=\phi^{\bullet}$. For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see \cite{cgr:mates} Section 1. 
+	Let $\twocat{D}$ be any 2-category with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ with $(-)^{\text{op}}$. The double category $\Sq(\twocat{D})$ has a sub-double category $\LAdj(\twocat{D})$, where the vertical 1-cells are restricted to the adjunctions---pointing in the direction of the left adjoint, say---but with no other restrictions. This double category has a natural cyclic action:  if $F\dashv G$ is an adjunction, then $\sigma F = G^{\bullet}$, the left adjoint of the adjunction $G^{\bullet}\dashv F^{\bullet}$, and if $\theta$ is a 2-cell with mate $\phi$ then $\sigma\theta=\phi^{\bullet}$. For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see~\cite{cgr:mates} Section 1. 
 \end{example}
 
 \begin{proposition}
@@ -59,7 +59,7 @@ respecting vertical identities and composition.
 	\]
 \end{proposition}
 \begin{proof}
-	It is a very simple matter to verify the universal properties of Section~\ref{Sec:ArrowObjects}
+	It is a very simple matter to verify the universal properties of~\cref{Sec:ArrowObjects}
 \end{proof}
 
 We will generalize this to a cyclic action on a 2-fold double category. Suppose that $\mathbb{D}$ is a 2-fold double category. A cyclic action, written as above, must satisfy the following:
@@ -188,7 +188,7 @@ as well as an isomorphism
 \end{multline*}
 \end{proof}
 
-In more concrete terms, the involution takes a bimonoid $(X,\eta,\mu,\epsilon,\delta)$ to $(X,\eta,\mu,\epsilon,\delta)^{\bullet}=(X^\bullet,\epsilon^\bullet,\delta^\bullet,\eta^\bullet,\delta^\bullet)$, swapping the monoid and comonoid structures. This is again a bimonoid, as the top two equations of \eqref{Eq:Bimonoid} are interchanged under the involution, while the bottom two equations are self-dual.
+In more concrete terms, the involution takes a bimonoid $(X,\eta,\mu,\epsilon,\delta)$ to $(X,\eta,\mu,\epsilon,\delta)^{\bullet}=(X^\bullet,\epsilon^\bullet,\delta^\bullet,\eta^\bullet,\delta^\bullet)$, swapping the monoid and comonoid structures. This is again a bimonoid, as the top two equations of~\eqref{Eq:Bimonoid} are interchanged under the involution, while the bottom two equations are self-dual.
 
 The action of the involution on bimonoid morphisms can be broken down as in the following lemma.
 
@@ -204,7 +204,7 @@ The action of the involution on bimonoid morphisms can be broken down as in the 
 	Then $(f,\phi)$ is a monoid morphism $X\to Y$ if and only if $(\sigma f,\phi^\bullet)$ is a comonoid morphism $Y^\bullet\to X^\bullet$. Dually, $\phi$ is a comonoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a monoid morphism $Y^\bullet\to X^\bullet$.
 \end{lemma}
 \begin{proof}
-	Simply notice that the involution takes equations \eqref{Eq:MonoidMorphismUnit} and \eqref{Eq:MonoidMorphismMult} to the equations defining a comonad morphism in $\mathbb{D}$.
+	Simply notice that the involution takes equations~\eqref{Eq:MonoidMorphismUnit} and~\eqref{Eq:MonoidMorphismMult} to the equations defining a comonad morphism in $\mathbb{D}$.
 \end{proof}
 
 This immediately implies a useful characterization of bimonoid morphisms.

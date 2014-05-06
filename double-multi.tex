@@ -1,8 +1,8 @@
 % -*- root: thesis.tex -*-
 
-\chapter{Cyclic two-fold double multicategories} 
+\chapter{Cyclic two-fold double multicategories}\label{Ch:DblMulti}
 
-In this section we will introduce a common generalization of the cyclic double multicategories of \cite{cgr:mates} and the cyclic 2-fold double categories introduced in Section~\ref{Sec:Cyclic}.
+In this section we will introduce a common generalization of the cyclic double multicategories of~\cite{cgr:mates} and the cyclic 2-fold double categories introduced in \cref{Sec:Cyclic}.
 
 A cyclic two-fold double multicategory $\dblcat{M}$ consists of the same underlying data as a cyclic double multicategory, i.e. a vertical multicategory, horizontal 1-cells, and 2-cells of the form
 \begin{equation*}\label{Eq:DblMulti2Cell}
@@ -80,7 +80,7 @@ We require the existence of the families of globular coherence 2-cells $m,c,j,z$
 
 \section{Multimorphisms of bimonads}
 
-The definition \ref{Def:Bimonad} of bimonads in a 2-fold double category uses only globular 2-cells, so works unchanged in a cyclic 2-fold double multicategory $\dblcat{M}$. However, using the multicategory structure of $\dblcat{M}$ we will now be able to expand the category of bimonads in $\dblcat{M}$ to a multicategory $\Bimon(\dblcat{M})$, and the cyclic structure of $\dblcat{M}$ will lift to $\Bimon(\dblcat{M})$, making it a cyclic multicategory.
+The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globular 2-cells, so works unchanged in a cyclic 2-fold double multicategory $\dblcat{M}$. However, using the multicategory structure of $\dblcat{M}$ we will now be able to expand the category of bimonads in $\dblcat{M}$ to a multicategory $\Bimon(\dblcat{M})$, and the cyclic structure of $\dblcat{M}$ will lift to $\Bimon(\dblcat{M})$, making it a cyclic multicategory.
 
 \begin{definition}
 	Let $\dblcat{M}$ be a cyclic 2-fold double multicategory, let $(X_i,\eta_i,\mu_i,\epsilon_i,\delta_i)$, $i\in\{0,1,2\}$, be bimonads in $\dblcat{M}$, and let $F$ and $\phi$ be as in the diagram
@@ -202,7 +202,7 @@ It is straightforward to see that multimorphisms of bimonads compose multicatego
 
 In this section, given a cyclic double multicategory $\dblcat{M}$, we will construct a cyclic 2-fold double multicategory $\FF(\dblcat{M})$ of functorial factorizations in $\dblcat{M}$.
 
-The objects and vertical multicategory of $\FF(\dblcat{M})$ are those of $\dblcat{M}$. The horizontal 1-cells of $\FF(\dblcat{M})$ are functorial factorizations in $\dblcat{M}$. As with bimonads, the definition of functorial factorization given in section~\ref{Ch:FuncFact} involves only globular 2-cells, so no modification is necessary to define functorial factorizations in $\dblcat{M}$.
+The objects and vertical multicategory of $\FF(\dblcat{M})$ are those of $\dblcat{M}$. The horizontal 1-cells of $\FF(\dblcat{M})$ are functorial factorizations in $\dblcat{M}$. As with bimonads, the definition of functorial factorization given in \cref{Ch:FuncFact} involves only globular 2-cells, so no modification is necessary to define functorial factorizations in $\dblcat{M}$.
 
 Also as with bimonads, we will give an explicit definition of 2-ary 2-cell and let the reader extend the (easy) pattern to $n$-ary 2-cells for arbitrary $n$.
 
@@ -403,9 +403,9 @@ The cyclic action on a 2-cell in $\FF(\dblcat{M})$ is simply given by the cyclic
 \begin{proof}
 	We will verify the existence of $\hat{\theta}^2$. The pattern extending to all other cases should be evident.
 
-	Using the universal property for arrow objects in a cyclic double multicategory, we only need to check the three equations obtained by composing each side of the equations \eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} with $\hat{\theta}^2$. Equation \eqref{Eq:ArrowObjectMultiA} remains unchanged after composition with $\hat{\theta}^2$, equation \eqref{Eq:ArrowObjectMultiB} becomes \eqref{Eq:FFMulti2CellA}, and equation \eqref{Eq:ArrowObjectMultiC} turns into \eqref{Eq:FFMulti2CellB}.
+	Using the universal property for arrow objects in a cyclic double multicategory, we only need to check the three equations obtained by composing each side of the equations~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} with $\hat{\theta}^2$. Equation~\eqref{Eq:ArrowObjectMultiA} remains unchanged after composition with $\hat{\theta}^2$, equation~\eqref{Eq:ArrowObjectMultiB} becomes~\eqref{Eq:FFMulti2CellA}, and equation~\eqref{Eq:ArrowObjectMultiC} turns into~\eqref{Eq:FFMulti2CellB}.
 
-	Note that Equation~\eqref{Eq:FFMulti2CellC} proves that $\hat{\theta}^2$ respects the units/counits of $L_0$, $L_1$, $R_2$, i.e. that the unit condition for a 2-colax morphism of bimonads holds, so that all three equations \eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC} go into establishing $\hat{\theta}^i$ for each $i$.
+	Note that equation~\eqref{Eq:FFMulti2CellC} proves that $\hat{\theta}^2$ respects the units/counits of $L_0$, $L_1$, $R_2$, i.e. that the unit condition for a 2-colax morphism of bimonads holds, so that all three equations~\eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC} go into establishing $\hat{\theta}^i$ for each $i$.
 \end{proof}
 
 To finish the construction of the cyclic 2-fold double multicategory $\FF(\dblcat{M})$, we still need to define the horizontal composites and units for $n$-ary 2-cells. Given 2-cells
@@ -426,7 +426,7 @@ To finish the construction of the cyclic 2-fold double multicategory $\FF(\dblca
 	\twocellA{\phi}
 \end{tikzcd}
 \]
-in $\dblcat{M}$ underlying 2-cells in $\FF(\dblcat{M})$ (i.e. satisfying equations \eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC}), define
+in $\dblcat{M}$ underlying 2-cells in $\FF(\dblcat{M})$ (i.e. satisfying equations~\eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC}), define
 \[
 \begin{tikzcd}[column sep=4em]
 	C_1^2,C_2^2 \rar[tick][domA]{E_{1\odot1'},E_{2\otimes2'}} \dar[swap]{\hat{F}}
@@ -447,7 +447,7 @@ in $\dblcat{M}$ underlying 2-cells in $\FF(\dblcat{M})$ (i.e. satisfying equatio
 	\twocellB{\phi}
 \end{tikzcd}
 \]
-and likewise for the other horizontal composites. Checking that this composite 2-cell satisfies equations \eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC} is easy but notationally cumbersome, so we will verify that $\theta\otimes_2\phi$ satisfies \eqref{Eq:FFMulti2CellB} to convey the idea:
+and likewise for the other horizontal composites. Checking that this composite 2-cell satisfies equations~\eqref{Eq:FFMulti2CellA}--\eqref{Eq:FFMulti2CellC} is easy but notationally cumbersome, so we will verify that $\theta\otimes_2\phi$ satisfies~\eqref{Eq:FFMulti2CellB} to convey the idea:
 \begin{multline}
 \begin{tikzcd}[ampersand replacement=\&,column sep=4em,bend angle=50]
 	C_1^2,C_2^2 \rar[tick,bend left][domA]{\dom,E_{2\otimes2'}}

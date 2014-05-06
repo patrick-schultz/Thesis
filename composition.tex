@@ -1,14 +1,14 @@
 % -*- root: thesis.tex -*-
 
-\chapter{Composition of $\mathbb{L}$-coalgebras}
+\chapter{Composition of $\mathbb{L}$-coalgebras}\label{Ch:Composition}
 
-In an algebraic weak factorization system, the categories $\LCoalg$ and $\RAlg$ respectively play the roles of the left and right classes of morphisms of the weak factorization system. In an ordinary weak factorization system, these two classes of morphisms are closed under composition. In \cite{garner:soa}, this is strengthened to a composition functor
+In an algebraic weak factorization system, the categories $\LCoalg$ and $\RAlg$ respectively play the roles of the left and right classes of morphisms of the weak factorization system. In an ordinary weak factorization system, these two classes of morphisms are closed under composition. In~\cite{garner:soa}, this is strengthened to a composition functor
 \[
 	\LCoalg \prodb_C \LCoalg \to \LCoalg
 \]
-and in \cite{riehl:nwfs-model}, it is shown that colax morphisms of awfs preserve this composition. Similarly, there is a composition functor on $\RAlg$ which is preserved by lax morphisms of awfs.
+and in~\cite{riehl:nwfs-model}, it is shown that colax morphisms of awfs preserve this composition. Similarly, there is a composition functor on $\RAlg$ which is preserved by lax morphisms of awfs.
 
-In this section, we will generalize these results to the setting of bimonads in $\FF(\Sq(\twocat{D}))$. In fact we will prove the following more general theorem, from which the desired results will follow as corollaries using Proposition~\ref{Prop:LaxFuncMonad}.
+In this section, we will generalize these results to the setting of bimonads in $\FF(\Sq(\twocat{D}))$. In fact we will prove the following more general theorem, from which the desired results will follow as corollaries using \cref{Prop:LaxFuncMonad}.
 
 \begin{theorem}\label{Thm:CoalgLaxFunctor}
 	Let $\twocat{D}$ be a 2-category with arrow objects and with EM-objects for comonads.
@@ -24,7 +24,7 @@ In this section, we will generalize these results to the setting of bimonads in 
 	\]
 \end{theorem}
 
-In \cite{garner:soa} it is further shown that given a functorial factorization with only the comonad half of the awfs structure, a composition functor on $\LCoalg$ uniquely determines the monad half of the structure. The paper \cite{riehl:nwfs-model} makes much use of this fact, and also extends it to morphisms of awfs. In our framework, these results will follow from Proposition~\ref{Prop:FullFaithfulMonads} and the theorem:
+In~\cite{garner:soa} it is further shown that given a functorial factorization with only the comonad half of the awfs structure, a composition functor on $\LCoalg$ uniquely determines the monad half of the structure. The paper~\cite{riehl:nwfs-model} makes much use of this fact, and also extends it to morphisms of awfs. In our framework, these results will follow from \cref{Prop:FullFaithfulMonads} and the theorem:
 
 \begin{theorem}\label{Thm:CoalgFullFaithful}
 	The lax double functor $Coalg$ is fully-faithful.
@@ -36,7 +36,7 @@ First we should explain the notation $\Span(\twocat{D}_0)_{/(-)^2}$. There is a 
 	C & C^2 \lar[swap]{\dom} \rar{\cod} & C
 \end{tikzcd}
 \]
-with multiplication given by the composition of the internal category structure of $C^2$ given in Proposition~\ref{Prop:ArrowSimplex}. That this is a natural family means that for any morphism $f\colon C\to D$ in $\twocat{D}_0$ there is a morphism of spans
+with multiplication given by the composition of the internal category structure of $C^2$ given in \cref{Prop:ArrowSimplex}. That this is a natural family means that for any morphism $f\colon C\to D$ in $\twocat{D}_0$ there is a morphism of spans
 \[
 \begin{tikzcd}
 	C \dar[swap]{f} & C^2 \lar[swap]{\dom} \rar{\cod} \dar{f^2} & C \dar{f} \\
@@ -89,7 +89,7 @@ The identity for the horizontal composition is
 	& C^2 \ular{\dom} \urar[swap]{\cod}
 \end{tikzcd}
 \]
-where $i\colon C\to C^2$ is the identity of the internal category structure on $C^2$ from Proposition~\ref{Prop:ArrowSimplex}.
+where $i\colon C\to C^2$ is the identity of the internal category structure on $C^2$ from \cref{Prop:ArrowSimplex}.
 
 We will now prove a couple of simple lemmas to establish the existence of certain 2-cells in $\twocat{D}$ using the arrow object universal property. First, notice that any comonad $(E,\eta,\epsilon,\delta)$ in $\FF(\Sq(\twocat{D}))$ gives rise to the horizontal 1-cell in $\Span(\twocat{D}_0)_{/(-)^2}$
 \[
@@ -117,7 +117,7 @@ with structure map $U_{1,2}\colon X\to C^2$ given by the composition
 \end{tikzcd}
 \]
 
-Recall from Proposition~\ref{Prop:ArrowSimplex} that $c$ by definition satisfies $\dom c=\dom P_1$, $\cod c=\cod P_2$, $\kappa c=\kappa P_2\circ\kappa P_1$.
+Recall from \cref{Prop:ArrowSimplex} that $c$ by definition satisfies $\dom c=\dom P_1$, $\cod c=\cod P_2$, $\kappa c=\kappa P_2\circ\kappa P_1$.
 We also record for later reference:
 \begin{gather}
 	\dom U_{1,2} = \dom c(U_1,U_2) = \dom P_1(U_1,U_2) = \dom U_1P_1
@@ -184,7 +184,7 @@ We also record for later reference:
 		\twocellB{\kappa}
 	\end{tikzcd}
 	\]
-	which is just Equation~\eqref{Eq:kappaU12}
+	which is just equation~\eqref{Eq:kappaU12}
 \end{proof}
 
 \begin{lemma}\label{Lem:Nu}
@@ -220,7 +220,7 @@ We also record for later reference:
 	\]
 \end{lemma}
 \begin{proof}
-	We just need to verify Equation~\eqref{Eq:ArrowObject2}:
+	We just need to verify equation~\eqref{Eq:ArrowObject2}:
 	\begin{multline*}
 	\begin{tikzcd}[row sep=tiny, column sep=4ex, bend angle=25, baseline=(B.base), ampersand replacement=\&]
 		{} \& \LCoalg[2] \rar{U_2}
@@ -255,10 +255,10 @@ We also record for later reference:
 		\twocellA{\kappa}
 	\end{tikzcd}
 	\end{multline*}
-	where the first equation follows from \eqref{Eq:LCoalg2}, and the second by reducing $\cod\zeta$ using Lemma~\ref{Lem:Zeta}.
+	where the first equation follows from~\eqref{Eq:LCoalg2}, and the second by reducing $\cod\zeta$ using \cref{Lem:Zeta}.
 \end{proof}
 
-\begin{proof}[Proof of Theorem \ref{Thm:CoalgLaxFunctor}]
+\begin{proof}[Proof of \Cref{Thm:CoalgLaxFunctor}]
 	For notational convenience, let $G=\Coalg$ be the lax double functor we need to establish. Both the double categories $\DComon(\FF(\Sq(\cat{D})))$ and $\Span(\twocat{D}_0)_{/(-)^2}$ have $\twocat{D}_0$ as vertical category, and $G_0$ (the component of $G$ on vertical categories) is simply the identity. From the statement of the theorem, $G$ takes an object in $\DComon(\FF(\Sq(\cat{D})))$ to the span and structure map
 	\[
 	\begin{tikzcd}[row sep=tiny,column sep=small]
@@ -276,7 +276,7 @@ We also record for later reference:
 		\twocellA{\phi}
 	\end{tikzcd}
 	\]
-	By Corollary~\ref{Cor:RLMon}, $\phi$ induces a colax morphism of comonads from $L_1$ to $L_2$, hence by Proposition~\ref{Prop:EMObject} there is an induced morphism $\tilde{\phi}$ between the EM-objects such that $U_2\tilde{\phi}=F^2U_1$. We can then define $G\phi$ to be the morphism of spans
+	By \cref{Cor:RLMon}, $\phi$ induces a colax morphism of comonads from $L_1$ to $L_2$, hence by \cref{Prop:EMObject} there is an induced morphism $\tilde{\phi}$ between the EM-objects such that $U_2\tilde{\phi}=F^2U_1$. We can then define $G\phi$ to be the morphism of spans
 	\[
 	\begin{tikzcd}
 		C \dar[swap]{F} 
@@ -300,9 +300,9 @@ We also record for later reference:
 		& \LCoalg[I] \ular{\dom U} \urar[swap]{\cod U}
 	\end{tikzcd}
 	\]
-	defined via Lemma~\ref{Lem:FFLCoalgUniversalProperty} by the equations $UG_I=i\colon C\to C^2$ and $\alpha_I G_I$ is the identity on $\dom i=\cod i$. The conditions of the lemma are trivially satisfied.
+	defined via \cref{Lem:FFLCoalgUniversalProperty} by the equations $UG_I=i\colon C\to C^2$ and $\alpha_I G_I$ is the identity on $\dom i=\cod i$. The conditions of the lemma are trivially satisfied.
 
-	We will similarly use Lemma~\ref{Lem:FFLCoalgUniversalProperty} to define $G_{\otimes}$. Let $X_{1,2}$, $U_{1,2}$, $\zeta$, and $\nu$ be as defined earlier in the section. $G_{\otimes}$ is a morphism of spans
+	We will similarly use \cref{Lem:FFLCoalgUniversalProperty} to define $G_{\otimes}$. Let $X_{1,2}$, $U_{1,2}$, $\zeta$, and $\nu$ be as defined earlier in the section. $G_{\otimes}$ is a morphism of spans
 	\[
 	\begin{tikzcd}[row sep=small,column sep=small]
 		{} & X_{1,2} \dlar[swap]{\dom U_1P_1} \drar{\cod U_2P_2} \ar{dd}{G_{\otimes}} & \\
@@ -332,23 +332,23 @@ We also record for later reference:
 		\twocellB{\alpha_2}
 	\end{tikzcd}
 	\]
-	In other words, in the notation of Lemma~\ref{Lem:FFLCoalgUniversalProperty} let $F=U_{1,2}$ and $\beta=E_2\nu\circ\alpha_2P_2$, and define $G_{\otimes}=\hat{F}$.
+	In other words, in the notation of \cref{Lem:FFLCoalgUniversalProperty} let $F=U_{1,2}$ and $\beta=E_2\nu\circ\alpha_2P_2$, and define $G_{\otimes}=\hat{F}$.
 
-	We now need to check equations 1-3 of Lemma~\ref{Lem:FFLCoalgUniversalProperty} to verify that $G_{\otimes}$ is well defined. We will check these equationally to save space, but the reader may want to draw out the diagrams for themselves to follow along. For the first equation:
+	We now need to check equations 1-3 of \cref{Lem:FFLCoalgUniversalProperty} to verify that $G_{\otimes}$ is well defined. We will check these equationally to save space, but the reader may want to draw out the diagrams for themselves to follow along. For the first equation:
 	\begin{alignat*}{2}
 		\hspace{1em}&\hspace{-1em} E_2\nu \circ \alpha_2P_2 \circ \kappa U_{1,2} && \\
 		&= E_2\nu \circ \alpha_2P_2 \circ \kappa U_2P_2 \circ \kappa U_1P_1 
-			&& \text{Eq \eqref{Eq:kappaU12}} \\
+			&& \text{Eq. \eqref{Eq:kappaU12}} \\
 		&= E_2\nu \circ (\alpha_2\circ\kappa U_2)P_2 \circ \kappa U_1P_1 && \\
 		&= E_2\nu \circ \eta_2U_2P_2 \circ \kappa U_1P_1 
-			&& \text{Eq \eqref{Eq:LCoalg1}} \\
+			&& \text{Eq. \eqref{Eq:LCoalg1}} \\
 		&= \eta_2R_1U_{1,2} \circ \dom\nu \circ \kappa U_1P_1 
 			&& \text{Interchange} \\
 		&= \eta_2R_1U_{1,2} \circ E_1\zeta \circ \alpha_1P_1 \circ \kappa U_1P_1 
 			&\qquad& \text{Def of $\nu$} \\
 		&= \eta_2R_1U_{1,2} \circ E_1\zeta \circ (\alpha_1\circ\kappa U_1)P_1 && \\
 		&= \eta_2R_1U_{1,2} \circ E_1\zeta \circ \eta_1U_1P_1 
-			&&\text{Eq \eqref{Eq:LCoalg1}} \\
+			&&\text{Eq. \eqref{Eq:LCoalg1}} \\
 		&= \eta_{1\otimes 2}U_{1,2} \circ \dom\zeta 
 			&&\text{Interchange; Def of $\eta_{1\otimes 2}$} \\
 		&= \eta_{1\otimes 2}U_{1,2} 
@@ -362,7 +362,7 @@ We also record for later reference:
 		&= \cod\nu \circ (\epsilon_2U_2\circ\alpha_2)P_2 
 			&\qquad& \text{Interchange} \\
 		&= \id_{\cod U_{1,2}}. 
-			&&\text{Eq \eqref{Eq:LCoalg2}; $\cod\nu=\id$}
+			&&\text{Eq. \eqref{Eq:LCoalg2}; $\cod\nu=\id$}
 	\end{alignat*}
 
 	The third equation is a bit trickier to prove. We will need to prove two intermediate equations first, using the arrow object universal property.
@@ -387,7 +387,7 @@ We also record for later reference:
 			&= E_2\nu \circ \eta_2U_2P_2
 				&& \text{Interchange} \\
 			&= E_2\nu \circ (\alpha_2 \circ \kappa U_2)P_2
-				&& \text{Eq \eqref{Eq:LCoalg1}} \\
+				&& \text{Eq. \eqref{Eq:LCoalg1}} \\
 			&= (E_2\nu \circ \alpha_2P_2) \circ \kappa U_2P_2 && \\
 			&= \cod\vec{\beta} \circ \cod\zeta
 				&& \text{Def of $\vec{\beta}$, $\zeta$} \\
@@ -408,10 +408,10 @@ We also record for later reference:
 				&& \text{Def of $\nu$} \\
 			&= E_1(\vec{\beta}\circ\zeta) \circ \alpha_1P_1 && \\
 			&= E_1(i^LU_{1,2} \circ L_1\zeta \circ \vec{\alpha}_1P_1) \circ \alpha_1P_1
-				&& \text{Eq \eqref{Eq:CompLem1}} \\
+				&& \text{Eq. \eqref{Eq:CompLem1}} \\
 			&= E_1i^LU_{1,2} \circ E_1L_1\zeta \circ (E_1\vec{\alpha}_1\circ\alpha_1)P_1 && \\
 			&= E_1i^LU_{1,2} \circ E_1L_1\zeta \circ (\delta_1U_1\circ\alpha_1)P_1
-				&& \text{Eq \eqref{Eq:LCoalg3}} \\
+				&& \text{Eq. \eqref{Eq:LCoalg3}} \\
 			&= E_1i^LU_{1,2} \circ \delta_1U_{1,2} \circ E_1\zeta \circ \alpha_1P_1
 				&& \text{Interchange} \\
 			&= \dom wU_{1,2} \circ \dom\delta_1^RU_{1,2} \circ \dom\nu \circ \dom\vec{\alpha}_2P_2
@@ -433,7 +433,7 @@ We also record for later reference:
 		\end{alignat*}
 	\end{proof}
 
-	Now we are prepared to prove the third equation of Lemma~\ref{Lem:FFLCoalgUniversalProperty} validating our definition of $G_{\otimes}$:
+	Now we are prepared to prove the third equation of \cref{Lem:FFLCoalgUniversalProperty} validating our definition of $G_{\otimes}$:
 	\begin{alignat*}{2}
 		\hspace{1em}&\hspace{-1em} \delta_{1\otimes2}U_{1,2} \circ E_2\nu \circ \alpha_2P_2 && \\
 		&= (E_2w \circ \delta_2R_{1\odot1} \circ E_2\delta_1^R)U_{1,2} \circ E_2\nu \circ \alpha_2P_2
@@ -441,10 +441,10 @@ We also record for later reference:
 		&= E_2(wU_{1,2} \circ L_2\delta_1^RU_{1,2} \circ L_2\nu) \circ (\delta_2U_2 \circ \alpha_2)P_2
 			&& \text{Interchange} \\
 		&= E_2(wU_{1,2} \circ L_2\delta_1^RU_{1,2} \circ L_2\nu) \circ (E_2\vec{\alpha}_2 \circ \alpha_2)P_2
-			&\qquad& \text{Eq \eqref{Eq:LCoalg3}} \\
+			&\qquad& \text{Eq. \eqref{Eq:LCoalg3}} \\
 		&= E_2(wU_{1,2} \circ L_2\delta_1^RU_{1,2} \circ L_2\nu \circ \vec{\alpha}_2P_2) \circ \alpha_2P_2 && \\
 		&= E_2(R_1\vec{\beta}\circ\nu) \circ \alpha_2P_2
-			&& \text{Eq \eqref{Eq:CompLem2}} \\
+			&& \text{Eq. \eqref{Eq:CompLem2}} \\
 		&= E_{1\otimes 2}\vec{\beta} \circ E_2\nu \circ \alpha_2P_2
 			&& \text{Def of $E_{1\otimes2}$}
 	\end{alignat*}
@@ -485,10 +485,10 @@ We also record for later reference:
 	Of course, what we really want is that the morphism underlying the coalgebra $\pi(f,g)$ is the composition $g\circ f$. But this is simply the fact that $\pi$ defines a 2-cell in $\Span(\twocat{D}_0)_{/(-)^2}$, hence commutes with the structure maps to $C^2$. Recall that the structure map for the horizontal composite $X$ is defined using $c\colon C^3\to C^2$, hence $U\pi(f,g)=c(Uf,Ug)$.
 \end{proof}
 
-Now we will continue on to the proof of Theorem~\ref{Thm:CoalgFullFaithful}. The proof is surprisingly difficult and tedious---we will outline the main steps but leave many of the routine verifications to the reader.
+Now we will continue on to the proof of \cref{Thm:CoalgFullFaithful}. The proof is surprisingly difficult and tedious---we will outline the main steps but leave many of the routine verifications to the reader.
 
-\begin{proof}[Proof of Theorem \ref{Thm:CoalgFullFaithful}]
-	The bijectivity of $\Coalg$ acting on 2-cells with domain $I$ is simple to check, since $I$ is initial in $\DComon(\FF(\Sq(\twocat{D})))$, and from Lemma~\label{Lem:FFLCoalgUniversalProperty} it is easy to see that there is a unique morphism $!\colon C\to\LCoalg$ satisfying $U!=i$, with $\alpha!=\eta i$.
+\begin{proof}[Proof of \Cref{Thm:CoalgFullFaithful}]
+	The bijectivity of $\Coalg$ acting on 2-cells with domain $I$ is simple to check, since $I$ is initial in $\DComon(\FF(\Sq(\twocat{D})))$, and from \cref{Lem:FFLCoalgUniversalProperty} it is easy to see that there is a unique morphism $!\colon C\to\LCoalg$ satisfying $U!=i$, with $\alpha!=\eta i$.
 
 	Now let $(E_i,\eta_i,\epsilon_i,\delta_i)$, $i\in\{1,2,3\}$, be three comonads in $\FF(\Sq(\twocat{D}))$, with $E_1,E_2\colon C^2\to C$ and $E_3\colon D^2\to D$, and let $F\colon C\to D$ be a morphism. Given a morphism $X_{1,2}\to\LCoalg[3]$ such that $U_3\theta=F^2U_{1,2}$, we need to prove the unique existence of a 2-cell
 	\[
@@ -531,7 +531,7 @@ Now we will continue on to the proof of Theorem~\ref{Thm:CoalgFullFaithful}. The
 		\[
 			\phi=\cod U_3\psi'=E_3\psi\circ\alpha_3\theta\check{L}_{1\otimes2}\colon FE_2R_1\to E_3F^2
 		\]
-		\item First we must verify that $\phi$ defines a valid 2-cell in $\FF(\Sq(\twocat{D}))$ by checking equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. Equation \eqref{Eq:FF2CellA} is simple to show directly, while \eqref{Eq:FF2CellB} follows from the well definedness of $U_3\psi'$. In fact, we have
+		\item First we must verify that $\phi$ defines a valid 2-cell in $\FF(\Sq(\twocat{D}))$ by checking equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}. Equation~\eqref{Eq:FF2CellA} is simple to show directly, while~\eqref{Eq:FF2CellB} follows from the well definedness of $U_3\psi'$. In fact, we have
 		\[
 			\phi^L=U_3\psi'\colon F^2L_{1\otimes2}\Rightarrow L_3F^2
 		\]
@@ -578,7 +578,7 @@ Now we will continue on to the proof of Theorem~\ref{Thm:CoalgFullFaithful}. The
 			\quad\text{and}\quad
 			\tau_2=\hat{\delta}_3F^2\circ\psi'
 		\]
-		and check that $\cod U_3\tau_1=E_3\phi^L\circ \phi L_{1\otimes2}\circ F\delta_{1\otimes2}$ and $\cod U_3\tau_2=\delta_3 F^2\circ\phi$. Hence to prove \eqref{Eq:PhiComult} it suffices to show $\tau_1=\tau_2$. To do this, show that the mates of each are equal to $\phi^L$.
+		and check that $\cod U_3\tau_1=E_3\phi^L\circ \phi L_{1\otimes2}\circ F\delta_{1\otimes2}$ and $\cod U_3\tau_2=\delta_3 F^2\circ\phi$. Hence to prove~\eqref{Eq:PhiComult} it suffices to show $\tau_1=\tau_2$. To do this, show that the mates of each are equal to $\phi^L$.
 		\item We have defined a 2-cell $\phi$ in $\DComon(\FF(\Sq(\twocat{D})))$, now we need to show that the lax functor $\Coalg$ takes this $\phi$ to the 2-cell $\theta$ we began with, i.e. that $\theta=\tilde{\phi}G_{\otimes}$. It is easy to see that
 		\[
 			U_3\tilde{\phi}G_{\otimes}=F^2U_{1\otimes2}G_{\otimes}=F^2U_{1,2}=U_3\theta,
@@ -600,56 +600,8 @@ Now we will continue on to the proof of Theorem~\ref{Thm:CoalgFullFaithful}. The
 	\end{compactitem}
 \end{proof}
 
-Combining this with Proposition~\ref{Prop:LaxFuncMonad} immediately implies:
+Combining this with \cref{Prop:LaxFuncMonad} immediately implies:
 
 \begin{corollary}
 	Suppose $(E_1,\eta_1,\epsilon_1,\delta_1)$ is a comonad in $\FF(\Sq(\twocat{D}))$. A composition on $\LCoalg$ is equivalent to completing $E_1$ to an awfs.
 \end{corollary}
-
-% Corollary~\ref{Cor:CoalgComp} actually has a converse, which was used extensively in \cite{riehl:nwfs-model}. We can prove this converse in our generalized framework as well.
-
-% \begin{proposition}
-% 	Let $(E,\eta,\epsilon,\delta)$ be a comonad in $\FFD$. A multiplication map on the span $\Coalg E$ determines a monad structure on $E$. 
-
-% 	Furthermore, given two bimonads $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$, and a morphism $\theta\colon E_1\to E_2$ in $\Comon(\FFD)$, if the induced map $\tilde{\theta}\colon\LCoalg[1]\to\LCoalg[2]$ commutes with the multiplication, then $\theta$ is in fact a bimonad morphism.
-% \end{proposition}
-% \begin{proof}
-% 	We will again need to start with some preliminary constructions.
-
-% 	Let $\hat{L}\colon C^2\to\LCoalg$ be the morphism determined by $U\hat{L}=L$ and $\alpha\hat{L}=\delta$.
-
-% 	Let $(\hat{L},\hat{L}R)$ be the map into the pushout $X$ as in the diagram
-% 	\[
-% 	\begin{tikzcd}[row sep=small,column sep=small,bend angle=25]
-% 		{} &[2em]& \LCoalg \drar{\cod U} & \\
-% 		C^2 \ar[bend left]{urr}{\hat{L}}
-% 			\rar{(\hat{L},\hat{L}R)}
-% 			\ar[bend right]{drr}{\hat{L}R}
-% 		& X \urar{P_1} \drar[swap]{P_2}
-% 		&& C. \\
-% 		&& \LCoalg \urar[swap]{\dom U} &
-% 	\end{tikzcd}
-% 	\]
-% 	This is well defined since $\cod U\hat{L}=E=\dom U\hat{L}R$.
-
-% 	Consider the morphism $\vec{m}(\hat{L},\hat{L}R)\colon C^2\to C^2$. We compute
-% 	\[
-% 		\dom\vec{m}(\hat{L},\hat{L}R) = \dom UP_1(\hat{L},\hat{L}R) = \dom U\hat{L} = \dom L = \dom
-% 	\]
-% 	and
-% 	\[
-% 		\cod\vec{m}(\hat{L},\hat{L}R) = \cod UP_2(\hat{L},\hat{L}R) = \cod U\hat{L}R = \cod LR = ER.
-% 	\]
-% 	There is a 2-cell $\psi\colon\vec{m}(\hat{L},\hat{L}R)\Rightarrow\id_{C^2}$ with $\dom\psi=\id_{\dom}$ and $\cod\psi=\epsilon R$. That $\psi$ is well defined comes down to the computation
-% 	\[
-% 		\cod\psi \circ \kappa\vec{m}(\hat{L},\hat{L}R) = \epsilon R \circ \eta R \circ \dom\vec{\eta} = \kappa R \circ \eta = \epsilon\circ\eta = \kappa.
-% 	\]
-
-% 	We will define the monad multiplication $\mu\colon ER\Rightarrow E$ to be the composition
-% 	\[
-% 		\mu = E\psi \circ \alpha\pi(\hat{L},\hat{L}R)
-% 	\]
-% 	which makes sense since $\cod\alpha\pi(\hat{L},\hat{L}R) = EU\pi(\hat{L},\hat{L}R)=E\vec{m}(\hat{L},\hat{L}R)$.
-
-% 	[I've gotten stuck on proving the monad axioms, to the point that I'm not sure if this converse holds at this level of generality.]
-% \end{proof}

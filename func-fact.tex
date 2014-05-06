@@ -2,7 +2,7 @@
 
 \chapter{Functorial factorizations}\label{Ch:FuncFact}
 
-Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in the sense of Section~\ref{Sec:ArrowObjects}. In this section, we will define a 2-fold double category $\FFD$ of functorial factorizations in $\mathbb{D}$, as follows:
+Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in the sense of \cref{Sec:ArrowObjects}. In this section, we will define a 2-fold double category $\FFD$ of functorial factorizations in $\mathbb{D}$, as follows:
 \begin{itemize}
 	\item The objects and vertical 1-cells are the same as in $\mathbb{D}$.
 
@@ -276,7 +276,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 	\end{tikzcd}
 	\]
 
-	It is a straightforward exercise to check that these definitions satisfy equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. To illustrate, we will demonstrate that $\theta_1\otimes\theta_2$ satisfies \eqref{Eq:FF2CellA}:
+	It is a straightforward exercise to check that these definitions satisfy equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}. To illustrate, we will demonstrate that $\theta_1\otimes\theta_2$ satisfies~\eqref{Eq:FF2CellA}:
 	\begin{align*}
 	\begin{tikzcd}[column sep=large,bend angle=50,ampersand replacement=\&]
 		C^2 \rar[][domA]{E_{1\otimes2}} 
@@ -335,7 +335,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 \end{itemize}
 
 \begin{example}
-	Functorial factorizations in the double category $\mathbb{D}=\mathbb{S}\mathrm{q}(\mathcal{C}\mathrm{at})$ of squares in the 2-category of categories are precisely functorial factorizations as defined in Section \ref{Sec:FuncFact}.
+	Functorial factorizations in the double category $\mathbb{D}=\mathbb{S}\mathrm{q}(\mathcal{C}\mathrm{at})$ of squares in the 2-category of categories are precisely functorial factorizations as defined in \cref{Sec:FuncFact}.
 \end{example}
 
 It is straightforward to check that $\otimes$ and $\odot$ are each associative and unital. It takes more work to provide the compatibility between $\otimes$ and $\odot$, which is the content of the proof of the next proposition.
@@ -344,7 +344,7 @@ It is straightforward to check that $\otimes$ and $\odot$ are each associative a
 	$\FFD$ has the structure of a 2-fold double category.
 \end{proposition}
 \begin{proof}
-The primary structure of $\FFD$ was given in the first part of this section. What is left is to provide the coherence data \eqref{Eq:2FoldCoherenceCellsA} and \eqref{Eq:2FoldCoherenceCellsB}.
+The primary structure of $\FFD$ was given in the first part of this section. What is left is to provide the coherence data~\eqref{Eq:2FoldCoherenceCellsA} and~\eqref{Eq:2FoldCoherenceCellsB}.
 
 First, note that $I_C$ is initial in the sense that, given any vertical morphism $F\colon C\to D$ and any functorial factorization $(E,\eta,\epsilon)$ on $D$, there is a unique 2-cell
 \[
@@ -413,7 +413,7 @@ and $i$ is given by
 	\twocellA{\eta_2}
 \end{tikzcd}
 \]
-To illustrate the verification that these give well-defined 2-cells in $\FFD$, we will show that $i$ satisfies \eqref{Eq:FF2CellA} (keep in mind that when $F$ is an identity, $\gamma_0$ and $\gamma_1$ are also identities):
+To illustrate the verification that these give well-defined 2-cells in $\FFD$, we will show that $i$ satisfies~\eqref{Eq:FF2CellA} (keep in mind that when $F$ is an identity, $\gamma_0$ and $\gamma_1$ are also identities):
 \begin{align*}
 	\begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 		C^2 \rar{L_1}
@@ -617,7 +617,7 @@ Using the universal property for $C^2$, it suffices to check that
 	\twocellB{\eta_3}
 \end{tikzcd}
 \]
-and a quick check using equations \eqref{Eq:DomPR} and \eqref{Eq:CodIL} shows that both are equal to
+and a quick check using equations~\eqref{Eq:DomPR} and~\eqref{Eq:CodIL} shows that both are equal to
 \[
 \begin{tikzcd}[row sep=0ex,bend angle=60]
 	{} & C^2 \drar[bend left][domA]{E_2}
@@ -777,7 +777,7 @@ in $\FFD$, where $(1\odot 2)$ is shorthand for $(E_1,\eta_1,\epsilon_1)\odot(E_2
 	\twocellA{w}
 \end{tikzcd}
 \]
-The naturality of $z$ follows immediately from that of $w$, but we still need to check that this satisfies equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}. We will leave the details to the reader, but note that \eqref{Eq:FF2CellB} comes down to the verification of the equality
+The naturality of $z$ follows immediately from that of $w$, but we still need to check that this satisfies equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}. We will leave the details to the reader, but note that~\eqref{Eq:FF2CellB} comes down to the verification of the equality
 \[
 \begin{tikzcd}[row sep=0ex, bend angle=15, ampersand replacement=\&, baseline=(B.base)]
 	\& C^2 \drar[bend left][inner sep=.2ex]{L_3} \&\& \\
@@ -804,7 +804,7 @@ The naturality of $z$ follows immediately from that of $w$, but we still need to
 	\twocellB{\eta_4}
 \end{tikzcd}
 \]
-which follows from equation \eqref{Eq:DomW} and the fact that $\dom\circ i^L = \id_{\dom}$.
+which follows from equation~\eqref{Eq:DomW} and the fact that $\dom\circ i^L = \id_{\dom}$.
 \end{proof}
 
 \begin{lemma}
@@ -856,6 +856,6 @@ A quick look at the definitions of the two horizontal compositions is now enough
 	(E_1\odot E_2)^{\bullet} = E_1^{\bullet}\otimes E_2^{\bullet}
 \]
 
-Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FFD$ since the cyclic action simply swaps the equations \eqref{Eq:FF2CellA} and \eqref{Eq:FF2CellB}.
+Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FFD$ since the cyclic action simply swaps the equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}.
 
 %TODO: define category \Awfs{\dblcat{D}}=\Bimon(\FFD), mention it inherits cyclic action.

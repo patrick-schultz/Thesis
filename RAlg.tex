@@ -1,13 +1,13 @@
 % -*- root: thesis.tex -*-
 
-\chapter{$\RAlg$ and $\LCoalg$}
+\chapter{$\RAlg$ and $\LCoalg$} \label{Ch:RAlg}
 
 For this section, we will continue to let $\mathbb{D}=\Sq(\twocat{D})$ be the double category of squares in a 2-category $\twocat{D}$ with arrow objects.
 
 A weak factorization system on a category $C$ is defined by two classes of morphisms, $\mathcal{L}$ and $\mathcal{R}$.
 In an algebraic weak factorization system, these classes of morphisms are replaced by categories $\LCoalg$ and $\RAlg$ equipped with functors to $C^2$. In this section, we will discuss the universal property satisfied by these categories, allowing us to define analagous objects in other 2-categories, and record several technical lemmas which we will need in the next section. We will focus on comonads, but there are dual results for monads which we leave to the reader.
 
-Recall from \cite{street:ftm} the following proposition.
+Recall from~\cite{street:ftm} the following proposition.
 
 \begin{proposition}\label{Prop:EMObject}
 	Let $C$ be a category, and $\mathbb{L}=(L,\epsilon,\delta)$ be a comonad on $C$. The category of coalgebras $\LCoalg$ has a universal property as follows:
@@ -35,9 +35,9 @@ It is not too hard to use this universal property to construct the free/forgetfu
 	For any comonad $\mathbb{L}$ on an object $C$ in $\twocat{D}$, the 1-cell $U\colon\LCoalg\to C$ has a right adjoint $\hat{L}$ with $U\hat{L}=L$ and $\alpha\hat{L}=\delta$. The counit of this adjunction is simply the counit of $\mathbb{L}$, $\epsilon\colon U\hat{L}\Rightarrow\id_C$, while the unit is a 2-cell $\hat{\alpha}\colon\id_{\LCoalg}\Rightarrow\hat{L}U$ satisfying $U\hat{\alpha}=\alpha$.
 \end{proposition}
 \begin{proof}
-	By Proposition~\ref{Prop:EMObject}, to prove the existence of the 1-cell $\hat{L}$, it suffices to verify the equations $\epsilon L\circ\delta=\id_L$ and $\delta L\circ\delta=L\delta\circ\delta$, which are simply two of the comonad axioms.
+	By \cref{Prop:EMObject}, to prove the existence of the 1-cell $\hat{L}$, it suffices to verify the equations $\epsilon L\circ\delta=\id_L$ and $\delta L\circ\delta=L\delta\circ\delta$, which are simply two of the comonad axioms.
 
-	Using the 2-dimensional part of Proposition~\ref{Prop:EMObject}, the existence of the 2-cell $\hat{\alpha}$ follows from the equation $L\alpha\circ\alpha=\delta U\circ\alpha$, which is the remaining comonad axiom.
+	Using the 2-dimensional part of \cref{Prop:EMObject}, the existence of the 2-cell $\hat{\alpha}$ follows from the equation $L\alpha\circ\alpha=\delta U\circ\alpha$, which is the remaining comonad axiom.
 
 	We leave the verification of the triangle identities for the adjunction to the reader.
 \end{proof}
@@ -107,7 +107,7 @@ Consider a comonad in $\FFD$ on an object $C$, i.e. a functorial factorization w
 		\twocellB{\vec{\alpha}}
 	\end{tikzcd} \label{Eq:LCoalg3}
 	\end{gather}
-	where $\vec{\alpha}$ is the unique 2-cell such that $\dom\vec{\alpha}=\id_{\dom U}$ and $\cod\vec{\alpha}=\alpha$, the existence of which is implied by Equation~\ref{Eq:LCoalg1}.
+	where $\vec{\alpha}$ is the unique 2-cell such that $\dom\vec{\alpha}=\id_{\dom U}$ and $\cod\vec{\alpha}=\alpha$, the existence of which is implied by equation~\eqref{Eq:LCoalg1}.
 
 	Given any object $X$, together with a morphism $F\colon X\to C^2$ and a 2-cell $\beta\colon \cod F\Rightarrow EF$ satisfying equations
 	\begin{compactenum}
@@ -124,5 +124,5 @@ Consider a comonad in $\FFD$ on an object $C$, i.e. a functorial factorization w
 	(where $F_i=U\hat{F}_i$ and $\beta_i=\cod\alpha\hat{F}_i$ as in the previous paragraph), there is a unique 2-cell $\hat{\theta}\colon\hat{F}_1\Rightarrow\hat{F}_2$ such that $U\hat{\theta}=\vec{\theta}$.
 \end{lemma}
 \begin{proof}
-	$U$ is simply the $U$ from proposition~\ref{Prop:EMObject}, while the 2-cell $\alpha$ there is the 2-cell $\vec{\alpha}$ here. The equation $\vec{\epsilon}U\circ\vec{\alpha}=\id_{F}$ implies that $\dom \vec{\alpha}=\id_{\dom U}$. With that observation, the rest of the equations follow immediately from the universal property of $C^2$ and the equations $\epsilon U\circ\alpha = \id_U$ and $\delta U \circ \alpha = L\alpha\circ\alpha$ from Proposition~\ref{Prop:EMObject}.
+	$U$ is simply the $U$ from \cref{Prop:EMObject}, while the 2-cell $\alpha$ there is the 2-cell $\vec{\alpha}$ here. The equation $\vec{\epsilon}U\circ\vec{\alpha}=\id_{F}$ implies that $\dom \vec{\alpha}=\id_{\dom U}$. With that observation, the rest of the equations follow immediately from the universal property of $C^2$ and the equations $\epsilon U\circ\alpha = \id_U$ and $\delta U \circ \alpha = L\alpha\circ\alpha$ from \cref{Prop:EMObject}.
 \end{proof}

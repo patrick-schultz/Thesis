@@ -2,7 +2,7 @@
 
 \chapter{A universal property for the pushout product}\label{Ch:PushoutProduct} 
 
-We would now like to generalize the framework of cyclic 2-fold double categories to cyclic 2-fold double multicategories, in order to incorporate the multivariable adjunctions of awfs defined in \cite{riehl:nwfs-monoidal}.
+We would now like to generalize the framework of cyclic 2-fold double categories to cyclic 2-fold double multicategories, in order to incorporate the multivariable adjunctions of awfs defined in~\cite{riehl:nwfs-monoidal}.
 
 [TODO: Review cyclic multicategories/double multicategories]
 
@@ -113,7 +113,7 @@ Let $\mathbb{M}\mathbf{Adj}$ be the double cyclic multicategory of categories, f
 	\item The $d_1$ are sent to the domain functors $\dom\colon\cat{A}_i^{\btwo}\to\cat{A}_i$ and the $d_0$ are sent to the codomain functors $\cod\colon\cat{A}_i^{\btwo}\to\cat{A}_i$.
 	\item The $\alpha$ are sent to the canonical natural transformations $\dom\Rightarrow\cod$.
 	\item The $G_i$ are sent to functors $\hat{F}_i$. Given morphisms $f\colon A\to B\in\cat{A}_1$ and $g\colon X\to Y\in\cat{A}_2$, $\hat{F}_0(f,g)$ is defined as in the diagram
-	\begin{equation}\label{E:PullbackProduct}
+	\begin{equation}\label{Eq:PullbackProduct}
 	\begin{tikzcd}[bend angle=15]
 		F_0(B,Y) \arrow[bend left]{rrd}{F_0(1,g)}
 			\arrow[bend right]{rdd}[swap]{F_0(f,1)}
@@ -127,13 +127,13 @@ Let $\mathbb{M}\mathbf{Adj}$ be the double cyclic multicategory of categories, f
 	\end{tikzcd}
 	\end{equation}
 	It is a standard fact that the $\hat{F}_i$ form a two-variable adjunction between the arrow categories. 
-	\item Looking at diagram \ref{E:PullbackProduct}, 
+	\item Looking at diagram~\eqref{Eq:PullbackProduct}, 
 	\begin{align*}
 		(\lambda^0_{1,0,0})_{f,g}&=p_1\colon \cod\hat{F}_0(f,g)\to F_0(\dom f,\cod g)\\
 		(\lambda^0_{0,1,0})_{f,g}&=p_2\colon \cod\hat{F}_0(f,g)\to F_0(\cod f,\dom g)\\
 		(\lambda^0_{0,0,1})_{f,g}&=\id\colon \dom\hat{F}_0(f,g)\to F_0(\cod f,\cod g).
 	\end{align*}
-	The three relations (1)-(3) then correspond precisely to the commutativity of the three regions in diagram \eqref{E:PullbackProduct}.
+	The three relations (1)-(3) then correspond precisely to the commutativity of the three regions in diagram~\eqref{Eq:PullbackProduct}.
 \end{itemize}
 \end{example}
 
@@ -144,7 +144,7 @@ Let $\mathbb{M}\mathbf{Adj}$ be the double cyclic multicategory of categories, f
 Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-cells $F_i$. Let $\mathbf{CDMCat}$ denote the 2-category of cyclic double multicategories, functors, and horizontal transformations.
 
 \begin{theorem}\label{Thm:MAdjArrowObjects}
-	Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}$. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ constructed in example \ref{Ex:PullbackProduct} is terminal in the category $\mathbf{CDMCat}_{\mathbb{F}}(\mathbb{J},\mathbb{M}\mathbf{Adj})$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
+	Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}$. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ constructed in \cref{Ex:PullbackProduct} is terminal in the category $\mathbf{CDMCat}_{\mathbb{F}}(\mathbb{J},\mathbb{M}\mathbf{Adj})$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
 \end{theorem}
 \begin{proof}
 	Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\mathbb{M}\mathbf{Adj}$, there is a unique 2-cell
@@ -247,12 +247,12 @@ Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-ce
 	& F_0(d_1B_1,d_0B_2) \!\!\! \underset{F_0(d_1B_1,d_1B_2)}{\prod} \!\!\! F_0(d_0B_1,d_1B_2)
 	\end{tikzcd}
 	\]
-	The top arrow is uniquely determined by equation \eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations \eqref{Eq:UProp2} and \eqref{Eq:UProp3}.
+	The top arrow is uniquely determined by equation~\eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations~\eqref{Eq:UProp2} and~\eqref{Eq:UProp3}.
 \end{proof}
 
-Now let $\dblcat{M}$ be any cyclic double multicategory. We will take Theorem~\ref{Thm:MAdjArrowObjects} as our definition of what it means for a general cyclic double multicategory to have arrow objects. For future reference, we will spell this out more concretely.
+Now let $\dblcat{M}$ be any cyclic double multicategory. We will take \cref{Thm:MAdjArrowObjects} as our definition of what it means for a general cyclic double multicategory to have arrow objects. For future reference, we will spell this out more concretely.
 
-Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in Section~\ref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
+Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in \cref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
 
 Given a vertical 1-cell $F\colon(C_1,C_2)\to C_0^{\bullet}$, the lift to arrow objects $\hat{F}$ is a vertical 1-cell $\hat{F}$ together with 2-cells
 \[
@@ -374,7 +374,7 @@ and which is universal, meaning that given any objects $X_0,X_1,X_2$, horizontal
 	\twocellA{\lambda_2}
 \end{tikzcd}
 \]
-satisfying the three equations analagous to \eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC}, there exists a unique 2-cell
+satisfying the three equations analagous to~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC}, there exists a unique 2-cell
 \[
 \begin{tikzcd}
 	X_1,X_2 \rar[][domA]{\hat{\alpha}_1,\hat{\alpha}_2} \dar[swap]{G}
@@ -407,7 +407,7 @@ satisfying the three equations analagous to \eqref{Eq:ArrowObjectMultiA}--\eqref
 \]
 for each $i\in\{0,1,2\}$.
 
-Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ to arrow objects to be a vertical 1-cell $\hat{F}$ together with $(n+1)$ 2-cells $\gamma_i$ satisfying $(n+1)$ equations analagous to \eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} and which is universal in the analagous way.
+Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ to arrow objects to be a vertical 1-cell $\hat{F}$ together with $(n+1)$ 2-cells $\gamma_i$ satisfying $(n+1)$ equations analagous to~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} and which is universal in the analagous way.
 
 \begin{definition}
 	Let $\dblcat{M}$ be a double multicategory. We say $\dblcat{M}$ \emph{has arrow objects} if for every object $C$ there is an arrow object $C^2$, and if for every vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ there is a lift to arrow objects $\hat{F}$.
