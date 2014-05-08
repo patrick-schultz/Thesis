@@ -26,7 +26,7 @@ The unit axioms for the monoid give the equations $\mu\circ E\vec{\eta}=\id_E=\m
 	which determines a comonad $\mathbb{L}=(L,\vec{\epsilon},\vec{\delta})$, such that $\dom\vec{\delta}=\id_{\dom}$ and $\cod\vec{\delta}=\delta$.
 \end{proposition}
 
-Hence a functorial factorization which simultaineously has a monoid structure and a comonoid structure in $\FFD$ is precisely a weak factorization system, missing only the second bullet of \cref{Def:Awfs}, the distributive law condition. This is not surprising, as it is the only condition requiring a compatability between the monad and comonad structures. We will see that a bialgebra in $\FFD$ adds precisely this compatibility.
+Hence a functorial factorization which simultaineously has a monoid structure and a comonoid structure in $\FFD$ is precisely an algebraic weak factorization system, missing only the second bullet of \cref{Def:Awfs}: the distributive law condition. This is not surprising, as it is the only condition requiring a compatability between the monad and comonad structures. We will see that a bialgebra in $\FFD$ adds precisely this compatibility.
 
 \begin{proposition}
 	A bimonoid structure on a horizontal morphism $(E,\eta,\epsilon)\colon C\to C$ in $\FFD$ is precisely an algebraic weak factorization system on $C$ with underlying functorial factorization system $(E,\eta,\epsilon)$. 
@@ -171,7 +171,7 @@ Hence a functorial factorization which simultaineously has a monoid structure an
 	Then use the definitions of $i$ and $p$ to check that $\mu\circ i=\mu\circ\eta R=\id_E$ and $p\circ\delta=\epsilon L\circ\delta=\id_E$, so that the first row above just equals $\delta$, and the second row equals $\mu$. Since $\Delta$ also (by definition) satisfies $\dom\Delta=\delta$ and $\cod\Delta=\mu$, we are done.
 \end{proof}
 
-The appropriate notion of morphism between awfs, analagous to left/right Quillen functors and Quillen adjunctions, is (to our knowledge) first given in~\cite{riehl:nwfs-model}.
+The appropriate notion of morphism between awfs, analagous to left and right Quillen functors and Quillen adjunctions, is (to our knowledge) first given in~\cite{riehl:nwfs-model}.
 
 \begin{definition}
 	Suppose that $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ are awfs on $\cat{C}$ and $\cat{D}$ respectively. 
@@ -183,7 +183,7 @@ The appropriate notion of morphism between awfs, analagous to left/right Quillen
 
 Notice that a lax morphism of awfs induces a lift of the functor $\hat{G}$ to a functor $\mathbb{R}_1\mathrm{Alg}\to \mathbb{R}_2\mathrm{Alg}$. In that sense, $G$ ``preserves the right class,'' so is analagous to a right Quillen functor. Similarly, a colax morphism of awfs induces a lift of $\hat{F}$ to $\mathbb{L}_1\mathrm{Coalg}\to\mathbb{L}_2\mathrm{Coalg}$, so is analagous to a left Quillen functor.
 
-By \cref{Prop:BimonCyclic}, the cyclic action on $\FFD$ induces a cyclic action on $\Bimon(\FFD)$. This action is given on awfs by
+By \cref{Prop:BimonCyclic}, there is a cyclic action on $\Bimon(\FFD)$ induced by the cyclic action on $\FFD$. This action is given on awfs by
 \[
 	(E,\eta,\mu,\epsilon,\delta)^{\bullet} = (E^{\bullet},\epsilon^{\bullet},\delta^{\bullet},\eta^{\bullet},\mu^{\bullet})
 \]

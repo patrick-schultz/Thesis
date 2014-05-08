@@ -1,6 +1,7 @@
 % -*- root: thesis.tex -*-
 
 \usepackage{mathtools,amssymb,amsthm}
+\usepackage{verbatim}
 \usepackage{datetime}
 \usepackage[T1]{fontenc}
 \usepackage[sc]{mathpazo}
@@ -9,38 +10,109 @@
 \usepackage{MnSymbol}
 \usepackage{paralist}
 \usepackage{tikz, tikz-cd}
+\usepackage{setspace}	% used for single- and double- spacing
+\usepackage{fancyhdr}	% used for page numbering
+\usepackage{indentfirst} % this indents first paragraph of each section
 \usepackage{cleveref}
 %\usepackage{todo}
 \usetikzlibrary{decorations.markings}
-\linespread{1.05}
+%\linespread{1.05}
 
 %\chapterstyle{dash}
-\pagestyle{headings}
+%\pagestyle{headings}
+
+% page layout margins
+% Note: 1in = 72.27pt;  
+% thus - (lower margin) = 
+%	1in + \headsep+ topmargin + \headheight + \textheight - 11in
+	\hoffset = .55in
+	\oddsidemargin = 0in
+	\voffset = 0in
+	\topmargin = 0.1in
+	\headheight = 15pt 	% do not make too small
+	\headsep = 15pt	% do not make too small
+	\textheight = 613pt
+	\footskip = 0in
+	\textwidth = 5.9in
+	\marginparsep = 0.1in 
+	\marginparwidth = 0.9in 
+	\marginparpush = 0in
+
+	\newcommand{\TOP}{\vspace*{25pt}} 
+	% this sets the extra vertical space in the following preliminary pages:
+				% approval, abstract, CV, acknowledgement
 
 
+% Formatting the header.  This controls page number placement.  
+% See documentation for fancyhdr.sty on CTAN for more information
+	\pagestyle{fancyplain}
+	\lhead{}
+	\chead{}
+	\rhead{\thepage}
+	\lfoot{}
+	\cfoot{}
+	\rfoot{}
+	\renewcommand{\headrulewidth}{0in}
+	\renewcommand{\footrulewidth}{0in}
 
-\newcommand{\Tref}[1]{{Theorem~\ref{#1}}}
+ 
+
+
+% ---------------- More Details  ------------------
+
+%%%
+%  From the manual:
+%    * It is preferable not to right justify text, as this frequently causes 
+%      inconsistency in spacing between words.
+%
+%    * It is preferable not to justify the right margin.
+%%
+% As I disagree with this assesment and it is optional, I have removed it.
+	\raggedright 	% ragged right edge
+	\doublespacing 	
+	% default spacing; should be double for Prelim Pages to work out correctly
+	
+
+	
+% ----Theorem Numbering and formatting -------------------------------------
+	
+	% this sets how your theorems, etc, are numbered
+	% options: (blank), chapter, section
+	\newcommand{\Number}{chapter} 	
+	\theoremstyle{plain}
+		\newtheorem{theorem}{Theorem}[\Number]
+		\newtheorem*{theorem*}{Theorem}
+		\newtheorem{lemma}[theorem]{Lemma}
+		\newtheorem*{lemma*}{Lemma}
+		\newtheorem{proposition}[theorem]{Proposition}
+		\newtheorem{corollary}[theorem]{Corollary} 
+		\newtheorem{remark}[theorem]{Remark}
+		\newtheorem{definition}[theorem]{Definition}
+		\newtheorem{example}[theorem]{Example}
+
+
+%\newcommand{\Tref}[1]{{Theorem~\ref{#1}}}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
 \DeclareMathOperator{\dvert}{Vert}
 
 
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem*{theorem*}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem*{lemma*}{Lemma}
+% \theoremstyle{plain}
+% \newtheorem{theorem}{Theorem}[chapter]
+% \newtheorem*{theorem*}{Theorem}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem*{lemma*}{Lemma}
 
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}[chapter]
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{exercise}{Exercise}[chapter]
 
-\theoremstyle{remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{remark}[theorem]{Remark}
+% \theoremstyle{remark}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\prodb}{\mathbin{\Pi}}
 

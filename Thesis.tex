@@ -1,9 +1,239 @@
-\documentclass[10pt,oneside,draft,article]{memoir}
+\documentclass[11pt,draft]{UOthesis}
 \input{preamble}
 
 \begin{document}
-\tightlists
-\firmlists
+% \tightlists
+% \firmlists
+
+% sets indent to zero for preliminary stuff
+	\setlength{\parindent}{0in} 	
+	% preliminary pages are numbered with small roman
+	\pagenumbering{roman} 		
+
+% Preliminary Pages document, template gathered from a variety of sources
+
+
+%----------------------------Title page--------------------------------------%
+	
+	\thispagestyle{empty}	%margins :  top = 2.25
+	\vspace*{50pt}
+	\begin{center} % Title in all caps, pyramid shape
+		ALGEBRAIC WEAK FACTORIZATION SYSTEMS\\
+		IN DOUBLE CATEGORIES
+	\vfill
+		by	\\ % Name, all caps
+		PATRICK SCHULTZ
+	\vfill
+		A DISSERTATION
+	{\singlespace
+		Presented to the Department of Mathematics\\
+		and the Graduate School of the University of Oregon\\
+		in partial fulfillment of the requirements\\
+		for the degree of\\
+		Doctor of Philosophy \\
+		
+		June 2014
+		}% MONTH AND YEAR GO HERE
+	\end{center}
+
+
+%--------------------Approval page------------------------------
+
+	\newpage
+	\TOP
+
+	% TITLE GOES HERE (in "title case"):
+	``Algebraic Weak Factorization Systems in Double Categories,''
+		a dissertation prepared by 
+		Patrick Schultz % YOUR NAME HERE
+	 	in partial fulfillment of the requirements for the
+	 	Doctor of Philosophy 
+	 	degree in the 
+	 Department of Mathematics. 
+		This dissertation has been approved and accepted by: \\[60pt]
+
+	{\singlespace
+	\underline{\hspace*{5in}} \\
+	Dr. Daniel Dugger, 	% Name of Chairperson
+	Chair of the Examining Committee \\[36pt]
+	\underline{\hspace*{3in}}\\
+	 Date \\[36pt]
+ 
+ 
+	% ENTER COMMITTEE HERE
+	 \begin{tabular}{lcl}
+	\hspace*{-1em}    % check this backwards spacing
+	 Committee in charge: & \hspace*{.5in}
+	 	& Dr. Daniel Dugger, Chair\\
+	 	&& Dr. Boris Botvinnik\\
+	 	&& Dr. Dev Sinha\\
+	 	&& Dr. Arkady Vaintrob\\
+	 	&& Dr. Peter Lambert\\[24pt]
+	\end{tabular}
+
+	Accepted by: \\[36pt]
+	\underline{\hspace*{5in}}\\
+		Dean of the Graduate School
+	}
+	\newpage
+
+
+%---------------------Copyright page---------------------------------
+% if you want it, put it here - you should decide
+% Note that you can have this page WITHOUT paying the silly $70
+% to have the library of congress copyright it.  This page is
+% enough to get copyright.  If you don't want any copyright
+% then remove this page, but not that after you submit your
+% abstracts to the grad school you cannot change your mind.
+% So to be safe, leave it in.
+
+\vspace*{1.5in}
+\begin{center}
+\copyright 2014, Patrick Schultz.%% Year and name.
+\end{center}
+\newpage
+
+
+%--------------------Abstract Page ---------------------------------
+	\TOP
+
+	\begin{center}
+	An Abstract of the Dissertation of \\
+	\end{center}
+	Patrick Schultz %your name.
+	  	\hfill	for the degree of	\hfill Doctor of Philosophy\\ 
+	in the Department of Mathematics \hfill to be taken \hfill 
+	June 2014 \\ % Note this is the last month of the term
+	% in which you defend, not the exact month you defend.
+	%TITLE, ALL CAPS
+	Title: \parbox[t]{5.4in}{ALGEBRAIC WEAK FACTORIZATION SYSTEMS IN DOUBLE CATEGORIES} \\[9pt]
+
+	{\singlespace
+	Approved: \parbox[t]{3.51in}{
+	\underline{\hspace*{3.5in}}
+	\centerline{Dr. Daniel Dugger} %% Advisor NAME
+	}} \\[9pt]
+
+	\setlength{\parindent}{.5in} 
+%Text of abstract goes here (not more than 350 words)
+
+
+	\setlength{\parindent}{0in} 
+
+
+%-------------------------------CV--------------------------------
+\newpage
+
+ % you have to fill in lots of stuff here
+\TOP
+\centerline{CURRICULUM VITAE}
+{\singlespacing
+NAME OF AUTHOR: Patrick Schultz  \\[12pt]
+
+PLACE OF BIRTH: Oak Park, Illinois, United States\\[12pt]
+
+DATE OF BIRTH: September 17, 1982 \\[12pt]
+
+GRADUATE AND UNDERGRADUATE SCHOOLS ATTENDED: \\[6pt]
+
+ \hspace*{.5in}
+\parbox[t]{5.5in}{
+University of Oregon, Eugene, OR\\
+University of California, Santa Cruz, CA
+}\\[24pt]
+
+DEGREES AWARDED: \\[6pt]
+
+\hspace*{.5in}
+\parbox[t]{5.5in}{
+Doctor of Philosophy, University of Oregon, 2014 \\
+Master of Science, University of California, Santa Cruz, 2009\\
+Bachelor of Science, University of California, Santa Cruz, 2005
+}\\[24pt]
+
+AREAS OF SPECIAL INTEREST: \\[6pt]
+
+\hspace*{.5in}
+\parbox[t]{5.5in}{
+\setlength{\hangindent}{.3in}
+Category Theory, Categorical methods in Homotopy Theory,\\
+Categorical Logic and Type Theory
+} \\[24pt]
+
+PROFESSIONAL EXPERIENCE: \\[6pt]
+
+\hspace*{.5in}
+\parbox[t]{5.5in}{
+Graduate Teaching Fellow, University of Oregon, 2009--2014\\
+Teaching Assistant, University of California, Santa Cruz, 2005--2009\\
+Teaching Assistant, COSMOS, UCSC Campus, 2003--2009
+} \\[6pt]
+
+
+% GRANTS, AWARDS AND HONORS: \\[6pt]
+
+\hspace*{.5in}
+\parbox[t]{5.5in}{
+\setlength{\hangindent}{.3in}
+%	Fancy Fellowship, University of Oregon Department of Mathematics, YYYY
+\par\setlength{\hangindent}{.3in}
+%	Fancy Award, University of Oregon Department of Mathematics, YYYY
+\par\setlength{\hangindent}{.3in}
+%	Fancy Honor, University of Somewhere, YYYY
+} \\
+
+
+%PUBLICATIONS: \\[6pt]
+
+%% cut and paste from your bibliography.  If you use bibtex,
+%% then open the .bbl files to find the bibliography stuff.
+%% Make sure that you rename the \bibitem to a different label
+%% so that you don't accidently make stuff later refer to this.
+
+%----------------------------Acknowledgments-------------------------------
+\newpage
+\TOP
+\centerline{ACKNOWLEDGMENTS}
+
+%Put you stuff here, make sure it is less than 1.5 page
+	\setlength{\parindent}{.5in} 
+
+
+	\setlength{\parindent}{0in} 
+
+
+
+
+
+%-------------------Dedication-------------------%
+
+\newpage
+\vspace*{1.5in}
+\begin{center}
+%just for you - we're not sure about the vertical spacing here.  
+%adjust as you like...
+
+\end{center}
+
+	
+
+% ------------------------ include the table of contents ------------------------
+
+	\singlespacing
+	\tableofcontents 
+%	\listoffigures 	% include this if you have figures
+%	\listoftables 	% include this if you have tables
+
+	
+
+% ----------------------- formatting for body text ------------------------------
+
+	\doublespacing 
+	\setlength{\parindent}{.5in}
+
+	\pagenumbering{arabic}	% body pages: restart numbering in arabic
+	\setcounter{page}{1}		% re-set page numbering
+
 
 \include{intro}
 \include{wfs}

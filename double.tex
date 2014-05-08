@@ -2,15 +2,38 @@
 
 \chapter{Double Categories}\label{Ch:Double}
 
-In this section, we will give an overview of double categories, as well as (one possible version of) the definition of monads in a double category
+Recall in~\cref{Def:FFColax}, a colax morphism of functorial factorizations is a pair $(F,\phi)$, where $\phi$ is a natural transformation
+\begin{equation}\label{Eq:FFColaxSquare}
+\begin{tikzcd}
+	C^2 \rar[][domA]{E_1} \dar[swap]{\hat{F}} & C \dar{F} \\
+	D^2 \rar[][codA,swap]{E_2} & D
+	\twocellA{\phi}
+\end{tikzcd}
+\end{equation}
+In~\cite{riehl:nwfs-model} it is proven that if $F\dashv G$ is an adjunction, then specifying a natural transformation $\phi$ making $F$ a colax morphism uniquely determines a natural transformation $\theta$ making $G$ a lax morphism. The transformation $\theta$ is called the \emph{mate} of $\phi$, and is found by composing $\phi$ with the unit and counit of $\hat{F}$ and $F$ respectively.
 
-A (strict) double category is a two-dimensional categorical structure, similar to a 2-category. Unlike a 2-category, a double category has two types of 1-cells, called \emph{vertical} and \emph{horizontal}, and 2-cells all have a square shape, with domain and codomain horizontal 1-cells as well as domain and codomain vertical 1-cells.
+This mates correspondence defines a bijection between natural transformations of the form~\eqref{Eq:FFColaxSquare} and natural transformations of the form
+\[
+\begin{tikzcd}
+	C^2 \rar[][domA]{E_1} & C \\
+	D^2 \uar{\hat{G}} \rar[][codA,swap]{E_2} & D. \uar[swap]{G}
+	\twocellA{\theta}
+\end{tikzcd}
+\]
+The collection of square 2-cells, where the vertical 1-cells are required to be the left adjoint of an adjunction, and the horizontal 1-cells are allowed to be arbitrary functors, can be organized into a structure called a \emph{double category}. Similarly, there is a double category where the vertical 1-cells are required to be right adjoints (with some subtlety regarding the direction vertical 1-cells and 2-cells point), and the naturality of the mates correspondence can be expressed by saying these two double categories are isomorphic.
 
-We will first give the most concise definition of a double category, which we will then break down into more concrete terms.
+Double categories are a fundamental structure for this thesis, primarily due to the importance of the mates correspondence to the algebraic analogue of Quillen functors: lax and colax morphisms of awfs.
+
+In~\cref{Sec:DblCatReview}, we begin by giving an overview of double categories. Then in \cref{Sec:ArrowObjects} we give a generalization of~\cref{Def:ArrowObject}, defining arrow objects in a double category by means of a universal property. This is needed to be able to define functorial factorizations and (co)lax morphisms of functorial factorizations in general double categories, which we do in~\cref{Ch:FuncFact}.
+
+We will ultimately want to define an algebraic weak factorization system to be a sort of bialgebraic object in a (two-fold) double category. To prepare the way for this definition, in~\cref{Sec:DblCatMonads} we give (one possible version of) the definition of monads in a double category.
+
+\section{Review of double categories}\label{Sec:DblCatReview}
+
+We first give the most concise definition of a double category, which we will then break down into more concrete terms.
 
 \begin{definition}\label{Def:DoubleCat}
 	A (strict) \emph{double category} is an internal category object in the (large) category of categories.
-
 \end{definition}
 
 So a double category $\dblcat{D}$ consists of a category $\dblcat{D}_0$ and a category $\dblcat{D}_1$, along with functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$, $i\colon \dblcat{D}_0\to \dblcat{D}_1$, and $\otimes\colon \dblcat{D}_1\times_{\dblcat{D}_0}\dblcat{D}_1\to \dblcat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\dblcat{D}_0$ the 0-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_0$ the vertical 1-cells. Thus $\dblcat{D}_0$ forms the so-called \emph{vertical category} of $\dblcat{D}$. We will call the objects of $\dblcat{D}_1$ the horizontal 1-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_1$ are the 2-cells. 
@@ -275,7 +298,7 @@ The intuition that this is a generalization of \cref{Lem:ArrowObject} is support
 % 	Notice that if we take $F$ and $\hat{F}$ to both be the identity, then the second part of this universal property is exactly the second part of Lemma \ref{Lem:ArrowObject}, applied to the horizontal 2-category of $\dblcat{D}$. It is in this sense that this universal property generalizes that for arrow objects in a 2-category.
 % \end{remark}
 
-\section{Monads}
+\section{Monads}\label{Sec:DblCatMonads}
 
 We will define a \emph{monad} in a double category $\dblcat{D}$ to be a tuple $(C,T,\eta,\mu)$, in which $C$ is an object, $T\colon C\to C$ is a horizontal 1-cell, and $\eta$ and $\mu$ are 2-cells
 \[
@@ -459,7 +482,7 @@ We will have need for a condition on a lax double functor which implies a sort o
 	In other words, the diagram of categories is a pullback:
 	\[
 	\begin{tikzcd}
-		\Mon(\dblcat{D}) \rar{F} \dar[swap]{U} & \Mon{\dblcat{E}} \dar{U} \\
+		\Mon(\dblcat{D}) \rar{F} \dar[swap]{U} & \Mon(\dblcat{E}) \dar{U} \\
 		\dblcat{D} \rar[swap]{F} & \dblcat{E}.
 	\end{tikzcd}
 	\]

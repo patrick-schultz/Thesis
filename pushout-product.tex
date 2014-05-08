@@ -33,10 +33,10 @@ for all choices of $(k_0,k_1,k_2)\in\{0,1\}^3$ except $(0,0,0)$.
 
 Notice that there is at most one element of every hom-set, so all compositions and cyclic actions are uniquely defined. From now on, we will omit indices whenever doing so is unambiguous.
 
-\begin{remark}
+\begin{remark}\label{Rmk:JGens}
 The cyclic double multicategory $\mathbb{J}$ is generated under composition by the $\alpha_i$ and the $\lambda^i_{k_{i+1},k_{i-1},k_{i}}$ with exactly one of $k_0,k_1,k_2$ equal to 1. These nine $\lambda$ generators are further generated under the cyclic action by only three, though there are many choices of which three. These generators satisfy the relations
 
-\begin{gather*}
+\[
 \begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[][domA]{d_1,d_0} 
 			\dar[swap]{G_0}
@@ -58,7 +58,8 @@ The cyclic double multicategory $\mathbb{J}$ is generated under composition by t
 	\twocellA{\alpha,\id}
 	\twocellB{\lambda}
 \end{tikzcd}
-\\
+\]
+\[
 \begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[][domA]{d_0,d_1} 
 			\dar[swap]{G_0} 
@@ -80,7 +81,8 @@ The cyclic double multicategory $\mathbb{J}$ is generated under composition by t
 	\twocellA{\id,\alpha}
 	\twocellB{\lambda}
 \end{tikzcd}
-\\
+\]
+\[
 \begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	B_1,B_2 \rar[bend left][domA]{d_1,d_1} 
 			\rar[][codA,domB,swap]{d_1,d_0} 
@@ -102,12 +104,12 @@ The cyclic double multicategory $\mathbb{J}$ is generated under composition by t
 	\twocellA{\alpha,\id}
 	\twocellB{\lambda}
 \end{tikzcd}
-\end{gather*}
+\]
 and their reflections under the cyclic action.
 \end{remark}
 
 \begin{example}\label{Ex:PullbackProduct}
-Let $\mathbb{M}\mathbf{Adj}$ be the double cyclic multicategory of categories, functors, and multivariable right adjunctions. Any multivariable right adjunction $F_0\colon \cat{A}_1\times \cat{A}_2\to \cat{A}_0$ extends to a functor $\widehat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ as follows.
+Let $\mathbb{M}\mathbf{Adj}$ be the cyclic double multicategory of categories, functors, and multivariable right adjunctions. Any multivariable right adjunction $F_0\colon \cat{A}_1\times \cat{A}_2\to \cat{A}_0$ extends to a functor $\widehat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ as follows.
 \begin{itemize}
 	\item $B_i$ is sent to $\cat{A}_i^{\btwo}$, the arrow category of $\cat{A}_i$.
 	\item The $d_1$ are sent to the domain functors $\dom\colon\cat{A}_i^{\btwo}\to\cat{A}_i$ and the $d_0$ are sent to the codomain functors $\cod\colon\cat{A}_i^{\btwo}\to\cat{A}_i$.
@@ -147,7 +149,7 @@ Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-ce
 	Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}$. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ constructed in \cref{Ex:PullbackProduct} is terminal in the category $\mathbf{CDMCat}_{\mathbb{F}}(\mathbb{J},\mathbb{M}\mathbf{Adj})$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
 \end{theorem}
 \begin{proof}
-	Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\mathbb{M}\mathbf{Adj}$, there is a unique 2-cell
+	Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\mathbb{M}\mathbf{Adj}$, determining 2-variable adjunctions $F_i$ and $G_i$ and the rest of the structure spelled out in~\cref{Rmk:JGens}, there is a unique 2-cell
 	\[
 	\begin{tikzcd}
 		\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
@@ -158,7 +160,7 @@ Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-ce
 		\twocellA{\theta}
 	\end{tikzcd}
 	\]
-	such that
+	where $\hat{F}_i$ is the pullback product defined in~\eqref{Eq:PullbackProduct}, such that
 
 	\begin{equation}\label{Eq:UProp1}
 	\begin{tikzcd}

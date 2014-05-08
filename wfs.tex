@@ -2,6 +2,7 @@
 
 \chapter{Weak factorization systems}\label{Ch:Wfs}
 
+
 We will begin by briefly reviewing the notions of functorial factorization, weak factorization system, and algebraic weak factorization system. 
 
 \section{Arrow Categories}
@@ -283,15 +284,15 @@ If we want these choices of lifts to be fully coherent, we should also ask that 
 	\end{itemize}
 \end{definition}
 
-Seeing that an algebraic weak factorization system consists of some underlying data (a functorial factorization) equipped with multiplication and comultiplication structures of sorts, satisfying a compatibility condition between them, sugests that an awfs might be seen as a bialgebra in some way. Indeed, in \cite{garner:nwfs} and \cite{garner:soa} this is made precise, but with a catch: the mutiplication and comultiplication are with respect to \emph{different} monoidal structures.
+% Seeing that an algebraic weak factorization system consists of some underlying data (a functorial factorization) equipped with multiplication and comultiplication structures of sorts, satisfying a compatibility condition between them, sugests that an awfs might be seen as a bialgebra in some way. Indeed, in \cite{garner:nwfs} and \cite{garner:soa} this is made precise, but with a catch: the mutiplication and comultiplication are with respect to \emph{different} monoidal structures.
 
-There is a generalization of braided monoidal categories called 2-fold monoidal categories, which have two different monoidal structures satisfying a certain higher level compatibility between them, and this is the most general setting (that we know of) in which the notion of bialgebra makes sense.
+% There is a generalization of braided monoidal categories called 2-fold monoidal categories, which have two different monoidal structures satisfying a certain higher level compatibility between them, and this is the most general setting (that we know of) in which the notion of bialgebra makes sense.
 
-One of our primary motivations for this work was to extend this picture of awfs as bialgebras to include the morphisms of awfs introduced in \cite{riehl:nwfs-model}. Recall that a left Quillen functor between model categories is a left-adjoint functor which preserves cofibrations and trivial cofibrations, or equivalently that the right adjoint preserves fibrations and trivial fibrations. Restricting this to just one of the two weak factorization systems making up the model categories, we can define a left Quillen functor between categories equipped with weak factorization systems to be simply a functor which preserves the left class of morphisms.
+% One of our primary motivations for this work was to extend this picture of awfs as bialgebras to include the morphisms of awfs introduced in \cite{riehl:nwfs-model}. Recall that a left Quillen functor between model categories is a left-adjoint functor which preserves cofibrations and trivial cofibrations, or equivalently that the right adjoint preserves fibrations and trivial fibrations. Restricting this to just one of the two weak factorization systems making up the model categories, we can define a left Quillen functor between categories equipped with weak factorization systems to be simply a functor which preserves the left class of morphisms.
 
 Just as we saw that a functorial factorization already determines the left and right classes of morphisms, there is a condition we can place on a functor $F$ between categories equipped with functorial factorizations which implies that $F$ preserves the left class.
 
-\begin{definition}
+\begin{definition}\label{Def:FFColax}
 	Let $\cat{C}$ and $\cat{D}$ be categories equipped with functorial factorizations $(E_1,\eta_1,\epsilon_1)$ and $(E_2,\eta_2,\epsilon_2)$ respectively. A \emph{colax morphism of functorial factorizations} is a pair $(F,\phi)$ where $F\colon C\to D$ is a functor and $\phi$ is a natural transformation
 	\[
 	\begin{tikzcd}
