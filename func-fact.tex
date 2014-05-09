@@ -278,7 +278,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 	\end{tikzcd}
 	\]
 
-	It is a straightforward exercise to check that these definitions satisfy equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}. To illustrate, we will demonstrate that $\theta_1\otimes\theta_2$ satisfies~\eqref{Eq:FF2CellA}:
+	It is an easy exercise to check that these definitions satisfy equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}. To illustrate, we will demonstrate that $\theta_1\otimes\theta_2$ satisfies~\eqref{Eq:FF2CellA}:
 	\begin{align*}
 	\begin{tikzcd}[column sep=large,bend angle=50,ampersand replacement=\&]
 		C^2 \rar[][domA]{E_{1\otimes2}} 
@@ -337,7 +337,7 @@ Let $\mathbb{D}$ be a cyclic double category, and assume it has arrow objects in
 \end{itemize}
 
 \begin{example}
-	Functorial factorizations in the double category $\mathbb{D}=\mathbb{S}\mathrm{q}(\mathcal{C}\mathrm{at})$ of squares in the 2-category of categories are precisely functorial factorizations as defined in \cref{Sec:FuncFact}.
+	Functorial factorizations in the double category $\mathbb{D}=\mathbb{S}\mathrm{q}(\mathcal{C}\mathrm{at})$ of squares in the 2-category of categories are precisely functorial factorizations as defined in \cref{Sec:FuncFact}. The two horizontal compositions are the factorizations~\eqref{Eq:FFOtimes} and~\eqref{Eq:FFOdot}.
 \end{example}
 
 It is straightforward to check that $\otimes$ and $\odot$ are each associative and unital. It takes more work to provide the compatibility between $\otimes$ and $\odot$, which is the content of the proof of the next proposition.
@@ -863,4 +863,11 @@ A quick look at the definitions of the two horizontal compositions is now enough
 
 Similarly, the cyclic action on 2-cells in $\FFD$ is given by the cyclic action in $\mathbb{D}$ on the underlying 2-cell. This gives a valid 2-cell in $\FFD$ since the cyclic action simply swaps the equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}.
 
-%TODO: define category \Awfs{\dblcat{D}}=\Bimon(\FFD), mention it inherits cyclic action.
+\begin{definition}
+	Let $\twocat{D}$ be a 2-category with with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$ and with arrow objects, and recall the cyclic double category $\LAdj(\twocat{D})$ from~\cref{Ex:CyclicLAdj}. We define the cyclic category
+	\[
+		\Cat{AWFS}(\twocat{D}) = \Bimon(\FF(\LAdj(\twocat{D})))
+	\]
+\end{definition}
+
+In the next chapter, we will see that $\Cat{AWFS}(\twocat{C}at)$ is the category whose objects are categories $\cat{C}$ together with an awfs, and whose morphisms are adjunctions $F\dashv G$, where $F\colon\cat{C}\to\cat{D}$ is equipped with the structure of a colax morphism of awfs. The cyclic action takes this morphism to $\op{G}\dashv\op{F}$, and a colax morphism structure on $\op{G}\colon\op{\cat{D}}\to\op{\cat{C}}$, which is the same as a lax morphism structure on $G\colon\cat{D}\to\cat{C}$. It is in this way that the cyclic action encodes the equivalence between a colax structure on the left adjoint and a lax structure on the right adjoint.

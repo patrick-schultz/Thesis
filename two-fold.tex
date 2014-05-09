@@ -53,17 +53,17 @@ Because the $\odot$-monoidal structure is lax monoidal with respect to the $\oti
 \end{equation}
 
 In~\cite{garner:nwfs} and~\cite{garner:soa}, Garner proves that given any category $\cat{C}$, there is a 2-fold monoidal category of functorial factorizations on $\cat{C}$. Given two functorial factorizations $(E_1,L_1,R_1)$ and $(E_2,L_2,R_2)$, the factorization $E_1\otimes E_2$ factors an arrow $f\colon X\to Y$ as
-\[
+\begin{equation}\label{Eq:FFOtimes}
 \begin{tikzcd}[column sep=large]
 	X \rar{L_2R_1f\circ L_1f} & E_2R_1f \rar{R_2R_1f} & Y
 \end{tikzcd}
-\]
+\end{equation}
 while the factorization $E_1\odot E_2$ factors $f$ as
-\[
+\begin{equation}\label{Eq:FFOdot}
 \begin{tikzcd}[column sep=large]
 	X \rar{L_2L_1f} & E_2L_1 f \rar{R_1f\circ R_2L_1f} & Y.
 \end{tikzcd}
-\]
+\end{equation}
 Garner shows that bimonoids in this 2-fold monoidal category are equivalent to algebraic weak factorization systems on $\cat{C}$. In other words, a bialgebra structure on a functorial factorization $(E,\eta,\epsilon)$ is precisely a choice of monad and comonad making $E$ an awfs. However, as this structure only contains functorial factorizations on a fixed category $\cat{C}$, it can say nothing about morphisms between factorization systems on different categories.
 
 To address this shortcoming, we will generalize this 2-fold monoidal category definition to double categories, where there are two different horizontal compositions which are compatible in a way analogous to the two monoidal structures in a 2-fold monoidal category. In~\cref{Ch:FuncFact} we will construct a 2-fold double category of functorial factorizations, generalizing Garner's 2-fold monoidal category, and in~\cref{Ch:Awfs} we will see that bimonads and bimonad morphisms in this 2-fold double category are exactly awfs and colax morphisms of awfs.

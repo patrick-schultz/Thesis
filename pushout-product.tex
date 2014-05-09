@@ -58,7 +58,7 @@ A \emph{cyclic} multicategory involves both a duality on the objects, and a cycl
 \]
 In other words, the cyclic action cyclically permutes the objects in the domain and codomain, applying the duality whenever an object moves from domain to codomain or vice versa. There are some axioms governing the interplay between the cyclic action and the composition. We will refer to~\cite{cgr:mates} for complete details on the material of this section.
 
-The canonical example of a cyclic multicategory is $\MAdjC$, whose objects are categories, and morphisms are multivariable mutual left adjoints. For example, consider an adjunction of two variables
+The canonical example of a cyclic multicategory is $\MAdjC_l$, whose objects are categories, and morphisms are multivariable mutual left adjoints. For example, consider an adjunction of two variables
 \[
 \begin{tikzcd}
 	\cat{K}\times \cat{M} \rar{\otimes} & \cat{N}
@@ -93,12 +93,12 @@ Here $\otimes$ is adjoint on the left, while the homs are adjoint on the right, 
 \[
 	\cat{N}(k\otimes m,n) \cong \op{\cat{M}}(\hom_l(k,n),m) \cong \op{\cat{K}}(\hom_r(m,n),k).
 \]
-Written as three mutual left adjoints, and swapping the order of the inputs to $\hom_l$, we expose the cyclical symmetry.
+Written as three mutual left adjoints, and swapping the order of the inputs to $\hom_l$, we expose the cyclical symmetry. There is similarly a cyclic multicategory $\MAdjC_r$ whose morphisms are mutual right adjoints.
 
 Cyclic double multicategories, first introduced in~\cite{cgr:mates}, are like the cyclic double categories defined in~\ref{Ch:Cyclic} but where the vertical category is enlarged to a vertical cyclic multicategory. For complete details, see~\cite{cgr:mates}, but the following example should make the idea clear:
 
 \begin{example}
-	Generalizing~\cref{Ex:CyclicLAdj}, there is a cyclic double multicategory $\MAdj$ whose objects are categories, whose vertical cyclic multicategory is $\Cat{MAdj}$, and whose 2-cells
+	Generalizing~\cref{Ex:CyclicLAdj}, there is a cyclic double multicategory $\MAdj_l$ whose objects are categories, whose vertical cyclic multicategory is $\MAdjC_l$, and whose 2-cells
 	\[
 	\begin{tikzcd}
 		\cat{M}_1,\cat{M}_2 \dar[swap]{G_0} \rar[][domA]{u,v} & \cat{N}_1,\cat{N}_2 \dar{F_0} \\
@@ -236,7 +236,7 @@ and their reflections under the cyclic action.
 \end{remark}
 
 \begin{example}\label{Ex:PullbackProduct}
-Let $\mathbb{M}\mathbf{Adj}$ be the cyclic double multicategory of categories, functors, and multivariable right adjunctions. Any multivariable right adjunction $F_0\colon \cat{A}_1\times \cat{A}_2\to \cat{A}_0$ extends to a functor $\widehat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ as follows.
+Let $\MAdj_r$ be the cyclic double multicategory of categories, functors, and multivariable right adjunctions. If $\cat{A}_0$, $\cat{A}_1$, and $\cat{A}_2$ have the necessary pushouts and pullbacks, then any multivariable right adjunction $F_0\colon \cat{A}_1\times \cat{A}_2\to \cat{A}_0$ extends to a functor $\widehat{\mathbb{F}}\colon\mathbb{J}\to\MAdj_r$ as follows.
 \begin{itemize}
 	\item $B_i$ is sent to $\cat{A}_i^{\btwo}$, the arrow category of $\cat{A}_i$.
 	\item The $d_1$ are sent to the domain functors $\dom\colon\cat{A}_i^{\btwo}\to\cat{A}_i$ and the $d_0$ are sent to the codomain functors $\cod\colon\cat{A}_i^{\btwo}\to\cat{A}_i$.
@@ -273,10 +273,10 @@ Let $\mathbb{M}\mathbf{Adj}$ be the cyclic double multicategory of categories, f
 Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-cells $F_i$. Let $\mathbf{CDMCat}$ denote the 2-category of cyclic double multicategories, functors, and horizontal transformations.
 
 \begin{theorem}\label{Thm:MAdjArrowObjects}
-	Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}$. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\mathbb{M}\mathbf{Adj}$ constructed in \cref{Ex:PullbackProduct} is terminal in the category $\mathbf{CDMCat}_{\mathbb{F}}(\mathbb{J},\mathbb{M}\mathbf{Adj})$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
+	Fix a functor $\mathbb{F}\colon\mathbb{I}\to\mathbb{M}\mathbf{Adj}_r$, whose image is a two-variable mutual right adjunction $(F_0,F_1,F_2)$ between categories $\cat{A}_0,\cat{A}_1,\cat{A}_2$ which have the necessary pushouts and pullbacks. Then the functor $\hat{\mathbb{F}}\colon\mathbb{J}\to\MAdj_r$ constructed in \cref{Ex:PullbackProduct} is terminal in the category $\Cat{CDMCat}_{\mathbb{F}}(\mathbb{J},\MAdj_r)$ of functors on $\mathbb{J}$ restricting to $\mathbb{F}$ on $\mathbb{I}$.
 \end{theorem}
 \begin{proof}
-	Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\mathbb{M}\mathbf{Adj}$, determining 2-variable adjunctions $F_i$ and $G_i$ and the rest of the structure spelled out in~\cref{Rmk:JGens}, there is a unique 2-cell
+	Concretely, the theorem says that given the data of a functor $\mathbb{J}\to\MAdj_r$, determining 2-variable adjunctions $F_i$ and $G_i$ and the rest of the structure spelled out in~\cref{Rmk:JGens}, there is a unique 2-cell
 	\[
 	\begin{tikzcd}
 		\cat{B}_1,\cat{B}_2 \rar[][domA]{H_1,H_2} 
@@ -547,3 +547,7 @@ Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_
 \end{definition}
 
 We have given the universal property of arrow objects and lifts of vertical 1-cells in ordinary double multicategories, but it is clear from the cyclical symmetry of the construction that a cyclic action respects arrow objects. Specifically, $(C^2)^{\bullet}=(C^{\bullet})^2$ for any object $C$, and $\sigma(\hat{F})=\widehat{\sigma F}$ for any vertical 1-cell $F$, with $\sigma(\gamma_i)=\gamma_{i+1}$.
+
+\begin{example}
+	Let $\EAdj$ be the restriction of $\MAdj$ to finitely complete and cocomplete categories (note that the functors are not required to preserve these limits or colimits). Finitely complete and cocomplete categories are closed under the formation of opposite categories, so $\EAdj$ is again a cyclic double multicategory. Then~\cref{Thm:MAdjArrowObjects} shows that $\EAdj$ has arrow objects.
+\end{example}

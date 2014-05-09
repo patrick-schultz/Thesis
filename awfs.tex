@@ -2,7 +2,7 @@
 
 \chapter{ALGEBRAIC WEAK FACTORIZATION SYSTEMS}\label{Ch:Awfs}
 
-For this chapter, let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$. We will show that bimonoids in $\FFD$ are precisely algebraic weak factorization systems, and more generally that the morphisms in $\mathrm{Bimon}(\FFD)$ are given by (co)lax morphisms of algebraic weak factorization systems.
+For this chapter, let $\mathbb{D}=\Sq(\mathcal{D})$ be the double category of squares in a 2-category $\mathcal{D}$. We will show that bimonoids in $\FFD$ are precisely algebraic weak factorization systems, and more generally that the morphisms in $\Bimon(\FFD)$ are given by (co)lax morphisms of algebraic weak factorization systems.
 
 Suppose that $E=(E,\eta,\epsilon)$ is a functorial factorization on a category $\cat{C}$, and consider a monoid structure on $E$. As $I_C$ is initial, the unit of the monoid is forced, and is simply $\eta$. The multiplication is given by a natural transformation $\mu\colon ER\Rightarrow E$ satisfying equations~\eqref{Eq:FF2CellA} and~\eqref{Eq:FF2CellB}, which now take the form $\epsilon\circ\mu = \epsilon R$ and $\mu\circ(\eta\cdot\vec{\eta})=\eta$.
 
@@ -181,52 +181,72 @@ The appropriate notion of morphism between awfs, analagous to left and right Qui
 	\end{itemize}
 \end{definition}
 
-Notice that a lax morphism of awfs induces a lift of the functor $\hat{G}$ to a functor $\mathbb{R}_1\mathrm{Alg}\to \mathbb{R}_2\mathrm{Alg}$. In that sense, $G$ ``preserves the right class,'' so is analagous to a right Quillen functor. Similarly, a colax morphism of awfs induces a lift of $\hat{F}$ to $\mathbb{L}_1\mathrm{Coalg}\to\mathbb{L}_2\mathrm{Coalg}$, so is analagous to a left Quillen functor.
-
-By \cref{Prop:BimonCyclic}, there is a cyclic action on $\Bimon(\FFD)$ induced by the cyclic action on $\FFD$. This action is given on awfs by
-\[
-	(E,\eta,\mu,\epsilon,\delta)^{\bullet} = (E^{\bullet},\epsilon^{\bullet},\delta^{\bullet},\eta^{\bullet},\mu^{\bullet})
-\]
-swapping the monad and comonad structures. This cyclic action allows us to capture both types of morphism of awfs in the same structure.
+Notice that a lax morphism of awfs induces a lift of the functor $\hat{G}$ to a functor $\RAlg[1]\to\RAlg[2]$. In that sense, $G$ ``preserves the right class,'' so is analagous to a right Quillen functor. Similarly, a colax morphism of awfs induces a lift of $\hat{F}$ to $\LCoalg[1]\to\LCoalg[2]$, so is analagous to a left Quillen functor.
 
 \begin{proposition}
-	Morphisms in $\mathrm{Bimon}(\FFD)$ are precisely the colax morphisms of awfs. A colax morphism
-	\[
-		(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)^{\bullet} \to (E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)^{\bullet}
-	\]
-	is equivalent to a lax morphism of awfs
-	\[
-		(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1) \to (E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)
-	\]
+	Morphisms in $\Bimon(\FFD)$ are precisely the colax morphisms of awfs. 
+	% A colax morphism
+	% \[
+	% 	(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)^{\bullet} \to (E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)^{\bullet}
+	% \]
+	% is equivalent to a lax morphism of awfs
+	% \[
+	% 	(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1) \to (E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)
+	% \]
 \end{proposition}
 \begin{proof}
-	As above, let $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ be awfs on $\cat{C}$ and $\cat{D}$ respectively. A morphism of bimonoids is given by a 2-cell
+	As above, let $(E_1,\eta_1,\mu_1,\epsilon_1,\delta_1)$ and $(E_2,\eta_2,\mu_2,\epsilon_2,\delta_2)$ be awfs on $C$ and $D$ respectively. A morphism of bimonoids is given by a 2-cell
 	\[
 	\begin{tikzcd}[column sep=large]
-		\cat{C} \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}
-			& \cat{C} \dar{F} \\
-		\cat{D} \rar[tick][codA,swap]{(E_2,\eta_2,\epsilon_2)}
-			& \cat{D}
+		C \rar[tick][domA]{(E_1,\eta_1,\epsilon_1)} \dar[swap]{F}
+			& C \dar{F} \\
+		D \rar[tick][codA,swap]{(E_2,\eta_2,\epsilon_2)}
+			& D
 		\twocellA{\lambda}
 	\end{tikzcd}
 	\]
 	which commutes with the monoid and comonoid structures. It is straightforward to check that this implies the natural transformations
 	\[
 	\begin{tikzcd}
-		\cat{C}^2 \rar[][domA]{L_1} \dar[swap]{\hat{F}}
-			& \cat{C}^2 \dar{\hat{F}} \\
-		\cat{D}^2 \rar[][codA,swap]{L_2}
-			& \cat{D}^2
+		C^2 \rar[][domA]{L_1} \dar[swap]{\hat{F}}
+			& C^2 \dar{\hat{F}} \\
+		D^2 \rar[][codA,swap]{L_2}
+			& D^2
 		\twocellA{\lambda^L}
 	\end{tikzcd}
 	\qquad
 	\begin{tikzcd}
-		\cat{C}^2 \rar[][domA]{R_1} \dar[swap]{\hat{F}}
-			& \cat{C}^2 \dar{\hat{F}} \\
-		\cat{D}^2 \rar[][codA,swap]{R_2}
-			& \cat{D}^2
+		C^2 \rar[][domA]{R_1} \dar[swap]{\hat{F}}
+			& C^2 \dar{\hat{F}} \\
+		D^2 \rar[][codA,swap]{R_2}
+			& D^2
 		\twocellA{\lambda^R}
 	\end{tikzcd}
 	\]
 	are colax morphisms of comonads and monads respectively.
 \end{proof}
+
+Now take $\dblcat{D}$ to be $\LAdj(\twocat{D})$ instead of $\Sq(\twocat{D})$. All of the above works without change, as the only difference is that the vertical 1-cells are now left adjoints equipped with the unit and counit of the adjunction.
+By \cref{Prop:BimonCyclic}, there is a cyclic action on $\Cat{AWFS}(\twocat{D})=\Bimon(\FFD)$ induced by the cyclic action on $\FFD$. This action is given on awfs by
+\[
+	(E,\eta,\mu,\epsilon,\delta)^{\bullet} = (E^{\bullet},\epsilon^{\bullet},\delta^{\bullet},\eta^{\bullet},\mu^{\bullet})
+\]
+swapping the monad and comonad structures. If $F\dashv G$ is an adjunction in $\twocat{D}$ and $\lambda$ is a 2-cell in $\FFD$ as above, then $\sigma \lambda$ is a 2-cell
+\[
+\begin{tikzcd}[column sep=large]
+	\op{D} \rar[tick][domA]{(E_2,\eta_2,\epsilon_2)^{\bullet}} \dar[swap]{\op{G}}
+		& \op{D} \dar{\op{G}} \\
+	\op{C} \rar[tick][codA,swap]{(E_1,\eta_1,\epsilon_1)^{\bullet}}
+		& \op{C}
+	\twocellA{(\sigma\lambda)^{\bullet}}
+\end{tikzcd}
+\]
+given by a 2-cell in $\twocat{D}$
+\[
+\begin{tikzcd}
+	D^2 \rar[domA]{E_2} \dar[][swap]{G} & D \dar{\hat{G}} \\
+	C^2 \rar[][codA,swap]{E_1} & C.
+	\twocellalt{A}{\Uparrow\sigma\lambda}
+\end{tikzcd}
+\]
+If $(F,\lambda)$ is a colax morphism of awfs, it is not hard to show that $(G,(\sigma\lambda)^{\bullet})$ is a lax morphism of awfs. In this way, the cyclic action allows us to capture both types of morphism of awfs in the same structure.

@@ -2,7 +2,7 @@
 
 \chapter{CYCLIC 2-FOLD DOUBLE MULTICATEGORIES}\label{Ch:DblMulti}
 
-In this chapter we will introduce a common generalization of the cyclic double multicategories of~\cite{cgr:mates} and the cyclic 2-fold double categories introduced in \cref{Ch:Cyclic}.
+In this chapter we will complete our goal of defining a common generalization of the cyclic double multicategories of~\cite{cgr:mates} and the cyclic 2-fold double categories introduced in \cref{Ch:Cyclic}, showing that there is a natural notion of multivariable morphisms of bimonads in such structures, and constructing a cyclic 2-fold double multicategory of functorial factorizations in which the multivariable bimonad morphisms recover the multivariable (co)lax morphisms of awfs defined in~\cite{riehl:nwfs-monoidal}.
 
 A cyclic two-fold double multicategory $\dblcat{M}$ consists of the same underlying data as a cyclic double multicategory, i.e. a vertical multicategory, horizontal 1-cells, and 2-cells of the form
 \begin{equation*}\label{Eq:DblMulti2Cell}
@@ -78,6 +78,12 @@ The horizontal compositions and units must respect the cyclic action, such that 
 
 We require the existence of the families of globular coherence 2-cells $m,c,j,z$, satisfying the same conditions as in a cyclic 2-fold double category. Notably, we only require naturality of $z$ with respect to unary 2-cells. It is unclear whether there is any sensible compatibility between $z$ and multivariable 2-cells that could be asked for, but such a compatibility is not needed for our purposes.
 
+\begin{remark}
+	The generalization from cyclic double categories to cyclic 2-fold double categories can be thought of as relaxing the condition that $(X^{\bullet}\otimes Y^{\bullet})^{\bullet}=X\otimes Y$, and the similar condition on 2-cells. We add the notation $X\odot Y$ for the left hand side, and the axioms for a cyclic 2-fold double category add coherence conditions relating $X\odot Y$ and $X\otimes Y$, which would be trivial if they were equal.
+
+	Similarly, we can discover the structure of a cyclic 2-fold double multicategory by dropping the requirement that $\sigma(\sigma^{-1}\theta\otimes\sigma^{-1}\phi)=\theta\otimes\phi$ for $\theta$ and $\phi$ two $n$-ary 2-cells. Thus we get a different horizontal composition $\sigma^i(\sigma^{-i}\theta\otimes\sigma^{-i}\phi)$ for each $i\in\{0,\dots,n\}$, which we abbreviate as $\otimes_i$.
+\end{remark}
+
 \section{Multimorphisms of Bimonads}
 
 The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globular 2-cells, so works unchanged in a cyclic 2-fold double multicategory $\dblcat{M}$. However, using the multicategory structure of $\dblcat{M}$ we will now be able to expand the category of bimonads in $\dblcat{M}$ to a multicategory $\Bimon(\dblcat{M})$, and the cyclic structure of $\dblcat{M}$ will lift to $\Bimon(\dblcat{M})$, making it a cyclic multicategory.
@@ -94,7 +100,7 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 	\end{tikzcd}
 	\]
 	Say that $(F,\phi)$ is a 0-colax morphism of bimonads if the following two equations are satisfied:
-	\begin{align*}
+	\[
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
 		C_1,C_2 \rar[][domA]{X_1,X_2} \dar[swap]{F}
 			\& C_1,C_2 \dar{F} \\
@@ -104,7 +110,7 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellA{\phi}
 		\twocellB{\eta_0^{\bullet}}
 	\end{tikzcd}
-	&=
+	=
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
 		C_1,C_2 \rar[bend left][domA]{X_1,X_2} 
 				\rar[][codA,domB,swap]{\perp,\perp}
@@ -115,7 +121,8 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellA{\epsilon_1,\epsilon_2}
 		\twocellB{I_{0F}}
 	\end{tikzcd}
-	\\
+	\]
+	\[
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
 		C_1,C_2 \rar[][domA]{X_1,X_2} \dar[swap]{F}
 			\& C_1,C_2 \dar{F} \\
@@ -125,7 +132,7 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellA{\phi}
 		\twocellB{\mu_0^{\bullet}}
 	\end{tikzcd}
-	&=
+	=
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50,column sep=5em]
 		C_1,C_2 \rar[bend left][domA]{X_1,X_2} 
 				\rar[][codA,domB,swap]{X_1\odot X_1,X_2\odot X_2}
@@ -136,9 +143,9 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellA{\delta_1,\delta_2}
 		\twocellB{\phi\otimes_0\phi}
 	\end{tikzcd}
-	\end{align*}
-	$(F,\phi)$ is a 1-colax morphism of bimonads if the two equations
-	\begin{align*}
+	\]
+	Likewise, $(F,\phi)$ is a 1-colax morphism of bimonads if the two equations
+	\[
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
 		C_1,C_2 \rar[bend left][domA]{I,X_2} 
 				\rar[][codA,domB,swap]{X_1,X_2}
@@ -149,7 +156,7 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellA{\eta_1,\id}
 		\twocellB{\phi}
 	\end{tikzcd}
-	&=
+	=
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
 		C_1,C_2 \rar[bend left][domA]{I,X_2} 
 				\rar[][codA,domB,swap]{I,\perp}
@@ -162,7 +169,8 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellB{I_{1F}}
 		\twocellC{\epsilon_0^{\bullet}}
 	\end{tikzcd}
-	\\
+	\]
+	\[
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50]
 		C_1,C_2 \rar[bend left][domA]{X_1\otimes X_1,X_2} 
 				\rar[][codA,domB,swap]{X_1,X_2}
@@ -173,7 +181,7 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellA{\mu_1,\id}
 		\twocellB{\phi}
 	\end{tikzcd}
-	&=
+	=
 	\begin{tikzcd}[ampersand replacement=\&,bend angle=50,column sep=5em]
 		C_1,C_2 \rar[bend left][domA]{X_1\otimes X_1,X_2} 
 				\rar[][codA,domB,swap]{X_1\otimes X_1,X_2\odot X_2}
@@ -186,8 +194,8 @@ The \cref{Def:Bimonad} of bimonads in a 2-fold double category uses only globula
 		\twocellB{\phi\otimes_1\phi}
 		\twocellC{\delta_0^{\bullet}}
 	\end{tikzcd}
-	\end{align*}
-	and $(F,\phi)$ is 2-colax if the analogous two equations hold. We will call $(F,\phi)$ a colax (multi)morphism of bimonads if it is $i$-colax for all $i\in\{0,1,2\}$.
+	\]
+	hold, and $(F,\phi)$ is 2-colax if the analogous two equations hold. We will call $(F,\phi)$ a colax (multi)morphism of bimonads if it is $i$-colax for all $i\in\{0,1,2\}$.
 
 	The definition of colax multimorphisms with arity $n$ should be clear from the $n=2$ case.
 \end{definition}

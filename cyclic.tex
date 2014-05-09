@@ -53,7 +53,7 @@ The next example is the fundamental example of a cyclic double category.
 	\end{tikzcd}
 	\]
 	This cyclic action encodes the naturality of the mates correspondence using only a single double category, and is a convenient alternative to the isomorphism $\LAdj(\twocat{D})\cong\RAdj(\twocat{D})$. This simplification will be even more important when we need the multivariable mates correspondence in~\cref{Ch:PushoutProduct,Ch:DblMulti}.
-	
+
 	For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see~\cite{cgr:mates} Section 1. 
 \end{example}
 
@@ -190,10 +190,10 @@ We will generalize this to a cyclic action on a 2-fold double category. Suppose 
 	\]
 \end{itemize}
 
-One nice consequence of this definition is that a cyclic action on a 2-fold double category $\mathbb{D}$ induces a cyclic action on the category of bimonoids $\mathrm{Bimon}(\mathbb{D})$.
+One nice consequence of this definition is that a cyclic action on a 2-fold double category $\mathbb{D}$ induces a cyclic action on the category of bimonads $\mathrm{Bimon}(\mathbb{D})$.
 
 \begin{proposition}\label{Prop:BimonCyclic}
-	Suppose $\mathbb{D}$ is a cyclic 2-fold double category. Then the category $\mathrm{Bimon}(\mathbb{D})$ of bimonoids in $\mathbb{D}$ carries a natural cyclic action (contravariant isomorphism).
+	Suppose $\mathbb{D}$ is a cyclic 2-fold double category. Then the category $\mathrm{Bimon}(\mathbb{D})$ of bimonads in $\mathbb{D}$ carries a natural cyclic action (contravariant isomorphism).
 \end{proposition}
 \begin{proof}
 	The involution $(-)^{\bullet}$ gives an isomorphism of double categories $\mathbb{D}_{\otimes}\cong\mathbb{D}_{\odot}^{\mathrm{op}}$. Therefore it also induces an isomorphism
@@ -212,12 +212,12 @@ as well as an isomorphism
 \end{multline*}
 \end{proof}
 
-In more concrete terms, the involution takes a bimonoid $(X,\eta,\mu,\epsilon,\delta)$ to $(X,\eta,\mu,\epsilon,\delta)^{\bullet}=(X^\bullet,\epsilon^\bullet,\delta^\bullet,\eta^\bullet,\delta^\bullet)$, swapping the monoid and comonoid structures. This is again a bimonoid, as the top two equations of~\eqref{Eq:Bimonoid} are interchanged under the involution, while the bottom two equations are self-dual.
+In more concrete terms, the involution takes a bimonad $(X,\eta,\mu,\epsilon,\delta)$ to $(X,\eta,\mu,\epsilon,\delta)^{\bullet}=(X^\bullet,\epsilon^\bullet,\delta^\bullet,\eta^\bullet,\delta^\bullet)$, swapping the monad and comonad structures. This is again a bimonad, as the top two equations of~\eqref{Eq:Bimonoid} are interchanged under the involution, while the bottom two equations are self-dual.
 
-The action of the involution on bimonoid morphisms can be broken down as in the following lemma.
+The action of the involution on bimonad morphisms can be broken down as in the following lemma.
 
 \begin{lemma}\label{Lem:MonMorphismDuality}
-	Let $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ be bimonoids in a cyclic 2-fold double category $\mathbb{D}$, and let $\phi$ be a 2-cell in $\mathbb{D}$
+	Let $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ be bimonads in a cyclic 2-fold double category $\mathbb{D}$, and let $\phi$ be a 2-cell in $\mathbb{D}$
 	\[
 	\begin{tikzcd}
 		C \rar[tick][domA]{X} \dar[swap]{f} & C \dar{f} \\
@@ -225,7 +225,7 @@ The action of the involution on bimonoid morphisms can be broken down as in the 
 		\twocellA{\phi}
 	\end{tikzcd}
 	\]
-	Then $(f,\phi)$ is a monoid morphism $X\to Y$ if and only if $(\sigma f,\phi^\bullet)$ is a comonoid morphism $Y^\bullet\to X^\bullet$. Dually, $\phi$ is a comonoid morphism $X\to Y$ if and only if $\phi^\bullet$ is a monoid morphism $Y^\bullet\to X^\bullet$.
+	Then $(f,\phi)$ is a monad morphism $X\to Y$ if and only if $(\sigma f,\phi^\bullet)$ is a comonad morphism $Y^\bullet\to X^\bullet$. Dually, $\phi$ is a comonad morphism $X\to Y$ if and only if $\phi^\bullet$ is a monad morphism $Y^\bullet\to X^\bullet$.
 \end{lemma}
 \begin{proof}
 	Simply notice that the involution takes equations~\eqref{Eq:MonoidMorphismUnit} and~\eqref{Eq:MonoidMorphismMult} to the equations defining a comonad morphism in $\mathbb{D}$.
@@ -234,9 +234,9 @@ The action of the involution on bimonoid morphisms can be broken down as in the 
 This immediately implies a useful characterization of bimonoid morphisms.
 
 \begin{corollary}\label{Cor:BimonMorphism}
-	Given bimonoids $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ in a cyclic 2-fold double category $\mathbb{D}$, a bimonoid morphism $X\to Y$ consists of:
+	Given bimonads $(X,\eta,\mu,\epsilon,\delta)$ and $(Y,\eta',\mu',\epsilon',\delta')$ in a cyclic 2-fold double category $\mathbb{D}$, a bimonad morphism $X\to Y$ consists of a pair $(f,\phi)$ as above, such that:
 	\begin{itemize}
-		\item \emph{Either} a monoid morphism $X\to Y$ \emph{or} a comonoid morphism $Y^{\bullet}\to X^{\bullet}$, \emph{and}
-		\item \emph{Either} a comonoid morphism $X\to Y$ \emph{or} a monoid morphism $Y^{\bullet}\to X^{\bullet}$.
+		\item \emph{Either} $(f,\phi)$ is a monad morphism \emph{or} $(\sigma f,\phi^{\bullet})$ is a comonad morphism, \emph{and}
+		\item \emph{Either} $(f,\phi)$ is a comonad morphism \emph{or} $(\sigma f,\phi^{\bullet})$ is a monad morphism.
 	\end{itemize}
 \end{corollary}
