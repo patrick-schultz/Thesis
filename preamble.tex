@@ -68,7 +68,7 @@
 %    * It is preferable not to justify the right margin.
 %%
 % As I disagree with this assesment and it is optional, I have removed it.
-	\raggedright 	% ragged right edge
+	%\raggedright 	% ragged right edge
 	\doublespacing 	
 	% default spacing; should be double for Prelim Pages to work out correctly
 	
@@ -86,8 +86,10 @@
 		\newtheorem*{lemma*}{Lemma}
 		\newtheorem{proposition}[theorem]{Proposition}
 		\newtheorem{corollary}[theorem]{Corollary} 
-		\newtheorem{remark}[theorem]{Remark}
+	\theoremstyle{definition}
 		\newtheorem{definition}[theorem]{Definition}
+	\theoremstyle{remark}
+		\newtheorem{remark}[theorem]{Remark}
 		\newtheorem{example}[theorem]{Example}
 
 
@@ -118,6 +120,7 @@
 
 \newcommand{\cat}[1]{\mathscr{#1}}
 \newcommand{\Cat}[1]{\mathbf{#1}}
+%\newcommand{\hom}{\mathrm{hom}}
 \newcommand{\twocat}[1]{\mathcal{#1}}
 \newcommand{\dblcat}[1]{\mathbb{#1}}
 \newcommand{\btwo}{\mathbf{2}}

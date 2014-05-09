@@ -1,12 +1,49 @@
 % -*- root: thesis.tex -*-
 
-\chapter{A universal property for the pushout product}\label{Ch:PushoutProduct} 
+\chapter{A UNIVERSAL PROPERTY FOR THE PUSHOUT PRODUCT}\label{Ch:PushoutProduct} 
 
-We would now like to generalize the framework of cyclic 2-fold double categories to cyclic 2-fold double multicategories, in order to incorporate the multivariable adjunctions of awfs defined in~\cite{riehl:nwfs-monoidal}.
+In this chapter we will begin the work of incorporating adjunctions of several variables into the framework given so far. These are essential to making precise the definitions of monoidal model category and of a model category enriched in a monoidal model category.
 
-[TODO: Review cyclic multicategories/double multicategories]
+Recall that a monoidal category $\cat{M}$ is called \emph{biclosed} if the tensor product has adjoints in each variable, i.e.~if there are functors
+$\hom_l,\hom_r\colon\cat{M}^{\text{op}}\times\cat{M}\to\cat{M}$ and isomorphisms
+\[
+	\cat{M}(A\otimes B,C) \cong \cat{M}(B,\hom_l(A,C)) \cong \cat{M}(A,\hom_r(B,C))
+\]
+natural in all three variables. If $\cat{M}$ has a model structure, then one of the requirements for $\cat{M}$ to be a monoidal model category is that the three bifunctors $\otimes$, $\hom_l$, and $\hom_r$ form a \emph{Quillen adjunction of two variables}. There are three equivalent conditions for this:
+\begin{enumerate}
+	\item Given any cofibrations $i\colon A\to B$ and $j\colon J\to K$, the map $i\hat{\otimes}j$ defined by the pushout
+	\[
+	\begin{tikzcd}[bend angle=15]
+		A\otimes J \rar{A\otimes j} \dar[swap]{i\otimes J}
+			& A\otimes K \dar \ar[bend left]{ddr}{i\otimes K} &[-2ex] \\
+		B\otimes J \rar \ar[bend right]{drr}[swap]{B\otimes j}
+			& A\otimes K \!\underset{A\otimes J}{\coprod}\!B\otimes J 
+				\drar[dashed,start anchor={[xshift=-3ex,yshift=2ex]}][description]{i\hat{\otimes}j} & \\[-2ex]
+		& & B\otimes K
+	\end{tikzcd}
+	\]
+	is a cofibration (which is trivial if either $i$ or $j$ is).
+	\item Given any cofibration $i\colon A\to B$ and fibration $f\colon X\to Y$, the map
+	\[
+		\hat{\hom}_l(i,f)\colon \hom_l(B,X) \to \hom_l(A,X)\!\!\!\!\bigtimes_{\hom_l(A,Y)}\!\!\!\!\hom_l(B,Y)
+	\]
+	is a fibration (which is trivial if either $i$ or $f$ is).
+	\item Given any cofibration $j\colon J\to K$ and fibration $f\colon X\to Y$, the map
+	\[
+		\hat{\hom}_r(j,f)\colon \hom_y(K,X) \to \hom_r(J,X)\!\!\!\!\bigtimes_{\hom_r(J,Y)}\!\!\!\!\hom_r(K,Y)
+	\]
+	is a fibration (which is trivial if either $i$ or $f$ is).
+\end{enumerate}
+Proving the equivalence of these three conditions is a routine but tedious exercise in adjunctions. Another exercise in adjunctions shows that $\hat{\otimes}$, $\hat{\hom}_l$, and $\hat{\hom}_r$ in fact make up an adjunction of two variables on the arrow category $\cat{M}^2$.
 
-First, we will need to find a generalization of the universal property for arrow objects to (cyclic) double multicategories. In the theory of multivariable Quillen adjunctions, the lift of a multivariable adjunction to arrow categories is provided by the pushout/pullback product, so we will identify a universal property satisfied by this construction.
+In this chapter, we will give a universal property satisfied by the functors $\hat{\otimes}$, $\hat{\hom}_l$, and $\hat{\hom}_r$ which will trivialize these kinds of routine adjunction arguments, as well as making precise the clear symmetry involved. Then in~\cref{Ch:DblMulti} we will make use of this universal property in order to show that the algebraic analogue of Quillen adjunctions of two variables (defined in~\cite{riehl:nwfs-monoidal}) can be recovered as multivariable morphisms of bimonads in a precise sense.
+
+\section{Review of Cyclic Double Multicategories}
+
+
+\section{The Universal Property}
+
+% First, we will need to find a generalization of the universal property for arrow objects to (cyclic) double multicategories. In the theory of multivariable Quillen adjunctions, the lift of a multivariable adjunction to arrow categories is provided by the pushout/pullback product, so we will identify a universal property satisfied by this construction.
 
 Define a cyclic double multicategory $\mathbb{J}$ as follows. The objects are $A_i$, $B_i$, for $i\in\{0,1,2\}$, and their duals. The horizontal 1-cells are $d^i_0,d^i_1\colon B_i\to A_i$. The vertical 1-cells are $F_i\colon (A_{i-1},A_{i+1})\to A^{\bullet}_i$ and $G_i\colon (B_{i-1},B_{i+1})\to B^{\bullet}_i$, which form two orbits under the cyclic action.
 
@@ -121,7 +158,7 @@ Let $\mathbb{M}\mathbf{Adj}$ be the cyclic double multicategory of categories, f
 			\arrow[bend right]{rdd}[swap]{F_0(f,1)}
 			\arrow[dashed]{dr}{\hat{F}_0(f,g)}
 		&[-4ex]& \\
-		& F_0(A,Y)\!\!\underset{F_0(A,X)}{\prod}\!\!F_0(B,X)
+		& F_0(A,Y)\!\!\underset{F_0(A,X)}{\bigtimes}\!\!F_0(B,X)
 			\rar{p_2}
 			\dar[swap]{p_1}
 		& F_0(B,X) \dar{F_0(f,1)} \\

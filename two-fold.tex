@@ -1,12 +1,12 @@
 % -*- root: thesis.tex -*-
 
-\chapter{2-Fold double categories}\label{Ch:2Fold}
+\chapter{2-FOLD DOUBLE CATEGORIES}\label{Ch:2Fold}
 
 %In this section we will propose a generalization of the 2-fold monoidal categories as used in \cite{garner:soa}.
 
 It is well known that the notion of bialgebra or bimonoid---an object with both monoid and comonoid structures which are compatible in a certain sense---makes sense not only in a symmetric monoidal category, but also in more general \emph{braided} monoidal categories. A bimonoid in a braided monoidal category $\cat{C}$ can be defined to be a monoid in the category of comonoids in $\cat{C}$, or equivalently as a comonoid in the category of monoids in $\cat{C}$. The braiding is necessary to ensure that the monoidal structure in $\cat{C}$ lifts to a product in $\Mon(\cat{C})$ and $\Comon(\cat{C})$.
 
-Less well known is the fact that the definition of bimonoid works just as well in a more general context still: so-called 2-fold monoidal categories. A 2-fold monoidal category has two different monoidal structures, call them $(\otimes,I)$ and $(\odot,\perp)$, which are themselves compatible in certain sense. This compatibility can be stated in a way analagous to the definition of bimonoid given in the previous paragraph: a (strict) 2-fold monoidal category is a monoid object in the category $\Cat{StrMonCat}_l$ of strict monoidal categories and lax functors, or equivalently a monoid object in the category $\Cat{StrMonCat}_c$ of strict monoidal categories and colax functors. Notice that monoid objects in the category of strict monoidal categories and \emph{strong} monoidal functors (in which the components of the lax structure are isomorphisms) are precisely (strict) braided monoidal categories.
+Less well known is the fact that the definition of bimonoid works just as well in a more general context still: the so-called 2-fold monoidal categories. A 2-fold monoidal category has two different monoidal structures, call them $(\otimes,I)$ and $(\odot,\perp)$, which are themselves compatible in certain sense. This compatibility can be stated in a way analogous to the definition of bimonoid given in the previous paragraph: a (strict) 2-fold monoidal category is a monoid object in the category $\Cat{StrMonCat}_l$ of strict monoidal categories and lax functors, or equivalently a monoid object in the category $\Cat{StrMonCat}_c$ of strict monoidal categories and colax functors. Notice that monoid objects in the category of strict monoidal categories and \emph{strong} monoidal functors (in which the components of the lax structure are isomorphisms) are precisely (strict) braided monoidal categories.
 
 More concretely, the compatibility between the monoidal structures amounts to the existence of maps
 \[
@@ -52,7 +52,25 @@ Because the $\odot$-monoidal structure is lax monoidal with respect to the $\oti
 \end{gathered}
 \end{equation}
 
-We would now like to generalize this 2-fold monoidal category definition to double categories, where there are two different horizontal compositions which are compatible in a way analagous to the two monoidal structures in a 2-fold monoidal category. We will start with a concise formal definition, and then expand on the definition more concretely.
+In~\cite{garner:nwfs} and~\cite{garner:soa}, Garner proves that given any category $\cat{C}$, there is a 2-fold monoidal category of functorial factorizations on $\cat{C}$. Given two functorial factorizations $(E_1,L_1,R_1)$ and $(E_2,L_2,R_2)$, the factorization $E_1\otimes E_2$ factors an arrow $f\colon X\to Y$ as
+\[
+\begin{tikzcd}[column sep=large]
+	X \rar{L_2R_1f\circ L_1f} & E_2R_1f \rar{R_2R_1f} & Y
+\end{tikzcd}
+\]
+while the factorization $E_1\odot E_2$ factors $f$ as
+\[
+\begin{tikzcd}[column sep=large]
+	X \rar{L_2L_1f} & E_2L_1 f \rar{R_1f\circ R_2L_1f} & Y.
+\end{tikzcd}
+\]
+Garner shows that bimonoids in this 2-fold monoidal category are equivalent to algebraic weak factorization systems on $\cat{C}$. In other words, a bialgebra structure on a functorial factorization $(E,\eta,\epsilon)$ is precisely a choice of monad and comonad making $E$ an awfs. However, as this structure only contains functorial factorizations on a fixed category $\cat{C}$, it can say nothing about morphisms between factorization systems on different categories.
+
+To address this shortcoming, we will generalize this 2-fold monoidal category definition to double categories, where there are two different horizontal compositions which are compatible in a way analogous to the two monoidal structures in a 2-fold monoidal category. In~\cref{Ch:FuncFact} we will construct a 2-fold double category of functorial factorizations, generalizing Garner's 2-fold monoidal category, and in~\cref{Ch:Awfs} we will see that bimonads and bimonad morphisms in this 2-fold double category are exactly awfs and colax morphisms of awfs.
+
+\section{2-Fold Double Categories}
+
+We will start with a concise formal definition, and then expand on the definition more concretely.
 
 \begin{definition}
 	A \emph{2-fold double category} $\mathbb{D}$ with vertical category $\dvert(\mathbb{D})=\cat{D}_0$ is a 2-fold monoid object in the 2-category $\mathcal{C}at/\cat{D}_0$ of categories over $\cat{D}_0$.
@@ -135,7 +153,7 @@ These are natural in the sense that, for any vertical morphism $f\colon C\to D$ 
 	\twocellB{m} 
 \end{tikzcd}
 \]
-and similarly for $c$ and $j$, and for any four 2-cells $\theta_1,\dots,\theta_4$ of the apropriate form, we have an equality
+and similarly for $c$ and $j$, and for any four 2-cells $\theta_1,\dots,\theta_4$ of the appropriate form, we have an equality
 \[
 \begin{tikzcd}[column sep=17ex]
 	C \rar[tick][domA]{(W\odot X)\otimes(Y\odot Z)} 
@@ -163,6 +181,8 @@ and similarly for $c$ and $j$, and for any four 2-cells $\theta_1,\dots,\theta_4
 	\twocellB{z}
 \end{tikzcd}
 \]
+
+\section{Monads in 2-Fold Double Categories}
 
 \begin{definition}
 	A monad in a 2-fold double category $\mathbb{D}$ is a monad in $\mathbb{D}_{\otimes}$; a comonad in $\mathbb{D}$ is a comonad in $\mathbb{D}_{\odot}$. Furthermore, we define the categories $\mathrm{Mon}(\mathbb{D})=\mathrm{Mon}(\mathbb{D}_{\otimes})$ and $\mathrm{Comon}(\mathbb{D})=\mathrm{Comon}(\mathbb{D}_{\odot})$.
@@ -334,4 +354,4 @@ Concretely, a bimonad in $\mathbb{D}$ is a tuple $(X,\eta,\mu,\epsilon,\delta)$ 
 \end{tikzcd}
 \end{gathered}
 \end{equation}
-A bimonoid morphism is simply a 2-cell which is simultaineously a monoid morphism and a comonoid morphism.
+A bimonoid morphism is simply a 2-cell which is simultaneously a monoid morphism and a comonoid morphism.

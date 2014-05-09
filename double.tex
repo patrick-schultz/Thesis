@@ -1,6 +1,6 @@
 % -*- root: thesis.tex -*-
 
-\chapter{Double Categories}\label{Ch:Double}
+\chapter{DOUBLE CATEGORIES}\label{Ch:Double}
 
 Recall in~\cref{Def:FFColax}, a colax morphism of functorial factorizations is a pair $(F,\phi)$, where $\phi$ is a natural transformation
 \begin{equation}\label{Eq:FFColaxSquare}
@@ -12,7 +12,7 @@ Recall in~\cref{Def:FFColax}, a colax morphism of functorial factorizations is a
 \end{equation}
 In~\cite{riehl:nwfs-model} it is proven that if $F\dashv G$ is an adjunction, then specifying a natural transformation $\phi$ making $F$ a colax morphism uniquely determines a natural transformation $\theta$ making $G$ a lax morphism. The transformation $\theta$ is called the \emph{mate} of $\phi$, and is found by composing $\phi$ with the unit and counit of $\hat{F}$ and $F$ respectively.
 
-This mates correspondence defines a bijection between natural transformations of the form~\eqref{Eq:FFColaxSquare} and natural transformations of the form
+This mates correspondence (see~\cref{Ex:DoubleLAdj}) defines a bijection between natural transformations of the form~\eqref{Eq:FFColaxSquare} and natural transformations of the form
 \[
 \begin{tikzcd}
 	C^2 \rar[][domA]{E_1} & C \\
@@ -28,7 +28,7 @@ In~\cref{Sec:DblCatReview}, we begin by giving an overview of double categories.
 
 We will ultimately want to define an algebraic weak factorization system to be a sort of bialgebraic object in a (two-fold) double category. To prepare the way for this definition, in~\cref{Sec:DblCatMonads} we give (one possible version of) the definition of monads in a double category.
 
-\section{Review of double categories}\label{Sec:DblCatReview}
+\section{Review of Double Categories}\label{Sec:DblCatReview}
 
 We first give the most concise definition of a double category, which we will then break down into more concrete terms.
 
@@ -36,7 +36,7 @@ We first give the most concise definition of a double category, which we will th
 	A (strict) \emph{double category} is an internal category object in the (large) category of categories.
 \end{definition}
 
-So a double category $\dblcat{D}$ consists of a category $\dblcat{D}_0$ and a category $\dblcat{D}_1$, along with functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$, $i\colon \dblcat{D}_0\to \dblcat{D}_1$, and $\otimes\colon \dblcat{D}_1\times_{\dblcat{D}_0}\dblcat{D}_1\to \dblcat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\dblcat{D}_0$ the 0-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_0$ the vertical 1-cells. Thus $\dblcat{D}_0$ forms the so-called \emph{vertical category} of $\dblcat{D}$. We will call the objects of $\dblcat{D}_1$ the horizontal 1-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_1$ are the 2-cells. 
+So a double category $\dblcat{D}$ consists of a category $\dblcat{D}_0$ and a category $\dblcat{D}_1$, along with functors $s,t\colon \dblcat{D}_1\to \dblcat{D}_0$, $i\colon \dblcat{D}_0\to \dblcat{D}_1$, and $\otimes\colon \dblcat{D}_1\times_{\dblcat{D}_0}\dblcat{D}_1\to \dblcat{D}_1$ satisfying the usual axioms of a category. We will call the objects of $\dblcat{D}_0$ the 0-cells (or just objects) of $\dblcat{D}$, and the morphisms of $\dblcat{D}_0$ the vertical 1-cells. Thus $\dblcat{D}_0$ forms the so-called \emph{vertical category} of $\dblcat{D}$. We will call the objects of $\dblcat{D}_1$ the horizontal 1-cells of $\dblcat{D}$, and the morphisms of $\dblcat{D}_1$ are the 2-cells. 
 
 A morphism $\phi\colon X\to Y$ in $\dblcat{D}_1$, where $s(X)=C$, $t(X)=C'$, $s(Y)=D$, $t(Y)=D'$, $s(\phi)=f$, and $t(\phi)=g$ will be drawn as
 \begin{equation}\label{Eq:Double2Cell}
@@ -69,7 +69,7 @@ A 2-cell $\theta$ for which $s\theta=t\theta=\id$ will be called \emph{globular}
 \]
 to save space and help readability of diagrams.
 
-\begin{example}
+\begin{example}\label{Ex:SqD}
 	For any 2-category $\twocat{D}$, there is an associated double category $\Sq(\twocat{D})$ of \emph{squares} in $\twocat{D}$, in which the vertical and horizontal 1-cells are both just 1-cells in $\twocat{D}$, and 2-cells
 	\[
 	\begin{tikzcd}
@@ -83,8 +83,40 @@ to save space and help readability of diagrams.
 	are simply 2-cells $\phi\colon gj\Rightarrow kf$ in $\twocat{D}$.
 \end{example}
 
+\begin{example}\label{Ex:DoubleLAdj}
+	Given any 2-category $\twocat{D}$, there is a double category $\LAdj(\twocat{D})$. The horizontal 1-cells are just 1-cells in $\twocat{D}$, while the vertical 1-cells are fully specified adjunctions $f\dashv g$ (meaning the unit and counit have been chosen) pointing in the direction of the left adjoint. 2-cells
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{j} \dar[swap]{(f\dashv g)} 
+			& C' \dar{(f'\dashv g')} \\
+		D \rar[tick][codA,swap]{k} 
+			& D'
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	are natural transformations involving the left adjoints, $\phi\colon f'j\Rightarrow kf$.
+
+	Similarly there is a double category $\RAdj(\twocat{D})$ where the vertical 1-cells still point in the direction of the left adjoint, but the 2-cells are natural transformations involving the right adjoints, $\phi\colon jg\Rightarrow g'k$.
+
+	The \emph{mates correspondence} (see e.g.~\cite{cgr:mates}) gives an isomorphism $\LAdj(\twocat{D})\cong\RAdj(\twocat{D})$, which sends a 2-cell $\phi$ in $\LAdj(\twocat{D})$ to the 2-cell
+	\[
+	\begin{tikzcd}[column sep=2ex]
+		{} & |[alias=domA]| C \rar[][domB]{j} \dar{f}
+			&[3ex] C' \dar[swap]{f'} \rar[equal][domC]{}
+			& C' \\
+		D \rar[equal][codA]{} \urar{g}
+			& D \rar[][codB,swap]{k}
+			& |[alias=codC]| D' \urar[swap]{g'} &
+		\twocellA[pos=.7]{\epsilon}
+		\twocellB{\phi}
+		\twocellC[pos=.3]{\eta}
+	\end{tikzcd}
+	\]
+	given by composing with the unit/counit of the adjunctions.
+\end{example}
+
 \begin{example}\label{Ex:Span}
-	Given any category $M$, there is a pseudo double category $\Span(M)$ of \emph{spans} in $M$. The vertical category of $\Span(M)$ is just $M$, while horizontal 1-cells
+	Given any category $\cat{M}$, there is a pseudo double category $\Span(\cat{M})$ of \emph{spans} in $\cat{M}$. The vertical category of $\Span(\cat{M})$ is just $\cat{M}$, while horizontal 1-cells
 	\[
 	\begin{tikzcd}
 		C \rar[tick][]{X} & D
@@ -96,7 +128,7 @@ to save space and help readability of diagrams.
 		C & X \lar[swap]{j} \rar{k} & D
 	\end{tikzcd}
 	\]
-	in $M$, and 2-cells
+	in $\cat{M}$, and 2-cells
 	\[
 	\begin{tikzcd}
 		C \rar[tick][domA]{X} \dar[swap]{f} & D \dar{g} \\
@@ -144,7 +176,7 @@ to save space and help readability of diagrams.
 	In terms of \cref{Def:DoubleCat}, $\vop{\dblcat{D}}$ is the double category obtained by replacing the categories $\dblcat{D}_0$ and $\dblcat{D}_1$ with their opposites, while $\vop{\dblcat{D}}$ is the obtained by swapping the horizontal source and target functors $s$ and $t$.
 \end{definition}
 
-\section{Arrow objects in a double category}\label{Sec:ArrowObjects}
+\section{Arrow Objects in a Double Category}\label{Sec:ArrowObjects}
 
 In the following we will need an extension of the universal property~\eqref{Eq:ArrowObject} to double categories. Fortunately, this is quite straightforward.
 
@@ -277,6 +309,10 @@ there is a unique 2-cell
 \]
 such that the horizontal composition of $\theta$ with $\gamma_0$ and $\gamma_1$ is respectively equal to $\lambda_0$ and $\lambda_1$.
 
+\begin{remark}
+	Note that in most examples, the 2-cells $\gamma_0$ and $\gamma_1$ will be isomorphisms (or even identities). This just says that given any $g\colon X\to Y$ in $C^2$, the lift $\hat{F}(g)$ will be some $\hat{F}(g)\colon FX\to FY$. We are not aware of any examples where the $\gamma_i$ are not isomorphisms, though when we generalize this universal property to the multivariable setting, they will necessarily not be isomorphisms (rather they will be projections out of a pullback).
+\end{remark}
+
 \begin{definition}
 	A double category $\dblcat{D}$ \emph{has arrow objects} if for every object $C$ of $\dblcat{D}$ there is an object $C^2$ and 2-cell $\kappa$, and for every vertical 1-cell $F$ there is a vertical 1-cell $\hat{F}$ and 2-cells $\gamma_0$ and $\gamma_1$, satisfying the universal properties given above.
 \end{definition}
@@ -319,7 +355,7 @@ We will define a \emph{monad} in a double category $\dblcat{D}$ to be a tuple $(
 	\twocellA{\mu}
 \end{tikzcd}
 \]
-satisfying the usual unit and associativity conditions.
+satisfying the usual unit and associativity conditions. In other words, a monad in $\dblcat{D}$ is simply a monad in the 2-category $\Hor(\dblcat{D})$. The non-identity vertical 1-cells come into play in the morphisms of monads.
 
 Given two monads $(C,T,\eta,\mu)$ and $(D,S,\eta',\mu')$, a monad morphism from $(C,T)$ to $(D,S)$ consists of a pair $(f,\phi)$, where $f$ is a vertical 1-cell $C\to D$ and $\phi$ is a 2-cell
 \[

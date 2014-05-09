@@ -1,6 +1,6 @@
 % -*- root: thesis.tex -*-
 
-\chapter{Cyclic 2-fold double categories}\label{Ch:Cyclic}
+\chapter{CYCLIC 2-FOLD DOUBLE CATEGORIES}\label{Ch:Cyclic}
 
 Recall the notion of a cyclic double category from~\cite{cgr:mates}. A cyclic double category $\mathbb{D}$ is a double category with an extra involutive operation. On objects and horizontal 1-cells $\begin{tikzcd}[baseline,column sep=2.5ex] X\colon C \rar[tick]& C \end{tikzcd}$, this operation is written
 \[
@@ -29,8 +29,32 @@ and respects horizontal identities and composition. The involution takes any ver
 \]
 respecting vertical identities and composition.
 
-\begin{example}
-	Let $\twocat{D}$ be any 2-category with an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ with $(-)^{\text{op}}$. The double category $\Sq(\twocat{D})$ has a sub-double category $\LAdj(\twocat{D})$, where the vertical 1-cells are restricted to the adjunctions---pointing in the direction of the left adjoint, say---but with no other restrictions. This double category has a natural cyclic action:  if $F\dashv G$ is an adjunction, then $\sigma F = G^{\bullet}$, the left adjoint of the adjunction $G^{\bullet}\dashv F^{\bullet}$, and if $\theta$ is a 2-cell with mate $\phi$ then $\sigma\theta=\phi^{\bullet}$. For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see~\cite{cgr:mates} Section 1. 
+The next example is the fundamental example of a cyclic double category.
+
+\begin{example}\label{Ex:CyclicLAdj}
+	Recall the double categories $\LAdj(\twocat{D})$ and $\RAdj(\twocat{D})$ from~\cref{Ex:DoubleLAdj}.	If the 2-category $\twocat{D}$ has an involution $(-)^{\bullet}\colon\twocat{D}^{\text{co}}\to\twocat{D}$, such as $\twocat{C}at$ with $(-)^{\text{op}}$, then the double category $\LAdj(\twocat{D})$ has a natural cyclic action: on vertical 1-cells $\sigma (f\dashv g) = (g^{\bullet}\dashv f^{\bullet})$, and if $\phi$ is a 2-cell
+	\[
+	\begin{tikzcd}
+		C \rar[tick][domA]{j} \dar[swap]{(f\dashv g)} 
+			& C' \dar{(f'\dashv g')} \\
+		D \rar[tick][codA,swap]{k} 
+			& D'
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	with mate $\theta$ then $\sigma\phi=\theta^{\bullet}$:
+	\[
+	\begin{tikzcd}
+		D^{\bullet} \rar[tick][domA]{k^{\bullet}} \dar[swap]{(g^{\bullet}\dashv f^{\bullet})} 
+			& {D'}^{\bullet} \dar{({g'}^{\bullet}\dashv {f'}^{\bullet})} \\
+		C^{\bullet} \rar[tick][codA,swap]{j^{\bullet}} 
+			& {C'}^{\bullet}
+		\twocellA{\theta^{\bullet}}
+	\end{tikzcd}
+	\]
+	This cyclic action encodes the naturality of the mates correspondence using only a single double category, and is a convenient alternative to the isomorphism $\LAdj(\twocat{D})\cong\RAdj(\twocat{D})$. This simplification will be even more important when we need the multivariable mates correspondence in~\cref{Ch:PushoutProduct,Ch:DblMulti}.
+	
+	For a clear summary of the mates correspondence and the cyclic action on $\LAdj$, see~\cite{cgr:mates} Section 1. 
 \end{example}
 
 \begin{proposition}
