@@ -40,10 +40,100 @@ In this chapter, we will give a universal property satisfied by the functors $\h
 
 \section{Review of Cyclic Double Multicategories}
 
+Just as we needed the mates correspondence to define adjunctions of algebraic weak factorization systems, we will need an extension of the mates correspondence to multivariable adjunctions in order to define multivariable adjunctions of awfs. Fortunately, both of these tasks have been done in~\cite{riehl:nwfs-monoidal} and~\cite{cgr:mates}. We will review the necessary material from those papers in this section.
+
+Recall that a multicategory is a structure like a category, but where morphisms are allowed to have a \emph{list} of objects as their domain, which we write as
+\[
+	f\colon (X_1,\dots,X_n) \to Y
+\]
+sometimes dropping the parenthesis when they are not needed for readability. The composition takes a composable configuration $f\circ(g_1,\dots,g_n)$, where $f$ is as above and $g_i$ is a morphism with codomain $X_i$, and produces a morphism with codomain $Y$ and with domain the concatenation of all the domains of the $g_i$.
+
+\begin{example}
+	Any monoidal category has an underlying multicategory, in which the morphisms $(X_1,\dots,X_n) \to Y$ are simply defined to be morphisms $X_1\otimes\cdots\otimes X_n\to Y$. In fact, monoidal categories can be defined to be the multicategories having a certain representability property. 
+\end{example}
+
+A \emph{cyclic} multicategory involves both a duality on the objects, and a cyclic action on the morphisms taking a morphism $f\colon (X_1,\dots,X_n) \to X_0$ to a morphism
+\[
+	 \sigma f\colon(X_0^{\bullet},X_1,\dots,X_{n-1})\to X_n^{\bullet}
+\]
+In other words, the cyclic action cyclically permutes the objects in the domain and codomain, applying the duality whenever an object moves from domain to codomain or vice versa. There are some axioms governing the interplay between the cyclic action and the composition. We will refer to~\cite{cgr:mates} for complete details on the material of this section.
+
+The canonical example of a cyclic multicategory is $\MAdjC$, whose objects are categories, and morphisms are multivariable mutual left adjoints. For example, consider an adjunction of two variables
+\[
+\begin{tikzcd}
+	\cat{K}\times \cat{M} \rar{\otimes} & \cat{N}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	\op{\cat{K}}\times \cat{N} \rar{\hom_l} & \cat{M}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	\op{\cat{M}}\times \cat{N} \rar{\hom_r} & \cat{K}
+\end{tikzcd}
+\]
+\[
+	\cat{N}(k\otimes m,n) \cong \cat{M}(m,\hom_l(k,n)) \cong \cat{K}(k,\hom_r(m,n))
+\]
+
+Here $\otimes$ is adjoint on the left, while the homs are adjoint on the right, but we can arrange for all three to be left adjoints as follows:
+\[
+\begin{tikzcd}
+	\cat{K}\times \cat{M} \rar{\otimes} & \cat{N}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	\op{\cat{N}}\times \cat{K} \rar{\hom_l^{\text{op}}} & \op{\cat{M}}
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+	\cat{M}\times \op{\cat{N}} \rar{\hom_r^{\text{op}}} & \op{\cat{K}}
+\end{tikzcd}
+\]
+\[
+	\cat{N}(k\otimes m,n) \cong \op{\cat{M}}(\hom_l(k,n),m) \cong \op{\cat{K}}(\hom_r(m,n),k).
+\]
+Written as three mutual left adjoints, and swapping the order of the inputs to $\hom_l$, we expose the cyclical symmetry.
+
+Cyclic double multicategories, first introduced in~\cite{cgr:mates}, are like the cyclic double categories defined in~\ref{Ch:Cyclic} but where the vertical category is enlarged to a vertical cyclic multicategory. For complete details, see~\cite{cgr:mates}, but the following example should make the idea clear:
+
+\begin{example}
+	Generalizing~\cref{Ex:CyclicLAdj}, there is a cyclic double multicategory $\MAdj$ whose objects are categories, whose vertical cyclic multicategory is $\Cat{MAdj}$, and whose 2-cells
+	\[
+	\begin{tikzcd}
+		\cat{M}_1,\cat{M}_2 \dar[swap]{G_0} \rar[][domA]{u,v} & \cat{N}_1,\cat{N}_2 \dar{F_0} \\
+		\cat{M}_0 \rar[][swap,codA]{w} & \cat{N}_0
+		\twocellA{\phi}
+	\end{tikzcd}
+	\]
+	are natural transformations $\phi\colon F_0(u,v)\Rightarrow wG_0$. The cyclic action permutes 2-cells $\phi$ to 2-cells
+	\[
+	\begin{tikzcd}
+		\cat{M}_2,\cat{M}_0^{\text{op}} \rar[][domA]{v,\op{w}} \dar[swap]{G_1}
+			& \cat{N}_2,\cat{N}_0^{\text{op}} \dar{F_1} \\
+		\cat{M}_1^{\text{op}} \rar[][swap,codA]{\op{u}}
+			& \cat{N}_1^{\text{op}}
+		\twocellA{\sigma\phi}
+	\end{tikzcd}
+	\qquad
+	\begin{tikzcd}
+		\cat{M}_0^{\text{op}},\cat{M}_1 \rar[][domA]{\op{w},u} \dar[swap]{G_2}
+			& \cat{N}_0^{\text{op}},\cat{N}_1 \dar{F_2} \\
+		\cat{M}_2^{\text{op}} \rar[][swap,codA]{\op{v}}
+			& \cat{N}_2^{\text{op}}
+		\twocellA{\sigma^2\phi}
+	\end{tikzcd}
+	\]
+	where $(G_0,G_1,G_2)$ and $(F_0,F_1,F_2)$ are each systems of mutual left adjoints, and where $\sigma\phi$ and $\sigma^2\phi$ are the two mates of $\phi$.
+
+	The details of the mates correspondence are significantly more complicated in the multivariable case. The advantage of working with cyclic double multicategories is that these details are not important: the properties of the mates correspondence that are needed in practice are captured by the cyclic action.
+\end{example}
 
 \section{The Universal Property}
 
 % First, we will need to find a generalization of the universal property for arrow objects to (cyclic) double multicategories. In the theory of multivariable Quillen adjunctions, the lift of a multivariable adjunction to arrow categories is provided by the pushout/pullback product, so we will identify a universal property satisfied by this construction.
+
+
 
 Define a cyclic double multicategory $\mathbb{J}$ as follows. The objects are $A_i$, $B_i$, for $i\in\{0,1,2\}$, and their duals. The horizontal 1-cells are $d^i_0,d^i_1\colon B_i\to A_i$. The vertical 1-cells are $F_i\colon (A_{i-1},A_{i+1})\to A^{\bullet}_i$ and $G_i\colon (B_{i-1},B_{i+1})\to B^{\bullet}_i$, which form two orbits under the cyclic action.
 
@@ -289,6 +379,8 @@ Let $\mathbb{I}$ be the sub-category of $\mathbb{J}$ consisting of just the 1-ce
 	The top arrow is uniquely determined by equation~\eqref{Eq:UProp1}, while the components of the bottom arrow are uniquely determined by equations~\eqref{Eq:UProp2} and~\eqref{Eq:UProp3}.
 \end{proof}
 
+\section{Arrow Objects in Cyclic Double Multicategories}
+
 Now let $\dblcat{M}$ be any cyclic double multicategory. We will take \cref{Thm:MAdjArrowObjects} as our definition of what it means for a general cyclic double multicategory to have arrow objects. For future reference, we will spell this out more concretely.
 
 Given an object $C$ of $\dblcat{M}$, an arrow object $C^2$ is an object together with a globular 2-cell $\kappa\colon\dom\Rightarrow\cod$ satisfying the same universal property as in \cref{Sec:ArrowObjects} (this only involves the horizontal 2-category, so carries over unchanged).
@@ -320,7 +412,7 @@ Given a vertical 1-cell $F\colon(C_1,C_2)\to C_0^{\bullet}$, the lift to arrow o
 \end{tikzcd}
 \]
 satisfying the equations
-\begin{gather}
+\begin{equation} \label{Eq:ArrowObjectMultiA}
 \begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	C_1^2,C_2^2 \rar[][domA]{\dom,\cod} 
 			\dar[swap]{G_0}
@@ -341,8 +433,9 @@ satisfying the equations
 		\& C_0^{\bullet}
 	\twocellA{\kappa,\id}
 	\twocellB{\gamma_0}
-\end{tikzcd} \label{Eq:ArrowObjectMultiA}
-\\
+\end{tikzcd}
+\end{equation}
+\begin{equation} \label{Eq:ArrowObjectMultiB}
 \begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	C_1^2,C_2^2 \rar[][domA]{\cod,\dom} 
 			\dar[swap]{G_0} 
@@ -363,8 +456,9 @@ satisfying the equations
 		\& C_0^{\bullet}
 	\twocellA{\id,\kappa}
 	\twocellB{\gamma_0}
-\end{tikzcd} \label{Eq:ArrowObjectMultiB}
-\\
+\end{tikzcd}
+\end{equation}
+\begin{equation} \label{Eq:ArrowObjectMultiC}
 \begin{tikzcd}[bend angle=50,ampersand replacement=\&]
 	C_1^2,C_2^2 \rar[bend left][domA]{\dom,\dom} 
 			\rar[][codA,domB,swap]{\dom,\cod} 
@@ -385,8 +479,8 @@ satisfying the equations
 		\& C_0^{\bullet}
 	\twocellA{\kappa,\id}
 	\twocellB{\gamma_2}
-\end{tikzcd} \label{Eq:ArrowObjectMultiC}
-\end{gather}
+\end{tikzcd}
+\end{equation}
 and which is universal, meaning that given any objects $X_0,X_1,X_2$, horizontal 1-cells $d_{i,0},d_{i,1}\colon X_i\to C_i$, a vertical 1-cell $G\colon X_1,X_2\to X_0^{\bullet}$, globular 2-cells $\alpha_i\colon d_{i,1}\Rightarrow d_{i,0}$, and 2-cells
 \[
 \begin{tikzcd}
@@ -413,7 +507,7 @@ and which is universal, meaning that given any objects $X_0,X_1,X_2$, horizontal
 	\twocellA{\lambda_2}
 \end{tikzcd}
 \]
-satisfying the three equations analagous to~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC}, there exists a unique 2-cell
+satisfying the three equations analogous to~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC}, there exists a unique 2-cell
 \[
 \begin{tikzcd}
 	X_1,X_2 \rar[][domA]{\hat{\alpha}_1,\hat{\alpha}_2} \dar[swap]{G}
@@ -446,7 +540,7 @@ satisfying the three equations analagous to~\eqref{Eq:ArrowObjectMultiA}--\eqref
 \]
 for each $i\in\{0,1,2\}$.
 
-Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ to arrow objects to be a vertical 1-cell $\hat{F}$ together with $(n+1)$ 2-cells $\gamma_i$ satisfying $(n+1)$ equations analagous to~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} and which is universal in the analagous way.
+Similarly, we define the lift of a vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ to arrow objects to be a vertical 1-cell $\hat{F}$ together with $(n+1)$ 2-cells $\gamma_i$ satisfying $(n+1)$ equations analogous to~\eqref{Eq:ArrowObjectMultiA}--\eqref{Eq:ArrowObjectMultiC} and which is universal in the analogous way.
 
 \begin{definition}
 	Let $\dblcat{M}$ be a double multicategory. We say $\dblcat{M}$ \emph{has arrow objects} if for every object $C$ there is an arrow object $C^2$, and if for every vertical 1-cell $F\colon(C_1,\dots,C_n)\to C_0^{\bullet}$ there is a lift to arrow objects $\hat{F}$.
